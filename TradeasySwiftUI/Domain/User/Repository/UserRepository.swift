@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol UserRepository{
+    
+    func register() async throws -> [RegisterModel]
+    
+}
