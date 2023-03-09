@@ -19,7 +19,7 @@ struct UserModel: Codable {
     let savedProducts: [Product]?
     let otp: Int?
     let countryCode: String?
-    let token: String?
+    var token: String?
 
     enum CodingKeys: String, CodingKey {
         case username
@@ -35,6 +35,8 @@ struct UserModel: Codable {
         case countryCode
         case token
     }
+    
+    
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

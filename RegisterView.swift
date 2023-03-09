@@ -40,11 +40,14 @@ struct RegisterView: View {
                         // TODO: Navigate to the next screen
                     } catch RegisterError.passwordsDoNotMatch {
                         print("Passwords do not match")
-                    } catch UseCaseError.networkError {
+                    } catch UseCaseError.email{
+                        print("status")
+                    }catch UseCaseError.networkError {
                         print("Network error")
                     } catch UseCaseError.decodingError {
                         print("Decoding error")
-                    } catch {
+                    }
+                    catch {
                         print("Unknown error")
                     }
                 }

@@ -1,5 +1,5 @@
 enum UseCaseError: Error {
-    case networkError, decodingError
+    case networkError, decodingError,email
 }
 
 protocol Register {
@@ -19,6 +19,8 @@ struct RegisterUseCase: Register {
             switch(error) {
             case APIServiceError.decodingError:
                 return .failure(.decodingError)
+            case APIServiceError.emailAlreadyExist:
+                return .failure(.email)
             default:
                 return .failure(.networkError)
             }

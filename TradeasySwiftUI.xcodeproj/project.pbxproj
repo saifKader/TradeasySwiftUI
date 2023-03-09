@@ -27,6 +27,7 @@
 		59B0898A29BA445F00FC563F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898929BA445F00FC563F /* UserModel.swift */; };
 		59B0898E29BA452900FC563F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898D29BA452900FC563F /* Notification.swift */; };
 		59B0899229BA45C600FC563F /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899129BA45C600FC563F /* ProductModel.swift */; };
+		59B0899429BA651200FC563F /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899329BA651200FC563F /* ResponseWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		59B0898929BA445F00FC563F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = SOURCE_ROOT; };
 		59B0898D29BA452900FC563F /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = SOURCE_ROOT; };
 		59B0899129BA45C600FC563F /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = SOURCE_ROOT; };
+		59B0899329BA651200FC563F /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 		59B0894129B9770900FC563F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				59B0899329BA651200FC563F /* ResponseWrapper.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59B0899429BA651200FC563F /* ResponseWrapper.swift in Sources */,
 				59B0895029BA0E2C00FC563F /* UserAPIImpl.swift in Sources */,
 				59B0898629BA3F3900FC563F /* RegisterViewModel.swift in Sources */,
 				59B0898329BA363B00FC563F /* UserRepositoryImpl.swift in Sources */,
