@@ -7,12 +7,8 @@
 
 import Foundation
 
-struct UserRepositoryImpl: UserRepository{
-    
+struct UserRepositoryImpl {
     var dataSource: UserDataSource
     
-    func register(_registerReq: RegisterReq) async throws -> UserModel {
-        let _register =  try await dataSource.register(_registerReq: _registerReq)
-        return _register
-    }
+    
 }

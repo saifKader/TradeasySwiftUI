@@ -3,27 +3,20 @@ enum UseCaseError: Error {
 }
 
 protocol Register {
-    func execute(_registerReq: RegisterReq) async -> Result<UserModel, UseCaseError>
+    func execute(_registerReq: RegisterReq) async -> AnyPublisher<BaseResult<UserModel, WrappedResponse<UserModel>>, Error>
 }
 
 import Foundation
+import Combine
 
 struct RegisterUseCase: Register {
-    var repo: UserRepository
+    var repo: UserAPIImpl
     
-    func execute(_registerReq: RegisterReq) async -> Result<UserModel, UseCaseError> {
+    func execute(_registerReq: RegisterReq) async -> AnyPublisher<BaseResult<UserModel, WrappedResponse<UserModel>>, Error> {
         do {
-            let register = try await repo.register(_registerReq:_registerReq)
-            return .success(register)
-        } catch(let error) {
-            switch(error) {
-            case APIServiceError.decodingError:
-                return .failure(.decodingError)
-            case APIServiceError.emailAlreadyExist:
-                return .failure(.email)
-            default:
-                return .failure(.networkError)
-            }
+            let register =   repo.register(_registerReq)
+            return register
         }
+        
     }
 }

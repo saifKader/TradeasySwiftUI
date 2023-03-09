@@ -8,7 +8,7 @@
 import Foundation
 
 struct WrappedResponse<T: Codable>: Codable {
-    let code: Int
+    var code: Int
     let message: String
     let status: Bool
     let errors: [String]?
