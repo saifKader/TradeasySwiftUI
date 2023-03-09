@@ -9,26 +9,46 @@ import Foundation
 
 class RegisterViewModel: ObservableObject {
     @Published var username = ""
+    @Published var countryCode=""
     @Published var phoneNumber = ""
     @Published var email = ""
     @Published var password = ""
-
-    private let userAPI: UserDataSource
-
-    init(userAPI: UserDataSource = UserAPIImpl()) {
-        self.userAPI = userAPI
+    @Published var confirmPassword = ""
+    
+    private let registerUseCase: Register
+    
+    init(registerUseCase: Register) {
+        self.registerUseCase = registerUseCase
     }
-
-    func register() {
-        async {
-            do {
-                let authResponse = try await userAPI.register(username: username, phoneNumber: phoneNumber, email: email, password: password)
-                // Registration successful
-                // Save the token and user information to the app's data store
-            } catch {
-                // Registration failed
-                print("Error registering user: \(error)")
-            }
+    
+    func registerUser() async throws -> UserModel {
+        // Check if passwords match
+        guard password == confirmPassword else {
+            throw RegisterError.passwordsDoNotMatch
+        }
+        
+        // Create a RegisterReq object with the user's input
+        let registerReq = RegisterReq(
+            username: username,
+            countryCode: countryCode,
+            phoneNumber: phoneNumber,
+            email: email,
+            password: password
+        )
+        
+        // Call the register use case to register the user
+        let result = await registerUseCase.execute(_registerReq: registerReq)
+        
+        switch result {
+        case .success(let userModel):
+            return userModel
+        case .failure(let error):
+            throw error
         }
     }
 }
+
+enum RegisterError: Error {
+    case passwordsDoNotMatch
+}
+

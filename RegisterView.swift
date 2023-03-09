@@ -10,21 +10,48 @@ import CoreData
 
 
 struct RegisterView: View {
-     @StateObject var registerViewModel = RegisterViewModel()
-
+    @ObservedObject var viewModel: RegisterViewModel
+    
     var body: some View {
         VStack {
-            TextField("Username", text: $registerViewModel.username)
-            TextField("Phone Number", text: $registerViewModel.phoneNumber)
-            TextField("Email", text: $registerViewModel.email)
-            SecureField("Password", text: $registerViewModel.password)
-            TextField("Profile Picture", text: $registerViewModel.profilePicture)
-            TextField("Notification Token", text: $registerViewModel.notificationToken)
-            TextField("Country Code", text: $registerViewModel.countryCode)
-
-            Button("Register") {
-                registerViewModel.register()
+            TextField("Username", text: $viewModel.username)
+                .padding()
+            
+            TextField("Country Code", text: $viewModel.countryCode)
+                .padding()
+            
+            TextField("Phone Number", text: $viewModel.phoneNumber)
+                .padding()
+            
+            TextField("Email", text: $viewModel.email)
+                .padding()
+            
+            SecureField("Password", text: $viewModel.password)
+                .padding()
+            
+            SecureField("Confirm Password", text: $viewModel.confirmPassword)
+                .padding()
+            
+            Button(action: {
+                Task {
+                    do {
+                        let userModel = try await viewModel.registerUser()
+                        print("User registered successfully: \(userModel)")
+                        // TODO: Navigate to the next screen
+                    } catch RegisterError.passwordsDoNotMatch {
+                        print("Passwords do not match")
+                    } catch UseCaseError.networkError {
+                        print("Network error")
+                    } catch UseCaseError.decodingError {
+                        print("Decoding error")
+                    } catch {
+                        print("Unknown error")
+                    }
+                }
+            }) {
+                Text("Register")
             }
         }
+        .padding()
     }
 }

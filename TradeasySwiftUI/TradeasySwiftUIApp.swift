@@ -9,12 +9,13 @@ import SwiftUI
 
 @main
 struct TradeasySwiftUIApp: App {
-    let persistenceController = PersistenceController.shared
-
+    let registerUseCase = RegisterUseCase(repo: UserRepositoryImpl(dataSource: UserAPIImpl()))
+    let registerViewModel = RegisterViewModel(registerUseCase: registerUseCase)
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            RegisterView(viewModel: registerViewModel)
         }
     }
 }
+
