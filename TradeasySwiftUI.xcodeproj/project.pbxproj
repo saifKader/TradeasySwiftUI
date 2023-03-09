@@ -18,13 +18,15 @@
 		59B0892D29B9392100FC563F /* TradeasySwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0892C29B9392100FC563F /* TradeasySwiftUIUITestsLaunchTests.swift */; };
 		59B0894D29BA0E0E00FC563F /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0894C29BA0E0E00FC563F /* UserDataSource.swift */; };
 		59B0895029BA0E2C00FC563F /* UserAPIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0894F29BA0E2C00FC563F /* UserAPIImpl.swift */; };
-		59B0895529BA0E5800FC563F /* RegisterAPIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0895429BA0E5800FC563F /* RegisterAPIEntity.swift */; };
-		59B0896329BA101300FC563F /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0896229BA101300FC563F /* RegisterModel.swift */; };
+		59B0895529BA0E5800FC563F /* RegisterReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0895429BA0E5800FC563F /* RegisterReq.swift */; };
 		59B0896729BA102E00FC563F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0896629BA102E00FC563F /* UserRepository.swift */; };
 		59B0897529BA10C200FC563F /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0897429BA10C200FC563F /* RegisterUseCase.swift */; };
 		59B0897A29BA230400FC563F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0897929BA230400FC563F /* RegisterView.swift */; };
 		59B0898329BA363B00FC563F /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898229BA363B00FC563F /* UserRepositoryImpl.swift */; };
 		59B0898629BA3F3900FC563F /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898529BA3F3900FC563F /* RegisterViewModel.swift */; };
+		59B0898A29BA445F00FC563F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898929BA445F00FC563F /* UserModel.swift */; };
+		59B0898E29BA452900FC563F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898D29BA452900FC563F /* Notification.swift */; };
+		59B0899229BA45C600FC563F /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899129BA45C600FC563F /* ProductModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,13 +61,15 @@
 		59B0892C29B9392100FC563F /* TradeasySwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeasySwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		59B0894C29BA0E0E00FC563F /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		59B0894F29BA0E2C00FC563F /* UserAPIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIImpl.swift; sourceTree = "<group>"; };
-		59B0895429BA0E5800FC563F /* RegisterAPIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPIEntity.swift; sourceTree = "<group>"; };
-		59B0896229BA101300FC563F /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
+		59B0895429BA0E5800FC563F /* RegisterReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterReq.swift; sourceTree = "<group>"; };
 		59B0896629BA102E00FC563F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		59B0897429BA10C200FC563F /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
 		59B0897929BA230400FC563F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = SOURCE_ROOT; };
 		59B0898229BA363B00FC563F /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = SOURCE_ROOT; };
 		59B0898529BA3F3900FC563F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = SOURCE_ROOT; };
+		59B0898929BA445F00FC563F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = SOURCE_ROOT; };
+		59B0898D29BA452900FC563F /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = SOURCE_ROOT; };
+		59B0899129BA45C600FC563F /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,8 @@
 		59B0894329BA0D3300FC563F /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				59B0898F29BA45AC00FC563F /* Product */,
+				59B0898B29BA450900FC563F /* Notification */,
 				59B0898429BA369700FC563F /* User */,
 			);
 			path = Domain;
@@ -223,7 +229,7 @@
 		59B0895129BA0E3200FC563F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				59B0895429BA0E5800FC563F /* RegisterAPIEntity.swift */,
+				59B0895429BA0E5800FC563F /* RegisterReq.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -231,7 +237,7 @@
 		59B0895C29BA0FC300FC563F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				59B0896229BA101300FC563F /* RegisterModel.swift */,
+				59B0898929BA445F00FC563F /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +300,38 @@
 				59B0895C29BA0FC300FC563F /* Model */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		59B0898B29BA450900FC563F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				59B0898C29BA451A00FC563F /* Model */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		59B0898C29BA451A00FC563F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59B0898D29BA452900FC563F /* Notification.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59B0898F29BA45AC00FC563F /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				59B0899029BA45B700FC563F /* Model */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		59B0899029BA45B700FC563F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59B0899129BA45C600FC563F /* ProductModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,12 +468,14 @@
 				59B0898629BA3F3900FC563F /* RegisterViewModel.swift in Sources */,
 				59B0898329BA363B00FC563F /* UserRepositoryImpl.swift in Sources */,
 				59B0891729B9392100FC563F /* TradeasySwiftUI.xcdatamodeld in Sources */,
-				59B0895529BA0E5800FC563F /* RegisterAPIEntity.swift in Sources */,
-				59B0896329BA101300FC563F /* RegisterModel.swift in Sources */,
+				59B0899229BA45C600FC563F /* ProductModel.swift in Sources */,
+				59B0895529BA0E5800FC563F /* RegisterReq.swift in Sources */,
+				59B0898A29BA445F00FC563F /* UserModel.swift in Sources */,
 				59B0894D29BA0E0E00FC563F /* UserDataSource.swift in Sources */,
 				59B0891429B9392100FC563F /* Persistence.swift in Sources */,
 				59B0897A29BA230400FC563F /* RegisterView.swift in Sources */,
 				59B0890D29B9392000FC563F /* ContentView.swift in Sources */,
+				59B0898E29BA452900FC563F /* Notification.swift in Sources */,
 				59B0890B29B9392000FC563F /* TradeasySwiftUIApp.swift in Sources */,
 				59B0897529BA10C200FC563F /* RegisterUseCase.swift in Sources */,
 				59B0896729BA102E00FC563F /* UserRepository.swift in Sources */,

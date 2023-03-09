@@ -9,6 +9,6 @@ import Foundation
 
 protocol UserRepository{
     
-    func register() async throws -> [RegisterModel]
+    func register(_registerReq:RegisterReq) async throws -> UserModel
     
 }
