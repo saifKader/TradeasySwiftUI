@@ -7,7 +7,7 @@
 
 import SwiftUI
 let userRepository = UserRepositoryImpl(dataSource: UserAPIImpl())
-let registerUseCase = RegisterUseCase(repo: UserAPIImpl())
+let registerUseCase = RegisterUseCase(repo: userRepository)
 let registerViewModel = RegisterViewModel(registerUseCase: registerUseCase)
 let registerView = RegisterView(viewModel: registerViewModel)
 

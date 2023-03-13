@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
-protocol UserDataSource {
-    func register(_ registerReq: RegisterReq) -> AnyPublisher<BaseResult<UserModel, WrappedResponse<UserModel>>, Error>
+protocol UserDataSource{
+    
+    func register(_registerReq: RegisterReq) async throws -> UserModel
+    
 }

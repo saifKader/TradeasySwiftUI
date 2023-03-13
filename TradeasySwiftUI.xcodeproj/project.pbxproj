@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19FDE9C5C017F2A805FCD130 /* Pods_TradeasySwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF00DCA83DF80445913E185 /* Pods_TradeasySwiftUI.framework */; };
+		5974376D29BF4C9B000D0766 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974376C29BF4C9B000D0766 /* ScreenSize.swift */; };
 		59B0890B29B9392000FC563F /* TradeasySwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0890A29B9392000FC563F /* TradeasySwiftUIApp.swift */; };
 		59B0890D29B9392000FC563F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0890C29B9392000FC563F /* ContentView.swift */; };
 		59B0890F29B9392100FC563F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B0890E29B9392100FC563F /* Assets.xcassets */; };
@@ -28,8 +30,9 @@
 		59B0898E29BA452900FC563F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898D29BA452900FC563F /* Notification.swift */; };
 		59B0899229BA45C600FC563F /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899129BA45C600FC563F /* ProductModel.swift */; };
 		59B0899429BA651200FC563F /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899329BA651200FC563F /* ResponseWrapper.swift */; };
-		59B0899629BA807D00FC563F /* BaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899529BA807D00FC563F /* BaseResult.swift */; };
-		59B0899829BA812000FC563F /* aoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899729BA812000FC563F /* aoi.swift */; };
+		59B1C61229BF45A000DBD4B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B1C61129BF45A000DBD4B1 /* Constants.swift */; };
+		CD02B8B8077F3834A2D9D0A6 /* Pods_TradeasySwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A0D373DA7135AC242A9571 /* Pods_TradeasySwiftUITests.framework */; };
+		EE9A56F1C89F60C07C931F69 /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7B17872AFC3151E7E1107D /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		561CE78467568524658DDA35 /* Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUI-TradeasySwiftUIUITests/Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5974376C29BF4C9B000D0766 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		59B0890729B9392000FC563F /* TradeasySwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeasySwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B0890A29B9392000FC563F /* TradeasySwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeasySwiftUIApp.swift; sourceTree = "<group>"; };
 		59B0890C29B9392000FC563F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,8 +79,15 @@
 		59B0898D29BA452900FC563F /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = SOURCE_ROOT; };
 		59B0899129BA45C600FC563F /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = SOURCE_ROOT; };
 		59B0899329BA651200FC563F /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
-		59B0899529BA807D00FC563F /* BaseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResult.swift; sourceTree = "<group>"; };
-		59B0899729BA812000FC563F /* aoi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aoi.swift; sourceTree = "<group>"; };
+		59B1C61129BF45A000DBD4B1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7AF00DCA83DF80445913E185 /* Pods_TradeasySwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeasySwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F7B17872AFC3151E7E1107D /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33ABE30962A12F8C1F9DA9F /* Pods-TradeasySwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUI.release.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUI/Pods-TradeasySwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		DEDE9F5221EB25DA3ACB5B48 /* Pods-TradeasySwiftUI-TradeasySwiftUIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUI-TradeasySwiftUIUITests.debug.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUI-TradeasySwiftUIUITests/Pods-TradeasySwiftUI-TradeasySwiftUIUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F318CA0C589F61322958294A /* Pods-TradeasySwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUITests.release.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUITests/Pods-TradeasySwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F4782DD55237CB0061913DD7 /* Pods-TradeasySwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUITests/Pods-TradeasySwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8A0D373DA7135AC242A9571 /* Pods_TradeasySwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeasySwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA21E288EC0224CC71564DF5 /* Pods-TradeasySwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUI/Pods-TradeasySwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19FDE9C5C017F2A805FCD130 /* Pods_TradeasySwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD02B8B8077F3834A2D9D0A6 /* Pods_TradeasySwiftUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE9A56F1C89F60C07C931F69 /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +125,8 @@
 				59B0891F29B9392100FC563F /* TradeasySwiftUITests */,
 				59B0892929B9392100FC563F /* TradeasySwiftUIUITests */,
 				59B0890829B9392000FC563F /* Products */,
+				7867EAFADB19E655F02FA030 /* Pods */,
+				7F64B3EDEE282B1934FC2924 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +143,7 @@
 		59B0890929B9392000FC563F /* TradeasySwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				59B1C61029BF456800DBD4B1 /* utils */,
 				59B0894129B9770900FC563F /* Core */,
 				59B0894229BA0D2B00FC563F /* Data */,
 				59B0894329BA0D3300FC563F /* Domain */,
@@ -177,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				59B0899329BA651200FC563F /* ResponseWrapper.swift */,
-				59B0899529BA807D00FC563F /* BaseResult.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -203,7 +220,7 @@
 		59B0894429BA0D3C00FC563F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				59B0897629BA22DB00FC563F /* User */,
+				59B0897629BA22DB00FC563F /* Auth */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -230,7 +247,6 @@
 			children = (
 				59B0895129BA0E3200FC563F /* Entity */,
 				59B0894F29BA0E2C00FC563F /* UserAPIImpl.swift */,
-				59B0899729BA812000FC563F /* aoi.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -267,13 +283,13 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
-		59B0897629BA22DB00FC563F /* User */ = {
+		59B0897629BA22DB00FC563F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				59B0897829BA22F500FC563F /* Register */,
 				59B0897729BA22E500FC563F /* Login */,
 			);
-			path = User;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		59B0897729BA22E500FC563F /* Login */ = {
@@ -343,6 +359,38 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		59B1C61029BF456800DBD4B1 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				59B1C61129BF45A000DBD4B1 /* Constants.swift */,
+				5974376C29BF4C9B000D0766 /* ScreenSize.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		7867EAFADB19E655F02FA030 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA21E288EC0224CC71564DF5 /* Pods-TradeasySwiftUI.debug.xcconfig */,
+				B33ABE30962A12F8C1F9DA9F /* Pods-TradeasySwiftUI.release.xcconfig */,
+				DEDE9F5221EB25DA3ACB5B48 /* Pods-TradeasySwiftUI-TradeasySwiftUIUITests.debug.xcconfig */,
+				561CE78467568524658DDA35 /* Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig */,
+				F4782DD55237CB0061913DD7 /* Pods-TradeasySwiftUITests.debug.xcconfig */,
+				F318CA0C589F61322958294A /* Pods-TradeasySwiftUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7F64B3EDEE282B1934FC2924 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AF00DCA83DF80445913E185 /* Pods_TradeasySwiftUI.framework */,
+				9F7B17872AFC3151E7E1107D /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework */,
+				F8A0D373DA7135AC242A9571 /* Pods_TradeasySwiftUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,9 +398,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59B0893029B9392100FC563F /* Build configuration list for PBXNativeTarget "TradeasySwiftUI" */;
 			buildPhases = (
+				B8C59D7EB1C6448B7900F62D /* [CP] Check Pods Manifest.lock */,
 				59B0890329B9392000FC563F /* Sources */,
 				59B0890429B9392000FC563F /* Frameworks */,
 				59B0890529B9392000FC563F /* Resources */,
+				326AACFA6C306FAFD495D565 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,6 +417,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59B0893329B9392100FC563F /* Build configuration list for PBXNativeTarget "TradeasySwiftUITests" */;
 			buildPhases = (
+				B7796AF915C5FEE1E9B7DF57 /* [CP] Check Pods Manifest.lock */,
 				59B0891829B9392100FC563F /* Sources */,
 				59B0891929B9392100FC563F /* Frameworks */,
 				59B0891A29B9392100FC563F /* Resources */,
@@ -385,9 +436,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59B0893629B9392100FC563F /* Build configuration list for PBXNativeTarget "TradeasySwiftUIUITests" */;
 			buildPhases = (
+				0A789497F45DA2CF10337A11 /* [CP] Check Pods Manifest.lock */,
 				59B0892229B9392100FC563F /* Sources */,
 				59B0892329B9392100FC563F /* Frameworks */,
 				59B0892429B9392100FC563F /* Resources */,
+				1690705821E47896117D9510 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -468,25 +521,128 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A789497F45DA2CF10337A11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TradeasySwiftUI-TradeasySwiftUIUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1690705821E47896117D9510 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TradeasySwiftUI-TradeasySwiftUIUITests/Pods-TradeasySwiftUI-TradeasySwiftUIUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TradeasySwiftUI-TradeasySwiftUIUITests/Pods-TradeasySwiftUI-TradeasySwiftUIUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TradeasySwiftUI-TradeasySwiftUIUITests/Pods-TradeasySwiftUI-TradeasySwiftUIUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		326AACFA6C306FAFD495D565 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TradeasySwiftUI/Pods-TradeasySwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TradeasySwiftUI/Pods-TradeasySwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TradeasySwiftUI/Pods-TradeasySwiftUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7796AF915C5FEE1E9B7DF57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TradeasySwiftUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8C59D7EB1C6448B7900F62D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TradeasySwiftUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		59B0890329B9392000FC563F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				59B0899429BA651200FC563F /* ResponseWrapper.swift in Sources */,
+				59B1C61229BF45A000DBD4B1 /* Constants.swift in Sources */,
 				59B0895029BA0E2C00FC563F /* UserAPIImpl.swift in Sources */,
 				59B0898629BA3F3900FC563F /* RegisterViewModel.swift in Sources */,
 				59B0898329BA363B00FC563F /* UserRepositoryImpl.swift in Sources */,
 				59B0891729B9392100FC563F /* TradeasySwiftUI.xcdatamodeld in Sources */,
+				5974376D29BF4C9B000D0766 /* ScreenSize.swift in Sources */,
 				59B0899229BA45C600FC563F /* ProductModel.swift in Sources */,
 				59B0895529BA0E5800FC563F /* RegisterReq.swift in Sources */,
 				59B0898A29BA445F00FC563F /* UserModel.swift in Sources */,
 				59B0894D29BA0E0E00FC563F /* UserDataSource.swift in Sources */,
 				59B0891429B9392100FC563F /* Persistence.swift in Sources */,
-				59B0899629BA807D00FC563F /* BaseResult.swift in Sources */,
 				59B0897A29BA230400FC563F /* RegisterView.swift in Sources */,
 				59B0890D29B9392000FC563F /* ContentView.swift in Sources */,
-				59B0899829BA812000FC563F /* aoi.swift in Sources */,
 				59B0898E29BA452900FC563F /* Notification.swift in Sources */,
 				59B0890B29B9392000FC563F /* TradeasySwiftUIApp.swift in Sources */,
 				59B0897529BA10C200FC563F /* RegisterUseCase.swift in Sources */,
@@ -643,6 +799,7 @@
 		};
 		59B0893129B9392100FC563F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA21E288EC0224CC71564DF5 /* Pods-TradeasySwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -672,6 +829,7 @@
 		};
 		59B0893229B9392100FC563F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B33ABE30962A12F8C1F9DA9F /* Pods-TradeasySwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -701,6 +859,7 @@
 		};
 		59B0893429B9392100FC563F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4782DD55237CB0061913DD7 /* Pods-TradeasySwiftUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -721,6 +880,7 @@
 		};
 		59B0893529B9392100FC563F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F318CA0C589F61322958294A /* Pods-TradeasySwiftUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -741,6 +901,7 @@
 		};
 		59B0893729B9392100FC563F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEDE9F5221EB25DA3ACB5B48 /* Pods-TradeasySwiftUI-TradeasySwiftUIUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -759,6 +920,7 @@
 		};
 		59B0893829B9392100FC563F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 561CE78467568524658DDA35 /* Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

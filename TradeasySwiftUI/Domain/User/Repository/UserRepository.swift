@@ -7,5 +7,9 @@
 
 import Foundation
 
-protocol UserRepository {
+protocol UserRepository{
+    
+    func register(_registerReq:RegisterReq) async throws -> UserModel
+
+    
 }
