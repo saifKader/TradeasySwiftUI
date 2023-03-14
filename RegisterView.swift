@@ -7,10 +7,12 @@
 
 import SwiftUI
 import CoreData
+import CountryPickerView
 
 
 struct RegisterView: View {
-    @ObservedObject var viewModel: RegisterViewModel
+    @ObservedObject var viewModel = RegisterViewModel()
+    @State private var selectedCountry: Country?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -31,12 +33,20 @@ struct RegisterView: View {
                 .padding(.top, 10)
             
             HStack {
-                TextField("CC ", text: $viewModel.countryCode)
+              
+                
+                CountryPickerViewWrapper(selectedCountry: $selectedCountry)
+                    .frame(width: 50,height: 44)
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-                    .frame(width: 70)
-                
-                
+                    .onAppear {
+                        // set the initial selected country code
+                        viewModel.countryCode = selectedCountry?.phoneCode ?? ""
+                    }
+                    .onChange(of: selectedCountry) { country in
+                        // update the view model's countryCode property when the selected country changes
+                        viewModel.countryCode = country?.phoneCode ?? ""
+                    }
+
                 
                 TextField("Phone Number", text: $viewModel.phoneNumber)
                     .padding()
@@ -56,7 +66,8 @@ struct RegisterView: View {
                 .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                 .padding(.horizontal, 5)
                 .padding(.top, 5)
-            
+       
+                       
             Button(action: {
                 Task {
                     do {
@@ -90,3 +101,12 @@ struct RegisterView: View {
         .padding()
     }
 }
+
+
+struct RegisterView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView()
+    }
+}
+
+

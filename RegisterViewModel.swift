@@ -13,20 +13,18 @@ class RegisterViewModel: ObservableObject {
     @Published var phoneNumber = ""
     @Published var email = ""
     @Published var password = ""
-    @Published var confirmPassword = ""
-   
+    var getRegisterUseCase : RegisterUseCase
+    init(){
+            @Inject var repository: IAuthRepository
+            
+            getRegisterUseCase = RegisterUseCase(repo: repository)
+        }
     
-    private let registerUseCase: Register
     
-    init(registerUseCase: Register) {
-        self.registerUseCase = registerUseCase
-    }
     
     func registerUser() async throws -> UserModel {
         // Check if passwords match
-        guard password == confirmPassword else {
-            throw RegisterError.passwordsDoNotMatch
-        }
+        
         
         // Create a RegisterReq object with the user's input
         let registerReq = RegisterReq(
@@ -36,10 +34,10 @@ class RegisterViewModel: ObservableObject {
             email: email,
             password: password
         )
-        
+        print("1")
         // Call the register use case to register the user
-        let result = await registerUseCase.execute(_registerReq: registerReq)
-        
+        let result = await getRegisterUseCase.execute(_registerReq: registerReq)
+        print("2")
         switch result {
         case .success(let userModel):
             return userModel
@@ -47,9 +45,5 @@ class RegisterViewModel: ObservableObject {
             throw error
         }
     }
-}
-
-enum RegisterError: Error {
-    case passwordsDoNotMatch
 }
 

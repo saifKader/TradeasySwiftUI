@@ -9,7 +9,7 @@ protocol Register {
 import Foundation
 
 struct RegisterUseCase: Register {
-    var repo: UserRepository
+    var repo: IAuthRepository
     
     func execute(_registerReq: RegisterReq) async -> Result<UserModel, UseCaseError> {
         do {

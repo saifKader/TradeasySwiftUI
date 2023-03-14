@@ -6,7 +6,7 @@
 //
 
 import Foundation
-let kbaseUrl = "http://192.168.0.20:9090/"
+let kbaseUrl = "http://192.168.0.13:9090/"
 
 // authentification
 let kregister = "user/register"

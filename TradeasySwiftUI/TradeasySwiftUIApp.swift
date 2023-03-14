@@ -6,19 +6,15 @@
 //
 
 import SwiftUI
-let userRepository = UserRepositoryImpl(dataSource: UserAPIImpl())
-let registerUseCase = RegisterUseCase(repo: userRepository)
-let registerViewModel = RegisterViewModel(registerUseCase: registerUseCase)
-let registerView = RegisterView(viewModel: registerViewModel)
 
 @main
 struct TradeasySwiftUIApp: App {
     let persistenceController = PersistenceController.shared
-
+    private var initDI = InitDepedencyInjection()
     var body: some Scene {
         WindowGroup {
-            registerView
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            RegisterView()
+               
         }
     }
 }

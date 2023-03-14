@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		19FDE9C5C017F2A805FCD130 /* Pods_TradeasySwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF00DCA83DF80445913E185 /* Pods_TradeasySwiftUI.framework */; };
 		5974376D29BF4C9B000D0766 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974376C29BF4C9B000D0766 /* ScreenSize.swift */; };
+		5974377129BF544E000D0766 /* CCPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5974377029BF544E000D0766 /* CCPicker.swift */; };
 		59B0890B29B9392000FC563F /* TradeasySwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0890A29B9392000FC563F /* TradeasySwiftUIApp.swift */; };
 		59B0890D29B9392000FC563F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0890C29B9392000FC563F /* ContentView.swift */; };
 		59B0890F29B9392100FC563F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B0890E29B9392100FC563F /* Assets.xcassets */; };
@@ -24,13 +25,15 @@
 		59B0896729BA102E00FC563F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0896629BA102E00FC563F /* UserRepository.swift */; };
 		59B0897529BA10C200FC563F /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0897429BA10C200FC563F /* RegisterUseCase.swift */; };
 		59B0897A29BA230400FC563F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0897929BA230400FC563F /* RegisterView.swift */; };
-		59B0898329BA363B00FC563F /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898229BA363B00FC563F /* UserRepositoryImpl.swift */; };
+		59B0898329BA363B00FC563F /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898229BA363B00FC563F /* AuthRepositoryImpl.swift */; };
 		59B0898629BA3F3900FC563F /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898529BA3F3900FC563F /* RegisterViewModel.swift */; };
 		59B0898A29BA445F00FC563F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898929BA445F00FC563F /* UserModel.swift */; };
 		59B0898E29BA452900FC563F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0898D29BA452900FC563F /* Notification.swift */; };
 		59B0899229BA45C600FC563F /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899129BA45C600FC563F /* ProductModel.swift */; };
 		59B0899429BA651200FC563F /* ResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B0899329BA651200FC563F /* ResponseWrapper.swift */; };
 		59B1C61229BF45A000DBD4B1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B1C61129BF45A000DBD4B1 /* Constants.swift */; };
+		59C70AE129C091B500C07163 /* DepedencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C70AE029C091B500C07163 /* DepedencyInjector.swift */; };
+		59C70AE329C0924B00C07163 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C70AE229C0924B00C07163 /* DI.swift */; };
 		CD02B8B8077F3834A2D9D0A6 /* Pods_TradeasySwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A0D373DA7135AC242A9571 /* Pods_TradeasySwiftUITests.framework */; };
 		EE9A56F1C89F60C07C931F69 /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7B17872AFC3151E7E1107D /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +58,7 @@
 /* Begin PBXFileReference section */
 		561CE78467568524658DDA35 /* Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUI-TradeasySwiftUIUITests/Pods-TradeasySwiftUI-TradeasySwiftUIUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5974376C29BF4C9B000D0766 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		5974377029BF544E000D0766 /* CCPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CCPicker.swift; path = TradeasySwiftUI/utils/CCPicker.swift; sourceTree = SOURCE_ROOT; };
 		59B0890729B9392000FC563F /* TradeasySwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeasySwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B0890A29B9392000FC563F /* TradeasySwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeasySwiftUIApp.swift; sourceTree = "<group>"; };
 		59B0890C29B9392000FC563F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,13 +77,15 @@
 		59B0896629BA102E00FC563F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		59B0897429BA10C200FC563F /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
 		59B0897929BA230400FC563F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = SOURCE_ROOT; };
-		59B0898229BA363B00FC563F /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = SOURCE_ROOT; };
+		59B0898229BA363B00FC563F /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = SOURCE_ROOT; };
 		59B0898529BA3F3900FC563F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = SOURCE_ROOT; };
 		59B0898929BA445F00FC563F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = SOURCE_ROOT; };
 		59B0898D29BA452900FC563F /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = SOURCE_ROOT; };
 		59B0899129BA45C600FC563F /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = SOURCE_ROOT; };
 		59B0899329BA651200FC563F /* ResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseWrapper.swift; sourceTree = "<group>"; };
 		59B1C61129BF45A000DBD4B1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		59C70AE029C091B500C07163 /* DepedencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepedencyInjector.swift; sourceTree = "<group>"; };
+		59C70AE229C0924B00C07163 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		7AF00DCA83DF80445913E185 /* Pods_TradeasySwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeasySwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F7B17872AFC3151E7E1107D /* Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeasySwiftUI_TradeasySwiftUIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33ABE30962A12F8C1F9DA9F /* Pods-TradeasySwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeasySwiftUI.release.xcconfig"; path = "Target Support Files/Pods-TradeasySwiftUI/Pods-TradeasySwiftUI.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 				59B0891329B9392100FC563F /* Persistence.swift */,
 				59B0891529B9392100FC563F /* TradeasySwiftUI.xcdatamodeld */,
 				59B0891029B9392100FC563F /* Preview Content */,
+				59C70AE029C091B500C07163 /* DepedencyInjector.swift */,
+				59C70AE229C0924B00C07163 /* DI.swift */,
 			);
 			path = TradeasySwiftUI;
 			sourceTree = "<group>";
@@ -202,7 +210,7 @@
 		59B0894229BA0D2B00FC563F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				59B0898129BA327500FC563F /* User */,
+				59B0898129BA327500FC563F /* Auth */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -228,7 +236,7 @@
 		59B0894629BA0D8000FC563F /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				59B0898229BA363B00FC563F /* UserRepositoryImpl.swift */,
+				59B0898229BA363B00FC563F /* AuthRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -304,17 +312,18 @@
 			children = (
 				59B0897929BA230400FC563F /* RegisterView.swift */,
 				59B0898529BA3F3900FC563F /* RegisterViewModel.swift */,
+				5974377029BF544E000D0766 /* CCPicker.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
 		};
-		59B0898129BA327500FC563F /* User */ = {
+		59B0898129BA327500FC563F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				59B0894629BA0D8000FC563F /* Repository */,
 				59B0894729BA0D8900FC563F /* DataSource */,
 			);
-			path = User;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		59B0898429BA369700FC563F /* User */ = {
@@ -631,9 +640,10 @@
 			files = (
 				59B0899429BA651200FC563F /* ResponseWrapper.swift in Sources */,
 				59B1C61229BF45A000DBD4B1 /* Constants.swift in Sources */,
+				5974377129BF544E000D0766 /* CCPicker.swift in Sources */,
 				59B0895029BA0E2C00FC563F /* UserAPIImpl.swift in Sources */,
 				59B0898629BA3F3900FC563F /* RegisterViewModel.swift in Sources */,
-				59B0898329BA363B00FC563F /* UserRepositoryImpl.swift in Sources */,
+				59B0898329BA363B00FC563F /* AuthRepositoryImpl.swift in Sources */,
 				59B0891729B9392100FC563F /* TradeasySwiftUI.xcdatamodeld in Sources */,
 				5974376D29BF4C9B000D0766 /* ScreenSize.swift in Sources */,
 				59B0899229BA45C600FC563F /* ProductModel.swift in Sources */,
@@ -641,12 +651,14 @@
 				59B0898A29BA445F00FC563F /* UserModel.swift in Sources */,
 				59B0894D29BA0E0E00FC563F /* UserDataSource.swift in Sources */,
 				59B0891429B9392100FC563F /* Persistence.swift in Sources */,
+				59C70AE129C091B500C07163 /* DepedencyInjector.swift in Sources */,
 				59B0897A29BA230400FC563F /* RegisterView.swift in Sources */,
 				59B0890D29B9392000FC563F /* ContentView.swift in Sources */,
 				59B0898E29BA452900FC563F /* Notification.swift in Sources */,
 				59B0890B29B9392000FC563F /* TradeasySwiftUIApp.swift in Sources */,
 				59B0897529BA10C200FC563F /* RegisterUseCase.swift in Sources */,
 				59B0896729BA102E00FC563F /* UserRepository.swift in Sources */,
+				59C70AE329C0924B00C07163 /* DI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

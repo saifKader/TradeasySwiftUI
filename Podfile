@@ -18,5 +18,6 @@ target 'TradeasySwiftUI' do
   end
 
 pod 'Alamofire'
+pod 'CountryPickerView'
 
 end

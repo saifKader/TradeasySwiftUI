@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UserRepository{
+protocol IAuthRepository{
     
     func register(_registerReq:RegisterReq) async throws -> UserModel
 
