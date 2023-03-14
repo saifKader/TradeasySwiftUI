@@ -17,5 +17,10 @@ struct AuthRepositoryImpl: IAuthRepository{
         let _register =  try await dataSource.register(_registerReq: _registerReq)
         return _register
     }
+    func login(_loginReq: LoginReq) async throws -> UserModel {
+        let _loginReq =  try await dataSource.login(_loginReq: _loginReq)
+        return _loginReq
+    }
+    
 }
 
