@@ -1,0 +1,643 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
+		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
+		59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
+		59D17ADB29C0E40600CD0703 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17ADA29C0E40600CD0703 /* Preview Assets.xcassets */; };
+		59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17ADC29C0E40600CD0703 /* Persistence.swift */; };
+		59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59D17ADE29C0E40600CD0703 /* tradeasy.xcdatamodeld */; };
+		59D17AEF29C0E5AF00CD0703 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AEE29C0E5AF00CD0703 /* Constants.swift */; };
+		59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AF029C0E5CF00CD0703 /* ScreenSize.swift */; };
+		59D17AF629C0ED1600CD0703 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AF529C0ED1600CD0703 /* AuthRepositoryImpl.swift */; };
+		59D17AFA29C0ED7500CD0703 /* AuthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AF929C0ED7500CD0703 /* AuthDataSource.swift */; };
+		59D17AFF29C0EDE700CD0703 /* RegisterReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AFE29C0EDE700CD0703 /* RegisterReq.swift */; };
+		59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B0029C0EE3F00CD0703 /* AuthAPIImpl.swift */; };
+		59D17B1429C0EF9B00CD0703 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B1329C0EF9B00CD0703 /* UserModel.swift */; };
+		59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B1529C0EFE000CD0703 /* AuthRepository.swift */; };
+		59D17B1829C0F00000CD0703 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B1729C0F00000CD0703 /* AuthUseCase.swift */; };
+		59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B1B29C0F08000CD0703 /* ProductModel.swift */; };
+		59D17B2029C0F0B100CD0703 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B1F29C0F0B100CD0703 /* NotificationModel.swift */; };
+		59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2329C0F0FA00CD0703 /* RegisterView.swift */; };
+		59D17B2629C0F10700CD0703 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2529C0F10700CD0703 /* RegisterViewModel.swift */; };
+		59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2729C0F11500CD0703 /* CCPicker.swift */; };
+		59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */; };
+		59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2B29C0F1CE00CD0703 /* DI.swift */; };
+		B753C081E3938FFEF79E8055 /* Pods_tradeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
+		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
+		59D17AD529C0E40500CD0703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		59D17AD729C0E40600CD0703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		59D17ADA29C0E40600CD0703 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		59D17ADC29C0E40600CD0703 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		59D17ADF29C0E40600CD0703 /* tradeasy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tradeasy.xcdatamodel; sourceTree = "<group>"; };
+		59D17AEE29C0E5AF00CD0703 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		59D17AF029C0E5CF00CD0703 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		59D17AF529C0ED1600CD0703 /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
+		59D17AF929C0ED7500CD0703 /* AuthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSource.swift; sourceTree = "<group>"; };
+		59D17AFE29C0EDE700CD0703 /* RegisterReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterReq.swift; sourceTree = "<group>"; };
+		59D17B0029C0EE3F00CD0703 /* AuthAPIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIImpl.swift; sourceTree = "<group>"; };
+		59D17B1329C0EF9B00CD0703 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		59D17B1529C0EFE000CD0703 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		59D17B1729C0F00000CD0703 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		59D17B1B29C0F08000CD0703 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		59D17B1F29C0F0B100CD0703 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		59D17B2329C0F0FA00CD0703 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		59D17B2529C0F10700CD0703 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		59D17B2729C0F11500CD0703 /* CCPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPicker.swift; sourceTree = "<group>"; };
+		59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
+		59D17B2B29C0F1CE00CD0703 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
+		928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.release.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		59D17ACD29C0E40500CD0703 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B753C081E3938FFEF79E8055 /* Pods_tradeasy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		59D17AC729C0E40500CD0703 = {
+			isa = PBXGroup;
+			children = (
+				59D17AD229C0E40500CD0703 /* tradeasy */,
+				59D17AD129C0E40500CD0703 /* Products */,
+				6C90DBD215DCFD90EB73E916 /* Pods */,
+				9EF25499497F951BB587869B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		59D17AD129C0E40500CD0703 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AD029C0E40500CD0703 /* tradeasy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59D17AD229C0E40500CD0703 /* tradeasy */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B0E29C0EF1600CD0703 /* Domain */,
+				59D17AF229C0EC9B00CD0703 /* Data */,
+				59D17AED29C0E59700CD0703 /* Utils */,
+				59D17B2129C0F0DE00CD0703 /* Presentation */,
+				59D17AD329C0E40500CD0703 /* tradeasyApp.swift */,
+				59D17AD529C0E40500CD0703 /* ContentView.swift */,
+				59D17AD729C0E40600CD0703 /* Assets.xcassets */,
+				59D17ADC29C0E40600CD0703 /* Persistence.swift */,
+				59D17ADE29C0E40600CD0703 /* tradeasy.xcdatamodeld */,
+				59D17AD929C0E40600CD0703 /* Preview Content */,
+			);
+			path = tradeasy;
+			sourceTree = "<group>";
+		};
+		59D17AD929C0E40600CD0703 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				59D17ADA29C0E40600CD0703 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		59D17AED29C0E59700CD0703 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AEE29C0E5AF00CD0703 /* Constants.swift */,
+				59D17AF029C0E5CF00CD0703 /* ScreenSize.swift */,
+				59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */,
+				59D17B2B29C0F1CE00CD0703 /* DI.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		59D17AF229C0EC9B00CD0703 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AF329C0ECB700CD0703 /* Auth */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		59D17AF329C0ECB700CD0703 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AF429C0ECD300CD0703 /* Repository */,
+				59D17AF729C0ED3D00CD0703 /* DataSource */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		59D17AF429C0ECD300CD0703 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AF529C0ED1600CD0703 /* AuthRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		59D17AF729C0ED3D00CD0703 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AF929C0ED7500CD0703 /* AuthDataSource.swift */,
+				59D17AF829C0ED5900CD0703 /* API */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		59D17AF829C0ED5900CD0703 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AFD29C0EDCE00CD0703 /* DTO */,
+				59D17B0029C0EE3F00CD0703 /* AuthAPIImpl.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		59D17AFD29C0EDCE00CD0703 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				59D17AFE29C0EDE700CD0703 /* RegisterReq.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		59D17B0E29C0EF1600CD0703 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1D29C0F09300CD0703 /* Notification */,
+				59D17B1929C0F05F00CD0703 /* Product */,
+				59D17B0F29C0EF2D00CD0703 /* User */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		59D17B0F29C0EF2D00CD0703 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1229C0EF6800CD0703 /* Model */,
+				59D17B1129C0EF5A00CD0703 /* Repository */,
+				59D17B1029C0EF5000CD0703 /* UseCase */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		59D17B1029C0EF5000CD0703 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1729C0F00000CD0703 /* AuthUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		59D17B1129C0EF5A00CD0703 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1529C0EFE000CD0703 /* AuthRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		59D17B1229C0EF6800CD0703 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1329C0EF9B00CD0703 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59D17B1929C0F05F00CD0703 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1A29C0F07100CD0703 /* Model */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		59D17B1A29C0F07100CD0703 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1B29C0F08000CD0703 /* ProductModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59D17B1D29C0F09300CD0703 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1E29C0F0A000CD0703 /* Model */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		59D17B1E29C0F0A000CD0703 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B1F29C0F0B100CD0703 /* NotificationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B2229C0F0EA00CD0703 /* Auth */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		59D17B2229C0F0EA00CD0703 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B2329C0F0FA00CD0703 /* RegisterView.swift */,
+				59D17B2529C0F10700CD0703 /* RegisterViewModel.swift */,
+				59D17B2729C0F11500CD0703 /* CCPicker.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		6C90DBD215DCFD90EB73E916 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */,
+				B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9EF25499497F951BB587869B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		59D17ACF29C0E40500CD0703 /* tradeasy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59D17AE329C0E40600CD0703 /* Build configuration list for PBXNativeTarget "tradeasy" */;
+			buildPhases = (
+				06D0769CA32ED5F9A747B539 /* [CP] Check Pods Manifest.lock */,
+				59D17ACC29C0E40500CD0703 /* Sources */,
+				59D17ACD29C0E40500CD0703 /* Frameworks */,
+				59D17ACE29C0E40500CD0703 /* Resources */,
+				8A65A9DFB7D543965893DCC8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tradeasy;
+			productName = tradeasy;
+			productReference = 59D17AD029C0E40500CD0703 /* tradeasy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		59D17AC829C0E40500CD0703 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					59D17ACF29C0E40500CD0703 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 59D17ACB29C0E40500CD0703 /* Build configuration list for PBXProject "tradeasy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 59D17AC729C0E40500CD0703;
+			productRefGroup = 59D17AD129C0E40500CD0703 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				59D17ACF29C0E40500CD0703 /* tradeasy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		59D17ACE29C0E40500CD0703 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59D17ADB29C0E40600CD0703 /* Preview Assets.xcassets in Resources */,
+				59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06D0769CA32ED5F9A747B539 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tradeasy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A65A9DFB7D543965893DCC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tradeasy/Pods-tradeasy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tradeasy/Pods-tradeasy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tradeasy/Pods-tradeasy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		59D17ACC29C0E40500CD0703 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59D17B1829C0F00000CD0703 /* AuthUseCase.swift in Sources */,
+				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
+				59D17AEF29C0E5AF00CD0703 /* Constants.swift in Sources */,
+				59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */,
+				59D17B2029C0F0B100CD0703 /* NotificationModel.swift in Sources */,
+				59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */,
+				59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */,
+				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
+				59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */,
+				59D17AFA29C0ED7500CD0703 /* AuthDataSource.swift in Sources */,
+				59D17AFF29C0EDE700CD0703 /* RegisterReq.swift in Sources */,
+				59D17B2629C0F10700CD0703 /* RegisterViewModel.swift in Sources */,
+				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
+				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
+				59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */,
+				59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */,
+				59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */,
+				59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */,
+				59D17AF629C0ED1600CD0703 /* AuthRepositoryImpl.swift in Sources */,
+				59D17B1429C0EF9B00CD0703 /* UserModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		59D17AE129C0E40600CD0703 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		59D17AE229C0E40600CD0703 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		59D17AE429C0E40600CD0703 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"tradeasy/Preview Content\"";
+				DEVELOPMENT_TEAM = 624S65FGM5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tradeasy.tradeasy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		59D17AE529C0E40600CD0703 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"tradeasy/Preview Content\"";
+				DEVELOPMENT_TEAM = 624S65FGM5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tradeasy.tradeasy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		59D17ACB29C0E40500CD0703 /* Build configuration list for PBXProject "tradeasy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59D17AE129C0E40600CD0703 /* Debug */,
+				59D17AE229C0E40600CD0703 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59D17AE329C0E40600CD0703 /* Build configuration list for PBXNativeTarget "tradeasy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59D17AE429C0E40600CD0703 /* Debug */,
+				59D17AE529C0E40600CD0703 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		59D17ADE29C0E40600CD0703 /* tradeasy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				59D17ADF29C0E40600CD0703 /* tradeasy.xcdatamodel */,
+			);
+			currentVersion = 59D17ADF29C0E40600CD0703 /* tradeasy.xcdatamodel */;
+			path = tradeasy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 59D17AC829C0E40500CD0703 /* Project object */;
+}

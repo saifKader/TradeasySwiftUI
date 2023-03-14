@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-tradeasy/Pods-tradeasy-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/CountryPickerView/CountryPickerView.framework

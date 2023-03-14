@@ -1,0 +1,6 @@
+framework module Pods_tradeasy {
+  umbrella header "Pods-tradeasy-umbrella.h"
+
+  export *
+  module * { export * }
+}
