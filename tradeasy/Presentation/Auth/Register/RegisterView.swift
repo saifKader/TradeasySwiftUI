@@ -24,6 +24,7 @@ struct RegisterView: View {
     @State private var isPhoneNumberInvalid = false
     @State private var errorMessage = ""
     @State var showError = false
+    @State private var showLoginPage: Bool = false
     
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
@@ -62,22 +63,23 @@ struct RegisterView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("Create an account")
-                    .font(.title)
-                    .fontWeight(.medium)
-                Spacer()
-            }
-            .padding(.horizontal, 5)
-            .padding(.top, 150)
-
-            TextField("Username", text: $username)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+        NavigationView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Create an account")
+                        .font(.title)
+                        .fontWeight(.medium)
+                    Spacer()
+                }
                 .padding(.horizontal, 5)
-                .padding(.top, 10)
-                .onChange(of: username) { newValue in
+                .padding(.top, 50)
+                
+                TextField("Username", text: $username)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+                    .padding(.horizontal, 5)
+                    .padding(.top, 10)
+                    .onChange(of: username) { newValue in
                         if newValue.count > 30 {
                             username = String(newValue.prefix(30))
                         }
@@ -87,56 +89,56 @@ struct RegisterView: View {
                             username = filteredValue
                         }
                     }
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
                 
-
-            HStack {
-                CountryPickerViewWrapper(selectedCountry: $selectedCountry)
-                    .frame(width: 50, height: 44)
-                    .padding()
-                    .onAppear {
-                        // set the initial selected country code
-                        countryCode = selectedCountry?.phoneCode ?? "+216"
-                    }
-                    .onChange(of: selectedCountry) { country in
-                        // update the view model's countryCode property when the selected country changes
-                        countryCode = country?.phoneCode ?? "+216"
-                    }
-                VStack(alignment: .leading){
-                    TextField("Phone Number", text: $phoneNumber)
-                        .keyboardType(.numberPad)
+                
+                HStack {
+                    CountryPickerViewWrapper(selectedCountry: $selectedCountry)
+                        .frame(width: 50, height: 44)
                         .padding()
-                        .background(getStrokeBorder(isInvalid: isPasswordInvalid))
-                        .padding(.horizontal, 5)
-                        .padding(.top, 5)
-                    if isPhoneNumberInvalid {
-                        Text("Invalid phone number")
-                            .font(.system(size: 12))
-                            .foregroundColor(.red)
+                        .onAppear {
+                            // set the initial selected country code
+                            countryCode = selectedCountry?.phoneCode ?? "+216"
+                        }
+                        .onChange(of: selectedCountry) { country in
+                            // update the view model's countryCode property when the selected country changes
+                            countryCode = country?.phoneCode ?? "+216"
+                        }
+                    VStack(alignment: .leading){
+                        TextField("Phone Number", text: $phoneNumber)
+                            .keyboardType(.numberPad)
+                            .padding()
+                            .background(getStrokeBorder(isInvalid: isPasswordInvalid))
                             .padding(.horizontal, 5)
-                    } else {
-                        Text("")
-                            .opacity(0)
+                            .padding(.top, 5)
+                        if isPhoneNumberInvalid {
+                            Text("Invalid phone number")
+                                .font(.system(size: 12))
+                                .foregroundColor(.red)
+                                .padding(.horizontal, 5)
+                        } else {
+                            Text("")
+                                .opacity(0)
+                        }
                     }
+                    
                 }
-                   
-            }
-            .padding(.horizontal, 5)
-            .padding(.top, 5)
-            
-            TextField("Email", text: $email)
-                .padding()
-                .background(getStrokeBorder(isInvalid: isEmailInvalid))
                 .padding(.horizontal, 5)
                 .padding(.top, 5)
-                .keyboardType(.emailAddress)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-
-                        
+                
+                TextField("Email", text: $email)
+                    .padding()
+                    .background(getStrokeBorder(isInvalid: isEmailInvalid))
+                    .padding(.horizontal, 5)
+                    .padding(.top, 5)
+                    .keyboardType(.emailAddress)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                
+                
                 if isEmailInvalid {
-                    Text("Email not valid")
+                    Text("Invalid email")
                         .font(.system(size: 12))
                         .foregroundColor(.red)
                         .padding(.horizontal, 5)
@@ -145,95 +147,109 @@ struct RegisterView: View {
                     Text("")
                         .opacity(0)
                 }
-            HStack {
-                if isPasswordVisible {
-                    TextField("Password", text: $password)
-                       
+                HStack {
+                    if isPasswordVisible {
+                        TextField("Password", text: $password)
+                        
+                    } else {
+                        SecureField("Password", text: $password)
+                    }
+                    
+                    Button(action: {
+                        isPasswordVisible.toggle()
+                    }) {
+                        Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
+                            .foregroundColor(.secondary)
+                    }
+                    
+                }
+                .padding()
+                .background(getStrokeBorder(isInvalid: isPasswordInvalid))
+                .padding(.horizontal, 5)
+                .padding(.top, 5)
+                
+                if isPasswordInvalid {
+                    Text("Password must be at least 8 characters.")
+                        .font(.system(size: 12))
+                        .foregroundColor(.red)
+                        .padding(.horizontal, 5)
+                    
                 } else {
-                    SecureField("Password", text: $password)
+                    Text("")
+                        .opacity(0)
                 }
-
-                Button(action: {
-                    isPasswordVisible.toggle()
-                }) {
-                    Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
-                        .foregroundColor(.secondary)
-                }
+                
+                
+                
+                ActionButton(
                     
-            }
-            .padding()
-            .background(getStrokeBorder(isInvalid: isPasswordInvalid))
-            .padding(.horizontal, 5)
-            .padding(.top, 5)
-                    
-            if isPasswordInvalid {
-                Text("Password must be at least 8 characters.")
-                    .font(.system(size: 12))
-                    .foregroundColor(.red)
-                    .padding(.horizontal, 5)
-                
-            } else {
-                Text("")
-                    .opacity(0)
-            }
-            
-            
-
-            ActionButton(
-                
-             
-                
-                
-           
-                
-                
-                text: "SIGN UP",
-                action: {
-                    
-                    isPasswordInvalid = password.count < 8
-                                isEmailInvalid =  !isValidEmail(email)
-                                isPhoneNumberInvalid = !isValidPhoneNumber(phoneNumber)
-                                if isPasswordInvalid {
-                                    return
-                                }
-                                if isEmailInvalid {
-                                    return
-                                }
-                                if isPhoneNumberInvalid {
-                                    return
-                                }
-                    Task {
-                        viewModel.registerUser(registerReq:registerReq) { result in
-                            switch result {
-                            case .success(let userModel):
-                                print("User logged in successfully: \(userModel)")
-                                // TODO: Navigate to the next screen
-                            case .failure(let error):
-                                if case let UseCaseError.error(message) = error {
-                                    errorMessage = message
-                                                                      showError = true
-                                    print("Error logging in: \(message)")
-                                } else {
-                                    print("Error logging in: \(error)")
+                    text: "SIGN UP",
+                    action: {
+                        
+                        isPasswordInvalid = password.count < 8
+                        isEmailInvalid =  !isValidEmail(email)
+                        isPhoneNumberInvalid = !isValidPhoneNumber(phoneNumber)
+                        if isPasswordInvalid {
+                            return
+                        }
+                        if isEmailInvalid {
+                            return
+                        }
+                        if isPhoneNumberInvalid {
+                            return
+                        }
+                        Task {
+                            viewModel.registerUser(registerReq:registerReq) { result in
+                                switch result {
+                                case .success(let userModel):
+                                    print("User logged in successfully: \(userModel)")
+                                    // TODO: Navigate to the next screen
+                                case .failure(let error):
+                                    if case let UseCaseError.error(message) = error {
+                                        errorMessage = message
+                                        showError = true
+                                        print("Error logging in: \(message)")
+                                    } else {
+                                        print("Error logging in: \(error)")
+                                    }
                                 }
                             }
                         }
+                    },
+                    isFormValid: isFormValid,
+                    isLoading: viewModel.isLoading
+                )
+                Divider().padding(.horizontal, 5).padding(.top,180)
+                
+                HStack {
+                    Spacer()
+
+                    Text("Already have an account?")
+                        .foregroundColor(.black)
+
+                    NavigationLink(destination: LoginView(), isActive: $showLoginPage) {
+                        Button(action: {
+                            showLoginPage = true
+                        }) {
+                            Text("Login")
+                                .foregroundColor(Color(CustomColors.blueColor))
+                        }
+                        .background(Color.clear)
                     }
-                },
-                isFormValid: isFormValid,
-                isLoading: viewModel.isLoading
-            )
 
-
-            
-            Spacer()
-        }
-        .padding()
-        .alert(isPresented: $showError) {
-                    AlertHelper.showAlert(title: "Register", message: errorMessage)
+                    Spacer()
                 }
+                .padding(.top, 30)
+            }
+            }
+            .padding()
+            .alert(isPresented: $showError) {
+                AlertHelper.showAlert(title: "Register", message: errorMessage)
+            }.navigationBarBackButtonHidden(true) 
+        }
+    
     }
-}
+
 
 
 struct RegisterView_Previews: PreviewProvider {

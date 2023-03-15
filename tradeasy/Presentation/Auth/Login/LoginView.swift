@@ -21,6 +21,7 @@ struct LoginView: View {
     @State private var isPasswordVisible = false
     @State private var errorMessage = ""
     @State var showError = false
+    @State private var showRegisterView: Bool = false
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
             .strokeBorder(isInvalid ? Color.red : Color.gray, lineWidth: isInvalid ? 3 : 1)
@@ -43,24 +44,25 @@ struct LoginView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("Login")
-                    .font(.title)
-                    .fontWeight(.medium)
-                Spacer()
-            }
-            .padding(.horizontal, 5)
-            .padding(.top, 150)
-
-            TextField("Username", text: $username)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+        NavigationView{
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Login")
+                        .font(.title)
+                        .fontWeight(.medium)
+                    Spacer()
+                }
                 .padding(.horizontal, 5)
-                .padding(.top, 10)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
-                .onChange(of: username) { newValue in
+                .padding(.top, 150)
+                
+                TextField("Username", text: $username)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+                    .padding(.horizontal, 5)
+                    .padding(.top, 10)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .onChange(of: username) { newValue in
                         if newValue.count > 30 {
                             username = String(newValue.prefix(30))
                         }
@@ -71,77 +73,98 @@ struct LoginView: View {
                         }
                     }
                 
-
-            
-        
-
-              
-            HStack {
-                if isPasswordVisible {
-                    TextField("Password", text: $password)
-                       
-                } else {
-                    SecureField("Password", text: $password)
-                }
-
-                Button(action: {
-                    isPasswordVisible.toggle()
-                }) {
-                    Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
-                        .foregroundColor(.secondary)
-                }
-                    
-            }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-            .padding(.horizontal, 5)
-            .padding(.top, 5)
-                    
-      
-            
-            ActionButton(
                 
-                text: "LOGIN",
-                action: {
-                    Task {
-                       
+                
+                
+                
+                
+                HStack {
+                    if isPasswordVisible {
+                        TextField("Password", text: $password)
                         
-                        viewModel.loginUser(loginReq: loginReq) { result in
-                            switch result {
-                            case .success(let userModel):
-                                print("User logged in successfully: \(userModel)")
-                                // TODO: Navigate to the next screen
-                            case .failure(let error):
-                                if case let UseCaseError.error(message) = error {
-                                    errorMessage = message
-                                                                      showError = true
-                                    print("Error logging in: \(message)")
-                                } else {
-                                    print("Error logging in: \(error)")
+                    } else {
+                        SecureField("Password", text: $password)
+                    }
+                    
+                    Button(action: {
+                        isPasswordVisible.toggle()
+                    }) {
+                        Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
+                            .foregroundColor(.secondary)
+                    }
+                    
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+                .padding(.horizontal, 5)
+                .padding(.top, 5)
+                
+                
+                
+                ActionButton(
+                    
+                    text: "LOGIN",
+                    action: {
+                        Task {
+                            
+                            
+                            viewModel.loginUser(loginReq: loginReq) { result in
+                                switch result {
+                                case .success(let userModel):
+                                    print("User logged in successfully: \(userModel)")
+                                    // TODO: Navigate to the next screen
+                                case .failure(let error):
+                                    if case let UseCaseError.error(message) = error {
+                                        errorMessage = message
+                                        showError = true
+                                        print("Error logging in: \(message)")
+                                    } else {
+                                        print("Error logging in: \(error)")
+                                    }
                                 }
                             }
                         }
+                    },
+                    isFormValid: isFormValid,
+                    isLoading: viewModel.isLoading // P
+                )
+                Divider().padding(.horizontal, 5).padding(.top,180)
+                
+                HStack {
+                    Spacer()
+                    
+                    Text("New member?")
+                        .foregroundColor(.black)
+                    
+                    NavigationLink(destination: RegisterView(), isActive: $showRegisterView) {
+                        Button(action: {
+                            showRegisterView = true
+                        }) {
+                            Text("Join us")
+                                .foregroundColor(Color(CustomColors.blueColor))
+                        }
+                        .background(Color.clear)
                     }
-                },
-                isFormValid: isFormValid,
-                isLoading: viewModel.isLoading // P
-            )
-        
-     
-
-                        // Display a loading indicator if the state is 'loading'
-                      
-
-                        // Display an error message if the state is 'error'
-               
-
-                        Spacer()
-                    }
-                    .padding()
-                    .alert(isPresented: $showError) {
-                                AlertHelper.showAlert(title: "Login", message: errorMessage)
-                            }
-    }
+                    
+                    
+                    
+                    Spacer()
+                }.padding(.top,30)
+                
+                
+                // Display a loading indicator if the state is 'loading'
+                
+                
+                // Display an error message if the state is 'error'
+                
+                
+                Spacer()
+            }
+            .padding()
+            .alert(isPresented: $showError) {
+                AlertHelper.showAlert(title: "Login", message: errorMessage)
+            } .navigationBarBackButtonHidden(true) 
+        }}
 }
 
 

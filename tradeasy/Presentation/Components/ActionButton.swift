@@ -29,10 +29,10 @@ struct ActionButton: View {
         }
         .padding(.vertical, 10)
         .frame(maxWidth: .infinity)
-        .background(isFormValid ? Color.red : Color.gray)
+        .background(isFormValid ? Color(CustomColors.redColor) : Color(CustomColors.greyColor))
         .cornerRadius(10)
         .padding(.horizontal, 20)
-        .padding(.top, 30)
+        .padding(.top, 20)
         .disabled(!isFormValid || isLoading)
     }
 
