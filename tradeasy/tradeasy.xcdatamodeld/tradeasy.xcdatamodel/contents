@@ -26,7 +26,6 @@
     <entity name="UserCore" representedClassName="UserCore" syncable="YES" codeGenerationType="class">
         <attribute name="countryCode" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="isVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="notificationToken" optional="YES" attributeType="String"/>
         <attribute name="otp" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -34,6 +33,7 @@
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <attribute name="profilePicture" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NotificationCore"/>
     </entity>

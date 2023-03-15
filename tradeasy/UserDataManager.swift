@@ -16,12 +16,22 @@ class CoreDataManager {
         init(context: NSManagedObjectContext) {
             self.context = context
         }
-        
+    lazy var persistentContainer: NSPersistentContainer = {
+            let container = NSPersistentContainer(name: "tradeasy")
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            return container
+        }()
+
     
     // Save a UserModel object to Core Data
     func saveUserToCoreData(userModel: UserModel) {
+        let managedObjectContext = persistentContainer.viewContext
         let userCore = UserCore(context: context)
-        userCore.id = userModel.id
+        userCore.userId = userModel.userId
         userCore.username = userModel.username
         userCore.phoneNumber = userModel.phoneNumber
         userCore.email = userModel.email
@@ -34,11 +44,16 @@ class CoreDataManager {
         userCore.token = userModel.token
 
         // Save the changes to Core Data
-        do {
-            try context.save()
-        } catch let error {
-            print("Error saving user to Core Data: \(error.localizedDescription)")
-        }
+   
+            managedObjectContext.performAndWait {
+                do {
+                    try managedObjectContext.save()
+                    
+                } catch {
+                    print("Error saving user to Core Data: \(error)")
+                }
+            }
+     
     }
     
     // Fetch all UserCore objects from Core Data
@@ -68,7 +83,7 @@ class CoreDataManager {
     
     // Update a UserCore object in Core Data
     func updateUserInCoreData(userCore: UserCore, with userModel: UserModel) {
-        userCore.id = userModel.id
+ 
         userCore.username = userModel.username
         userCore.phoneNumber = userModel.phoneNumber
         userCore.email = userModel.email
