@@ -21,7 +21,7 @@ struct LoginView: View {
     @State private var isPasswordVisible = false
     @State private var errorMessage = ""
     @State var showError = false
-    @State private var showRegisterView: Bool = false
+    @EnvironmentObject var navigationController: NavigationController
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
             .strokeBorder(isInvalid ? Color.red : Color.gray, lineWidth: isInvalid ? 3 : 1)
@@ -44,7 +44,7 @@ struct LoginView: View {
     }
 
     var body: some View {
-        NavigationView{
+  
             VStack(alignment: .leading) {
                 HStack {
                     Text("Login")
@@ -97,7 +97,7 @@ struct LoginView: View {
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                 .padding(.horizontal, 5)
-                .padding(.top, 5)
+                .padding(.top, 10)
                 
                 
                 
@@ -128,29 +128,33 @@ struct LoginView: View {
                     isFormValid: isFormValid,
                     isLoading: viewModel.isLoading // P
                 )
-                Divider().padding(.horizontal, 5).padding(.top,180)
                 
-                HStack {
+                VStack{
+                    
                     Spacer()
-                    
-                    Text("New member?")
-                        .foregroundColor(.black)
-                    
-                    NavigationLink(destination: RegisterView(), isActive: $showRegisterView) {
+                    Divider().padding(.horizontal, 5).padding(.top,180)
+                    HStack {
+                        Spacer()
+                        
+                        Text("New member?")
+                            .foregroundColor(.black)
+                        
+                        
                         Button(action: {
-                            showRegisterView = true
+                            navigationController.navigate(to: RegisterView())
+                            
                         }) {
                             Text("Join us")
                                 .foregroundColor(Color(CustomColors.blueColor))
                         }
                         .background(Color.clear)
+                        
+                        
+                        
+                        
+                        Spacer()
                     }
-                    
-                    
-                    
-                    Spacer()
-                }.padding(.top,30)
-                
+                }
                 
                 // Display a loading indicator if the state is 'loading'
                 
@@ -164,7 +168,7 @@ struct LoginView: View {
             .alert(isPresented: $showError) {
                 AlertHelper.showAlert(title: "Login", message: errorMessage)
             } .navigationBarBackButtonHidden(true) 
-        }}
+        }
 }
 
 

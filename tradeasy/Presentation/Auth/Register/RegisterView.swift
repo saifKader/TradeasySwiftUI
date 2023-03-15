@@ -25,6 +25,7 @@ struct RegisterView: View {
     @State private var errorMessage = ""
     @State var showError = false
     @State private var showLoginPage: Bool = false
+    @EnvironmentObject var navigationController: NavigationController
     
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
@@ -63,7 +64,7 @@ struct RegisterView: View {
     }
 
     var body: some View {
-        NavigationView {
+
             VStack(alignment: .leading) {
                 HStack {
                     Text("Create an account")
@@ -219,7 +220,7 @@ struct RegisterView: View {
                     isFormValid: isFormValid,
                     isLoading: viewModel.isLoading
                 )
-                Divider().padding(.horizontal, 5).padding(.top,180)
+                Divider().padding(.horizontal, 5).padding(.top,20)
                 
                 HStack {
                     Spacer()
@@ -227,21 +228,21 @@ struct RegisterView: View {
                     Text("Already have an account?")
                         .foregroundColor(.black)
 
-                    NavigationLink(destination: LoginView(), isActive: $showLoginPage) {
+                
                         Button(action: {
-                            showLoginPage = true
+                            navigationController.navigate(to: LoginView())
                         }) {
                             Text("Login")
                                 .foregroundColor(Color(CustomColors.blueColor))
                         }
                         .background(Color.clear)
-                    }
+                    
 
                     Spacer()
                 }
                 .padding(.top, 30)
             }
-            }
+            
             .padding()
             .alert(isPresented: $showError) {
                 AlertHelper.showAlert(title: "Register", message: errorMessage)

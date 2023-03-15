@@ -29,6 +29,7 @@
 		59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2729C0F11500CD0703 /* CCPicker.swift */; };
 		59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */; };
 		59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2B29C0F1CE00CD0703 /* DI.swift */; };
+		59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */; };
 		59EE252929C10459000F7D55 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252829C10459000F7D55 /* Alert.swift */; };
 		59EE252D29C10EE1000F7D55 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252C29C10EE1000F7D55 /* Animations.swift */; };
 		59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252E29C12D9A000F7D55 /* LoginReq.swift */; };
@@ -64,6 +65,7 @@
 		59D17B2729C0F11500CD0703 /* CCPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPicker.swift; sourceTree = "<group>"; };
 		59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		59D17B2B29C0F1CE00CD0703 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
+		59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation\U0010Controller.swift"; sourceTree = "<group>"; };
 		59EE252829C10459000F7D55 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		59EE252C29C10EE1000F7D55 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		59EE252E29C12D9A000F7D55 /* LoginReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReq.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				59DDC7F129C1C35800FF6DFB /* Router */,
 				59EE252629C10431000F7D55 /* Components */,
 				59D17B2229C0F0EA00CD0703 /* Auth */,
 			);
@@ -286,6 +289,14 @@
 				59EE253029C133B9000F7D55 /* Register */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		59DDC7F129C1C35800FF6DFB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		59EE252629C10431000F7D55 /* Components */ = {
@@ -460,6 +471,7 @@
 				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
 				59EE253929C1505E000F7D55 /* Colors.swift in Sources */,
 				59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */,
+				59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */,
 				59D17AFA29C0ED7500CD0703 /* AuthDataSource.swift in Sources */,
 				59D17AFF29C0EDE700CD0703 /* RegisterReq.swift in Sources */,
 				59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */,
