@@ -32,6 +32,9 @@
 		59EE252929C10459000F7D55 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252829C10459000F7D55 /* Alert.swift */; };
 		59EE252D29C10EE1000F7D55 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252C29C10EE1000F7D55 /* Animations.swift */; };
 		59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252E29C12D9A000F7D55 /* LoginReq.swift */; };
+		59EE253329C133E9000F7D55 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253229C133E9000F7D55 /* LoginView.swift */; };
+		59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253429C13401000F7D55 /* LoginViewModel.swift */; };
+		59EE253729C138C7000F7D55 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253629C138C6000F7D55 /* ActionButton.swift */; };
 		B753C081E3938FFEF79E8055 /* Pods_tradeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 		59EE252829C10459000F7D55 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		59EE252C29C10EE1000F7D55 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		59EE252E29C12D9A000F7D55 /* LoginReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReq.swift; sourceTree = "<group>"; };
+		59EE253229C133E9000F7D55 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		59EE253429C13401000F7D55 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		59EE253629C138C6000F7D55 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.release.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,9 +280,8 @@
 		59D17B2229C0F0EA00CD0703 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				59D17B2329C0F0FA00CD0703 /* RegisterView.swift */,
-				59D17B2529C0F10700CD0703 /* RegisterViewModel.swift */,
-				59D17B2729C0F11500CD0703 /* CCPicker.swift */,
+				59EE253129C133C9000F7D55 /* Login */,
+				59EE253029C133B9000F7D55 /* Register */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -285,8 +290,28 @@
 			isa = PBXGroup;
 			children = (
 				59EE252829C10459000F7D55 /* Alert.swift */,
+				59EE253629C138C6000F7D55 /* ActionButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		59EE253029C133B9000F7D55 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				59D17B2329C0F0FA00CD0703 /* RegisterView.swift */,
+				59D17B2529C0F10700CD0703 /* RegisterViewModel.swift */,
+				59D17B2729C0F11500CD0703 /* CCPicker.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		59EE253129C133C9000F7D55 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				59EE253229C133E9000F7D55 /* LoginView.swift */,
+				59EE253429C13401000F7D55 /* LoginViewModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		6C90DBD215DCFD90EB73E916 /* Pods */ = {
@@ -426,13 +451,16 @@
 				59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */,
 				59D17B2029C0F0B100CD0703 /* NotificationModel.swift in Sources */,
 				59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */,
+				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
 				59EE252929C10459000F7D55 /* Alert.swift in Sources */,
 				59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */,
 				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
 				59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */,
 				59D17AFA29C0ED7500CD0703 /* AuthDataSource.swift in Sources */,
 				59D17AFF29C0EDE700CD0703 /* RegisterReq.swift in Sources */,
+				59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */,
 				59D17B2629C0F10700CD0703 /* RegisterViewModel.swift in Sources */,
+				59EE253729C138C7000F7D55 /* ActionButton.swift in Sources */,
 				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,

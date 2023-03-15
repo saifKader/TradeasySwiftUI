@@ -22,6 +22,8 @@ struct RegisterView: View {
     @State private var isPasswordInvalid = false
     @State private var isEmailInvalid = false
     @State private var isPhoneNumberInvalid = false
+    @State private var errorMessage = ""
+    @State var showError = false
     
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
@@ -43,9 +45,9 @@ struct RegisterView: View {
 
     var registerReq: RegisterReq {
         return RegisterReq(
-            username: username.trimmingCharacters(in: .whitespacesAndNewlines),
+            username: username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
             countryCode: countryCode.trimmingCharacters(in: .whitespacesAndNewlines),
-            phoneNumber: phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines),
+            phoneNumber: phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
             email: email.trimmingCharacters(in: .whitespacesAndNewlines),
             password: password
         )
@@ -56,7 +58,7 @@ struct RegisterView: View {
         !countryCode.trimmingCharacters(in: .whitespaces).isEmpty &&
         !phoneNumber.trimmingCharacters(in: .whitespaces).isEmpty &&
         !email.trimmingCharacters(in: .whitespaces).isEmpty &&
-        !password.trimmingCharacters(in: .whitespaces).isEmpty
+        !password.isEmpty
     }
 
     var body: some View {
@@ -85,6 +87,8 @@ struct RegisterView: View {
                             username = filteredValue
                         }
                     }
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
                 
 
             HStack {
@@ -127,6 +131,8 @@ struct RegisterView: View {
                 .padding(.horizontal, 5)
                 .padding(.top, 5)
                 .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
 
                         
                 if isEmailInvalid {
@@ -173,55 +179,59 @@ struct RegisterView: View {
             
             
 
-            Button(action: {
-                isPasswordInvalid = password.count < 8
-                isEmailInvalid =  !isValidEmail(email)
-                isPhoneNumberInvalid = !isValidPhoneNumber(phoneNumber)
-                if isPasswordInvalid {
-                    return
-                }
-                if isEmailInvalid {
-                    return
-                }
-                if isPhoneNumberInvalid {
-                    return
-                }
-               
+            ActionButton(
+                
+             
                 
                 
+           
                 
-                Task {
+                
+                text: "SIGN UP",
+                action: {
                     
-                    do {
-                        let userModel = try await viewModel.registerUser(registerReq: registerReq)
-                        print("User registered successfully: \(userModel)")
-                        // TODO: Navigate to the next screen
-                    } catch UseCaseError.error(let message) {
-                        print("API errror: \(message)")
-                    } catch UseCaseError.networkError {
-                        print("Network error")
-                    } catch UseCaseError.decodingError {
-                        print("Decoding error")
-                    } catch {
-                        print("Unknown error")
+                    isPasswordInvalid = password.count < 8
+                                isEmailInvalid =  !isValidEmail(email)
+                                isPhoneNumberInvalid = !isValidPhoneNumber(phoneNumber)
+                                if isPasswordInvalid {
+                                    return
+                                }
+                                if isEmailInvalid {
+                                    return
+                                }
+                                if isPhoneNumberInvalid {
+                                    return
+                                }
+                    Task {
+                        viewModel.registerUser(registerReq:registerReq) { result in
+                            switch result {
+                            case .success(let userModel):
+                                print("User logged in successfully: \(userModel)")
+                                // TODO: Navigate to the next screen
+                            case .failure(let error):
+                                if case let UseCaseError.error(message) = error {
+                                    errorMessage = message
+                                                                      showError = true
+                                    print("Error logging in: \(message)")
+                                } else {
+                                    print("Error logging in: \(error)")
+                                }
+                            }
+                        }
                     }
-                }
-             }) {
-                Text("SIGN UP")
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
-                    .background(isFormValid ? Color.red : Color.gray)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 5)
-                
-            }.disabled(!isFormValid)
+                },
+                isFormValid: isFormValid,
+                isLoading: viewModel.isLoading
+            )
+
+
             
             Spacer()
         }
         .padding()
+        .alert(isPresented: $showError) {
+                    AlertHelper.showAlert(title: "Register", message: errorMessage)
+                }
     }
 }
 

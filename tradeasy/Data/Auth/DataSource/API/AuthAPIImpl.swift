@@ -20,10 +20,10 @@ func errorFromResponseData(_ data: Data) -> APIServiceError {
 
 struct AuthAPIImpl: IAuthDataSource {
     
-    let baseUrl: String = "http://192.168.0.9:9090/user"
+
     
     func login(_loginReq: LoginReq) async throws -> UserModel {
-        guard let url = URL(string: "\(baseUrl)/login") else {
+        guard let url = URL(string: "\(kbaseUrl)\(klogin)") else {
             throw APIServiceError.badUrl
         }
    var request = URLRequest(url: url)
@@ -60,7 +60,7 @@ struct AuthAPIImpl: IAuthDataSource {
     
     
          func register(_registerReq: RegisterReq) async throws -> UserModel {
-             guard let url = URL(string: "\(baseUrl)/register") else {
+             guard let url = URL(string: "\(kbaseUrl)\(kregister)") else {
                  throw APIServiceError.badUrl
              }
         var request = URLRequest(url: url)
