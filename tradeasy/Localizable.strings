@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  tradeasy
+
+  Created by abdelkader seif eddine on 15/3/2023.
+  
+*/
+// auth
+"Login" = "Login";
+"Sign Up" = "Sign Up";
+"Username" = "Username";
+"Phone Number" = "Phone Number";
+"Email" = "Email";
+"Username" = "Username";
+"Password" = "Password";
+"New member?" = "New member?";
+"Already have an account?" = "Already have an account?";
+"Create an account" = "Create an account";
+"Join us" = "Join us";
+// auth error messages
+
+
+
+

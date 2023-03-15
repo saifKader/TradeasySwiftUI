@@ -65,183 +65,188 @@ struct RegisterView: View {
 
     var body: some View {
 
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Create an account")
-                        .font(.title)
-                        .fontWeight(.medium)
-                    Spacer()
-                }
-                .padding(.horizontal, 5)
-                .padding(.top, 50)
-                
-                TextField("Username", text: $username)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-                    .padding(.horizontal, 5)
-                    .padding(.top, 10)
-                    .onChange(of: username) { newValue in
-                        if newValue.count > 30 {
-                            username = String(newValue.prefix(30))
-                        }
-                        let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._0123456789")
-                        let filteredValue = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
-                        if filteredValue != newValue {
-                            username = filteredValue
-                        }
-                    }
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                
-                
-                HStack {
-                    CountryPickerViewWrapper(selectedCountry: $selectedCountry)
-                        .frame(width: 50, height: 44)
-                        .padding()
-                        .onAppear {
-                            // set the initial selected country code
-                            countryCode = selectedCountry?.phoneCode ?? "+216"
-                        }
-                        .onChange(of: selectedCountry) { country in
-                            // update the view model's countryCode property when the selected country changes
-                            countryCode = country?.phoneCode ?? "+216"
-                        }
-                    VStack(alignment: .leading){
-                        TextField("Phone Number", text: $phoneNumber)
-                            .keyboardType(.numberPad)
-                            .padding()
-                            .background(getStrokeBorder(isInvalid: isPasswordInvalid))
-                            .padding(.horizontal, 5)
-                            .padding(.top, 5)
-                        if isPhoneNumberInvalid {
-                            Text("Invalid phone number")
-                                .font(.system(size: 12))
-                                .foregroundColor(.red)
-                                .padding(.horizontal, 5)
-                        } else {
-                            Text("")
-                                .opacity(0)
-                        }
-                    }
-                    
-                }
-                .padding(.horizontal, 5)
-                .padding(.top, 5)
-                
-                TextField("Email", text: $email)
-                    .padding()
-                    .background(getStrokeBorder(isInvalid: isEmailInvalid))
-                    .padding(.horizontal, 5)
-                    .padding(.top, 5)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                
-                
-                if isEmailInvalid {
-                    Text("Invalid email")
-                        .font(.system(size: 12))
-                        .foregroundColor(.red)
-                        .padding(.horizontal, 5)
-                    
-                } else {
-                    Text("")
-                        .opacity(0)
-                }
-                HStack {
-                    if isPasswordVisible {
-                        TextField("Password", text: $password)
-                        
-                    } else {
-                        SecureField("Password", text: $password)
-                    }
-                    
-                    Button(action: {
-                        isPasswordVisible.toggle()
-                    }) {
-                        Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
-                            .foregroundColor(.secondary)
-                    }
-                    
-                }
+        VStack(alignment: .leading) {
+            
+            HStack {
+                Text(LocalizedStringKey("Create an account"))
+                    .font(.title)
+                    .fontWeight(.medium)
+                Spacer()
+            }
+            .padding(.horizontal, 5)
+            .padding(.top, 120)
+            
+            TextField(LocalizedStringKey("Username"), text: $username)
                 .padding()
-                .background(getStrokeBorder(isInvalid: isPasswordInvalid))
+                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                 .padding(.horizontal, 5)
-                .padding(.top, 5)
-                
-                if isPasswordInvalid {
-                    Text("Password must be at least 8 characters.")
-                        .font(.system(size: 12))
-                        .foregroundColor(.red)
-                        .padding(.horizontal, 5)
-                    
-                } else {
-                    Text("")
-                        .opacity(0)
+                .padding(.top, 10)
+                .onChange(of: username) { newValue in
+                    if newValue.count > 30 {
+                        username = String(newValue.prefix(30))
+                    }
+                    let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._0123456789")
+                    let filteredValue = newValue.filter { allowedCharacterSet.contains(UnicodeScalar(String($0))!) }
+                    if filteredValue != newValue {
+                        username = filteredValue
+                    }
+                }
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+            
+            
+            HStack {
+                CountryPickerViewWrapper(selectedCountry: $selectedCountry)
+                    .frame(width: 50, height: 44)
+                    .padding()
+                    .onAppear {
+                        // set the initial selected country code
+                        countryCode = selectedCountry?.phoneCode ?? "+216"
+                    }
+                    .onChange(of: selectedCountry) { country in
+                        // update the view model's countryCode property when the selected country changes
+                        countryCode = country?.phoneCode ?? "+216"
+                    }
+                VStack(alignment: .leading){
+                    TextField(LocalizedStringKey("Phone Number"), text: $phoneNumber)
+                        .keyboardType(.numberPad)
+                        .padding()
+                        .background(getStrokeBorder(isInvalid: isPasswordInvalid))
+                        .padding(.top, 5)
+                    if isPhoneNumberInvalid {
+                        Text("Invalid phone number")
+                            .font(.system(size: 12))
+                            .foregroundColor(.red)
+                            .padding(.horizontal, 5)
+                    } else {
+                        Text("")
+                            .opacity(0)
+                    }
                 }
                 
+            }
+            .padding(.horizontal, 5)
+            
+            TextField(LocalizedStringKey("Email"), text: $email)
+                .padding()
+                .background(getStrokeBorder(isInvalid: isEmailInvalid))
+                .padding(.horizontal, 5)
+                .padding(.top, 5)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+            
+            
+            if isEmailInvalid {
+                Text("Invalid email")
+                    .font(.system(size: 12))
+                    .foregroundColor(.red)
+                    .padding(.horizontal, 5)
                 
-                
-                ActionButton(
+            } else {
+                Text("")
+                    .opacity(0)
+            }
+            HStack {
+                if isPasswordVisible {
+                    TextField(LocalizedStringKey("Password"), text: $password)
                     
-                    text: "SIGN UP",
-                    action: {
-                        
-                        isPasswordInvalid = password.count < 8
-                        isEmailInvalid =  !isValidEmail(email)
-                        isPhoneNumberInvalid = !isValidPhoneNumber(phoneNumber)
-                        if isPasswordInvalid {
-                            return
-                        }
-                        if isEmailInvalid {
-                            return
-                        }
-                        if isPhoneNumberInvalid {
-                            return
-                        }
-                        Task {
-                            viewModel.registerUser(registerReq:registerReq) { result in
-                                switch result {
-                                case .success(let userModel):
-                                    print("User logged in successfully: \(userModel)")
-                                    // TODO: Navigate to the next screen
-                                case .failure(let error):
-                                    if case let UseCaseError.error(message) = error {
-                                        errorMessage = message
-                                        showError = true
-                                        print("Error logging in: \(message)")
-                                    } else {
-                                        print("Error logging in: \(error)")
-                                    }
+                } else {
+                    SecureField(LocalizedStringKey("Password"), text: $password)
+                }
+                
+                Button(action: {
+                    isPasswordVisible.toggle()
+                }) {
+                    Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
+                        .foregroundColor(.secondary)
+                }
+                
+            }
+            .padding()
+            .background(getStrokeBorder(isInvalid: isPasswordInvalid))
+            .padding(.horizontal, 5)
+            .padding(.top, 5)
+            
+            if isPasswordInvalid {
+                Text("Password must be at least 8 characters.")
+                    .font(.system(size: 12))
+                    .foregroundColor(.red)
+                    .padding(.horizontal, 5)
+                
+            } else {
+                Text("")
+                    .opacity(0)
+            }
+            
+            
+            
+            ActionButton(
+                
+                text: "Sign Up",
+                action: {
+                    
+                    isPasswordInvalid = password.count < 8
+                    isEmailInvalid =  !isValidEmail(email)
+                    isPhoneNumberInvalid = !isValidPhoneNumber(phoneNumber)
+                    if isPasswordInvalid {
+                        return
+                    }
+                    if isEmailInvalid {
+                        return
+                    }
+                    if isPhoneNumberInvalid {
+                        return
+                    }
+                    Task {
+                        viewModel.registerUser(registerReq:registerReq) { result in
+                            switch result {
+                            case .success(let userModel):
+                                print("User logged in successfully: \(userModel)")
+                                // TODO: Navigate to the next screen
+                            case .failure(let error):
+                                if case let UseCaseError.error(message) = error {
+                                    errorMessage = message
+                                    showError = true
+                                    print("Error logging in: \(message)")
+                                } else {
+                                    print("Error logging in: \(error)")
                                 }
                             }
                         }
-                    },
-                    isFormValid: isFormValid,
-                    isLoading: viewModel.isLoading
-                )
-                Divider().padding(.horizontal, 5).padding(.top,20)
-                
+                    }
+                },
+                isFormValid: isFormValid,
+                isLoading: viewModel.isLoading
+            )
+            .padding(.bottom, 10)
+
+            
+            
+            VStack{
+                Spacer()
+                Divider().padding(.horizontal, 5).padding(.top, 20)
                 HStack {
                     Spacer()
-
-                    Text("Already have an account?")
-                        .foregroundColor(.black)
-
-                
-                        Button(action: {
-                            navigationController.navigate(to: LoginView())
-                        }) {
-                            Text("Login")
-                                .foregroundColor(Color(CustomColors.blueColor))
-                        }
-                        .background(Color.clear)
                     
-
+                    Text(LocalizedStringKey("Already have an account?"))
+                        .foregroundColor(.black)
+                    
+                    
+                    Button(action: {
+                        navigationController.navigate(to: LoginView())
+                    }) {
+                        Text("Login")
+                            .foregroundColor(Color(CustomColors.blueColor))
+                    }
+                    .background(Color.clear)
+                    
+                    
                     Spacer()
                 }
-                .padding(.top, 30)
             }
+            
+        }
             
             .padding()
             .alert(isPresented: $showError) {

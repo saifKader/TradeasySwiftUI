@@ -46,16 +46,26 @@ struct LoginView: View {
     var body: some View {
   
             VStack(alignment: .leading) {
-                HStack {
-                    Text("Login")
+                
+                HStack{
+                    Spacer()
+                    Image("app_logo_48")
+                        .resizable()
+                    
+                        .frame(width: 130, height: 130)
+                        .padding(.top,150)
+                Spacer()
+                }
+                    Text(LocalizedStringKey("Login"))
                         .font(.title)
                         .fontWeight(.medium)
-                    Spacer()
-                }
-                .padding(.horizontal, 5)
-                .padding(.top, 150)
                 
-                TextField("Username", text: $username)
+                    
+                    
+                        .padding(.horizontal, 5)
+                        .padding(.top, 20)
+               
+                TextField(LocalizedStringKey("Username"), text: $username)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                     .padding(.horizontal, 5)
@@ -80,10 +90,10 @@ struct LoginView: View {
                 
                 HStack {
                     if isPasswordVisible {
-                        TextField("Password", text: $password)
+                        TextField(LocalizedStringKey("Password"), text: $password)
                         
                     } else {
-                        SecureField("Password", text: $password)
+                        SecureField(LocalizedStringKey("Password"), text: $password)
                     }
                     
                     Button(action: {
@@ -103,7 +113,7 @@ struct LoginView: View {
                 
                 ActionButton(
                     
-                    text: "LOGIN",
+                    text: "Login",
                     action: {
                         Task {
                             
@@ -132,11 +142,11 @@ struct LoginView: View {
                 VStack{
                     
                     Spacer()
-                    Divider().padding(.horizontal, 5).padding(.top,180)
+                    Divider().padding(.horizontal, 0).padding(.top,0)
                     HStack {
                         Spacer()
                         
-                        Text("New member?")
+                        Text(LocalizedStringKey("New member?"))
                             .foregroundColor(.black)
                         
                         
@@ -144,7 +154,7 @@ struct LoginView: View {
                             navigationController.navigate(to: RegisterView())
                             
                         }) {
-                            Text("Join us")
+                            Text(LocalizedStringKey("Join us"))
                                 .foregroundColor(Color(CustomColors.blueColor))
                         }
                         .background(Color.clear)
@@ -161,14 +171,18 @@ struct LoginView: View {
                 
                 // Display an error message if the state is 'error'
                 
-                
-                Spacer()
             }
             .padding()
             .alert(isPresented: $showError) {
                 AlertHelper.showAlert(title: "Login", message: errorMessage)
             } .navigationBarBackButtonHidden(true) 
         }
+}
+
+struct LoginView_Preview: PreviewProvider {
+    static var previews: some View {
+        LoginView()
+    }
 }
 
 

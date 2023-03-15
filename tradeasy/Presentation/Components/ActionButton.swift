@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ActionButton: View {
-    var text: String
+    var text: LocalizedStringKey
     var action: () -> Void
     var isFormValid: Bool
     var isLoading: Bool
