@@ -26,7 +26,7 @@
     <entity name="UserCore" representedClassName="UserCore" syncable="YES" codeGenerationType="class">
         <attribute name="countryCode" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="isVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="notificationToken" optional="YES" attributeType="String"/>
         <attribute name="otp" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

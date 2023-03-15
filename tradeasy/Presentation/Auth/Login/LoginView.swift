@@ -124,7 +124,7 @@ struct LoginView: View {
                                 case .success(let userModel):
                                     print("User logged in successfully: \(userModel)")
                                     let coreDataManager = CoreDataManager(context: viewContext)
-                                                coreDataManager.saveUserToCoreData(userModel: userModel)
+                                               coreDataManager.saveUserToCoreData(userModel: userModel)
                                 case .failure(let error):
                                     if case let UseCaseError.error(message) = error {
                                         errorMessage = message

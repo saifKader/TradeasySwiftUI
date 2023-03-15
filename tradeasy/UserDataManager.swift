@@ -21,6 +21,7 @@ class CoreDataManager {
     // Save a UserModel object to Core Data
     func saveUserToCoreData(userModel: UserModel) {
         let userCore = UserCore(context: context)
+        userCore.id = userModel.id
         userCore.username = userModel.username
         userCore.phoneNumber = userModel.phoneNumber
         userCore.email = userModel.email
@@ -67,6 +68,7 @@ class CoreDataManager {
     
     // Update a UserCore object in Core Data
     func updateUserInCoreData(userCore: UserCore, with userModel: UserModel) {
+        userCore.id = userModel.id
         userCore.username = userModel.username
         userCore.phoneNumber = userModel.phoneNumber
         userCore.email = userModel.email
