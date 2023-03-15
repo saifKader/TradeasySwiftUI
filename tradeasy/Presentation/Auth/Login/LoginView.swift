@@ -22,6 +22,7 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State var showError = false
     @EnvironmentObject var navigationController: NavigationController
+    @Environment(\.managedObjectContext) private var viewContext
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
             .strokeBorder(isInvalid ? Color.red : Color.gray, lineWidth: isInvalid ? 3 : 1)
@@ -122,7 +123,8 @@ struct LoginView: View {
                                 switch result {
                                 case .success(let userModel):
                                     print("User logged in successfully: \(userModel)")
-                                    // TODO: Navigate to the next screen
+                                    let coreDataManager = CoreDataManager(context: viewContext)
+                                                coreDataManager.saveUserToCoreData(userModel: userModel)
                                 case .failure(let error):
                                     if case let UseCaseError.error(message) = error {
                                         errorMessage = message
@@ -133,6 +135,23 @@ struct LoginView: View {
                                     }
                                 }
                             }
+                        }
+                    },
+                    isFormValid: isFormValid,
+                    isLoading: viewModel.isLoading // P
+                )
+                ActionButton(
+                    
+                    text: "Login",
+                    action: {
+                        Task {
+                            
+                            let coreDataManager = CoreDataManager(context: viewContext)
+                            
+                         
+                            print("AAAAAA")
+                            print(coreDataManager.fetchAllUsers())
+                         
                         }
                     },
                     isFormValid: isFormValid,
