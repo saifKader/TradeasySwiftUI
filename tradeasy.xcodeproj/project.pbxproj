@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A480FE29C25D77007C0CE3 /* UserDefaults.swift */; };
+		59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810129C26516007C0CE3 /* ProfileView.swift */; };
+		59A4810429C266DA007C0CE3 /* JSON_Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */; };
 		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
 		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
 		59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
@@ -44,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
+		59A480FE29C25D77007C0CE3 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		59A4810129C26516007C0CE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Decoder.swift; sourceTree = "<group>"; };
 		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
 		59D17AD529C0E40500CD0703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59A4810029C264F8007C0CE3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				59A4810129C26516007C0CE3 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		59D17AC729C0E40500CD0703 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +140,7 @@
 				59D17ADE29C0E40600CD0703 /* tradeasy.xcdatamodeld */,
 				59D17AD929C0E40600CD0703 /* Preview Content */,
 				59DDC7F629C1E84600FF6DFB /* Localizable.strings */,
+				59A480FE29C25D77007C0CE3 /* UserDefaults.swift */,
 			);
 			path = tradeasy;
 			sourceTree = "<group>";
@@ -146,6 +161,7 @@
 				59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */,
 				59D17B2B29C0F1CE00CD0703 /* DI.swift */,
 				59EE252C29C10EE1000F7D55 /* Animations.swift */,
+				59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -281,6 +297,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				59A4810029C264F8007C0CE3 /* Profile */,
 				59DDC7F129C1C35800FF6DFB /* Router */,
 				59EE252629C10431000F7D55 /* Components */,
 				59D17B2229C0F0EA00CD0703 /* Auth */,
@@ -484,6 +501,7 @@
 				59D17AFF29C0EDE700CD0703 /* RegisterReq.swift in Sources */,
 				59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */,
 				59D17B2629C0F10700CD0703 /* RegisterViewModel.swift in Sources */,
+				59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */,
 				59EE253729C138C7000F7D55 /* ActionButton.swift in Sources */,
 				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
@@ -492,6 +510,8 @@
 				59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */,
 				59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */,
 				59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */,
+				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
+				59A4810429C266DA007C0CE3 /* JSON_Decoder.swift in Sources */,
 				59D17AF629C0ED1600CD0703 /* AuthRepositoryImpl.swift in Sources */,
 				59EE252D29C10EE1000F7D55 /* Animations.swift in Sources */,
 				59D17B1429C0EF9B00CD0703 /* UserModel.swift in Sources */,

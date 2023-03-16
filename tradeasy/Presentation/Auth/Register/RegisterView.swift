@@ -24,8 +24,14 @@ struct RegisterView: View {
     @State private var isPhoneNumberInvalid = false
     @State private var errorMessage = ""
     @State var showError = false
-    @State private var showLoginPage: Bool = false
     @EnvironmentObject var navigationController: NavigationController
+    @Environment(\.presentationMode) var presentationMode
+    
+    
+    
+    
+    
+    let userPreferences = UserPreferences()
     
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
@@ -38,7 +44,7 @@ struct RegisterView: View {
         return emailPredicate.evaluate(with: email)
     }
     func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        let phoneRegex = #"^(\+?\d{1,3}[ -]?)?\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4}$"#
+        let phoneRegex = #"^\d{8,}$"#
         let phonePredicate = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
         return phonePredicate.evaluate(with: phoneNumber)
     }
@@ -203,6 +209,8 @@ struct RegisterView: View {
                             switch result {
                             case .success(let userModel):
                                 print("User logged in successfully: \(userModel)")
+                                userPreferences.setUser(user: userModel)
+                                navigationController.navigate(to: ProfileView())
                                 // TODO: Navigate to the next screen
                             case .failure(let error):
                                 if case let UseCaseError.error(message) = error {
@@ -234,13 +242,13 @@ struct RegisterView: View {
                     
                     
                     Button(action: {
+                        presentationMode.wrappedValue.dismiss()
                         navigationController.navigate(to: LoginView())
                     }) {
                         Text("Login")
                             .foregroundColor(Color(CustomColors.blueColor))
                     }
                     .background(Color.clear)
-                    
                     
                     Spacer()
                 }

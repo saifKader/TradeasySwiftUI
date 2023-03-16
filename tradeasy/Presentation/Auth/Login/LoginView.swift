@@ -22,6 +22,10 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State var showError = false
     @EnvironmentObject var navigationController: NavigationController
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    let userPreferences = UserPreferences()
     @Environment(\.managedObjectContext) private var viewContext
     private func getStrokeBorder(isInvalid: Bool) -> some View {
         return RoundedRectangle(cornerRadius: 10)
@@ -46,7 +50,7 @@ struct LoginView: View {
 
     var body: some View {
   
-            VStack(alignment: .leading) {
+            VStack() {
                 
                 HStack{
                     Spacer()
@@ -54,22 +58,19 @@ struct LoginView: View {
                         .resizable()
                     
                         .frame(width: 130, height: 130)
-                        .padding(.top,150)
+                        .padding(.top,0)
                 Spacer()
                 }
-                    Text(LocalizedStringKey("Login"))
+                    Text(LocalizedStringKey("Tradeasy"))
                         .font(.title)
                         .fontWeight(.medium)
-                
-                    
-                    
+
                         .padding(.horizontal, 5)
                         .padding(.top, 20)
                
                 TextField(LocalizedStringKey("Username"), text: $username)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-                    .padding(.horizontal, 5)
                     .padding(.top, 10)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
@@ -107,9 +108,20 @@ struct LoginView: View {
                 }
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-                .padding(.horizontal, 5)
                 .padding(.top, 10)
-                
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        //navigationController.navigate(to: ForgetPasswordView())
+                        
+                    }) {
+                        Text(LocalizedStringKey("Forgot password?"))
+                            .foregroundColor(Color(CustomColors.blueColor))
+                    }
+                    .background(Color.clear)
+                    .padding(.top,5)
+                    
+                }
                 
                 
                 ActionButton(
@@ -123,8 +135,8 @@ struct LoginView: View {
                                 switch result {
                                 case .success(let userModel):
                                     print("User logged in successfully: \(userModel)")
-                                    let coreDataManager = CoreDataManager(context: viewContext)
-                                               coreDataManager.saveUserToCoreData(userModel: userModel)
+                                    userPreferences.setUser(user: userModel)
+                                    navigationController.navigate(to: ProfileView())
                                 case .failure(let error):
                                     if case let UseCaseError.error(message) = error {
                                         errorMessage = message
@@ -140,7 +152,7 @@ struct LoginView: View {
                     isFormValid: isFormValid,
                     isLoading: viewModel.isLoading // P
                 )
-                ActionButton(
+                /*ActionButton(
                     
                     text: "Login",
                     action: {
@@ -149,14 +161,14 @@ struct LoginView: View {
                             let coreDataManager = CoreDataManager(context: viewContext)
                             
                          
-                            print("AAAAAA")
-                            print(coreDataManager.fetchAllUsers())
+                            let savedUser = userPreferences.getUser()
+                            print(savedUser?.token)
                          
                         }
                     },
                     isFormValid: isFormValid,
                     isLoading: viewModel.isLoading // P
-                )
+                )*/
                 
                 VStack{
                     
@@ -170,13 +182,17 @@ struct LoginView: View {
                         
                         
                         Button(action: {
-                            navigationController.navigate(to: RegisterView())
-                            
+                            navigationController.showSheet = true
                         }) {
                             Text(LocalizedStringKey("Join us"))
                                 .foregroundColor(Color(CustomColors.blueColor))
                         }
                         .background(Color.clear)
+                        .sheet(isPresented: $navigationController.showSheet, onDismiss: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            RegisterView()
+                        }
                         
                         
                         

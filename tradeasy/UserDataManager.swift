@@ -16,7 +16,7 @@ class CoreDataManager {
         init(context: NSManagedObjectContext) {
             self.context = context
         }
-    lazy var persistentContainer: NSPersistentContainer = {
+     static var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "tradeasy")
             container.loadPersistentStores(completionHandler: { (storeDescription, error) in
                 if let error = error as NSError? {
@@ -29,8 +29,8 @@ class CoreDataManager {
     
     // Save a UserModel object to Core Data
     func saveUserToCoreData(userModel: UserModel) {
-        let managedObjectContext = persistentContainer.viewContext
-        let userCore = UserCore(context: context)
+        let managedObjectContext = CoreDataManager.persistentContainer.viewContext
+        let userCore = UserCore(context: managedObjectContext)
         userCore.userId = userModel.userId
         userCore.username = userModel.username
         userCore.phoneNumber = userModel.phoneNumber
@@ -44,17 +44,15 @@ class CoreDataManager {
         userCore.token = userModel.token
 
         // Save the changes to Core Data
-   
-            managedObjectContext.performAndWait {
-                do {
-                    try managedObjectContext.save()
-                    
-                } catch {
-                    print("Error saving user to Core Data: \(error)")
-                }
+        managedObjectContext.performAndWait {
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print("Error saving user to Core Data: \(error)")
             }
-     
+        }
     }
+
     
     // Fetch all UserCore objects from Core Data
     func fetchAllUsers() -> [UserCore]? {

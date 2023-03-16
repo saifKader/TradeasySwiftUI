@@ -9,6 +9,7 @@ import SwiftUI
 
 class NavigationController: ObservableObject {
     @Published var currentView: AnyView
+    @Published var showSheet: Bool = false
     
     init(startingView: AnyView) {
         self.currentView = startingView

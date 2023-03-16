@@ -33,17 +33,23 @@ class LoginViewModel: ObservableObject {
     }
 
     func loginUser(loginReq: LoginReq, completion: @escaping (Result<UserModel, Error>) -> Void) {
-        state = .loading // Set state to loading before starting the request
+        DispatchQueue.main.async {
+            self.state = .loading // Set state to loading before starting the request
+        }
 
         Task {
             let result = await getLoginUseCase.execute(_loginReq: loginReq)
             switch result {
             case .success(let userModel):
-                state = .success(userModel) // Set state to success if the request is successful
-                completion(.success(userModel))
+                DispatchQueue.main.async {
+                    self.state = .success(userModel) // Set state to success if the request is successful
+                    completion(.success(userModel))
+                }
             case .failure(let error):
-                state = .error(error) // Set state to error if an error occurs
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    self.state = .error(error) // Set state to error if an error occurs
+                    completion(.failure(error))
+                }
             }
         }
     }

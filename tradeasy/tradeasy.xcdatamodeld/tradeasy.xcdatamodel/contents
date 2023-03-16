@@ -3,26 +3,6 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="NotificationCore" representedClassName="NotificationCore" syncable="YES" codeGenerationType="class"/>
-    <entity name="ProductCore" representedClassName="ProductCore" syncable="YES" codeGenerationType="class">
-        <attribute name="addedDate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="bade" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="bidEndDate" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="category" optional="YES" attributeType="String"/>
-        <attribute name="forbid" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="image" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="ownerPhoneNumber" optional="YES" attributeType="String"/>
-        <attribute name="ownerProfilePicture" optional="YES" attributeType="String"/>
-        <attribute name="ownerUsername" optional="YES" attributeType="String"/>
-        <attribute name="pdescription" optional="YES" attributeType="String"/>
-        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="productId" optional="YES" attributeType="String"/>
-        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="selling" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="sold" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="userId" optional="YES" attributeType="String"/>
-    </entity>
     <entity name="UserCore" representedClassName="UserCore" syncable="YES" codeGenerationType="class">
         <attribute name="countryCode" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
@@ -35,6 +15,5 @@
         <attribute name="token" optional="YES" attributeType="String"/>
         <attribute name="userId" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NotificationCore"/>
     </entity>
 </model>
