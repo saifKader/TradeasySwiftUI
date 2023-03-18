@@ -58,7 +58,7 @@ struct LoginView: View {
                         .resizable()
                     
                         .frame(width: 130, height: 130)
-                        .padding(.top,0)
+                        .padding(.top,100)
                 Spacer()
                 }
                     Text(LocalizedStringKey("Tradeasy"))
@@ -117,6 +117,8 @@ struct LoginView: View {
                     }) {
                         Text(LocalizedStringKey("Forgot password?"))
                             .foregroundColor(Color(CustomColors.blueColor))
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
                     }
                     .background(Color.clear)
                     .padding(.top,5)
@@ -151,7 +153,9 @@ struct LoginView: View {
                     },
                     isFormValid: isFormValid,
                     isLoading: viewModel.isLoading // P
-                )
+                ).alert(isPresented: $showError) {
+                    AlertHelper.showAlert(title: "Login", message: errorMessage)
+                }
                 /*ActionButton(
                     
                     text: "Login",
@@ -208,9 +212,7 @@ struct LoginView: View {
                 
             }
             .padding()
-            .alert(isPresented: $showError) {
-                AlertHelper.showAlert(title: "Login", message: errorMessage)
-            } .navigationBarBackButtonHidden(true) 
+            
         }
 }
 

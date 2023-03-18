@@ -11,7 +11,7 @@ struct TradeasySwiftUIApp: App {
     let persistenceController = PersistenceController.shared
     private var initDI = InitDepedencyInjection()
 
-    @StateObject private var navigationController = NavigationController(startingView: AnyView(LoginView()))
+    @StateObject private var navigationController = NavigationController(startingView: AnyView(MainView()))
 
     var body: some Scene {
         WindowGroup {

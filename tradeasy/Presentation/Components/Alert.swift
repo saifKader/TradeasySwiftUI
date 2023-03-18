@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 class AlertHelper {
+    
+    
+    typealias MethodHandler2 = ()  -> Void
+    
     static func showAlert(title: String, message: String) -> Alert {
         return Alert(
             title: Text(title),
@@ -16,5 +20,18 @@ class AlertHelper {
             dismissButton: .default(Text("OK"))
         )
     }
+    
+    
+    static func logoutAlert(title: String, message: String,actionClosure: @escaping () -> Void) -> Alert {
+        return Alert(
+            title: Text(title),
+            primaryButton: .destructive(Text("Confirm")) {
+                actionClosure()
+                           },
+                           secondaryButton: .cancel()
+        )
+    }
+    
+    
 }
 

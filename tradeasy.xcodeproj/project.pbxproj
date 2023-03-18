@@ -10,6 +10,7 @@
 		59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A480FE29C25D77007C0CE3 /* UserDefaults.swift */; };
 		59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810129C26516007C0CE3 /* ProfileView.swift */; };
 		59A4810429C266DA007C0CE3 /* JSON_Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */; };
+		59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C0BCCC29C4FBBB006C5D6A /* MainView.swift */; };
 		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
 		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
 		59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		59A480FE29C25D77007C0CE3 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		59A4810129C26516007C0CE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Decoder.swift; sourceTree = "<group>"; };
+		59C0BCCC29C4FBBB006C5D6A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
 		59D17AD529C0E40500CD0703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
 				59A4810029C264F8007C0CE3 /* Profile */,
 				59DDC7F129C1C35800FF6DFB /* Router */,
 				59EE252629C10431000F7D55 /* Components */,
@@ -490,6 +493,7 @@
 				59D17B2029C0F0B100CD0703 /* NotificationModel.swift in Sources */,
 				59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */,
 				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
+				59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */,
 				59EE252929C10459000F7D55 /* Alert.swift in Sources */,
 				59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */,
 				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
