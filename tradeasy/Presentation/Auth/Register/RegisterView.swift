@@ -238,12 +238,12 @@ struct RegisterView: View {
                     Spacer()
                     
                     Text(LocalizedStringKey("Already have an account?"))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("black_white"))
                     
                     
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
-                        navigationController.navigate(to: LoginView())
+                        navigationController.navigate(to: MainView())
                     }) {
                         Text("Login")
                             .foregroundColor(Color(CustomColors.blueColor))
@@ -259,7 +259,7 @@ struct RegisterView: View {
             .padding()
             .alert(isPresented: $showError) {
                 AlertHelper.showAlert(title: "Register", message: errorMessage)
-            }.navigationBarBackButtonHidden(true) 
+            }.navigationBarBackButtonHidden(true)
         }
     
     }
@@ -271,6 +271,5 @@ struct RegisterView_Previews: PreviewProvider {
         RegisterView()
     }
 }
-
 
 

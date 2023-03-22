@@ -12,6 +12,24 @@
       },
       "filename" : "app_logo_48.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "color-space" : "display-p3",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0x17",
+          "green" : "0x24",
+          "red" : "0x6A"
+        }
+      },
+      "idiom" : "universal"
     }
   ],
   "info" : {

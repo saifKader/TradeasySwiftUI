@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
-
+let userPreferences = UserPreferences()
 struct MainView: View {
+    
+   /*let   myView : AnyView = userPreferences.getUser() == nil ? AnyView(
+        LoginView()
+    
+    ) : AnyView(ProfileView())*/
+        
+    
     var body: some View {
         TabView {
             Text("Home Screen")
@@ -30,6 +37,8 @@ struct MainView: View {
                     Image(systemName: "bell")
                     Text("Notifications")
             }
+            
+            
             ProfileView()
                 .tabItem {
                     Image(systemName: "person")

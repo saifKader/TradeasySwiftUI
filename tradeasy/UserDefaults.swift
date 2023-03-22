@@ -38,4 +38,6 @@ class UserPreferences {
     func removeUser() {
          userDefaults.removeObject(forKey: "user_data")
      }
+    
+    
 }

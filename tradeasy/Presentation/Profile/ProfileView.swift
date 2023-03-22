@@ -11,15 +11,64 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var navigationController: NavigationController
-    @Environment(\.presentationMode) var presentationMode
     let userPreferences = UserPreferences()
     @State var showError = false
+    @State var navigateToLoggin = false
+    @State var showLogin = false
     
     var body: some View {
         ZStack{
             if userPreferences.getUser() == nil {
-                LoginView()
-                
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Image(systemName: "person.crop.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 120, height: 120)
+                                    .foregroundColor(Color.secondary)
+                                    .padding(.top, 10)
+                                
+                            }
+                            Spacer()
+                        }
+                        
+                        
+                        Spacer()
+                    }
+                    .background(Color("card_color"))
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    .padding()
+                    
+                    Button(action: {
+                        withAnimation {
+                            navigationController.navigateToLoggin = true
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.backward.circle.fill")
+                                .foregroundColor(.white)
+                            
+                            Text("Login")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .background(Color("app_color"))
+                        .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 4)
+                    }
+                    .fullScreenCover(isPresented: $navigationController.navigateToLoggin, content: {
+                        LoginView()
+                    })
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                    
+                }
             } else {
                 ScrollView {
                     VStack {
@@ -67,24 +116,16 @@ struct ProfileView: View {
                         Spacer()
                     }
                     
-                    .background(Color.white)
+                    .background(Color("card_color"))
                     .cornerRadius(10)
                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
                     .padding()
                     
                     Button(action: {
                         //showError = true
-                        
-                        navigationController.navigate(to: LoginView())
-                        DispatchQueue.main.async {userPreferences.removeUser()}
-                    })/*.alert(isPresented: $showError) {
-                       AlertHelper.logoutAlert(title: "Logout", message: "Are you sure you want to logout?") {
-                       navigationController.navigate(to: LoginView())
-                       DispatchQueue.main.async {userPreferences.removeUser()}
-                       }
-                       }*/
-                    
-                    {
+                        userPreferences.removeUser()
+                        DispatchQueue.main.async{navigationController.navigate(to: MainView())}
+                    }) {
                         HStack {
                             Image(systemName: "arrow.backward.circle.fill")
                                 .foregroundColor(.white)
@@ -102,9 +143,13 @@ struct ProfileView: View {
                         .padding(.bottom)
                     
                 }
-                .background(Color.white.edgesIgnoringSafeArea(.all))
-                .navigationBarHidden(true)
             }
         }
     }}
-        
+
+
+struct Profile_View: PreviewProvider {
+    static var previews: some View {
+        ProfileView()
+    }
+}
