@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol IUserDataSource{
-    
+protocol IUserDataSource {
+    func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws
+    func resetPassword(_ resetPasswordReq: ResetPasswordReq) async throws
+    func verifyOtp(_ verifyOtpReq: VerifyOtpReq) async throws
 }

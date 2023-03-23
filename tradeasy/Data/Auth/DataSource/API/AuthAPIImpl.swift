@@ -18,12 +18,7 @@ struct AuthAPIImpl: IAuthDataSource {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let requestBody = LoginReq(
-            username: _loginReq.username,
-            password: _loginReq.password
-        )
-        
-        let jsonBody = try JSONEncoder().encode(requestBody)
+        let jsonBody = try JSONEncoder().encode(_loginReq)
         request.httpBody = jsonBody
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse
@@ -55,15 +50,7 @@ struct AuthAPIImpl: IAuthDataSource {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let requestBody = RegisterReq(
-            username: _registerReq.username,
-            countryCode: _registerReq.countryCode,
-            phoneNumber: _registerReq.phoneNumber,
-            email: _registerReq.email,
-            password: _registerReq.password
-        )
-        
-        let jsonBody = try JSONEncoder().encode(requestBody)
+        let jsonBody = try JSONEncoder().encode(_registerReq)
         request.httpBody = jsonBody
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse

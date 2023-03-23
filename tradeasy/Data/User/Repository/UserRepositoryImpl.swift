@@ -7,12 +7,20 @@
 
 import Foundation
 
-struct UserRepositoryImpl: IUserRepository{
-    var dataSource: IUserRepository
+
+struct UserRepositoryImpl: IUserRepository {
+    var dataSource: IUserDataSource
     
-    func forgetpassword(_forgetpasswordreq: ForgetPasswordReq){
-        let _forgetpassword = try await dataSource.forgetpassword(_forgetpasswordreq: _forgetpasswordreq)
-        return _forgetpassword
+    func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws {
+        try await dataSource.forgotPassword(forgetPasswordReq)
     }
     
+    func resetPassword(_ resetPasswordReq: ResetPasswordReq) async throws {
+        try await dataSource.resetPassword(resetPasswordReq)
+    }
+    
+    func verifyOtp(_ verifyOtpReq: VerifyOtpReq) async throws {
+        try await dataSource.verifyOtp(verifyOtpReq)
+    }
 }
+

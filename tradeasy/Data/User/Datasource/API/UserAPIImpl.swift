@@ -8,6 +8,54 @@
 import Foundation
 
 struct UserAPIImpl: IUserDataSource {
-
-
+    func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws {
+        guard let url = URL(string: "\(kbaseUrl)/forgot-password") else {
+            throw APIServiceError.badUrl
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let jsonBody = try JSONEncoder().encode(forgetPasswordReq)
+        request.httpBody = jsonBody
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+        let code = httpResponse?.statusCode ?? 0
+        if code != 200 {
+            throw errorFromResponseData(data)
+        }
+    }
+    
+    func resetPassword(_ resetPasswordReq: ResetPasswordReq) async throws {
+        guard let url = URL(string: "\(kbaseUrl)/reset-password") else {
+            throw APIServiceError.badUrl
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let jsonBody = try JSONEncoder().encode(resetPasswordReq)
+        request.httpBody = jsonBody
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+        let code = httpResponse?.statusCode ?? 0
+        if code != 200 {
+            throw errorFromResponseData(data)
+        }
+    }
+    
+    func verifyOtp(_ verifyOtpReq: VerifyOtpReq) async throws {
+        guard let url = URL(string: "\(kbaseUrl)/verify-otp") else {
+            throw APIServiceError.badUrl
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let jsonBody = try JSONEncoder().encode(verifyOtpReq)
+        request.httpBody = jsonBody
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+        let code = httpResponse?.statusCode ?? 0
+        if code != 200 {
+            throw errorFromResponseData(data)
+        }
+    }
 }

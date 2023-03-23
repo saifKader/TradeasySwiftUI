@@ -15,3 +15,10 @@ func errorFromResponseData(_ data: Data) -> APIServiceError {
     let message = (jsonData as? [String: Any])?["message"] as? String ?? "Unknown error occurred."
     return APIServiceError.statusNotOK(message: message)
 }
+
+struct ForgetPasswordResponse {
+    let success: Bool
+    let errorMessage: String?
+    let userData: Any?
+}
+

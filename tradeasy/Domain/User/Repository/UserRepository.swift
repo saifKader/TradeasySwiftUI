@@ -7,6 +7,9 @@
 
 import Foundation
 
-protocol IUserRepository{
-    func forgetpassword(_forgetpasswordreq: ForgetPasswordReq)
+protocol IUserRepository {
+    func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws -> Void
+    func resetPassword(_ resetPasswordReq: ResetPasswordReq) async throws -> Void
+    func verifyOtp(_ verifyOtpReq: VerifyOtpReq) async throws -> Void
 }
+

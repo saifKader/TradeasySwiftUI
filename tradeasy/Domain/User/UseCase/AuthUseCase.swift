@@ -5,9 +5,7 @@
 //  Created by abdelkader seif eddine on 14/3/2023.
 //
 
-enum UseCaseError: Error {
-    case networkError, decodingError, error(message: String)
-}
+
 
 protocol Register {
     func execute(_registerReq: RegisterReq) async -> Result<UserModel, UseCaseError>
