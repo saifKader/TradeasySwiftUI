@@ -210,7 +210,7 @@ struct RegisterView: View {
                             case .success(let userModel):
                                 print("User logged in successfully: \(userModel)")
                                 userPreferences.setUser(user: userModel)
-                                navigationController.navigate(to: ProfileView())
+                                navigationController.navigate(to: MainView())
                                 // TODO: Navigate to the next screen
                             case .failure(let error):
                                 if case let UseCaseError.error(message) = error {

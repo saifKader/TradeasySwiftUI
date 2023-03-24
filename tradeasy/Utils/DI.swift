@@ -12,6 +12,9 @@ class InitDepedencyInjection{
         @Provider var authDataSource = AuthAPIImpl() as IAuthDataSource
         @Provider var authRepository = AuthRepositoryImpl(dataSource: authDataSource) as IAuthRepository
         
+        @Provider var userDataSource = UserAPIImpl() as IUserDataSource
+        @Provider var userRepository = UserRepositoryImpl(dataSource: userDataSource) as IUserRepository
+        
         
         
     }

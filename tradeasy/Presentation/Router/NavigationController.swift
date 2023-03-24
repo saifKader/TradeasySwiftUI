@@ -25,4 +25,13 @@ class NavigationController: ObservableObject {
     func navigateToLogin() {
         navigate(to: LoginView())
     }
+    
+    func popToRoot() {
+        if viewStack.isEmpty {
+            return
+        }
+        
+        viewStack.removeAll()
+        currentView = AnyView(LoginView())
+    }
 }

@@ -44,12 +44,8 @@ struct MainView: View {
                     Image(systemName: "person")
                     Text("Profile")
             }
-        }
+        }.accentColor(Color("app_color"))
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+

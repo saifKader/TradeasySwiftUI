@@ -109,21 +109,17 @@ struct LoginView: View {
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                     .padding(.top, 10)
+                 
                     HStack{
                         Spacer()
-                        Button(action: {
-                            //navigationController.navigate(to: ForgetPasswordView())
-                            
-                        }) {
-                            Text(LocalizedStringKey("Forgot password?"))
+                        NavigationLink(destination: ForgetPasswordView()) {
+                            Text("Forgot password?")
                                 .foregroundColor(Color(CustomColors.blueColor))
                                 .fontWeight(.medium)
                                 .font(.system(size: 15))
                         }
-                        .background(Color.clear)
-                        .padding(.top,5)
-                        
                     }
+                    
                     
                     
                     ActionButton(
@@ -214,7 +210,7 @@ struct LoginView: View {
                     leading: Button(action: {
                         navigationController.navigateToLoggin = false
                     }) {
-                        Image(systemName: "xmark.circle")
+                        Image(systemName: "xmark")
                             .foregroundColor(Color("black_white"))
                     }
                 )

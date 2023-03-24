@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		598431E629C8C03E001A6C40 /* FPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431E529C8C03E001A6C40 /* FPView.swift */; };
-		598431E829C8C0D0001A6C40 /* Step1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431E729C8C0D0001A6C40 /* Step1.swift */; };
-		598431EA29C8C0E2001A6C40 /* Step2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431E929C8C0E2001A6C40 /* Step2.swift */; };
-		598431EC29C8C0F2001A6C40 /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431EB29C8C0F2001A6C40 /* NewPasswordView.swift */; };
 		598431F129CB9C5B001A6C40 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F029CB9C5B001A6C40 /* UserRepositoryImpl.swift */; };
 		598431F429CB9C7E001A6C40 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F329CB9C7E001A6C40 /* UserDataSource.swift */; };
 		598431F729CB9CBA001A6C40 /* UserAPIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F629CB9CBA001A6C40 /* UserAPIImpl.swift */; };
@@ -21,6 +18,10 @@
 		5984320129CBC6BA001A6C40 /* VerifyOtpReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984320029CBC6BA001A6C40 /* VerifyOtpReq.swift */; };
 		5984320329CBCC67001A6C40 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984320229CBCC67001A6C40 /* UserUseCase.swift */; };
 		5984320629CBCEB9001A6C40 /* UseCaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984320529CBCEB9001A6C40 /* UseCaseError.swift */; };
+		5984320A29CBD180001A6C40 /* ForgetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984320929CBD180001A6C40 /* ForgetPasswordViewModel.swift */; };
+		5984320C29CCA352001A6C40 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984320B29CCA352001A6C40 /* OTPVerificationView.swift */; };
+		5984320E29CCA388001A6C40 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984320D29CCA387001A6C40 /* ResetPasswordView.swift */; };
+		5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984321229CDCE24001A6C40 /* FocusedTextField.swift */; };
 		59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A480FE29C25D77007C0CE3 /* UserDefaults.swift */; };
 		59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810129C26516007C0CE3 /* ProfileView.swift */; };
 		59A4810429C266DA007C0CE3 /* JSON_Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */; };
@@ -63,9 +64,6 @@
 /* Begin PBXFileReference section */
 		30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
 		598431E529C8C03E001A6C40 /* FPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPView.swift; sourceTree = "<group>"; };
-		598431E729C8C0D0001A6C40 /* Step1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1.swift; sourceTree = "<group>"; };
-		598431E929C8C0E2001A6C40 /* Step2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step2.swift; sourceTree = "<group>"; };
-		598431EB29C8C0F2001A6C40 /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
 		598431F029CB9C5B001A6C40 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		598431F329CB9C7E001A6C40 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		598431F629CB9CBA001A6C40 /* UserAPIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIImpl.swift; sourceTree = "<group>"; };
@@ -76,6 +74,10 @@
 		5984320029CBC6BA001A6C40 /* VerifyOtpReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOtpReq.swift; sourceTree = "<group>"; };
 		5984320229CBCC67001A6C40 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		5984320529CBCEB9001A6C40 /* UseCaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseError.swift; sourceTree = "<group>"; };
+		5984320929CBD180001A6C40 /* ForgetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewModel.swift; sourceTree = "<group>"; };
+		5984320B29CCA352001A6C40 /* OTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
+		5984320D29CCA387001A6C40 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		5984321229CDCE24001A6C40 /* FocusedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedTextField.swift; sourceTree = "<group>"; };
 		59A480FE29C25D77007C0CE3 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		59A4810129C26516007C0CE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Decoder.swift; sourceTree = "<group>"; };
@@ -133,9 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				598431E529C8C03E001A6C40 /* FPView.swift */,
-				598431E729C8C0D0001A6C40 /* Step1.swift */,
-				598431E929C8C0E2001A6C40 /* Step2.swift */,
-				598431EB29C8C0F2001A6C40 /* NewPasswordView.swift */,
+				5984320929CBD180001A6C40 /* ForgetPasswordViewModel.swift */,
+				5984320B29CCA352001A6C40 /* OTPVerificationView.swift */,
+				5984320D29CCA387001A6C40 /* ResetPasswordView.swift */,
 			);
 			path = ForgetPassword;
 			sourceTree = "<group>";
@@ -191,6 +193,14 @@
 				5984320529CBCEB9001A6C40 /* UseCaseError.swift */,
 			);
 			path = UseCaseError;
+			sourceTree = "<group>";
+		};
+		5984321129CDCDF9001A6C40 /* OTP textfield */ = {
+			isa = PBXGroup;
+			children = (
+				5984321229CDCE24001A6C40 /* FocusedTextField.swift */,
+			);
+			path = "OTP textfield";
 			sourceTree = "<group>";
 		};
 		59A4810029C264F8007C0CE3 /* Profile */ = {
@@ -426,6 +436,7 @@
 		59EE252629C10431000F7D55 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5984321129CDCDF9001A6C40 /* OTP textfield */,
 				59EE252829C10459000F7D55 /* Alert.swift */,
 				59EE253629C138C6000F7D55 /* ActionButton.swift */,
 				59EE253829C1505E000F7D55 /* Colors.swift */,
@@ -603,12 +614,13 @@
 				59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */,
 				59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */,
 				598431F729CB9CBA001A6C40 /* UserAPIImpl.swift in Sources */,
+				5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */,
+				5984320A29CBD180001A6C40 /* ForgetPasswordViewModel.swift in Sources */,
 				59D17AFA29C0ED7500CD0703 /* AuthDataSource.swift in Sources */,
 				59D17AFF29C0EDE700CD0703 /* RegisterReq.swift in Sources */,
 				59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */,
 				59D17B2629C0F10700CD0703 /* RegisterViewModel.swift in Sources */,
 				59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */,
-				598431EA29C8C0E2001A6C40 /* Step2.swift in Sources */,
 				598431FF29CBC6A8001A6C40 /* ResetPasswordReq.swift in Sources */,
 				59EE253729C138C7000F7D55 /* ActionButton.swift in Sources */,
 				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
@@ -618,9 +630,9 @@
 				598431FD29CB9F35001A6C40 /* UserRepository.swift in Sources */,
 				598431F929CB9CD4001A6C40 /* ForgetPasswordReq.swift in Sources */,
 				59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */,
+				5984320E29CCA388001A6C40 /* ResetPasswordView.swift in Sources */,
 				59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */,
 				59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */,
-				598431EC29C8C0F2001A6C40 /* NewPasswordView.swift in Sources */,
 				59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */,
 				598431E629C8C03E001A6C40 /* FPView.swift in Sources */,
 				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
@@ -628,9 +640,9 @@
 				598431F129CB9C5B001A6C40 /* UserRepositoryImpl.swift in Sources */,
 				59A4810429C266DA007C0CE3 /* JSON_Decoder.swift in Sources */,
 				59D17AF629C0ED1600CD0703 /* AuthRepositoryImpl.swift in Sources */,
-				598431E829C8C0D0001A6C40 /* Step1.swift in Sources */,
 				59EE252D29C10EE1000F7D55 /* Animations.swift in Sources */,
 				59D17B1429C0EF9B00CD0703 /* UserModel.swift in Sources */,
+				5984320C29CCA352001A6C40 /* OTPVerificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

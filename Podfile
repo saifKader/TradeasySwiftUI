@@ -8,5 +8,6 @@ target 'tradeasy' do
   # Pods for tradeasy
 pod 'Alamofire'
 pod 'CountryPickerView'
-
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'OTPField', '~> 1.1.3'
 end

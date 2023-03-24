@@ -10,3 +10,4 @@ import Foundation
 enum UseCaseError: Error {
     case networkError, decodingError, error(message: String)
 }
+

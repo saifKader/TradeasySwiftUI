@@ -9,7 +9,7 @@ import Foundation
 
 struct UserAPIImpl: IUserDataSource {
     func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws {
-        guard let url = URL(string: "\(kbaseUrl)/forgot-password") else {
+        guard let url = URL(string: "\(kbaseUrl)\(kforgetpassword)") else {
             throw APIServiceError.badUrl
         }
         var request = URLRequest(url: url)
@@ -26,7 +26,7 @@ struct UserAPIImpl: IUserDataSource {
     }
     
     func resetPassword(_ resetPasswordReq: ResetPasswordReq) async throws {
-        guard let url = URL(string: "\(kbaseUrl)/reset-password") else {
+        guard let url = URL(string: "\(kbaseUrl)\(kresetpassword)") else {
             throw APIServiceError.badUrl
         }
         var request = URLRequest(url: url)
@@ -43,7 +43,7 @@ struct UserAPIImpl: IUserDataSource {
     }
     
     func verifyOtp(_ verifyOtpReq: VerifyOtpReq) async throws {
-        guard let url = URL(string: "\(kbaseUrl)/verify-otp") else {
+        guard let url = URL(string: "\(kbaseUrl)\(kverifyotp)") else {
             throw APIServiceError.badUrl
         }
         var request = URLRequest(url: url)
