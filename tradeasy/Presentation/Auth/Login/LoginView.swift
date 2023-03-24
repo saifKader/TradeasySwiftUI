@@ -22,6 +22,9 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State var showError = false
     @EnvironmentObject var navigationController: NavigationController
+    
+    @State var showSheet: Bool = false
+    
     let userPreferences = UserPreferences()
     @Environment(\.managedObjectContext) private var viewContext
     private func getStrokeBorder(isInvalid: Bool) -> some View {
@@ -182,13 +185,13 @@ struct LoginView: View {
                             
                             
                             Button(action: {
-                                navigationController.showSheet = true
+                                showSheet = true
                             }) {
                                 Text(LocalizedStringKey("Join us"))
                                     .foregroundColor(Color(CustomColors.blueColor))
                             }
                             .background(Color.clear)
-                            .sheet(isPresented: $navigationController.showSheet) {
+                            .sheet(isPresented: $showSheet) {
                                 RegisterView()
                             }
                             
@@ -214,7 +217,8 @@ struct LoginView: View {
                             .foregroundColor(Color("black_white"))
                     }
                 )
-            }}
+            }
+        }
     }
 }
 

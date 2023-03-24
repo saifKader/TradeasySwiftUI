@@ -9,7 +9,6 @@ import SwiftUI
 
 class NavigationController: ObservableObject {
     @Published var currentView: AnyView
-    @Published var showSheet: Bool = false
     private var viewStack: [AnyView] = []
     @Published var navigateToLoggin: Bool = false
     init(startingView: AnyView) {
@@ -20,18 +19,20 @@ class NavigationController: ObservableObject {
         viewStack.append(currentView)
         currentView = AnyView(destination)
     }
-    
-    
-    func navigateToLogin() {
-        navigate(to: LoginView())
-    }
-    
-    func popToRoot() {
-        if viewStack.isEmpty {
-            return
-        }
-        
+    func removeAllViews() {
         viewStack.removeAll()
-        currentView = AnyView(LoginView())
+    }
+    //navigation stacked
+    func pop() {
+        if viewStack.count > 0 {
+            currentView = viewStack.removeLast()
+        }
+    }
+    //remove all navigationlink and go to the first view
+    func popToRoot() {
+        if viewStack.count > 0 {
+            currentView = viewStack.first!
+            viewStack.removeAll()
+        }
     }
 }

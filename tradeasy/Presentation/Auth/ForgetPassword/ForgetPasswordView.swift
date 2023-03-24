@@ -26,6 +26,8 @@ struct ForgetPasswordView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack(spacing: 10) {
+                    Text("Reset Password")
+                                       .font(.largeTitle)
                     Text("Please enter your email to receive an OTP code to reset your password")
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
@@ -76,8 +78,6 @@ struct ForgetPasswordView: View {
                     label: { EmptyView() }
                 )
             )
-            .navigationBarTitleDisplayMode(.automatic)
-            .navigationTitle(Text("Reset Password"))
         }
     }
 }

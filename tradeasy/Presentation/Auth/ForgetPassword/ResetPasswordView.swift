@@ -22,47 +22,65 @@ struct ResetPasswordView: View {
     }
 
     var body: some View {
-        VStack {
-            SecureField("New password", text: $password)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-            SecureField("Confirm password", text: $confirmPassword)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+        NavigationView {
+            VStack(spacing: 30) {
+                Text("Reset Password")
+                    .font(.largeTitle)
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("New Password")
+                        .font(.headline)
+                    SecureField("Enter new password", text: $password)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+                }
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Confirm Password")
+                        .font(.headline)
+                    SecureField("Confirm new password", text: $confirmPassword)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
+                }
 
-            ActionButton(
-                text: "Confirm",
-                action: {
-                    guard password == confirmPassword else {
-                        errorMessage = "Passwords do not match"
-                        showError = true
-                        return
-                    }
-                    viewModel.resetPassword(email: email, otp: otp, password: password) { result in
-                        switch result {
-                        case .success:
-                            viewModel.state = .success
-                            navigationController.navigate(to: LoginView())
-                        case .failure(let error):
-                            if case let UseCaseError.error(message) = error {
-                                errorMessage = message
-                                showError = true
-                                print("Error resetting password: \(message)")
-                            } else {
-                                print("Error resetting password: \(error)")
+                ActionButton(
+                    text: "Confirm",
+                    action: {
+                        guard password == confirmPassword else {
+                            errorMessage = "Passwords do not match"
+                            showError = true
+                            return
+                        }
+                        viewModel.resetPassword(email: email, otp: otp, password: password) { result in
+                            switch result {
+                            case .success:
+                                viewModel.state = .success
+                                DispatchQueue.main.async {
+                                    navigationController.navigate(to: MainView())
+                                }
+                            case .failure(let error):
+                                if case let UseCaseError.error(message) = error {
+                                    errorMessage = message
+                                    showError = true
+                                    print("Error resetting password: \(message)")
+                                } else {
+                                    print("Error resetting password: \(error)")
+                                }
                             }
                         }
-                    }
-                },
-                isFormValid: isFormValid,
-                isLoading: viewModel.isLoading // P
-            )
-        }
-        .alert(isPresented: $showError) {
-            Alert(title: Text("Error"), message: Text(errorMessage))
+                    },
+                    isFormValid: isFormValid,
+                    isLoading: viewModel.isLoading
+                )
+            }
+            .padding()
+            .alert(isPresented: $showError) {
+                Alert(title: Text("Error"), message: Text(errorMessage))
+            }
         }
     }
 }
+
 struct resetpasswordview: PreviewProvider {
     static var previews: some View {
         ResetPasswordView(email: "", otp: "")

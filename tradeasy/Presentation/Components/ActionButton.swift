@@ -32,7 +32,7 @@ struct ActionButton: View {
         .background(isFormValid ? Color("app_color") : Color(CustomColors.greyColor))
         .cornerRadius(10)
         .padding(.horizontal, 20)
-        .padding(.top, 20)
+        .padding(.top, 10)
         .disabled(!isFormValid || isLoading)
     }
 
