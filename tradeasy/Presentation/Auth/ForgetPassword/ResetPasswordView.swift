@@ -16,11 +16,11 @@ struct ResetPasswordView: View {
     @EnvironmentObject var navigationController: NavigationController
     @State private var showError = false
     @State private var errorMessage = ""
-
+    
     var isFormValid: Bool {
         !password.isEmpty && !confirmPassword.isEmpty
     }
-
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 30) {
@@ -42,7 +42,7 @@ struct ResetPasswordView: View {
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                 }
-
+                
                 ActionButton(
                     text: "Confirm",
                     action: {
@@ -56,8 +56,10 @@ struct ResetPasswordView: View {
                             case .success:
                                 viewModel.state = .success
                                 DispatchQueue.main.async {
-                                    navigationController.navigate(to: MainView())
+                                    navigationController.popToRoot()
+                                    navigationController.navigateToLoggin = false
                                 }
+                                
                             case .failure(let error):
                                 if case let UseCaseError.error(message) = error {
                                     errorMessage = message

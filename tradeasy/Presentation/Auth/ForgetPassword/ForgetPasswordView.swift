@@ -13,7 +13,6 @@ struct ForgetPasswordView: View {
     @State private var email = ""
     @State private var showError = false
     @State private var errorMessage = ""
-    @EnvironmentObject var navigationController: NavigationController
     
     @State private var showVerification = false // P
     

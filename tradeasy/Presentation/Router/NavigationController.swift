@@ -35,4 +35,7 @@ class NavigationController: ObservableObject {
             viewStack.removeAll()
         }
     }
+    func navigateBack() {
+            self.navigateToLoggin = false
+        }
 }

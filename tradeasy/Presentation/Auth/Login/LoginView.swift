@@ -22,8 +22,8 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State var showError = false
     @EnvironmentObject var navigationController: NavigationController
-    
     @State var showSheet: Bool = false
+    @State var navigateToForgotPassword: Bool = false
     
     let userPreferences = UserPreferences()
     @Environment(\.managedObjectContext) private var viewContext
@@ -31,9 +31,6 @@ struct LoginView: View {
         return RoundedRectangle(cornerRadius: 10)
             .strokeBorder(isInvalid ? Color.red : Color.gray, lineWidth: isInvalid ? 3 : 1)
     }
-    
-    
-    
     
     
     var loginReq: LoginReq {
@@ -52,7 +49,6 @@ struct LoginView: View {
         NavigationView{
             ZStack{
                 VStack() {
-                    
                     HStack{
                         Spacer()
                         Image("app_logo_48")
@@ -85,53 +81,41 @@ struct LoginView: View {
                                 username = filteredValue
                             }
                         }
-                    
-                    
-                    
-                    
-                    
-                    
                     HStack {
                         if isPasswordVisible {
                             TextField(LocalizedStringKey("Password"), text: $password)
                                 .background(Color.clear)
-                            
                         } else {
                             SecureField(LocalizedStringKey("Password"), text: $password)
                                 .background(Color.clear)
                         }
-                        
                         Button(action: {
                             isPasswordVisible.toggle()
                         }) {
                             Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
                                 .foregroundColor(.secondary)
                         }
-                        
                     }
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                     .padding(.top, 10)
-                 
+                    
                     HStack{
                         Spacer()
-                        NavigationLink(destination: ForgetPasswordView()) {
-                            Text("Forgot password?")
-                                .foregroundColor(Color(CustomColors.blueColor))
-                                .fontWeight(.medium)
-                                .font(.system(size: 15))
-                        }
+                        NavigationLink(
+                            destination: ForgetPasswordView(),
+                            isActive: $navigateToForgotPassword,
+                            label: {
+                                Text("Forgot password?")
+                                    .foregroundColor(Color(CustomColors.blueColor))
+                                    .fontWeight(.medium)
+                            })
                     }
                     
-                    
-                    
                     ActionButton(
-                        
                         text: "Login",
                         action: {
                             Task {
-                                
-                                
                                 viewModel.loginUser(loginReq: loginReq) { result in
                                     switch result {
                                     case .success(let userModel):
@@ -151,28 +135,10 @@ struct LoginView: View {
                             }
                         },
                         isFormValid: isFormValid,
-                        isLoading: viewModel.isLoading // P
+                        isLoading: viewModel.isLoading
                     ).alert(isPresented: $showError) {
                         AlertHelper.showAlert(title: "Login", message: errorMessage)
                     }
-                    /*ActionButton(
-                     
-                     text: "Login",
-                     action: {
-                     Task {
-                     
-                     let coreDataManager = CoreDataManager(context: viewContext)
-                     
-                     
-                     let savedUser = userPreferences.getUser()
-                     print(savedUser?.token)
-                     
-                     }
-                     },
-                     isFormValid: isFormValid,
-                     isLoading: viewModel.isLoading // P
-                     )*/
-                    
                     VStack{
                         
                         Spacer()
@@ -194,19 +160,9 @@ struct LoginView: View {
                             .sheet(isPresented: $showSheet) {
                                 RegisterView()
                             }
-                            
-                            
-                            
-                            
                             Spacer()
                         }
                     }
-                    
-                    // Display a loading indicator if the state is 'loading'
-                    
-                    
-                    // Display an error message if the state is 'error'
-                    
                 }
                 .padding()
                 .navigationBarItems(

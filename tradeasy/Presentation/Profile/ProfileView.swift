@@ -148,8 +148,3 @@ struct ProfileView: View {
     }}
 
 
-struct Profile_View: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-    }
-}
