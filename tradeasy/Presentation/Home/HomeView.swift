@@ -13,23 +13,53 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-                    
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 15) {
-                    ForEach(viewModel.products) { product in
-                        NavigationLink(destination: ProductDetailView(product: product)) {
-                            ProductRowView(product: product)
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    // Items 1
+                    VStack(alignment: .leading) {
+                        Text("Items 1").font(.callout)
+                            .font(.title)
+                            .padding(.leading, 10)
+                            .padding(.top, 5)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 15) {
+                                ForEach(viewModel.products) { product in
+                                    NavigationLink(destination: ProductDetailView(product: product)) {
+                                        ProductRowView(product: product)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding(.horizontal, 10)
                         }
-                        .buttonStyle(PlainButtonStyle())
+                    }
+                    
+                    // Items 2
+                    VStack(alignment: .leading) {
+                        Text("Items 2").font(.callout)
+                            .font(.title)
+                            .padding(.leading, 10)
+                            .padding(.top, 5)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 15) {
+                                ForEach(viewModel.products) { product in
+                                    NavigationLink(destination: ProductDetailView(product: product)) {
+                                        ProductRowView(product: product)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding(.horizontal, 10)
+                        }
                     }
                 }
-                .padding(.horizontal, 10)
             }
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar { // <2>
-                ToolbarItem(placement: .principal) { // <3>
-
-                        Text("Home").font(.headline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Home").font(.headline)
                 }
             }
             .refreshable {
@@ -67,18 +97,12 @@ struct ProductRowView: View {
                 .lineLimit(2)
         }
         .padding()
-        .frame(width: 250)
         .background(Color(.systemBackground))
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
 
 struct ProductDetailView: View {
     let product: Products

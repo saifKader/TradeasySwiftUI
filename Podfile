@@ -8,5 +8,4 @@ target 'tradeasy' do
 pod 'Alamofire'
 pod 'CountryPickerView'
 pod 'Kingfisher'
-
 end

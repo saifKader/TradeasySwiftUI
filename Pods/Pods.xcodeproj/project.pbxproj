@@ -23,9 +23,6 @@
 		52AAFAE075BE27ECA0ADF781A9A2E351 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2C494155044697956269F6B7544867 /* Bundle.swift */; };
 		55AABB1FB38F61A3369ACC555FF3046D /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3DDBBDEFCA804517016A39F2C78BA /* Alamofire-dummy.m */; };
 		598B503A29DE7E46000187EC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 598B503929DE7E46000187EC /* Kingfisher */; };
-		598B503F29DE8CFC000187EC /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 598B503E29DE8CFC000187EC /* Introspect */; };
-		598B504129DE8CFC000187EC /* Introspect-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 598B504029DE8CFC000187EC /* Introspect-Dynamic */; };
-		598B504329DE8CFC000187EC /* Introspect-Static in Frameworks */ = {isa = PBXBuildFile; productRef = 598B504229DE8CFC000187EC /* Introspect-Static */; };
 		6814E644A4D845CB7F2417188262518C /* Images in Resources */ = {isa = PBXBuildFile; fileRef = C3D200D03289E7620CE2B918B7FBFA38 /* Images */; };
 		68FB2DCB4C77DBCAF9A6037E470F2BDE /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76257D875DF9C1880BB965DDE41632A3 /* ParameterEncoding.swift */; };
 		7483E5327027263F7E4B94A2997191C4 /* AuthenticationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F0886DD07D5319B5DC21ADFC8324D /* AuthenticationInterceptor.swift */; };
@@ -141,7 +138,7 @@
 		920624790A09310F9E506BCF1D4CC9E7 /* CountryPickerView_CountryPickerView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryPickerView_CountryPickerView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		982A2BE828E86111E6ABE640A4FD0CEC /* Pods-tradeasy.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-tradeasy.modulemap"; sourceTree = "<group>"; };
 		9BB6E6D5C9CD9B81D9D2C3A8672028D1 /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
-		9BD1ADC604060B1EB6086F4A9A40B44B /* Pods-tradeasy */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-tradeasy"; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BD1ADC604060B1EB6086F4A9A40B44B /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F36571D7516319A41DE60276FB92534 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/Session.swift; sourceTree = "<group>"; };
 		ADFD6888DD3835F9AE28F93AB679CE34 /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Result+Alamofire.swift"; sourceTree = "<group>"; };
@@ -185,11 +182,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				598B503A29DE7E46000187EC /* Kingfisher in Frameworks */,
-				598B503F29DE8CFC000187EC /* Introspect in Frameworks */,
 				7B068137A8925891446203B5D3D6A4ED /* CFNetwork.framework in Frameworks */,
-				598B504129DE8CFC000187EC /* Introspect-Dynamic in Frameworks */,
 				0F4037DBF307AC8058BD0A3D35C7E7E9 /* Foundation.framework in Frameworks */,
-				598B504329DE8CFC000187EC /* Introspect-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +364,7 @@
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
 				D58E736356D48E0A1ACAAE5F7489E22B /* CountryPickerView.framework */,
 				920624790A09310F9E506BCF1D4CC9E7 /* CountryPickerView_CountryPickerView.bundle */,
-				9BD1ADC604060B1EB6086F4A9A40B44B /* Pods-tradeasy */,
+				9BD1ADC604060B1EB6086F4A9A40B44B /* Pods_tradeasy.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -449,7 +443,7 @@
 			);
 			name = "Pods-tradeasy";
 			productName = Pods_tradeasy;
-			productReference = 9BD1ADC604060B1EB6086F4A9A40B44B /* Pods-tradeasy */;
+			productReference = 9BD1ADC604060B1EB6086F4A9A40B44B /* Pods_tradeasy.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		81AA88F2453B4A0E544BF0FB08E13D87 /* CountryPickerView */ = {
@@ -487,9 +481,6 @@
 			name = Alamofire;
 			packageProductDependencies = (
 				598B503929DE7E46000187EC /* Kingfisher */,
-				598B503E29DE8CFC000187EC /* Introspect */,
-				598B504029DE8CFC000187EC /* Introspect-Dynamic */,
-				598B504229DE8CFC000187EC /* Introspect-Static */,
 			);
 			productName = Alamofire;
 			productReference = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */;
@@ -515,7 +506,6 @@
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			packageReferences = (
 				598B503829DE7E46000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				598B503D29DE8CFC000187EC /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = D1ACF5FCC59436B14BF8157A75575540 /* Products */;
 			projectDirPath = "";
@@ -678,7 +668,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-tradeasy/Pods-tradeasy-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -897,7 +887,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-tradeasy/Pods-tradeasy-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1098,14 +1088,6 @@
 				kind = branch;
 			};
 		};
-		598B503D29DE8CFC000187EC /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1113,21 +1095,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 598B503829DE7E46000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		598B503E29DE8CFC000187EC /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 598B503D29DE8CFC000187EC /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
-		};
-		598B504029DE8CFC000187EC /* Introspect-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 598B503D29DE8CFC000187EC /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = "Introspect-Dynamic";
-		};
-		598B504229DE8CFC000187EC /* Introspect-Static */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 598B503D29DE8CFC000187EC /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = "Introspect-Static";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
