@@ -15,116 +15,112 @@ struct ProfileView: View {
     @State var showError = false
     @State var navigateToLoggin = false
     @State var showLogin = false
+    @State private var isEditProfileViewActive = false
     
     var body: some View {
-        ZStack{
-            if userPreferences.getUser() == nil {
-                ScrollView {
+        
+        
+        ScrollView {
+            VStack {
+                HStack {
+                    Spacer()
                     VStack {
-                        HStack {
-                            Spacer()
-                            VStack {
-                                Image(systemName: "person.crop.circle")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 120, height: 120)
-                                    .foregroundColor(Color.secondary)
-                                    .padding(.top, 10)
-                                
-                            }
-                            Spacer()
-                        }
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 120, height: 120)
+                            .foregroundColor(Color.secondary)
+                            .padding(.top, 30)
                         
                         
-                        Spacer()
                     }
-                    .background(Color("card_color"))
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                    .padding()
-                    
-                    Button(action: {
-                        withAnimation {
-                            navigationController.navigateToLoggin = true
-                        }
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.backward.circle.fill")
-                                .foregroundColor(.white)
-                            
-                            Text("Login")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                        }
-                        .padding()
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .background(Color("app_color"))
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 4)
-                    }
-                    .fullScreenCover(isPresented: $navigationController.navigateToLoggin, content: {
-                        LoginView()
-                    })
-                    .padding(.horizontal)
-                    .padding(.bottom)
-                    
+                    Spacer()
                 }
-            } else {
-                ScrollView {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            VStack {
-                                Image(systemName: "person.crop.circle")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 120, height: 120)
-                                    .foregroundColor(Color.secondary)
-                                    .padding(.top, 30)
-                                
-                                Text((userPreferences.getUser()?.username)!)
-                                    .font(.title)
-                                    .fontWeight(.semibold)
-                                    .padding(.bottom)
-                            }
-                            Spacer()
-                        }
-                        
-                        Divider()
-                            .padding(.horizontal)
-                        
-                        VStack(alignment: .leading, spacing: 20) {
-                            HStack(spacing: 10) {
-                                Image(systemName: "envelope.fill")
-                                    .foregroundColor(.secondary)
-                                Text((userPreferences.getUser()?.email)!)
-                                    .foregroundColor(Color.secondary)
-                            }
-                            
-                            Divider()
-                                .padding(.horizontal)
-                            
-                            HStack(spacing: 10) {
-                                Image(systemName: "phone.fill")
-                                    .foregroundColor(.secondary)
-                                Text((userPreferences.getUser()?.phoneNumber)!)
-                                    .foregroundColor(Color.secondary)
-                            }
-                        }
-                        .padding(.horizontal)
-                        
+                .padding(.horizontal, 20) // add padding to the HStack
+                
+                ActionButton(text: "editProfile", action: {
+                    isEditProfileViewActive = true
+                }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2, icon: "chevron.right")
+                .padding(.top, 20)
+                NavigationLink(destination:
+                     EditProfileView(), isActive: $isEditProfileViewActive) {
+                                                           
+                                                         }.navigationBarTitle("Profile")
+        
+    
                         Spacer()
                     }
-                    
+                    .padding() // add padding to the VStack
                     .background(Color("card_color"))
                     .cornerRadius(10)
                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                    .padding()
-                    
+                    .padding(.bottom,50)
+                    Text("My Tradeasy")
+                        .foregroundColor(Color(CustomColors.greyColor))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading,10)
+                      
+                    VStack {
+                        ProfileHstack(action: {
+                            
+                        }, image: "heart", text: "Saved")
+                        Divider()
+                        ProfileHstack(action: {
+                            
+                        }, image: "hammer", text: "Bids")
+                        Divider()
+                        ProfileHstack(action: {
+                            
+                        }, image: "clock.arrow.circlepath", text: "Recently viewed")
+                        
+                      
+
+                    }
+                    .padding() // add padding to the VStack
+                    .background(Color("card_color"))
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    .padding(.bottom,10)
+                    Text("Content & Display")
+                        .foregroundColor(Color(CustomColors.greyColor))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading,10)
+                    VStack {
+                        ProfileHstack(action: {
+                            
+                        }, image: "bell", text: "Push notifications")
+                      
+                        
+                        
+                      
+
+                    }
+                    .padding() // add padding to the VStack
+                    .background(Color("card_color"))
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    .padding(.bottom,10)
+
+
+            
+                    Text("Support & Privacy")
+                        .foregroundColor(Color(CustomColors.greyColor))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading,10)
+                    VStack {
+                        ProfileHstack(action: {
+                            
+                        }, image: "exclamationmark.triangle", text: "Report a problem")
+                    }
+                    .padding() // add padding to the VStack
+                    .background(Color("card_color"))
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+                    .padding(.bottom,50)
                     Button(action: {
                         //showError = true
                         userPreferences.removeUser()
-                        DispatchQueue.main.async{navigationController.navigate(to: MainView())}
+                        DispatchQueue.main.async{navigationController.navigate(to: LoginView())}
                     }) {
                         HStack {
                             Image(systemName: "arrow.backward.circle.fill")
@@ -142,9 +138,50 @@ struct ProfileView: View {
                     }.padding(.horizontal)
                         .padding(.bottom)
                     
+                }.onAppear {
+                    
+                    // Perform your action here
+                    if userPreferences.getUser() == nil
+                    {
+                        showLogin = true
+                        navigationController.navigate(to: LoginView())
+                    }
+                        
+                 
+                
                 }
             }
+    }
+
+
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView().environmentObject(Item())
+    }
+}
+struct ProfileHstack: View {
+    var action: () -> Void
+    var image: String
+    var text: String
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: image) // convert the string to an Image
+                    .foregroundColor(Color(CustomColors.greyColor))
+                                   .font(.headline)
+                
+                Text(text)
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.headline)
+                      .foregroundColor(Color(CustomColors.greyColor))
+            }
         }
-    }}
-
-
+    }
+}

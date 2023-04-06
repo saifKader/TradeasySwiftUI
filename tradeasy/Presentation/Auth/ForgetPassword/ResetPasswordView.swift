@@ -43,7 +43,7 @@ struct ResetPasswordView: View {
                         .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                 }
                 
-                ActionButton(
+                AuthButton(
                     text: "Confirm",
                     action: {
                         guard password == confirmPassword else {
@@ -71,7 +71,7 @@ struct ResetPasswordView: View {
                             }
                         }
                     },
-                    isFormValid: isFormValid,
+                    isEnabled: isFormValid,
                     isLoading: viewModel.isLoading
                 )
             }

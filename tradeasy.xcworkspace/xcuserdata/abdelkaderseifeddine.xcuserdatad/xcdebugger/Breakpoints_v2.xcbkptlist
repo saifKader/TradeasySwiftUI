@@ -3,4 +3,54 @@
    uuid = "C8739B94-E14A-4D76-98D7-312EFB294B4E"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6488E0A-F451-4CE8-9CD5-1CC0E8A11B64"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tradeasy/Data/User/Datasource/API/UserAPIImpl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "updateUsername(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F6488E0A-F451-4CE8-9CD5-1CC0E8A11B64 - 44fe0f3aa3b61d99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tradeasy.UserAPIImpl.updateUsername(Swift.String) async throws -&gt; tradeasy.UserModel"
+                  moduleName = "tradeasy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abdelkaderseifeddine/Documents/GitHub/TradeasySwiftUI/tradeasy/Data/User/Datasource/API/UserAPIImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "F6488E0A-F451-4CE8-9CD5-1CC0E8A11B64 - 9e083d5757eb55cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for tradeasy.UserAPIImpl.updateUsername(Swift.String) async throws -&gt; tradeasy.UserModel"
+                  moduleName = "tradeasy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abdelkaderseifeddine/Documents/GitHub/TradeasySwiftUI/tradeasy/Data/User/Datasource/API/UserAPIImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "200">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

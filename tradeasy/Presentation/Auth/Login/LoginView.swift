@@ -55,7 +55,7 @@ struct LoginView: View {
                             .resizable()
                         
                             .frame(width: 130, height: 130)
-                            .padding(.top,50)
+                            
                         Spacer()
                     }
                     Text(LocalizedStringKey("Tradeasy"))
@@ -99,7 +99,6 @@ struct LoginView: View {
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                     .padding(.top, 10)
-                    
                     HStack{
                         Spacer()
                         NavigationLink(
@@ -112,7 +111,7 @@ struct LoginView: View {
                             })
                     }
                     
-                    ActionButton(
+                    AuthButton(
                         text: "Login",
                         action: {
                             Task {
@@ -120,8 +119,12 @@ struct LoginView: View {
                                     switch result {
                                     case .success(let userModel):
                                         print("User logged in successfully: \(userModel)")
-                                        userPreferences.setUser(user: userModel)
-                                        navigationController.navigate(to: MainView())
+                                        DispatchQueue.main.async {
+                                            userPreferences.setUser(user: userModel)
+                                            print(userPreferences.getUser() == nil)
+                                            navigationController.popToRoot()
+                                        }
+                                      
                                     case .failure(let error):
                                         if case let UseCaseError.error(message) = error {
                                             errorMessage = message
@@ -134,7 +137,7 @@ struct LoginView: View {
                                 }
                             }
                         },
-                        isFormValid: isFormValid,
+                        isEnabled: isFormValid,
                         isLoading: viewModel.isLoading
                     ).alert(isPresented: $showError) {
                         AlertHelper.showAlert(title: "Login", message: errorMessage)
@@ -167,7 +170,7 @@ struct LoginView: View {
                 .padding()
                 .navigationBarItems(
                     leading: Button(action: {
-                        navigationController.navigateToLoggin = false
+                        navigationController.popToRoot()
                     }) {
                         Image(systemName: "xmark")
                             .foregroundColor(Color("black_white"))

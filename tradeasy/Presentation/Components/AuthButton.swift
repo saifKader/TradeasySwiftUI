@@ -8,33 +8,32 @@
 import Foundation
 import SwiftUI
 
-struct ActionButton: View {
+struct AuthButton: View {
     var text: LocalizedStringKey
     var action: () -> Void
-    var height: CGFloat
-    var width: CGFloat
-    var icon: String
+    var isEnabled: Bool
+    var isLoading: Bool
 
     var body: some View {
         Button(action: action) {
             ZStack {
-                HStack {
+                if isLoading {
+                    ProgressView()
+                        .foregroundColor(.white)
+                } else {
                     Text(text)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-
-                    Image(systemName: icon)
-                        .foregroundColor(.white)
                 }
             }
-            .frame(width: width, height: height)
         }
         .padding(.vertical, 10)
         .frame(maxWidth: .infinity)
-        .background(Color("app_color"))
+        .background(isEnabled ? Color("app_color") : Color(CustomColors.greyColor))
         .cornerRadius(10)
         .padding(.horizontal, 20)
         .padding(.top, 10)
-        .frame(width: width, height: height)
+        .disabled(!isEnabled || isLoading)
     }
+
 }

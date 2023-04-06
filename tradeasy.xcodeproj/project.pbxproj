@@ -23,9 +23,20 @@
 		5984320E29CCA388001A6C40 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984320D29CCA387001A6C40 /* ResetPasswordView.swift */; };
 		5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984321229CDCE24001A6C40 /* FocusedTextField.swift */; };
 		5984321529CDFA84001A6C40 /* otptest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984321429CDFA84001A6C40 /* otptest.swift */; };
+		598B502B29DE402C000187EC /* UpdateEmailReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B502A29DE402C000187EC /* UpdateEmailReq.swift */; };
+		598B502D29DE4A06000187EC /* ChangeEmailReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B502C29DE4A06000187EC /* ChangeEmailReq.swift */; };
+		598B502F29DE5040000187EC /* OTPVerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B502E29DE5040000187EC /* OTPVerificationEmailView.swift */; };
+		598B503229DE7C66000187EC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B503129DE7C66000187EC /* HomeView.swift */; };
+		598B503729DE7E20000187EC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 598B503629DE7E20000187EC /* Kingfisher */; };
+		598B503C29DE81D0000187EC /* ItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B503B29DE81D0000187EC /* ItemsModel.swift */; };
 		59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A480FE29C25D77007C0CE3 /* UserDefaults.swift */; };
 		59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810129C26516007C0CE3 /* ProfileView.swift */; };
 		59A4810429C266DA007C0CE3 /* JSON_Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */; };
+		59B858B029DC6073006ED7F1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858AF29DC6073006ED7F1 /* EditProfileView.swift */; };
+		59B858B329DC6BC5006ED7F1 /* UpdateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B229DC6BC5006ED7F1 /* UpdateUsernameView.swift */; };
+		59B858B529DC7342006ED7F1 /* UpdatePhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B429DC7342006ED7F1 /* UpdatePhoneNumberView.swift */; };
+		59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */; };
+		59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */; };
 		59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C0BCCC29C4FBBB006C5D6A /* MainView.swift */; };
 		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
 		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
@@ -49,15 +60,21 @@
 		59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2729C0F11500CD0703 /* CCPicker.swift */; };
 		59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */; };
 		59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2B29C0F1CE00CD0703 /* DI.swift */; };
+		59D5E04429DBC0EA001BDCCC /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D5E04329DBC0EA001BDCCC /* ActionButton.swift */; };
 		59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */; };
 		59DDC7F729C1E84600FF6DFB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59DDC7F629C1E84600FF6DFB /* Localizable.strings */; };
 		59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DDC7FB29C21E2800FF6DFB /* UserDataManager.swift */; };
+		59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029429DDD4A7005F8878 /* HiddenTabView.swift */; };
+		59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029729DDD992005F8878 /* UpdatePasswordView.swift */; };
+		59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */; };
+		59E5029D29DE0EDD005F8878 /* UpdateEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029C29DE0EDD005F8878 /* UpdateEmailViewModel.swift */; };
+		59E5029F29DE105B005F8878 /* SendVerificationEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029E29DE105B005F8878 /* SendVerificationEmail.swift */; };
 		59EE252929C10459000F7D55 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252829C10459000F7D55 /* Alert.swift */; };
 		59EE252D29C10EE1000F7D55 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252C29C10EE1000F7D55 /* Animations.swift */; };
 		59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE252E29C12D9A000F7D55 /* LoginReq.swift */; };
 		59EE253329C133E9000F7D55 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253229C133E9000F7D55 /* LoginView.swift */; };
 		59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253429C13401000F7D55 /* LoginViewModel.swift */; };
-		59EE253729C138C7000F7D55 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253629C138C6000F7D55 /* ActionButton.swift */; };
+		59EE253729C138C7000F7D55 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253629C138C6000F7D55 /* AuthButton.swift */; };
 		59EE253929C1505E000F7D55 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253829C1505E000F7D55 /* Colors.swift */; };
 		B753C081E3938FFEF79E8055 /* Pods_tradeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */; };
 /* End PBXBuildFile section */
@@ -80,9 +97,19 @@
 		5984320D29CCA387001A6C40 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		5984321229CDCE24001A6C40 /* FocusedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedTextField.swift; sourceTree = "<group>"; };
 		5984321429CDFA84001A6C40 /* otptest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otptest.swift; sourceTree = "<group>"; };
+		598B502A29DE402C000187EC /* UpdateEmailReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailReq.swift; sourceTree = "<group>"; };
+		598B502C29DE4A06000187EC /* ChangeEmailReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailReq.swift; sourceTree = "<group>"; };
+		598B502E29DE5040000187EC /* OTPVerificationEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationEmailView.swift; sourceTree = "<group>"; };
+		598B503129DE7C66000187EC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		598B503B29DE81D0000187EC /* ItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsModel.swift; sourceTree = "<group>"; };
 		59A480FE29C25D77007C0CE3 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		59A4810129C26516007C0CE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Decoder.swift; sourceTree = "<group>"; };
+		59B858AF29DC6073006ED7F1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		59B858B229DC6BC5006ED7F1 /* UpdateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameView.swift; sourceTree = "<group>"; };
+		59B858B429DC7342006ED7F1 /* UpdatePhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhoneNumberView.swift; sourceTree = "<group>"; };
+		59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTextField.swift; sourceTree = "<group>"; };
+		59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameViewModel.swift; sourceTree = "<group>"; };
 		59C0BCCC29C4FBBB006C5D6A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
@@ -107,15 +134,21 @@
 		59D17B2729C0F11500CD0703 /* CCPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPicker.swift; sourceTree = "<group>"; };
 		59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		59D17B2B29C0F1CE00CD0703 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
+		59D5E04329DBC0EA001BDCCC /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation\U0010Controller.swift"; sourceTree = "<group>"; };
 		59DDC7F629C1E84600FF6DFB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		59DDC7FB29C21E2800FF6DFB /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		59E5029429DDD4A7005F8878 /* HiddenTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenTabView.swift; sourceTree = "<group>"; };
+		59E5029729DDD992005F8878 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
+		59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewModel.swift; sourceTree = "<group>"; };
+		59E5029C29DE0EDD005F8878 /* UpdateEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailViewModel.swift; sourceTree = "<group>"; };
+		59E5029E29DE105B005F8878 /* SendVerificationEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendVerificationEmail.swift; sourceTree = "<group>"; };
 		59EE252829C10459000F7D55 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		59EE252C29C10EE1000F7D55 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		59EE252E29C12D9A000F7D55 /* LoginReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReq.swift; sourceTree = "<group>"; };
 		59EE253229C133E9000F7D55 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		59EE253429C13401000F7D55 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		59EE253629C138C6000F7D55 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		59EE253629C138C6000F7D55 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		59EE253829C1505E000F7D55 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.release.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				598B503729DE7E20000187EC /* Kingfisher in Frameworks */,
 				B753C081E3938FFEF79E8055 /* Pods_tradeasy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +220,8 @@
 				598431F829CB9CD4001A6C40 /* ForgetPasswordReq.swift */,
 				598431FE29CBC6A8001A6C40 /* ResetPasswordReq.swift */,
 				5984320029CBC6BA001A6C40 /* VerifyOtpReq.swift */,
+				598B502A29DE402C000187EC /* UpdateEmailReq.swift */,
+				598B502C29DE4A06000187EC /* ChangeEmailReq.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -206,12 +242,43 @@
 			path = "OTP textfield";
 			sourceTree = "<group>";
 		};
+		598B503029DE7C53000187EC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				598B503129DE7C66000187EC /* HomeView.swift */,
+				598B503B29DE81D0000187EC /* ItemsModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		59A4810029C264F8007C0CE3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				59E5029B29DE0EC1005F8878 /* UpdateEmail */,
+				59B858AE29DC6061006ED7F1 /* EditProfile */,
 				59A4810129C26516007C0CE3 /* ProfileView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		59B858AE29DC6061006ED7F1 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				59E5029629DDD947005F8878 /* UpdatePassword */,
+				59B858B429DC7342006ED7F1 /* UpdatePhoneNumberView.swift */,
+				59B858B129DC6B89006ED7F1 /* UpdateUsername */,
+				59B858AF29DC6073006ED7F1 /* EditProfileView.swift */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		59B858B129DC6B89006ED7F1 /* UpdateUsername */ = {
+			isa = PBXGroup;
+			children = (
+				59B858B229DC6BC5006ED7F1 /* UpdateUsernameView.swift */,
+				59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */,
+			);
+			path = UpdateUsername;
 			sourceTree = "<group>";
 		};
 		59D17AC729C0E40500CD0703 = {
@@ -409,6 +476,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				598B503029DE7C53000187EC /* Home */,
 				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
 				59A4810029C264F8007C0CE3 /* Profile */,
 				59DDC7F129C1C35800FF6DFB /* Router */,
@@ -436,13 +504,35 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		59E5029629DDD947005F8878 /* UpdatePassword */ = {
+			isa = PBXGroup;
+			children = (
+				59E5029729DDD992005F8878 /* UpdatePasswordView.swift */,
+				59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */,
+			);
+			path = UpdatePassword;
+			sourceTree = "<group>";
+		};
+		59E5029B29DE0EC1005F8878 /* UpdateEmail */ = {
+			isa = PBXGroup;
+			children = (
+				59E5029C29DE0EDD005F8878 /* UpdateEmailViewModel.swift */,
+				59E5029E29DE105B005F8878 /* SendVerificationEmail.swift */,
+				598B502E29DE5040000187EC /* OTPVerificationEmailView.swift */,
+			);
+			path = UpdateEmail;
+			sourceTree = "<group>";
+		};
 		59EE252629C10431000F7D55 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				5984321129CDCDF9001A6C40 /* OTP textfield */,
 				59EE252829C10459000F7D55 /* Alert.swift */,
-				59EE253629C138C6000F7D55 /* ActionButton.swift */,
+				59EE253629C138C6000F7D55 /* AuthButton.swift */,
 				59EE253829C1505E000F7D55 /* Colors.swift */,
+				59D5E04329DBC0EA001BDCCC /* ActionButton.swift */,
+				59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */,
+				59E5029429DDD4A7005F8878 /* HiddenTabView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -501,6 +591,9 @@
 			dependencies = (
 			);
 			name = tradeasy;
+			packageProductDependencies = (
+				598B503629DE7E20000187EC /* Kingfisher */,
+			);
 			productName = tradeasy;
 			productReference = 59D17AD029C0E40500CD0703 /* tradeasy.app */;
 			productType = "com.apple.product-type.application";
@@ -529,6 +622,9 @@
 				Base,
 			);
 			mainGroup = 59D17AC729C0E40500CD0703;
+			packageReferences = (
+				598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 59D17AD129C0E40500CD0703 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -600,16 +696,22 @@
 			files = (
 				59D17B1829C0F00000CD0703 /* AuthUseCase.swift in Sources */,
 				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
+				59E5029D29DE0EDD005F8878 /* UpdateEmailViewModel.swift in Sources */,
+				59B858B529DC7342006ED7F1 /* UpdatePhoneNumberView.swift in Sources */,
 				59D17AEF29C0E5AF00CD0703 /* Constants.swift in Sources */,
 				59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */,
 				59D17B2029C0F0B100CD0703 /* NotificationModel.swift in Sources */,
 				59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */,
+				59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */,
 				5984320129CBC6BA001A6C40 /* VerifyOtpReq.swift in Sources */,
 				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
 				59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */,
 				59EE252929C10459000F7D55 /* Alert.swift in Sources */,
+				598B503229DE7C66000187EC /* HomeView.swift in Sources */,
 				5984320329CBCC67001A6C40 /* UserUseCase.swift in Sources */,
+				598B502B29DE402C000187EC /* UpdateEmailReq.swift in Sources */,
 				5984321529CDFA84001A6C40 /* otptest.swift in Sources */,
+				598B503C29DE81D0000187EC /* ItemsModel.swift in Sources */,
 				59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */,
 				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
 				59EE253929C1505E000F7D55 /* Colors.swift in Sources */,
@@ -617,6 +719,8 @@
 				598431FB29CB9D37001A6C40 /* ErrorFromResponseData.swift in Sources */,
 				59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */,
 				59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */,
+				59E5029F29DE105B005F8878 /* SendVerificationEmail.swift in Sources */,
+				59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */,
 				598431F729CB9CBA001A6C40 /* UserAPIImpl.swift in Sources */,
 				5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */,
 				5984320A29CBD180001A6C40 /* ForgetPasswordViewModel.swift in Sources */,
@@ -626,18 +730,25 @@
 				59D17B2629C0F10700CD0703 /* RegisterViewModel.swift in Sources */,
 				59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */,
 				598431FF29CBC6A8001A6C40 /* ResetPasswordReq.swift in Sources */,
-				59EE253729C138C7000F7D55 /* ActionButton.swift in Sources */,
+				59B858B029DC6073006ED7F1 /* EditProfileView.swift in Sources */,
+				59EE253729C138C7000F7D55 /* AuthButton.swift in Sources */,
 				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
 				598431F429CB9C7E001A6C40 /* UserDataSource.swift in Sources */,
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
 				598431FD29CB9F35001A6C40 /* UserRepository.swift in Sources */,
+				598B502D29DE4A06000187EC /* ChangeEmailReq.swift in Sources */,
 				598431F929CB9CD4001A6C40 /* ForgetPasswordReq.swift in Sources */,
 				59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */,
+				59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */,
 				5984320E29CCA388001A6C40 /* ResetPasswordView.swift in Sources */,
+				598B502F29DE5040000187EC /* OTPVerificationEmailView.swift in Sources */,
 				59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */,
 				59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */,
 				59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */,
+				59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */,
+				59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */,
+				59B858B329DC6BC5006ED7F1 /* UpdateUsernameView.swift in Sources */,
 				598431E629C8C03E001A6C40 /* ForgetPasswordView.swift in Sources */,
 				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
 				5984320629CBCEB9001A6C40 /* UseCaseError.swift in Sources */,
@@ -647,6 +758,7 @@
 				59EE252D29C10EE1000F7D55 /* Animations.swift in Sources */,
 				59D17B1429C0EF9B00CD0703 /* UserModel.swift in Sources */,
 				5984320C29CCA352001A6C40 /* OTPVerificationView.swift in Sources */,
+				59D5E04429DBC0EA001BDCCC /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,6 +961,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		598B503629DE7E20000187EC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		59D17ADE29C0E40600CD0703 /* tradeasy.xcdatamodeld */ = {

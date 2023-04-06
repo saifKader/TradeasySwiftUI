@@ -19,6 +19,11 @@ class NavigationController: ObservableObject {
         viewStack.append(currentView)
         currentView = AnyView(destination)
     }
+    func navigateWithArgs<ViewType: View, Args>(to destination: @escaping (Args) -> ViewType, args: Args) {
+        viewStack.append(currentView)
+        currentView = AnyView(destination(args))
+    }
+
     func removeAllViews() {
         viewStack.removeAll()
     }
@@ -35,7 +40,5 @@ class NavigationController: ObservableObject {
             viewStack.removeAll()
         }
     }
-    func navigateBack() {
-            self.navigateToLoggin = false
-        }
+
 }

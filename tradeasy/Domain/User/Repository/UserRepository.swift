@@ -11,5 +11,9 @@ protocol IUserRepository {
     func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws -> Void
     func resetPassword(_ resetPasswordReq: ResetPasswordReq) async throws -> Void
     func verifyOtp(_ verifyOtpReq: VerifyOtpReq) async throws -> Void
+    func updateUsername(_ username: String) async throws -> UserModel
+    func updatePassword( _ currentPassword: String,_ newPassword: String) async throws -> UserModel
+    func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws -> Void
+    func changeEmail(_ changeEmailReq: ChangeEmailReq) async throws -> UserModel
 }
 

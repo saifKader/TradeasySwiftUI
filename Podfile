@@ -7,4 +7,6 @@ target 'tradeasy' do
   # Pods for tradeasy
 pod 'Alamofire'
 pod 'CountryPickerView'
+pod 'Kingfisher'
+
 end

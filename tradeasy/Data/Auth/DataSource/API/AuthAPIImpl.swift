@@ -24,7 +24,7 @@ struct AuthAPIImpl: IAuthDataSource {
         let httpResponse = response as? HTTPURLResponse
         let code = httpResponse?.statusCode ?? 0
         if code != 201 {
-            
+         
             throw errorFromResponseData(data)
         }
         let jsonData = try JSONSerialization.jsonObject(with: data) as? [String: Any] ?? [:]

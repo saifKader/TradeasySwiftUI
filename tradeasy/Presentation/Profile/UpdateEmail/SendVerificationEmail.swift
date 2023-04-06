@@ -8,14 +8,15 @@
 import SwiftUI
 
 
-struct ForgetPasswordView: View {
-    @StateObject var viewModel = ForgetPasswordViewModel()
+struct SendVerificationEmail: View {
+    @StateObject var viewModel = UpdateEmailViewModel()
     @State private var email = ""
     @State private var showError = false
     @State private var errorMessage = ""
+    @EnvironmentObject var navigationController: NavigationController
     
-    @State private var showVerification = false // P
-    
+    @State private var showVerification = false
+    @State private var isOTPVerificationEmail = false
     var isFormValid: Bool {
         !email.trimmingCharacters(in: .whitespaces).isEmpty
     }
@@ -25,9 +26,9 @@ struct ForgetPasswordView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack(spacing: 10) {
-                    Text("Reset Password")
-                                       .font(.largeTitle)
-                    Text("Please enter your email to receive an OTP code to reset your password")
+                    Text("Update email")
+                        .font(.largeTitle)
+                    Text("Please enter your email to receive an OTP code to verify the email")
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
                     
@@ -39,9 +40,9 @@ struct ForgetPasswordView: View {
                         .disableAutocorrection(true)
                     
                     AuthButton(
-                        text: "Reset Password",
+                        text: "Send Email",
                         action: {
-                            viewModel.forgetPassword(email: email) { result in
+                            viewModel.sendVerificationEmail(email: email) { result in
                                 switch result {
                                 case .success:
                                     viewModel.state = .success
@@ -58,7 +59,7 @@ struct ForgetPasswordView: View {
                             }
                         },
                         isEnabled: isFormValid,
-                        isLoading: viewModel.isLoading // P
+                        isLoading: viewModel.isLoading
                     )
                     Spacer(minLength: 0)
                 }
@@ -72,7 +73,7 @@ struct ForgetPasswordView: View {
             }
             .background(
                 NavigationLink(
-                    destination: OTPVerificationView(email: email),
+                    destination: OTPVerificationEmailView(email: email),
                     isActive: $showVerification,
                     label: { EmptyView() }
                 )
@@ -80,4 +81,3 @@ struct ForgetPasswordView: View {
         }
     }
 }
-

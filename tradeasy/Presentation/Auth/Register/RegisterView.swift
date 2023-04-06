@@ -187,7 +187,7 @@ struct RegisterView: View {
             
             
             
-            ActionButton(
+            AuthButton(
                 
                 text: "Sign Up",
                 action: {
@@ -224,7 +224,7 @@ struct RegisterView: View {
                         }
                     }
                 },
-                isFormValid: isFormValid,
+                isEnabled: isFormValid,
                 isLoading: viewModel.isLoading
             )
             .padding(.bottom, 10)

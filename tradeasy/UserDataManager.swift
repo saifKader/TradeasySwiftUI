@@ -31,7 +31,7 @@ class CoreDataManager {
     func saveUserToCoreData(userModel: UserModel) {
         let managedObjectContext = CoreDataManager.persistentContainer.viewContext
         let userCore = UserCore(context: managedObjectContext)
-        userCore.userId = userModel.userId
+        userCore.userId = userModel._id
         userCore.username = userModel.username
         userCore.phoneNumber = userModel.phoneNumber
         userCore.email = userModel.email
