@@ -8,7 +8,7 @@
 import Foundation
 
 protocol IProductRepository {
-    func searchByName(_ name: ProdNameReq) async throws -> ProductModel
+    func searchByName(_ name: ProdNameReq) async throws -> [ProductModel]
  
 }
 

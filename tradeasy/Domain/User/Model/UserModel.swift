@@ -17,7 +17,7 @@ struct UserModel: Codable {
     let isVerified: Bool?
     let notificationToken: String?
     let notifications: [Notification]?
-    let savedProducts: [Product]?
+    let savedProducts: [ProductModel]?
     let otp: Int?
     let countryCode: String?
     var token: String?
@@ -53,7 +53,7 @@ struct UserModel: Codable {
         isVerified = try container.decodeIfPresent(Bool.self, forKey: .isVerified)
         notificationToken = try container.decodeIfPresent(String.self, forKey: .notificationToken)
         notifications = try container.decodeIfPresent([Notification].self, forKey: .notifications)
-        savedProducts = try container.decodeIfPresent([Product].self, forKey: .savedProducts)
+        savedProducts = try container.decodeIfPresent([ProductModel].self, forKey: .savedProducts)
         otp = try container.decodeIfPresent(Int.self, forKey: .otp)
         countryCode = try container.decodeIfPresent(String.self, forKey: .countryCode)
         token = try container.decodeIfPresent(String.self, forKey: .token)

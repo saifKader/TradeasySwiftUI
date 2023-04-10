@@ -19,7 +19,8 @@ struct MainView: View {
             TabView(selection: $selectedTab) {
                 
                // FirebaseRegisterView(email: "")
-                LoginView()
+                SearchView()
+                
                            .tabItem {
                                TabIcon(selected: $selectedTab, index: 0) {
                                    Label("Home", systemImage: "house")
@@ -33,7 +34,7 @@ struct MainView: View {
                                }
                            }.tag(1)
 
-                       Text("Search Screen")
+                SearchView()
                            .tabItem {
                                TabIcon(selected: $selectedTab, index: 2) {
                                    Label("Search", systemImage: "magnifyingglass")

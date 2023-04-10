@@ -47,7 +47,11 @@
 		59CEBA1D29E478420027E016 /* FirebaseRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA1C29E478420027E016 /* FirebaseRegisterViewModel.swift */; };
 		59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2029E491ED0027E016 /* ProductRepositoryImpl.swift */; };
 		59CEBA2329E4984F0027E016 /* IProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2229E4984F0027E016 /* IProductRepository.swift */; };
-		59CEBA2629E498A40027E016 /* NameReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2529E498A40027E016 /* NameReq.swift */; };
+		59CEBA2629E498A40027E016 /* ProdNameReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2529E498A40027E016 /* ProdNameReq.swift */; };
+		59CEBA2829E49BCA0027E016 /* ProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2729E49BCA0027E016 /* ProductAPI.swift */; };
+		59CEBA2B29E4A0A00027E016 /* ProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2A29E4A0A00027E016 /* ProductUseCase.swift */; };
+		59CEBA2E29E4A1ED0027E016 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2D29E4A1ED0027E016 /* SearchView.swift */; };
+		59CEBA3029E4A2020027E016 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */; };
 		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
 		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
 		59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
@@ -132,7 +136,11 @@
 		59CEBA1C29E478420027E016 /* FirebaseRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRegisterViewModel.swift; sourceTree = "<group>"; };
 		59CEBA2029E491ED0027E016 /* ProductRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryImpl.swift; sourceTree = "<group>"; };
 		59CEBA2229E4984F0027E016 /* IProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IProductRepository.swift; sourceTree = "<group>"; };
-		59CEBA2529E498A40027E016 /* NameReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameReq.swift; sourceTree = "<group>"; };
+		59CEBA2529E498A40027E016 /* ProdNameReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdNameReq.swift; sourceTree = "<group>"; };
+		59CEBA2729E49BCA0027E016 /* ProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPI.swift; sourceTree = "<group>"; };
+		59CEBA2A29E4A0A00027E016 /* ProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUseCase.swift; sourceTree = "<group>"; };
+		59CEBA2D29E4A1ED0027E016 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
 		59D17AD529C0E40500CD0703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -326,6 +334,7 @@
 			children = (
 				59CEBA2429E498880027E016 /* DTO */,
 				59CEBA1F29E491C20027E016 /* Repository */,
+				59CEBA2729E49BCA0027E016 /* ProductAPI.swift */,
 			);
 			path = product;
 			sourceTree = "<group>";
@@ -342,9 +351,26 @@
 		59CEBA2429E498880027E016 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				59CEBA2529E498A40027E016 /* NameReq.swift */,
+				59CEBA2529E498A40027E016 /* ProdNameReq.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		59CEBA2929E4A0820027E016 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				59CEBA2A29E4A0A00027E016 /* ProductUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		59CEBA2C29E4A1DD0027E016 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				59CEBA2D29E4A1ED0027E016 /* SearchView.swift */,
+				59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		59D17AC729C0E40500CD0703 = {
@@ -515,6 +541,7 @@
 		59D17B1929C0F05F00CD0703 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				59CEBA2929E4A0820027E016 /* UseCase */,
 				59D17B1A29C0F07100CD0703 /* Model */,
 			);
 			path = Product;
@@ -547,6 +574,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				59CEBA2C29E4A1DD0027E016 /* Search */,
 				598B503029DE7C53000187EC /* Home */,
 				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
 				59A4810029C264F8007C0CE3 /* Profile */,
@@ -802,6 +830,7 @@
 				598431F729CB9CBA001A6C40 /* UserAPIImpl.swift in Sources */,
 				5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */,
 				5984320A29CBD180001A6C40 /* ForgetPasswordViewModel.swift in Sources */,
+				59CEBA2E29E4A1ED0027E016 /* SearchView.swift in Sources */,
 				59D17AFA29C0ED7500CD0703 /* AuthDataSource.swift in Sources */,
 				59D17AFF29C0EDE700CD0703 /* RegisterReq.swift in Sources */,
 				59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */,
@@ -816,8 +845,9 @@
 				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
 				5972D6A129E446FF00DE7F5B /* TestView.swift in Sources */,
-				59CEBA2629E498A40027E016 /* NameReq.swift in Sources */,
+				59CEBA2629E498A40027E016 /* ProdNameReq.swift in Sources */,
 				598431FD29CB9F35001A6C40 /* UserRepository.swift in Sources */,
+				59CEBA2829E49BCA0027E016 /* ProductAPI.swift in Sources */,
 				598B502D29DE4A06000187EC /* ChangeEmailReq.swift in Sources */,
 				5972D6A729E4612500DE7F5B /* FirebaseInit.swift in Sources */,
 				598431F929CB9CD4001A6C40 /* ForgetPasswordReq.swift in Sources */,
@@ -832,6 +862,7 @@
 				59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */,
 				59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */,
 				59B858B329DC6BC5006ED7F1 /* UpdateUsernameView.swift in Sources */,
+				59CEBA3029E4A2020027E016 /* SearchViewModel.swift in Sources */,
 				598431E629C8C03E001A6C40 /* ForgetPasswordView.swift in Sources */,
 				59CEBA1829E467BD0027E016 /* GoogleAuth.swift in Sources */,
 				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
@@ -843,6 +874,7 @@
 				59D17B1429C0EF9B00CD0703 /* UserModel.swift in Sources */,
 				5984320C29CCA352001A6C40 /* OTPVerificationView.swift in Sources */,
 				59D5E04429DBC0EA001BDCCC /* ActionButton.swift in Sources */,
+				59CEBA2B29E4A0A00027E016 /* ProductUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

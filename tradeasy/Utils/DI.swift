@@ -15,6 +15,10 @@ class InitDepedencyInjection{
         @Provider var userDataSource = UserAPIImpl() as IUserDataSource
         @Provider var userRepository = UserRepositoryImpl(dataSource: userDataSource) as IUserRepository
         
+        @Provider var productDataSource = ProductAPI() // Create an instance of ProductAPI
+        @Provider var productRepository = ProductRepositoryImpl(productApi: productDataSource) as IProductRepository
+
+        
         
         
     }

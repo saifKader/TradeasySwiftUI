@@ -19,5 +19,6 @@ let kupdatePassword = "user/updatePassword"
 let ksendVerificationEmail = "user/sendVerificationEmail"
 let kchangeEmail = "user/changeEmail"
 let kregisterFirebaseUser = "user/registerfirebaseuser"
+let ksearchProdByName = "product/searchbyname"
 
 

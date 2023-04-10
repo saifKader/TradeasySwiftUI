@@ -7,8 +7,11 @@
 
 import Foundation
 struct ProductRepositoryImpl: IProductRepository {
-    func searchByName(_ name: ProdNameReq) async throws -> ProductModel {
-        
+    
+    let productApi : ProductAPI
+    
+    func searchByName(_ name: ProdNameReq) async throws -> [ProductModel] {
+        try await productApi.searchProductByname(name)
     }
     
    
