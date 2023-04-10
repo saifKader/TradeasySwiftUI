@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Product: Codable {
+struct ProductModel: Codable {
+    let _id: String?
     let userId: String?
     let category: String?
     let name: String?
@@ -27,6 +28,7 @@ struct Product: Codable {
     let productId: String?
     
     enum CodingKeys: String, CodingKey {
+        case _id
         case userId
         case category
         case name
@@ -48,6 +50,7 @@ struct Product: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        _id = try container.decodeIfPresent(String.self, forKey: ._id)
         userId = try container.decodeIfPresent(String.self, forKey: .userId)
         category = try container.decodeIfPresent(String.self, forKey: .category)
         name = try container.decodeIfPresent(String.self, forKey: .name)
@@ -69,6 +72,7 @@ struct Product: Codable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(_id, forKey: ._id)
         try container.encodeIfPresent(userId, forKey: .userId)
         try container.encodeIfPresent(category, forKey: .category)
         try container.encodeIfPresent(name, forKey: .name)

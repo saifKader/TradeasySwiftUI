@@ -8,6 +8,7 @@ import SwiftUI
 
 @main
 struct TradeasySwiftUIApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate	 		
     let persistenceController = PersistenceController.shared
     private var initDI = InitDepedencyInjection()
 
@@ -16,7 +17,9 @@ struct TradeasySwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(navigationController)
+                .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

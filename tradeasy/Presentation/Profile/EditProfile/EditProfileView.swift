@@ -7,54 +7,107 @@
 
 import Foundation
 import SwiftUI
+import Alamofire
 
 struct EditProfileView: View {
     
-    @EnvironmentObject var navigationController: NavigationController
-    let userPreferences = UserPreferences()
-    @State var showError = false
-    @State var navigateToLoggin = false
-    @State var showLogin = false
-    @State private var isEditUsernamePresent = false
-    @State private var isUpdatePasswordPresent = false
-    @State private var isUpdateEmailPresent = false
+        @EnvironmentObject var navigationController: NavigationController
+        let userPreferences = UserPreferences()
+        @State var showError = false
+        @State var navigateToLoggin = false
+        @State var showLogin = false
+        @State private var isEditUsernamePresent = false
+        @State private var isUpdatePasswordPresent = false
+        
+        @State private var showImagePicker = false
+        @State private var profileImage: UIImage?
     
-    var body: some View {
-        NavigationStack{
-            NavigationLink(destination:
-                            UpdateUsernameView(), isActive: $isEditUsernamePresent) {
-                
-                
+
+        
+        
+        func uploadProfilePicture(_ image: UIImage) {
+            guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+                print("Failed to convert image to data.")
+                return
             }
-            NavigationLink(destination:
-                            UpdatePasswordView(), isActive: $isUpdatePasswordPresent) {
-                
-                
+
+            let url = "http://172.20.10.3:9090/user/uploadprofilepicture"
+            let headers: HTTPHeaders = [
+                "Content-Type": "application/json",
+                "jwt": (userPreferences.getUser()?.token)!
+            ]
+            let fileName = "profilePicture.jpg"
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "profilePicture", fileName: fileName, mimeType: "image/jpeg")
+            }, to: url, method: .post, headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let json):
+                    print("Response JSON: \(json)")
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
             }
-            NavigationLink(destination:
-                            SendVerificationEmail(), isActive: $isUpdateEmailPresent){
-                
-            }
-            ScrollView {
-                
-                VStack {
-                    HStack {
-                        Spacer()
-                        VStack {
-                            Image(systemName: "person.crop.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 120, height: 120)
-                                .foregroundColor(Color.secondary)
-                                .padding(.top, 30)
-                            
-                            
-                        }
-                        Spacer()
-                    }
-                    .padding(.horizontal, 10) // add padding to the HStack
+        }
+
+        var body: some View {
+            NavigationStack{
+                NavigationLink(destination:
+                                UpdateUsernameView(), isActive: $isEditUsernamePresent) {
                     
-                    Text("Upload profile picture").foregroundColor(Color(CustomColors.blueColor)).bold().font(.system(size: 15)).padding(.top,10)
+                    
+                }
+                NavigationLink(destination:
+                                UpdatePasswordView(), isActive: $isUpdatePasswordPresent) {
+                    
+                    
+                }
+                NavigationLink(destination:
+                                SendVerificationEmail(), isActive: $navigationController.isUpdateEmailPresent){
+                    
+                }
+                ScrollView {
+                    
+                    VStack {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                if let image = profileImage {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 120, height: 120)
+                                        .clipShape(Circle())
+                                        .padding(.top, 30)
+                                } else {
+                                    Image(systemName: "person.crop.circle")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 120, height: 120)
+                                        .foregroundColor(Color.secondary)
+                                        .padding(.top, 30)
+                                }
+                            }
+                            Spacer()
+                        }
+                        .padding(.horizontal, 10) // add padding
+                        VStack {
+                                               Button(action: {
+                                                   showImagePicker = true
+                                               }) {
+                                                   Text("Upload profile picture")
+                                                       .foregroundColor(Color.blue)
+                                                       .bold()
+                                                       .font(.system(size: 15))
+                                                       .padding(.top, 10)
+                                               }
+                                           }
+                                           .sheet(isPresented: $showImagePicker) {
+                                               ImagePicker(selectedImage: $profileImage)
+                                               
+                                           }
+               
+                           
                     
                     Spacer()
                 }
@@ -73,7 +126,7 @@ struct EditProfileView: View {
                     }, image: "phone.fill", text: "Phone Number",rightText: (userPreferences.getUser()?.phoneNumber)!)
                     Divider()
                     EditProfileHstack(action: {
-                        isUpdateEmailPresent = true
+                        navigationController.isUpdateEmailPresent = true
                     }, image: "mail.fill", text: "Email",rightText: (userPreferences.getUser()?.email)!)
                     Divider()
                     EditProfileHstack(action: {

@@ -8,9 +8,13 @@
 import SwiftUI
 import CoreData
 import CountryPickerView
+import GoogleSignIn
+import FirebaseCore
+import FirebaseAuth
 
 
 struct LoginView: View {
+    @ObservedObject var firebaseRegisterViewModel = FirebaseRegisterViewModel()
     @ObservedObject var viewModel = LoginViewModel()
     @State private var selectedCountry: Country?
     @State var username = ""
@@ -142,6 +146,84 @@ struct LoginView: View {
                     ).alert(isPresented: $showError) {
                         AlertHelper.showAlert(title: "Login", message: errorMessage)
                     }
+                    GoogleSignInButtonView {
+                        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                        // Create Google Sign In configuration object.
+                        let config = GIDConfiguration(clientID: clientID)
+                        GIDSignIn.sharedInstance.configuration = config
+
+                        // Start the sign in flow!
+                        GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) { result, error in
+                            guard error == nil else {
+                                // Handle error here
+                                print("Error signing in: \(error!.localizedDescription)")
+                                return
+                            }
+
+                            guard let user = result?.user,
+                                let idToken = user.idToken?.tokenString
+                            else {
+                                // Handle error here
+                                print("Failed to get user or idToken")
+                                return
+                            }
+               
+                            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                           accessToken: user.accessToken.tokenString)
+                            Auth.auth().signIn(with: credential) { authResult, error in
+                                    guard error == nil else {
+                                        // Handle error here
+                                        print("Error signing in to Firebase: \(error!.localizedDescription)")
+                                        return
+                                    }
+                                    var email = ""
+                                    // Get the user's email address
+                                if let userEmail = authResult?.user.email {
+                                        print("User email: \(userEmail)")
+                                    email = userEmail
+                                 
+                                    
+                                    }
+                             
+                                var firebaseRegisterReq: FirebaseRegisterReq {
+                                    return FirebaseRegisterReq(
+                                        username: "", countryCode: "", phoneNumber: "", email: email
+                                    )
+                                }
+                                firebaseRegisterViewModel.firebaseRegister(firebaseRegisterReq: firebaseRegisterReq){ result in
+                                    switch result {
+                                    case .success(let userModel):
+                                        print("User logged in successfully: \(userModel)")
+                                        DispatchQueue.main.async {
+                                            userPreferences.setUser(user: userModel)
+                                            print(userPreferences.getUser() == nil)
+                                            navigationController.popToRoot()
+                                        }
+                                      
+                                    case .failure(let error):
+                                        if case let UseCaseError.error(message) = error {
+                                            errorMessage = message
+                                    
+                                            print("Error logging in: \(message)")
+                                            if message == "410" {
+                                                navigationController.navigate(to: FirebaseRegisterView(email: email))
+                                                
+                                            }
+                                            if message == "408" {
+                                                navigationController.navigate(to: MainView())
+                                         
+                                                
+                                            }
+                                        } else {
+                                            print("Error logging in: \(error)")
+                                        }
+                                    }
+                                }
+                                }
+                            // Sign in to Firebase with the Google credential
+                        }
+
+                    }
                     VStack{
                         
                         Spacer()
@@ -176,6 +258,7 @@ struct LoginView: View {
                             .foregroundColor(Color("black_white"))
                     }
                 )
+                
             }
         }
     }

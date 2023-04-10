@@ -8,4 +8,7 @@ target 'tradeasy' do
 pod 'Alamofire'
 pod 'CountryPickerView'
 pod 'Kingfisher'
+pod 'GoogleSignIn'
+pod 'FirebaseAuth'
+
 end

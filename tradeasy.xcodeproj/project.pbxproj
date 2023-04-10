@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		594F6AE029DEF45200C8F473 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594F6ADF29DEF45200C8F473 /* ImagePicker.swift */; };
+		5972D6A129E446FF00DE7F5B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972D6A029E446FF00DE7F5B /* TestView.swift */; };
+		5972D6A329E4514A00DE7F5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5972D6A229E4514A00DE7F5B /* GoogleService-Info.plist */; };
+		5972D6A729E4612500DE7F5B /* FirebaseInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972D6A629E4612500DE7F5B /* FirebaseInit.swift */; };
 		598431E629C8C03E001A6C40 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431E529C8C03E001A6C40 /* ForgetPasswordView.swift */; };
 		598431F129CB9C5B001A6C40 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F029CB9C5B001A6C40 /* UserRepositoryImpl.swift */; };
 		598431F429CB9C7E001A6C40 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F329CB9C7E001A6C40 /* UserDataSource.swift */; };
@@ -27,7 +31,6 @@
 		598B502D29DE4A06000187EC /* ChangeEmailReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B502C29DE4A06000187EC /* ChangeEmailReq.swift */; };
 		598B502F29DE5040000187EC /* OTPVerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B502E29DE5040000187EC /* OTPVerificationEmailView.swift */; };
 		598B503229DE7C66000187EC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B503129DE7C66000187EC /* HomeView.swift */; };
-		598B503729DE7E20000187EC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 598B503629DE7E20000187EC /* Kingfisher */; };
 		598B503C29DE81D0000187EC /* ItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B503B29DE81D0000187EC /* ItemsModel.swift */; };
 		59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A480FE29C25D77007C0CE3 /* UserDefaults.swift */; };
 		59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810129C26516007C0CE3 /* ProfileView.swift */; };
@@ -38,6 +41,13 @@
 		59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */; };
 		59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */; };
 		59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C0BCCC29C4FBBB006C5D6A /* MainView.swift */; };
+		59CEBA1629E466E90027E016 /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA1529E466E90027E016 /* +View.swift */; };
+		59CEBA1829E467BD0027E016 /* GoogleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA1729E467BD0027E016 /* GoogleAuth.swift */; };
+		59CEBA1B29E471220027E016 /* FirebaseRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA1A29E471220027E016 /* FirebaseRegisterView.swift */; };
+		59CEBA1D29E478420027E016 /* FirebaseRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA1C29E478420027E016 /* FirebaseRegisterViewModel.swift */; };
+		59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2029E491ED0027E016 /* ProductRepositoryImpl.swift */; };
+		59CEBA2329E4984F0027E016 /* IProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2229E4984F0027E016 /* IProductRepository.swift */; };
+		59CEBA2629E498A40027E016 /* NameReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2529E498A40027E016 /* NameReq.swift */; };
 		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
 		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
 		59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
@@ -81,6 +91,10 @@
 
 /* Begin PBXFileReference section */
 		30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
+		594F6ADF29DEF45200C8F473 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		5972D6A029E446FF00DE7F5B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		5972D6A229E4514A00DE7F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5972D6A629E4612500DE7F5B /* FirebaseInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInit.swift; sourceTree = "<group>"; };
 		598431E529C8C03E001A6C40 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		598431F029CB9C5B001A6C40 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		598431F329CB9C7E001A6C40 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
@@ -111,6 +125,14 @@
 		59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTextField.swift; sourceTree = "<group>"; };
 		59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameViewModel.swift; sourceTree = "<group>"; };
 		59C0BCCC29C4FBBB006C5D6A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		59CEBA1429E463B60027E016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		59CEBA1529E466E90027E016 /* +View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
+		59CEBA1729E467BD0027E016 /* GoogleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuth.swift; sourceTree = "<group>"; };
+		59CEBA1A29E471220027E016 /* FirebaseRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRegisterView.swift; sourceTree = "<group>"; };
+		59CEBA1C29E478420027E016 /* FirebaseRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRegisterViewModel.swift; sourceTree = "<group>"; };
+		59CEBA2029E491ED0027E016 /* ProductRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryImpl.swift; sourceTree = "<group>"; };
+		59CEBA2229E4984F0027E016 /* IProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IProductRepository.swift; sourceTree = "<group>"; };
+		59CEBA2529E498A40027E016 /* NameReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameReq.swift; sourceTree = "<group>"; };
 		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
 		59D17AD529C0E40500CD0703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,7 +181,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				598B503729DE7E20000187EC /* Kingfisher in Frameworks */,
 				B753C081E3938FFEF79E8055 /* Pods_tradeasy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +188,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5972D6A529E4610E00DE7F5B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5972D6A629E4612500DE7F5B /* FirebaseInit.swift */,
+				59CEBA1529E466E90027E016 /* +View.swift */,
+				59CEBA1729E467BD0027E016 /* GoogleAuth.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		598431E429C8C018001A6C40 /* ForgetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +285,6 @@
 		59A4810029C264F8007C0CE3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				59E5029B29DE0EC1005F8878 /* UpdateEmail */,
 				59B858AE29DC6061006ED7F1 /* EditProfile */,
 				59A4810129C26516007C0CE3 /* ProfileView.swift */,
 			);
@@ -264,6 +294,7 @@
 		59B858AE29DC6061006ED7F1 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
+				59E5029B29DE0EC1005F8878 /* UpdateEmail */,
 				59E5029629DDD947005F8878 /* UpdatePassword */,
 				59B858B429DC7342006ED7F1 /* UpdatePhoneNumberView.swift */,
 				59B858B129DC6B89006ED7F1 /* UpdateUsername */,
@@ -279,6 +310,41 @@
 				59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */,
 			);
 			path = UpdateUsername;
+			sourceTree = "<group>";
+		};
+		59CEBA1929E471090027E016 /* FirebaseRegister */ = {
+			isa = PBXGroup;
+			children = (
+				59CEBA1A29E471220027E016 /* FirebaseRegisterView.swift */,
+				59CEBA1C29E478420027E016 /* FirebaseRegisterViewModel.swift */,
+			);
+			path = FirebaseRegister;
+			sourceTree = "<group>";
+		};
+		59CEBA1E29E490B80027E016 /* product */ = {
+			isa = PBXGroup;
+			children = (
+				59CEBA2429E498880027E016 /* DTO */,
+				59CEBA1F29E491C20027E016 /* Repository */,
+			);
+			path = product;
+			sourceTree = "<group>";
+		};
+		59CEBA1F29E491C20027E016 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				59CEBA2029E491ED0027E016 /* ProductRepositoryImpl.swift */,
+				59CEBA2229E4984F0027E016 /* IProductRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		59CEBA2429E498880027E016 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				59CEBA2529E498A40027E016 /* NameReq.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		59D17AC729C0E40500CD0703 = {
@@ -302,6 +368,8 @@
 		59D17AD229C0E40500CD0703 /* tradeasy */ = {
 			isa = PBXGroup;
 			children = (
+				59CEBA1429E463B60027E016 /* Info.plist */,
+				5972D6A229E4514A00DE7F5B /* GoogleService-Info.plist */,
 				59D17AF229C0EC9B00CD0703 /* Data */,
 				59D17B0E29C0EF1600CD0703 /* Domain */,
 				59D17AED29C0E59700CD0703 /* Utils */,
@@ -330,12 +398,14 @@
 		59D17AED29C0E59700CD0703 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5972D6A529E4610E00DE7F5B /* Helper */,
 				59D17AEE29C0E5AF00CD0703 /* Constants.swift */,
 				59D17AF029C0E5CF00CD0703 /* ScreenSize.swift */,
 				59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */,
 				59D17B2B29C0F1CE00CD0703 /* DI.swift */,
 				59EE252C29C10EE1000F7D55 /* Animations.swift */,
 				59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */,
+				594F6ADF29DEF45200C8F473 /* ImagePicker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -343,6 +413,7 @@
 		59D17AF229C0EC9B00CD0703 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				59CEBA1E29E490B80027E016 /* product */,
 				598431FA29CB9D37001A6C40 /* ErrorFromResponseData.swift */,
 				598431ED29CB9C10001A6C40 /* User */,
 				59D17AF329C0ECB700CD0703 /* Auth */,
@@ -482,6 +553,7 @@
 				59DDC7F129C1C35800FF6DFB /* Router */,
 				59EE252629C10431000F7D55 /* Components */,
 				59D17B2229C0F0EA00CD0703 /* Auth */,
+				5972D6A029E446FF00DE7F5B /* TestView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -550,6 +622,7 @@
 		59EE253129C133C9000F7D55 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				59CEBA1929E471090027E016 /* FirebaseRegister */,
 				59EE253229C133E9000F7D55 /* LoginView.swift */,
 				59EE253429C13401000F7D55 /* LoginViewModel.swift */,
 			);
@@ -592,7 +665,6 @@
 			);
 			name = tradeasy;
 			packageProductDependencies = (
-				598B503629DE7E20000187EC /* Kingfisher */,
 			);
 			productName = tradeasy;
 			productReference = 59D17AD029C0E40500CD0703 /* tradeasy.app */;
@@ -624,6 +696,7 @@
 			mainGroup = 59D17AC729C0E40500CD0703;
 			packageReferences = (
 				598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5972D6A429E45A1B00DE7F5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 59D17AD129C0E40500CD0703 /* Products */;
 			projectDirPath = "";
@@ -640,6 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59D17ADB29C0E40600CD0703 /* Preview Assets.xcassets in Resources */,
+				5972D6A329E4514A00DE7F5B /* GoogleService-Info.plist in Resources */,
 				59DDC7F729C1E84600FF6DFB /* Localizable.strings in Resources */,
 				59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */,
 			);
@@ -698,10 +772,13 @@
 				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
 				59E5029D29DE0EDD005F8878 /* UpdateEmailViewModel.swift in Sources */,
 				59B858B529DC7342006ED7F1 /* UpdatePhoneNumberView.swift in Sources */,
+				59CEBA1D29E478420027E016 /* FirebaseRegisterViewModel.swift in Sources */,
 				59D17AEF29C0E5AF00CD0703 /* Constants.swift in Sources */,
+				59CEBA1629E466E90027E016 /* +View.swift in Sources */,
 				59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */,
 				59D17B2029C0F0B100CD0703 /* NotificationModel.swift in Sources */,
 				59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */,
+				59CEBA1B29E471220027E016 /* FirebaseRegisterView.swift in Sources */,
 				59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */,
 				5984320129CBC6BA001A6C40 /* VerifyOtpReq.swift in Sources */,
 				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
@@ -716,6 +793,7 @@
 				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
 				59EE253929C1505E000F7D55 /* Colors.swift in Sources */,
 				59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */,
+				59CEBA2329E4984F0027E016 /* IProductRepository.swift in Sources */,
 				598431FB29CB9D37001A6C40 /* ErrorFromResponseData.swift in Sources */,
 				59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */,
 				59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */,
@@ -735,9 +813,13 @@
 				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
 				598431F429CB9C7E001A6C40 /* UserDataSource.swift in Sources */,
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
+				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
+				5972D6A129E446FF00DE7F5B /* TestView.swift in Sources */,
+				59CEBA2629E498A40027E016 /* NameReq.swift in Sources */,
 				598431FD29CB9F35001A6C40 /* UserRepository.swift in Sources */,
 				598B502D29DE4A06000187EC /* ChangeEmailReq.swift in Sources */,
+				5972D6A729E4612500DE7F5B /* FirebaseInit.swift in Sources */,
 				598431F929CB9CD4001A6C40 /* ForgetPasswordReq.swift in Sources */,
 				59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */,
 				59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */,
@@ -745,11 +827,13 @@
 				598B502F29DE5040000187EC /* OTPVerificationEmailView.swift in Sources */,
 				59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */,
 				59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */,
+				594F6AE029DEF45200C8F473 /* ImagePicker.swift in Sources */,
 				59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */,
 				59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */,
 				59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */,
 				59B858B329DC6BC5006ED7F1 /* UpdateUsernameView.swift in Sources */,
 				598431E629C8C03E001A6C40 /* ForgetPasswordView.swift in Sources */,
+				59CEBA1829E467BD0027E016 /* GoogleAuth.swift in Sources */,
 				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
 				5984320629CBCEB9001A6C40 /* UseCaseError.swift in Sources */,
 				598431F129CB9C5B001A6C40 /* UserRepositoryImpl.swift in Sources */,
@@ -891,6 +975,7 @@
 				DEVELOPMENT_TEAM = 624S65FGM5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tradeasy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -921,6 +1006,7 @@
 				DEVELOPMENT_TEAM = 624S65FGM5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = tradeasy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -963,6 +1049,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5972D6A429E45A1B00DE7F5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -972,14 +1066,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		598B503629DE7E20000187EC /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		59D17ADE29C0E40600CD0703 /* tradeasy.xcdatamodeld */ = {

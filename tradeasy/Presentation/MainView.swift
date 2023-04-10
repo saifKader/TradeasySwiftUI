@@ -17,7 +17,9 @@ struct MainView: View {
     var body: some View {
         NavigationStack{
             TabView(selection: $selectedTab) {
-                HomeView()
+                
+               // FirebaseRegisterView(email: "")
+                LoginView()
                            .tabItem {
                                TabIcon(selected: $selectedTab, index: 0) {
                                    Label("Home", systemImage: "house")

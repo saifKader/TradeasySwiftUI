@@ -16,7 +16,7 @@ struct ProfileView: View {
     @State var navigateToLoggin = false
     @State var showLogin = false
     @State private var isEditProfileViewActive = false
-    
+    @State private var showImagePicker = false
     var body: some View {
         
         
@@ -36,7 +36,9 @@ struct ProfileView: View {
                     }
                     Spacer()
                 }
-                .padding(.horizontal, 20) // add padding to the HStack
+                .padding(.horizontal, 20)
+                Text(((userPreferences.getUser()?.username) ?? "") )
+                    .foregroundColor(Color(CustomColors.greyColor)).bold()// add padding to the HStack
                 
                 ActionButton(text: "editProfile", action: {
                     isEditProfileViewActive = true
@@ -116,27 +118,23 @@ struct ProfileView: View {
                     .background(Color("card_color"))
                     .cornerRadius(10)
                     .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                    .padding(.bottom,50)
-                    Button(action: {
-                        //showError = true
-                        userPreferences.removeUser()
-                        DispatchQueue.main.async{navigationController.navigate(to: LoginView())}
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.backward.circle.fill")
-                                .foregroundColor(.white)
-                            
-                            Text("Logout")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                        }
-                        .padding()
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .background(Color("app_color"))
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 4)
-                    }.padding(.horizontal)
-                        .padding(.bottom)
+                    .padding(.bottom,10)
+            Text("Login")
+                .foregroundColor(Color(CustomColors.greyColor))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading,10)
+            VStack {
+                ProfileHstack(action: {
+                    userPreferences.removeUser()
+                    DispatchQueue.main.async{navigationController.navigate(to: LoginView())}
+                }, image: "arrowshape.left", text: "Logout")
+            }
+            .padding() // add padding to the VStack
+            .background(Color("card_color"))
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .padding(.bottom,10)
+               
                     
                 }.onAppear {
                     

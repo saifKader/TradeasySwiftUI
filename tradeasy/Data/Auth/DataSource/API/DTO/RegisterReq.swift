@@ -15,3 +15,10 @@ struct RegisterReq: Codable {
     let email: String
     let password: String
 }
+
+struct FirebaseRegisterReq : Codable {
+    let username: String
+    let countryCode: String
+    let phoneNumber: String
+    let email: String
+}

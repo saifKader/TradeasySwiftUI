@@ -10,9 +10,6 @@ import Combine
 
 struct AuthRepositoryImpl: IAuthRepository{
     var dataSource: IAuthDataSource
-    
-    
-    
     func register(_registerReq: RegisterReq) async throws -> UserModel {
         let _register =  try await dataSource.register(_registerReq: _registerReq)
         return _register
@@ -20,6 +17,15 @@ struct AuthRepositoryImpl: IAuthRepository{
     func login(_loginReq: LoginReq) async throws -> UserModel {
         let _loginReq =  try await dataSource.login(_loginReq: _loginReq)
         return _loginReq
+    }
+    func register(_firebaseRegisterReq: FirebaseRegisterReq) async throws -> UserModel {
+        let _register =  try await dataSource.firebaseRegister(_firebaseRegisterReq: _firebaseRegisterReq)
+        return _register
+    }
+    func firebaseRegister(_firebaseRegisterReq: FirebaseRegisterReq) async throws -> UserModel {
+        let _firebaseRegister =  try await dataSource.firebaseRegister(_firebaseRegisterReq: _firebaseRegisterReq)
+        return _firebaseRegister
+        
     }
     
 }

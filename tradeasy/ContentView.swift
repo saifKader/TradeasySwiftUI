@@ -8,12 +8,9 @@
 import SwiftUI
 import CoreData
 
-
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
-
-   
 
     var body: some View {
         NavigationView {

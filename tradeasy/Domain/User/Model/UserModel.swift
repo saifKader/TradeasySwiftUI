@@ -21,6 +21,7 @@ struct UserModel: Codable {
     let otp: Int?
     let countryCode: String?
     var token: String?
+    var isFirebase: Bool?
 
     enum CodingKeys: String, CodingKey {
         case _id
@@ -36,6 +37,7 @@ struct UserModel: Codable {
         case otp
         case countryCode
         case token
+        case isFirebase
     }
     
     
@@ -55,6 +57,7 @@ struct UserModel: Codable {
         otp = try container.decodeIfPresent(Int.self, forKey: .otp)
         countryCode = try container.decodeIfPresent(String.self, forKey: .countryCode)
         token = try container.decodeIfPresent(String.self, forKey: .token)
+        isFirebase = try container.decodeIfPresent(Bool.self, forKey: .isFirebase)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -72,6 +75,7 @@ struct UserModel: Codable {
         try container.encodeIfPresent(otp, forKey: .otp)
         try container.encodeIfPresent(countryCode, forKey: .countryCode)
         try container.encodeIfPresent(token, forKey: .token)
+        try container.encodeIfPresent(isFirebase, forKey: .isFirebase)
     }
 }
 
