@@ -18,7 +18,7 @@ struct SearchView: View {
     @State var searchValue = ""
     @ObservedObject var viewModel = SearchProductViewModel()
     @State private var searchMessage = ""
-    @State private var Prompt = "Search for you next best product"
+    @State private var Prompt = "Search for you next best item"
     @EnvironmentObject var navigationController: NavigationController
     var prodNameReq: ProdNameReq {
         return ProdNameReq(name: searchValue)
@@ -48,6 +48,7 @@ struct SearchView: View {
                     List {
                         ForEach(productsList, id: \._id) { product in
                             Button(action: {
+                                
                                 navigationController.navigate(to: ProductDetailsView(product: product))
                             }) {
                                 HStack {

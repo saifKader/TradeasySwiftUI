@@ -52,7 +52,7 @@
 		59CEBA2B29E4A0A00027E016 /* ProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2A29E4A0A00027E016 /* ProductUseCase.swift */; };
 		59CEBA2E29E4A1ED0027E016 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2D29E4A1ED0027E016 /* SearchView.swift */; };
 		59CEBA3029E4A2020027E016 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */; };
-		59CEBA3329E4DEB30027E016 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA3229E4DEB30027E016 /* ProductDetailView.swift */; };
+		59CEBA3329E4DEB30027E016 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA3229E4DEB30027E016 /* ProductDetailsView.swift */; };
 		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
 		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
 		59D17AD829C0E40600CD0703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
@@ -142,7 +142,7 @@
 		59CEBA2A29E4A0A00027E016 /* ProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUseCase.swift; sourceTree = "<group>"; };
 		59CEBA2D29E4A1ED0027E016 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		59CEBA3229E4DEB30027E016 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		59CEBA3229E4DEB30027E016 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
 		59D17AD529C0E40500CD0703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 		59CEBA3129E4DEA00027E016 /* ProductDetails */ = {
 			isa = PBXGroup;
 			children = (
-				59CEBA3229E4DEB30027E016 /* ProductDetailView.swift */,
+				59CEBA3229E4DEB30027E016 /* ProductDetailsView.swift */,
 			);
 			path = ProductDetails;
 			sourceTree = "<group>";
@@ -808,7 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59D17B1829C0F00000CD0703 /* AuthUseCase.swift in Sources */,
-				59CEBA3329E4DEB30027E016 /* ProductDetailView.swift in Sources */,
+				59CEBA3329E4DEB30027E016 /* ProductDetailsView.swift in Sources */,
 				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
 				59E5029D29DE0EDD005F8878 /* UpdateEmailViewModel.swift in Sources */,
 				59B858B529DC7342006ED7F1 /* UpdatePhoneNumberView.swift in Sources */,

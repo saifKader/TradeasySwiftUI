@@ -34,8 +34,8 @@ struct ProductDetailsView: View {
                 
                 // Add the other elements under the image
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Category: \(product.category ?? "")")
-                    Text("Price: \(String(format: "%.2f", product.price!) ) TND")
+                    Text("Category: \(product.category ?? "")").padding(.bottom,5)
+                    Text("Price: \(String(format: "%.2f", product.price!) ) TND").padding(.bottom,5)
 
 
                     HStack {
@@ -68,20 +68,37 @@ struct ProductDetailsView: View {
 
 
                   
-                        Text(product.username!)
+                        Text(product.username!).padding(.bottom,5)
                    
                     }
-                    if let phoneNumber = product.userPhoneNumber {
-                        Button(action: {
-                            let telephone = "tel://"
-                            let formattedString = telephone + phoneNumber
-                            guard let url = URL(string: formattedString) else { return }
-                            UIApplication.shared.open(url)
-                        }) {
-                            Text(phoneNumber)
+               
+                    Text(product.userPhoneNumber!).padding(.bottom,30)
+                    
+                    if let forBid = product.forBid, forBid {
+                        VStack(alignment: .center, spacing: 4) {
+                            HStack(alignment: .center) {
+                                ActionButton(text: "Place bid", action: {
+                                    
+                                }, height: 20.0, width: .infinity, icon: "hammer.fill")
+                            }
+                        }.padding(.bottom,25)
+                    }
+                    VStack(alignment: .center, spacing: 4) {
+                        HStack(alignment: .center) {
+                            ActionButton(text: "Call \(product.username!)", action: {
+                                if let phoneNumber = product.userPhoneNumber {
+                                    let telephone = "tel://"
+                                    let formattedString = telephone + phoneNumber
+                                    guard let url = URL(string: formattedString) else { return }
+                                    UIApplication.shared.open(url)
+                                }
+                            }, height: 20.0, width: .infinity, icon: "phone.fill")
                         }
                     }
 
+
+                    
+                
                 }
             }
             .padding()
