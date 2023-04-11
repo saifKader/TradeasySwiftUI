@@ -25,12 +25,35 @@ struct ProfileView: View {
                 HStack {
                     Spacer()
                     VStack {
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 120, height: 120)
-                            .foregroundColor(Color.secondary)
-                            .padding(.top, 30)
+                        VStack {
+                            if let imageUrlString = userPreferences.getUser()?.profilePicture,
+                                          let imageUrl = URL(string: imageUrlString) {
+                                           AsyncImage(url: imageUrl) { phase in
+                                               switch phase {
+                                               case .success(let image):
+                                                   image
+                                                       .resizable()
+                                                       .scaledToFit()
+                                                       .clipShape(Circle())
+                                                       .aspectRatio(contentMode: .fit)
+                                                                     .frame(width: 150, height: 150)
+                                               case .failure:
+                                                   Image(systemName: "person.fill")
+                                                       .resizable()
+                                                       .scaledToFit()
+                                               default:
+                                                   ProgressView()
+                                               }
+                                           }
+                                       } else {
+                                Image(systemName: "person.crop.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 120, height: 120)
+                                    .foregroundColor(Color.secondary)
+                                    .padding(.top, 30)
+                            }
+                        }
                         
                         
                     }

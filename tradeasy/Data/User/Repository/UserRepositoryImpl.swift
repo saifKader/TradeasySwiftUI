@@ -6,13 +6,14 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 struct UserRepositoryImpl: IUserRepository {
+  
 
     
 
-    var dataSource: IUserDataSource
+    var dataSource: UserAPI
     
     func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws {
         try await dataSource.forgotPassword(forgetPasswordReq)
@@ -38,5 +39,9 @@ struct UserRepositoryImpl: IUserRepository {
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async throws -> UserModel {
         return try await dataSource.changeEmail(changeEmailReq)
     }
+    func uploadProfilePicture(_ image: UIImage) async throws -> UserModel {
+        return try await dataSource.uploadProfilePicture(image)
+    }
+    
 }
 

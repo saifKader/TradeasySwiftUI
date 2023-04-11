@@ -18,37 +18,16 @@ struct EditProfileView: View {
         @State var showLogin = false
         @State private var isEditUsernamePresent = false
         @State private var isUpdatePasswordPresent = false
-        
+    @Environment(\.presentationMode) var presentationMode
         @State private var showImagePicker = false
+        @State private var uploadedImage: UIImage?
         @State private var profileImage: UIImage?
-    
+
+    @ObservedObject var viewModel = UploadProfilePictureViewModel()
+
 
         
         
-        func uploadProfilePicture(_ image: UIImage) {
-            guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-                print("Failed to convert image to data.")
-                return
-            }
-
-            let url = "http://172.20.10.3:9090/user/uploadprofilepicture"
-            let headers: HTTPHeaders = [
-                "Content-Type": "application/json",
-                "jwt": (userPreferences.getUser()?.token)!
-            ]
-            let fileName = "profilePicture.jpg"
-            AF.upload(multipartFormData: { multipartFormData in
-                multipartFormData.append(imageData, withName: "profilePicture", fileName: fileName, mimeType: "image/jpeg")
-            }, to: url, method: .post, headers: headers)
-            .responseJSON { response in
-                switch response.result {
-                case .success(let json):
-                    print("Response JSON: \(json)")
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
-                }
-            }
-        }
 
         var body: some View {
             NavigationStack{
@@ -72,14 +51,25 @@ struct EditProfileView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                if let image = profileImage {
-                                    Image(uiImage: image)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 120, height: 120)
-                                        .clipShape(Circle())
-                                        .padding(.top, 30)
-                                } else {
+                                if let imageUrlString = userPreferences.getUser()?.profilePicture,
+                                              let imageUrl = URL(string: imageUrlString) {
+                                               AsyncImage(url: imageUrl) { phase in
+                                                   switch phase {
+                                                   case .success(let image):
+                                                       image
+                                                           .resizable()
+                                                           .scaledToFit()
+                                                           .clipShape(Circle())
+                                                           .frame(width: 150, height: 150)
+                                                   case .failure:
+                                                       Image(systemName: "person.fill")
+                                                           .resizable()
+                                                           .scaledToFit()
+                                                   default:
+                                                       ProgressView()
+                                                   }
+                                               }
+                                           } else {
                                     Image(systemName: "person.crop.circle")
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
@@ -94,6 +84,9 @@ struct EditProfileView: View {
                         VStack {
                                                Button(action: {
                                                    showImagePicker = true
+                                                   
+                                                   
+                                                   
                                                }) {
                                                    Text("Upload profile picture")
                                                        .foregroundColor(Color.blue)
@@ -103,9 +96,32 @@ struct EditProfileView: View {
                                                }
                                            }
                                            .sheet(isPresented: $showImagePicker) {
-                                               ImagePicker(selectedImage: $profileImage)
+                                               ImagePicker(selectedImage: $uploadedImage)
                                                
+                                           } .onChange(of: uploadedImage) { newImage in
+                                               if let newImage = newImage {
+                                                   viewModel.uploadProfilePicture(newImage) { result in
+                                                       switch result {
+                                                       case .success(let userModel):
+                                               
+                                                           
+                                                           print("User logged in successfully: \(userModel)")
+                                                           DispatchQueue.main.async {
+                                                               print("aaaaa\(userModel)")
+                                                               userPreferences.setUser(user: userModel)
+                                                           }
+                                                           self.presentationMode.wrappedValue.dismiss()
+                                                       case .failure(let error):
+                                                           if case let UseCaseError.error(message) = error {
+                                                               print("Error logging in: \(message)")
+                                                           } else {
+                                                               print("Error logging in: \(error)")
+                                                           }
+                                                       }
+                                                   }
+                                               }
                                            }
+                                       
                
                            
                     
@@ -119,7 +135,10 @@ struct EditProfileView: View {
                 VStack {
                     EditProfileHstack(action: {
                         isEditUsernamePresent=true
-                    }, image: "person.fill", text: "Username",rightText: (userPreferences.getUser()?.username)!)
+                    }, image: "person.fill",
+                                      
+                                      
+                                      text: "Username",rightText: (userPreferences.getUser()?.username)!)
                     Divider()
                     EditProfileHstack(action: {
                         
@@ -129,6 +148,8 @@ struct EditProfileView: View {
                         navigationController.isUpdateEmailPresent = true
                     }, image: "mail.fill", text: "Email",rightText: (userPreferences.getUser()?.email)!)
                     Divider()
+                    
+             
                     EditProfileHstack(action: {
                         isUpdatePasswordPresent = true
                         

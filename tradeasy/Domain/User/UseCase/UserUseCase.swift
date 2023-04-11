@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+import SwiftUI
 protocol ForgotPassword {
     func execute(_ forgetPasswordReq: ForgetPasswordReq) async -> Result<Void, UseCaseError>
 }
@@ -32,7 +32,12 @@ protocol SendEmailVerification {
 protocol ChangeEmail {
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async -> Result<UserModel, UseCaseError>
 }
-struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,SendEmailVerification, ChangeEmail{
+
+protocol uploadProfilePicure {
+    func uploadProfilePicture(_ image: UIImage)  async -> Result<UserModel, UseCaseError>
+}
+struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,SendEmailVerification, ChangeEmail,uploadProfilePicure{
+  
     
     var repo: IUserRepository
     
@@ -143,5 +148,23 @@ struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,Se
             return .failure(.networkError)
         }
     }
+    
+    
+    func uploadProfilePicture(_ image: UIImage) async -> Result<UserModel, UseCaseError> {
+        do {
+            let userModel = try await repo.uploadProfilePicture(image)
+            return .success(userModel)
+        } catch(let error as APIServiceError) {
+            switch(error) {
+            case .statusNotOK(let message):
+                return .failure(.error(message: message))
+            default:
+                return .failure(.networkError)
+            }
+        } catch {
+            return .failure(.networkError)
+        }
+    }
+    
 }
     

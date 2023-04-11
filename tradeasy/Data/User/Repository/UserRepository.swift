@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol IUserRepository {
     func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws -> Void
@@ -15,5 +16,6 @@ protocol IUserRepository {
     func updatePassword( _ currentPassword: String,_ newPassword: String) async throws -> UserModel
     func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws -> Void
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async throws -> UserModel
+    func uploadProfilePicture(_ image: UIImage)  async throws -> UserModel
 }
 

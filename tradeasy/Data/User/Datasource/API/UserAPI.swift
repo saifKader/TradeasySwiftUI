@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-struct UserAPIImpl: IUserDataSource {
+struct UserAPI {
     
     let userPreferences = UserPreferences()
    
@@ -200,4 +200,52 @@ struct UserAPIImpl: IUserDataSource {
                 }
         }
     }
+
+
+
+    func uploadProfilePicture(_ image: UIImage) async throws -> UserModel {
+        let url = "\(kbaseUrl)\(kUploadProfilePicture)"
+        let userPreferences = UserPreferences()
+        let headers: HTTPHeaders = [
+            "Content-Type": "multipart/form-data",
+            "jwt": (userPreferences.getUser()?.token)!
+        ]
+        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
+            AF.upload(multipartFormData: { multipartFormData in
+                if let imageData = image.jpegData(compressionQuality: 0.5) {
+                    multipartFormData.append(imageData, withName: "image", fileName: "profile.jpg", mimeType: "image/jpeg")
+                }
+            }, to: url, usingThreshold: UInt64.init(), method: .post, headers: headers)
+            .validate(statusCode: 200..<202)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let jsonResponse):
+                    if let json = jsonResponse as? [String: Any], let userData = json["data"] as? [String: Any] {
+                        do {
+                            let data = try JSONSerialization.data(withJSONObject: userData, options: [])
+                            let user = try JSONDecoder().decode(UserModel.self, from: data)
+                            continuation.resume(returning: user)
+                        } catch {
+                            continuation.resume(throwing: error)
+                        }
+                    } else {
+                        continuation.resume(throwing: NSError(domain: "InvalidResponse", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response format"]))
+                    }
+                case .failure(let error):
+                    if let data = response.data {
+                        do {
+                            throw errorFromResponseData(data)
+                        } catch {
+                            continuation.resume(throwing: error)
+                        }
+                    } else {
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        }
+    }
+
+
+
 }

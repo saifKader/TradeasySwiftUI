@@ -9,10 +9,10 @@ import Foundation
 
 class InitDepedencyInjection{
     init(){
-        @Provider var authDataSource = AuthAPIImpl() as IAuthDataSource
+        @Provider var authDataSource = AuthAPIImpl()
         @Provider var authRepository = AuthRepositoryImpl(dataSource: authDataSource) as IAuthRepository
         
-        @Provider var userDataSource = UserAPIImpl() as IUserDataSource
+        @Provider var userDataSource = UserAPI()
         @Provider var userRepository = UserRepositoryImpl(dataSource: userDataSource) as IUserRepository
         
         @Provider var productDataSource = ProductAPI() // Create an instance of ProductAPI

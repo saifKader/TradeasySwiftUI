@@ -13,8 +13,7 @@
 		5972D6A729E4612500DE7F5B /* FirebaseInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972D6A629E4612500DE7F5B /* FirebaseInit.swift */; };
 		598431E629C8C03E001A6C40 /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431E529C8C03E001A6C40 /* ForgetPasswordView.swift */; };
 		598431F129CB9C5B001A6C40 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F029CB9C5B001A6C40 /* UserRepositoryImpl.swift */; };
-		598431F429CB9C7E001A6C40 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F329CB9C7E001A6C40 /* UserDataSource.swift */; };
-		598431F729CB9CBA001A6C40 /* UserAPIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F629CB9CBA001A6C40 /* UserAPIImpl.swift */; };
+		598431F729CB9CBA001A6C40 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F629CB9CBA001A6C40 /* UserAPI.swift */; };
 		598431F929CB9CD4001A6C40 /* ForgetPasswordReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431F829CB9CD4001A6C40 /* ForgetPasswordReq.swift */; };
 		598431FB29CB9D37001A6C40 /* ErrorFromResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431FA29CB9D37001A6C40 /* ErrorFromResponseData.swift */; };
 		598431FD29CB9F35001A6C40 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598431FC29CB9F35001A6C40 /* UserRepository.swift */; };
@@ -92,6 +91,7 @@
 		59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253429C13401000F7D55 /* LoginViewModel.swift */; };
 		59EE253729C138C7000F7D55 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253629C138C6000F7D55 /* AuthButton.swift */; };
 		59EE253929C1505E000F7D55 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253829C1505E000F7D55 /* Colors.swift */; };
+		59FFAAEF29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFAAEE29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift */; };
 		B753C081E3938FFEF79E8055 /* Pods_tradeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,8 +103,7 @@
 		5972D6A629E4612500DE7F5B /* FirebaseInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInit.swift; sourceTree = "<group>"; };
 		598431E529C8C03E001A6C40 /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		598431F029CB9C5B001A6C40 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
-		598431F329CB9C7E001A6C40 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
-		598431F629CB9CBA001A6C40 /* UserAPIImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIImpl.swift; sourceTree = "<group>"; };
+		598431F629CB9CBA001A6C40 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		598431F829CB9CD4001A6C40 /* ForgetPasswordReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordReq.swift; sourceTree = "<group>"; };
 		598431FA29CB9D37001A6C40 /* ErrorFromResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorFromResponseData.swift; sourceTree = "<group>"; };
 		598431FC29CB9F35001A6C40 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -184,6 +183,7 @@
 		59EE253429C13401000F7D55 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		59EE253629C138C6000F7D55 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		59EE253829C1505E000F7D55 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		59FFAAEE29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProfilePictureViewModel.swift; sourceTree = "<group>"; };
 		928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.release.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,7 +234,6 @@
 		598431EE29CB9C23001A6C40 /* Datasource */ = {
 			isa = PBXGroup;
 			children = (
-				598431F329CB9C7E001A6C40 /* UserDataSource.swift */,
 				598431F229CB9C65001A6C40 /* API */,
 			);
 			path = Datasource;
@@ -243,6 +242,7 @@
 		598431EF29CB9C2B001A6C40 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				598431FC29CB9F35001A6C40 /* UserRepository.swift */,
 				598431F029CB9C5B001A6C40 /* UserRepositoryImpl.swift */,
 			);
 			path = Repository;
@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				598431F529CB9C89001A6C40 /* DTO */,
-				598431F629CB9CBA001A6C40 /* UserAPIImpl.swift */,
+				598431F629CB9CBA001A6C40 /* UserAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -306,6 +306,7 @@
 		59B858AE29DC6061006ED7F1 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
+				59FFAAED29E60E0300D31E73 /* UploadProfilePicture */,
 				59E5029B29DE0EC1005F8878 /* UpdateEmail */,
 				59E5029629DDD947005F8878 /* UpdatePassword */,
 				59B858B429DC7342006ED7F1 /* UpdatePhoneNumberView.swift */,
@@ -473,6 +474,7 @@
 		59D17AF429C0ECD300CD0703 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				59D17B1529C0EFE000CD0703 /* AuthRepository.swift */,
 				59D17AF529C0ED1600CD0703 /* AuthRepositoryImpl.swift */,
 			);
 			path = Repository;
@@ -519,7 +521,6 @@
 			isa = PBXGroup;
 			children = (
 				59D17B1229C0EF6800CD0703 /* Model */,
-				59D17B1129C0EF5A00CD0703 /* Repository */,
 				59D17B1029C0EF5000CD0703 /* UseCase */,
 			);
 			path = User;
@@ -533,15 +534,6 @@
 				5984320229CBCC67001A6C40 /* UserUseCase.swift */,
 			);
 			path = UseCase;
-			sourceTree = "<group>";
-		};
-		59D17B1129C0EF5A00CD0703 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				59D17B1529C0EFE000CD0703 /* AuthRepository.swift */,
-				598431FC29CB9F35001A6C40 /* UserRepository.swift */,
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		59D17B1229C0EF6800CD0703 /* Model */ = {
@@ -669,6 +661,14 @@
 				59EE253429C13401000F7D55 /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		59FFAAED29E60E0300D31E73 /* UploadProfilePicture */ = {
+			isa = PBXGroup;
+			children = (
+				59FFAAEE29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift */,
+			);
+			path = UploadProfilePicture;
 			sourceTree = "<group>";
 		};
 		6C90DBD215DCFD90EB73E916 /* Pods */ = {
@@ -827,6 +827,7 @@
 				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
 				59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */,
 				59EE252929C10459000F7D55 /* Alert.swift in Sources */,
+				59FFAAEF29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift in Sources */,
 				598B503229DE7C66000187EC /* HomeView.swift in Sources */,
 				5984320329CBCC67001A6C40 /* UserUseCase.swift in Sources */,
 				598B502B29DE402C000187EC /* UpdateEmailReq.swift in Sources */,
@@ -842,7 +843,7 @@
 				59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */,
 				59E5029F29DE105B005F8878 /* SendVerificationEmail.swift in Sources */,
 				59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */,
-				598431F729CB9CBA001A6C40 /* UserAPIImpl.swift in Sources */,
+				598431F729CB9CBA001A6C40 /* UserAPI.swift in Sources */,
 				5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */,
 				5984320A29CBD180001A6C40 /* ForgetPasswordViewModel.swift in Sources */,
 				59CEBA2E29E4A1ED0027E016 /* SearchView.swift in Sources */,
@@ -855,7 +856,6 @@
 				59B858B029DC6073006ED7F1 /* EditProfileView.swift in Sources */,
 				59EE253729C138C7000F7D55 /* AuthButton.swift in Sources */,
 				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
-				598431F429CB9C7E001A6C40 /* UserDataSource.swift in Sources */,
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
 				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
