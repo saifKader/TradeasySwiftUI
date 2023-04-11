@@ -76,16 +76,29 @@ struct SearchView: View {
                                             .font(.headline)
                                         Text(product.description!)
                                             .font(.subheadline)
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.gray)
+                                        Text("\(String(product.price!)) TND")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
                                     }
                                 }
                             }
                             .buttonStyle(PlainButtonStyle()) // Add this to remove the default button styling
                         }
+                        Button(action: {
+                            navigationController.navigate(to: AllProductsView(productsList: productsList))
+                                }) {
+                                    Text("View All")
+                                        .font(.headline)
+                                        .foregroundColor(Color(CustomColors.blueColor))
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical)
                     }
                     .listStyle(PlainListStyle())
                     .background(Color.white)
                     .edgesIgnoringSafeArea(.bottom)
+                    
 
 
                 }

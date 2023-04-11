@@ -32,6 +32,7 @@
 		598B502F29DE5040000187EC /* OTPVerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B502E29DE5040000187EC /* OTPVerificationEmailView.swift */; };
 		598B503229DE7C66000187EC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B503129DE7C66000187EC /* HomeView.swift */; };
 		598B503C29DE81D0000187EC /* ItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598B503B29DE81D0000187EC /* ItemsModel.swift */; };
+		5990F3BC29E5A44400548859 /* AllProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5990F3BB29E5A44400548859 /* AllProductsView.swift */; };
 		59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A480FE29C25D77007C0CE3 /* UserDefaults.swift */; };
 		59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810129C26516007C0CE3 /* ProfileView.swift */; };
 		59A4810429C266DA007C0CE3 /* JSON_Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */; };
@@ -121,6 +122,7 @@
 		598B502E29DE5040000187EC /* OTPVerificationEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationEmailView.swift; sourceTree = "<group>"; };
 		598B503129DE7C66000187EC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		598B503B29DE81D0000187EC /* ItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsModel.swift; sourceTree = "<group>"; };
+		5990F3BB29E5A44400548859 /* AllProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsView.swift; sourceTree = "<group>"; };
 		59A480FE29C25D77007C0CE3 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		59A4810129C26516007C0CE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		59A4810329C266DA007C0CE3 /* JSON_Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_Decoder.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				59CEBA3129E4DEA00027E016 /* ProductDetails */,
 				59CEBA2D29E4A1ED0027E016 /* SearchView.swift */,
 				59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */,
+				5990F3BB29E5A44400548859 /* AllProductsView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				5972D6A129E446FF00DE7F5B /* TestView.swift in Sources */,
 				59CEBA2629E498A40027E016 /* ProdNameReq.swift in Sources */,
 				598431FD29CB9F35001A6C40 /* UserRepository.swift in Sources */,
+				5990F3BC29E5A44400548859 /* AllProductsView.swift in Sources */,
 				59CEBA2829E49BCA0027E016 /* ProductAPI.swift in Sources */,
 				598B502D29DE4A06000187EC /* ChangeEmailReq.swift in Sources */,
 				5972D6A729E4612500DE7F5B /* FirebaseInit.swift in Sources */,
