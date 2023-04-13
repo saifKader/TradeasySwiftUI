@@ -17,6 +17,8 @@ struct ProfileView: View {
     @State var showLogin = false
     @State private var isEditProfileViewActive = false
     @State private var showImagePicker = false
+    @State private var isRefreshing = false // Add this state variable for the refresh control
+       
     var body: some View {
         
         
@@ -35,8 +37,7 @@ struct ProfileView: View {
                                                        .resizable()
                                                        .scaledToFit()
                                                        .clipShape(Circle())
-                                                       .aspectRatio(contentMode: .fit)
-                                                                     .frame(width: 150, height: 150)
+                                                       .frame(width: 150, height: 150)
                                                case .failure:
                                                    Image(systemName: "person.fill")
                                                        .resizable()
@@ -167,10 +168,15 @@ struct ProfileView: View {
                         showLogin = true
                         navigationController.navigate(to: LoginView())
                     }
-                        
-                 
-                
                 }
+                .navigationBarTitle("Profile")
+                       
+                        .refreshable {
+                            // Add the RefreshControl to the ScrollView
+                            isRefreshing = true
+                            //userPreferences.refreshUserData()
+                            isRefreshing = false
+                        }
             }
     }
 

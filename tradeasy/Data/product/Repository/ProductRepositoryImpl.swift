@@ -13,12 +13,14 @@ struct ProductRepositoryImpl: IProductRepository {
     func searchByName(_ name: ProdNameReq) async throws -> [ProductModel] {
         try await productApi.searchProductByname(name)
     }
-    
-   
-    
-
-   
-
+    func addProduct(_ addProductReq: AddProductReq) async throws -> ProductModel {
+           try await productApi.addProduct(addProductReq)
+       }
+    func getAllProducts() async throws -> [ProductModel] {
+         let products = try await productApi.getAllProducts()
+         return products
+     }
+ 
 
 }
 

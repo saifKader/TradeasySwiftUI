@@ -8,11 +8,7 @@
 
 
 import SwiftUI
-
-
-import SwiftUI
-
-import SwiftUI
+import Kingfisher
 
 struct SearchView: View {
     @State var searchValue = ""
@@ -47,23 +43,15 @@ struct SearchView: View {
                 } else {
                     List {
                         ForEach(productsList, id: \._id) { product in
-                            Button(action: {
-                                
-                                navigationController.navigate(to: ProductDetailsView(product: product))
-                            }) {
+                            NavigationLink(destination: ProductDetailsView(product: product)) {
                                 HStack {
                                     // Display the image from the URL
                                     if let imageUrl = product.image?.first,
                                        let url = URL(string: imageUrl) {
-                                        AsyncImage(url: url) { image in
-                                            image
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 100, height: 100)
-                                        } placeholder: {
-                                            ProgressView()
-                                                .frame(width: 100, height: 100)
-                                        }
+                                        KFImage(url)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 100, height: 100)
                                     } else {
                                         Rectangle()
                                             .fill(Color.white)
@@ -84,6 +72,7 @@ struct SearchView: View {
                                 }
                             }
                             .buttonStyle(PlainButtonStyle()) // Add this to remove the default button styling
+
                         }
                         Button(action: {
                             navigationController.navigate(to: AllProductsView(productsList: productsList))

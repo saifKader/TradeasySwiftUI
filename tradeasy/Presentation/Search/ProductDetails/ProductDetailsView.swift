@@ -9,7 +9,35 @@ import Foundation
 import SwiftUI
 struct ProductDetailsView: View {
     var product: ProductModel
+    @StateObject var viewModel = ProductDetailsViewModel()
+    @StateObject var userDataViewModel = GetUserDataStateViewModel()
     @EnvironmentObject var navigationController: NavigationController
+    let userPreferences = UserPreferences()
+    
+    func updateSavedProductStatus(completion: @escaping (Bool) -> Void) {
+        userDataViewModel.getUserData { result in
+            switch result {
+            case .success(let user):
+                if let savedProducts = user.savedProducts {
+                    completion(savedProducts.contains { $0._id == product._id })
+                } else {
+                    completion(false)
+                }
+            case .failure(_):
+                completion(false)
+            }
+        }
+    }
+
+    var isProductSaved: Bool {
+        print(userPreferences.getUser()?.savedProducts)
+        guard let user = userPreferences.getUser(), let savedProducts = user.savedProducts else { return false }
+        
+        return savedProducts.contains { $0._id == product._id }
+    }
+
+
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
@@ -103,17 +131,23 @@ struct ProductDetailsView: View {
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true) // Hide default back button
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        navigationController.popToRoot()
-                    }) {
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(Color.primary)
-                    }
+            Button(action: {
+                if isProductSaved {
+                    viewModel.saveProduct(productID: product._id ?? "")
+                } else {
+                    viewModel.saveProduct(productID: product._id ?? "")
                 }
+                
+                    print("ahawa")
+                    print(isProductSaved)
+                    print("ahawa2")
+            }) {
+                Image(systemName: isProductSaved ? "bookmark.fill" : "bookmark")
+                    .font(.title2)
+                    .foregroundColor(.blue)
             }
+
+           
         }
     }
     }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-let kbaseUrl = "http://192.168.0.7:9090/"
+let kbaseUrl = "http://172.20.10.3:9090/"
 
 // authentification
 let kregister = "user/register"
@@ -19,7 +19,12 @@ let kupdatePassword = "user/updatePassword"
 let ksendVerificationEmail = "user/sendVerificationEmail"
 let kchangeEmail = "user/changeEmail"
 let kregisterFirebaseUser = "user/registerfirebaseuser"
-let ksearchProdByName = "product/searchbyname"
 let kUploadProfilePicture = "user/uploadprofilepicture"
 
+
+// product
+let kAddProduct = "product/user/add"
+let ksearchProdByName = "product/searchbyname"
+let kGetAllProducts = "product/getall"
+let kAddProdToSaved = "product/addprodtosaved"
 

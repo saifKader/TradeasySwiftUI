@@ -8,13 +8,32 @@
 import Foundation
 
 enum APIServiceError: Error {
-    case badUrl, requestError, decodingError, statusNotOK(message: String)
+    case badUrl, requestError, decodingError, statusNotOK(message: String), unknownError, invalidUserToken
 }
+
+struct APIErrorResponse: Codable {
+    let message: String
+}
+
 func errorFromResponseData(_ data: Data) -> APIServiceError {
-    let jsonData = try? JSONSerialization.jsonObject(with: data, options: [])
-    let message = (jsonData as? [String: Any])?["message"] as? String ?? "Unknown error occurred."
-    return APIServiceError.statusNotOK(message: message)
+    do {
+        let errorResponse = try JSONDecoder().decode(APIErrorResponse.self, from: data)
+        return .statusNotOK(message: errorResponse.message)
+    } catch {
+        print("Failed to decode error response using Codable: \(error)")
+        
+        if let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
+           let message = (jsonData as? [String: Any])?["message"] as? String {
+            return APIServiceError.statusNotOK(message: message)
+        } else {
+            print("Failed to decode error response using JSONSerialization.")
+            //print("Raw response data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data to string.")")
+            return .unknownError
+        }
+    }
 }
+
+
 
 struct ForgetPasswordResponse {
     let success: Bool

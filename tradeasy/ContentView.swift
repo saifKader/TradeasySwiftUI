@@ -24,4 +24,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .environmentObject(NavigationController(startingView: AnyView(MainView())))
     }
+    
 }

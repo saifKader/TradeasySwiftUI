@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel: Codable {
+struct UserModel: Codable, Equatable {
     let _id: String?
     let username: String?
     let phoneNumber: String?
@@ -77,6 +77,9 @@ struct UserModel: Codable {
         try container.encodeIfPresent(token, forKey: .token)
         try container.encodeIfPresent(isFirebase, forKey: .isFirebase)
     }
+    static func ==(lhs: UserModel, rhs: UserModel) -> Bool {
+            return lhs._id == rhs._id
+        }
 }
 
 

@@ -9,6 +9,8 @@ import Foundation
 
 protocol IProductRepository {
     func searchByName(_ name: ProdNameReq) async throws -> [ProductModel]
- 
+    func addProduct(_ addProductReq: AddProductReq) async throws -> ProductModel
+    func getAllProducts() async throws -> [ProductModel]
 }
+
 

@@ -19,7 +19,7 @@ struct MainView: View {
             TabView(selection: $selectedTab) {
                 
                // FirebaseRegisterView(email: "")
-                SearchView()
+                HomeView()
                 
                            .tabItem {
                                TabIcon(selected: $selectedTab, index: 0) {
@@ -27,7 +27,7 @@ struct MainView: View {
                                }
                            }.tag(0)
 
-                       Text("Sellings Screen")
+                       AddProductView()
                            .tabItem {
                                TabIcon(selected: $selectedTab, index: 1) {
                                    Label("Sellings", systemImage: "cart.badge.plus")
