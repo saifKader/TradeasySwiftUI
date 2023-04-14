@@ -30,6 +30,7 @@ struct ProductDetailsView: View {
     }
 
     var isProductSaved: Bool {
+      
         print(userPreferences.getUser()?.savedProducts)
         guard let user = userPreferences.getUser(), let savedProducts = user.savedProducts else { return false }
         
@@ -114,12 +115,26 @@ struct ProductDetailsView: View {
                     VStack(alignment: .center, spacing: 4) {
                         HStack(alignment: .center) {
                             ActionButton(text: "Call \(product.username!)", action: {
-                                if let phoneNumber = product.userPhoneNumber {
-                                    let telephone = "tel://"
-                                    let formattedString = telephone + phoneNumber
-                                    guard let url = URL(string: formattedString) else { return }
-                                    UIApplication.shared.open(url)
+                                userDataViewModel.getUserData() { result in
+                                    switch result {
+                                    case .success(let userModel):
+                                        //print("User logged in successfully: \(userModel)")
+                                        DispatchQueue.main.async {
+                                            userPreferences.setUser(user: userModel)
+                                            print(userPreferences.getUser() == nil)
+                                            navigationController.popToRoot()
+                                        }
+                                      
+                                    case .failure(let error):
+                                        if case let UseCaseError.error(message) = error {
+                                            
+                                            print("Errordsds logging in: \(message)")
+                                        } else {
+                                            print("Error 111 in: \(error)")
+                                        }
+                                    }
                                 }
+                                
                             }, height: 20.0, width: .infinity, icon: "phone.fill")
                         }
                     }
@@ -132,15 +147,42 @@ struct ProductDetailsView: View {
             .padding()
             .navigationBarTitleDisplayMode(.inline)
             Button(action: {
+                let userDataManager = UserDataManager()
                 if isProductSaved {
                     viewModel.saveProduct(productID: product._id ?? "")
+                    userDataManager.getUserDataAndUpdatePreferences { result in
+                        switch result {
+                        case .success(let userModel):
+                            print("User logged in successfully: \(userModel)")
+                        case .failure(let error):
+                            if case let UseCaseError.error(message) = error {
+                                print("Errordsds logging in: \(message)")
+                            } else {
+                                print("Error 111 in: \(error)")
+                            }
+                        }
+                    }
                 } else {
                     viewModel.saveProduct(productID: product._id ?? "")
+                  
+
+                    userDataManager.getUserDataAndUpdatePreferences { result in
+                        switch result {
+                        case .success(let userModel):
+                            print("User logged in successfully: \(userModel)")
+                        case .failure(let error):
+                            if case let UseCaseError.error(message) = error {
+                                print("Errordsds logging in: \(message)")
+                            } else {
+                                print("Error 111 in: \(error)")
+                            }
+                        }
+                    }
                 }
                 
-                    print("ahawa")
+            
                     print(isProductSaved)
-                    print("ahawa2")
+            
             }) {
                 Image(systemName: isProductSaved ? "bookmark.fill" : "bookmark")
                     .font(.title2)

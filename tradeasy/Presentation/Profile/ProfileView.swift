@@ -18,7 +18,7 @@ struct ProfileView: View {
     @State private var isEditProfileViewActive = false
     @State private var showImagePicker = false
     @State private var isRefreshing = false // Add this state variable for the refresh control
-       
+    @State private var isSavedProductsViewActive: Bool = false
     var body: some View {
         
         
@@ -88,7 +88,7 @@ struct ProfileView: View {
                       
                     VStack {
                         ProfileHstack(action: {
-                            
+                            navigationController.navigate(to: SavedProductsView(productsList: (userPreferences.getUser()?.savedProducts)!))
                         }, image: "heart", text: "Saved")
                         Divider()
                         ProfileHstack(action: {
@@ -135,7 +135,7 @@ struct ProfileView: View {
                         .padding(.leading,10)
                     VStack {
                         ProfileHstack(action: {
-                            
+                       
                         }, image: "exclamationmark.triangle", text: "Report a problem")
                     }
                     .padding() // add padding to the VStack

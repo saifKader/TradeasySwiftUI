@@ -287,48 +287,61 @@ struct UserAPI {
                 }
         }
     }
+    struct UserResponseModel: Codable {
+        let data: UserModel
+    }
+
     func getCurrentUser() async throws -> UserModel {
-        let url = "\(kbaseUrl)user/getCurrentUser"
         let userPreferences = UserPreferences()
-        guard let token = userPreferences.getUser()?.token else {
-            throw APIServiceError.invalidUserToken
-        }
+        let url = "\(kbaseUrl)\(kGetCurrentUser)"
+           
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "jwt": token
+            "jwt": (userPreferences.getUser()?.token)!
         ]
+        print("here1")
+       
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(url, headers: headers)
+            AF.request(url,
+                       method: .get,
+                       encoding: JSONEncoding.default,
+                       headers: headers)
                 .validate(statusCode: 200..<202)
-                .responseDecodable(of: UserModel.self) { response in
+                .responseJSON { response in
+                    // Check for status code 401
+                    if response.response?.statusCode == 401 {
+                        print("here1")
+                        print(response.data!)
+                        continuation.resume(throwing: errorFromResponseData(response.data!))
+                        return
+                    }
+
                     switch response.result {
-                    case .success(let jsonResponse):
-                        if let userModel = jsonResponse as? [String: Any], let userData = userModel["data"] as? [String: Any] {
-                            do {
-                                let data = try JSONSerialization.data(withJSONObject: userData, options: [])
-                                let user = try JSONDecoder().decode(UserModel.self, from: data)
-                                continuation.resume(returning: user)
-                            } catch {
-                                continuation.resume(throwing: error)
-                            }
-                        } else {
-                            continuation.resume(throwing: NSError(domain: "InvalidResponse", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response format"]))
-                        }
-                    case .failure(let error):
-                        if let data = response.data {
-                            do {
-                                throw errorFromResponseData(data)
-                            } catch {
-                                continuation.resume(throwing: error)
-                            }
-                        } else {
+                    case .success(let data):
+                        
+                        guard let jsonData = data as? [String: Any],
+                              let userData = jsonData["data"] as? [String: Any],
+                              let token = jsonData["token"] as? String else {
+                            continuation.resume(throwing: APIServiceError.decodingError)
+                                  return
+                              }
+                        do {
+                            print("here11")
+                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                            userModel.token = token
+                            continuation.resume(returning: userModel)
+                        } catch {
+                            print("herrre11")
                             continuation.resume(throwing: error)
                         }
+                    case .failure(let error):
+                        print("herrre")
+                        continuation.resume(throwing: error)
                     }
                 }
-
         }
     }
+
 
 
 
