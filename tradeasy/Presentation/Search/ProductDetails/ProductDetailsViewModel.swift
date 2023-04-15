@@ -20,10 +20,29 @@ enum SaveState {
     case success
     case error(Error)
 }
+enum ListUnlistState {
+    case idle
+    case loading
+    case success
+    case error(Error)
+
+    var isLoading: Bool {
+        if case .loading = self {
+            return true
+        }
+        return false
+    }
+}
+
+
 
 class ProductDetailsViewModel: ObservableObject {
     @Published var state: ProductDetailsViewState = .idle
     @Published var saveState: SaveState = .idle
+    @Published var listUnlistState: ListUnlistState = .idle
+    @Published var isListingOrUnlisting: Bool = false
+    @Published var isProductListed: Bool = false
+
     var isLoading: Bool {
         if case .loading = state {
             return true
@@ -36,13 +55,15 @@ class ProductDetailsViewModel: ObservableObject {
         }
         return false
     }
-    
+    private let productUseCase: ProductUseCase
     private let userUseCase: UserUseCase
     private let userPreferences = UserPreferences()
     
     init() {
         @Inject var userRepository: IUserRepository
         self.userUseCase = UserUseCase(repo: userRepository)
+        @Inject var productRepository: IProductRepository
+        self.productUseCase = ProductUseCase(repo: productRepository)
     }
     
     func isProductSaved(productID: String, user: UserModel) -> Bool {
@@ -54,6 +75,31 @@ class ProductDetailsViewModel: ObservableObject {
             }
         }
         return false
+    }
+    func productListOrUnlist(productID: String) {
+        DispatchQueue.main.async {
+            self.isListingOrUnlisting = true
+        }
+
+        Task {
+            do {
+                let unlistProductReq = UnlistProductReq(product_id: productID)
+                let success = try await productUseCase.productListOrUnlist(unlistProductReq)
+                let userModel = try await userUseCase.getCurrentUser()
+
+                DispatchQueue.main.async {
+                    self.userPreferences.setUser(user: userModel)
+                    self.isProductListed.toggle()
+                    self.isListingOrUnlisting = false
+                }
+            } catch(let error) {
+                DispatchQueue.main.async {
+                    print("Error: \(error)") // Add a print statement to log the error
+                    self.listUnlistState = .error(error) // Set listUnlistState to error if an error occurs
+                    self.isListingOrUnlisting = false
+                }
+            }
+        }
     }
 
     func saveProduct(productID: String) {

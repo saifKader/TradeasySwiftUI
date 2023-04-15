@@ -9,7 +9,7 @@ import Foundation
 
 struct ProductModel: Codable {
     let _id: String?
-    let userId: String?
+    let user_id: String?
     let category: String?
     let name: String?
     let description: String?
@@ -29,7 +29,7 @@ struct ProductModel: Codable {
     
     enum CodingKeys: String, CodingKey {
         case _id
-        case userId
+        case user_id
         case category
         case name
         case description
@@ -51,7 +51,7 @@ struct ProductModel: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         _id = try container.decodeIfPresent(String.self, forKey: ._id)
-        userId = try container.decodeIfPresent(String.self, forKey: .userId)
+        user_id = try container.decodeIfPresent(String.self, forKey: .user_id)
         category = try container.decodeIfPresent(String.self, forKey: .category)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         description = try container.decodeIfPresent(String.self, forKey: .description)
@@ -73,7 +73,7 @@ struct ProductModel: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(_id, forKey: ._id)
-        try container.encodeIfPresent(userId, forKey: .userId)
+        try container.encodeIfPresent(user_id, forKey: .user_id)
         try container.encodeIfPresent(category, forKey: .category)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)

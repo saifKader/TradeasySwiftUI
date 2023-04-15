@@ -19,6 +19,10 @@ struct ProfileView: View {
     @State private var showImagePicker = false
     @State private var isRefreshing = false // Add this state variable for the refresh control
     @State private var isSavedProductsViewActive: Bool = false
+    
+    @State private var isRecentlyViewed: Bool = false
+    
+    let productPreferences = ProductPreferences()
     var body: some View {
         
         
@@ -87,20 +91,37 @@ struct ProfileView: View {
                         .padding(.leading,10)
                       
                     VStack {
-                        ProfileHstack(action: {
-                            navigationController.navigate(to: SavedProductsView(productsList: (userPreferences.getUser()?.savedProducts)!))
-                        }, image: "heart", text: "Saved")
+                        NavigationLink(
+                            destination: SavedProductsView(productsList: userPreferences.getUser()?.savedProducts ?? []),
+                            isActive: $isSavedProductsViewActive
+                        ) {
+                            ProfileHstack(
+                                action: {
+                                    isSavedProductsViewActive = true
+                                },
+                                image: "heart",
+                                text: "Saved"
+                            )
+                        }
+
                         Divider()
                         ProfileHstack(action: {
+                            
                             
                         }, image: "hammer", text: "Bids")
                         Divider()
-                        ProfileHstack(action: {
-                            
-                        }, image: "clock.arrow.circlepath", text: "Recently viewed")
-                        
-                      
-
+                        NavigationLink(
+                            destination: RecentlyViewedView(productsList: productPreferences.getProducts()!),
+                            isActive: $isRecentlyViewed
+                        ) {
+                            ProfileHstack(
+                                action: {
+                                    isRecentlyViewed = true
+                                },
+                                image: "clock.arrow.circlepath",
+                                text: "Recently viewed"
+                            )
+                        }
                     }
                     .padding() // add padding to the VStack
                     .background(Color("card_color"))
@@ -181,11 +202,7 @@ struct ProfileView: View {
     }
 
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView().environmentObject(Item())
-    }
-}
+
 struct ProfileHstack: View {
     var action: () -> Void
     var image: String

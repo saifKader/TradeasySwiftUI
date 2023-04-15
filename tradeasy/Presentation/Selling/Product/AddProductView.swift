@@ -14,11 +14,8 @@ struct AddProductView: View {
     @State private var errorMessage = ""
     @State private var showError = false
     @State private var showAdditionalInfoView = false
-
+    
     @Environment(\.presentationMode) var presentationMode
-    
-    
-    
     
     var isFormValid: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty &&
@@ -29,43 +26,41 @@ struct AddProductView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section(header: Text("Product Details")) {
-                    CustomTextField(placeholder: "Product Name", text: $name)
-                    CustomTextField(placeholder: "Description", text: $description)
-                    CustomTextField(placeholder: "Price", text: $price, keyboardType: .decimalPad)
-                    CustomTextField(placeholder: "Quantity", text: $quantity, keyboardType: .numberPad)
-                }.listRowSeparator(.hidden)
-                
+            VStack(spacing: 20) {
+                Text("Product Details")
+                    .font(.headline)
+                    
+                CustomTextField(placeholder: "Product Name", text: $name)
+                CustomTextField(placeholder: "Description", text: $description)
+                CustomTextField(placeholder: "Price", text: $price, keyboardType: .decimalPad)
+                CustomTextField(placeholder: "Quantity", text: $quantity, keyboardType: .numberPad)
+                Spacer()
                 NavigationLink(destination: AdditionalInfoView(viewModel: viewModel, name: $name, description: $description, price: $price, quantity: $quantity, image: $image, isShowingImagePicker: $isShowingImagePicker, category: $category, forBid: $forBid, bid_end_date: $bid_end_date), isActive: $showAdditionalInfoView) {
-                    EmptyView()
-                }.frame(width: 0, height: 0)
-                    .hidden()
-                
-                AuthButton(
-                    text: "Next",
-                    action: {
+                    Button(action: {
                         if isFormValid {
                             showAdditionalInfoView = true
                         }
-                    },
-                    isEnabled: isFormValid,
-                    isLoading: false
-                )
+                    }) {
+                        Text("Next")
+                            .foregroundColor(isFormValid ? .white : .gray)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(isFormValid ? Color("app_color") : Color.gray.opacity(0.5))
+                            .cornerRadius(10)
+                    }
+                    .padding(.horizontal)
+                }.isDetailLink(false)
+                Spacer()
             }
-            .scrollContentBackground(.hidden)
+            .padding()
+            .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Add Product", displayMode: .inline)
-            .padding(.top, 30)
             .onTapGesture {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                }
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
         }
-
     }
 }
-
-
-
 
 
 struct CustomTextField: View {

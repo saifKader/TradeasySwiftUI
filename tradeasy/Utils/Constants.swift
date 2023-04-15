@@ -6,7 +6,9 @@
 //
 
 import Foundation
-let kbaseUrl = "http://localhost:9090/"
+//let kbaseUrl = "http://localhost:9090/"
+let kbaseUrl = "http://192.168.0.5:9090/"
+
 
 // authentification
 let kregister = "user/register"
@@ -28,4 +30,5 @@ let ksearchProdByName = "product/searchbyname"
 let kGetAllProducts = "product/getall"
 let kAddProdToSaved = "product/addprodtosaved"
 let kGetCurrentUser = "user/getCurrentUser"
-
+let kGetUserProducts = "product/userproducts"
+let kUnlistProduct = "product/unlistproduct"

@@ -16,9 +16,32 @@ protocol AddProd {
 protocol GetAllProducts {
     func getAllProducts() async -> Result<[ProductModel], UseCaseError>
 }
-struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts{
+protocol GetUserProducts {
+    func getUserProducts() async -> Result<[ProductModel], UseCaseError>
+}
+protocol ProductListOrUnlistProtocol {
+    func productListOrUnlist(_ unlistProductReq: UnlistProductReq) async -> Result<Bool, UseCaseError>
+}
+
+struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts,GetUserProducts, ProductListOrUnlistProtocol{
     var repo: IProductRepository
     
+    func productListOrUnlist(_ unlistProductReq: UnlistProductReq) async -> Result<Bool, UseCaseError> {
+           do {
+               let success = try await repo.productListOrUnlist(unlistProductReq)
+               return .success(success)
+           } catch let error as APIServiceError {
+               switch error {
+               case .statusNotOK(let message):
+                   return .failure(.error(message: message))
+               default:
+                   return .failure(.networkError)
+               }
+           } catch {
+               return .failure(.networkError)
+           }
+       }
+   
     func getAllProducts() async -> Result<[ProductModel], UseCaseError> {
         do {
             let products = try await repo.getAllProducts()
@@ -72,5 +95,24 @@ struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts{
                    return .failure(.networkError)
                }
     }
+    func getUserProducts() async -> Result<[ProductModel], UseCaseError> {
+        do {
+            let products = try await repo.getUserProducts()
+            print("Products retrieved: \(products)") // Add this print statement
+            return .success(products)
+        } catch(let error as APIServiceError) {
+            print("API Service Error: \(error.localizedDescription)") // Add this print statement
+            switch(error) {
+            case .statusNotOK(let message):
+                return .failure(.error(message: message))
+            default:
+                return .failure(.networkError)
+            }
+        } catch {
+            print("Unknown error: \(error.localizedDescription)") // Add this print statement
+            return .failure(.networkError)
+        }
+    }
+
 }
     

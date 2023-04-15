@@ -26,6 +26,7 @@ struct HomeView: View {
                             LazyHStack(spacing: 15) {
                                 ForEach(viewModel.products.filter { !$0.forBid! }, id: \._id) { product in
                                     NavigationLink(destination: ProductDetailsView(product: product)) {
+                                       
                                         ProductRowView(product: product)
                                     }
                                     .buttonStyle(PlainButtonStyle())

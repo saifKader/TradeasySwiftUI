@@ -27,7 +27,7 @@ struct MainView: View {
                                }
                            }.tag(0)
 
-                       AddProductView()
+                       SellingView()
                            .tabItem {
                                TabIcon(selected: $selectedTab, index: 1) {
                                    Label("Sellings", systemImage: "cart.badge.plus")

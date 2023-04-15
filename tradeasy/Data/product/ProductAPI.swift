@@ -100,8 +100,17 @@ struct ProductAPI {
     
     func getAllProducts() async throws -> [ProductModel] {
         let url = "\(kbaseUrl)\(kGetAllProducts)"
+        let userPreferences = UserPreferences()
+        
+        var headers: HTTPHeaders = [
+            "Content-Type": "multipart/form-data"
+        ]
+        if let token = userPreferences.getUser()?.token {
+            headers["jwt"] = token
+        }
+
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(url, method: .get)
+            AF.request(url, method: .get, headers: headers)
                 .validate(statusCode: 200..<305)
                 .responseDecodable(of: [ProductModel].self) { response in
                     switch response.result {
@@ -121,25 +130,24 @@ struct ProductAPI {
                 }
         }
     }
-    /*func addProdToSaved(_ product_id: String) async throws -> UserModel {
-        let url = "\(kbaseUrl)\(kAddProdToSaved)"
+
+
+    func getUserProducts() async throws -> [ProductModel] {
+        let url = "\(kbaseUrl)\(kGetUserProducts)"
         let userPreferences = UserPreferences()
         let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
             "jwt": (userPreferences.getUser()?.token)!
         ]
 
-        let parameters: [String: Any] = [
-            "product_id": product_id
-        ]
 
-        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
-            AF.request(url, method: .post, parameters: parameters, headers: headers)
-                .validate(statusCode: 200..<202)
-                .responseDecodable(of: UserModel.self) { response in
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url, method: .get, headers: headers)
+                .validate(statusCode: 200..<305)
+                .responseDecodable(of: [ProductModel].self) { response in
                     switch response.result {
-                    case .success(let userResponse):
-                        continuation.resume(returning: userResponse)
+                    case .success(let products):
+                        continuation.resume(returning: products)
                     case .failure(let error):
                         if let data = response.data {
                             do {
@@ -154,7 +162,41 @@ struct ProductAPI {
                 }
         }
     }
-*/
+    func ProductListOrUnlist(_ unlistProductReq: UnlistProductReq) async throws -> Bool {
+        let url = "\(kbaseUrl)\(kUnlistProduct)" // Replace kUnlistProduct with the correct endpoint
+        let userPreferences = UserPreferences()
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "jwt": (userPreferences.getUser()?.token)!
+        ]
+
+        let parameters: [String: Any] = [
+            "product_id": unlistProductReq.product_id
+        ]
+
+        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Bool, Error>) in
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    switch response.result {
+                    case .success:
+                        continuation.resume(returning: true)
+                    case .failure(let error):
+                        if let data = response.data {
+                            do {
+                                throw errorFromResponseData(data)
+                            } catch {
+                                continuation.resume(throwing: error)
+                            }
+                        } else {
+                            continuation.resume(throwing: error)
+                        }
+                    }
+                }
+        }
+    }
 
 
 }
+
+

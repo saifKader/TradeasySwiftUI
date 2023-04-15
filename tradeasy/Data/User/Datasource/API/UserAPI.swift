@@ -295,9 +295,14 @@ struct UserAPI {
         let userPreferences = UserPreferences()
         let url = "\(kbaseUrl)\(kGetCurrentUser)"
            
+        // Use optional binding to safely unwrap the token
+        guard let token = userPreferences.getUser()?.token else {
+            throw APIServiceError.invalidUserToken // Custom error case for missing token
+        }
+
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
-            "jwt": (userPreferences.getUser()?.token)!
+            "jwt": token
         ]
         print("here1")
        

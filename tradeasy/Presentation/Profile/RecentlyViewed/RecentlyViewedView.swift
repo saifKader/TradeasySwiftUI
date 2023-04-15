@@ -12,19 +12,25 @@ import SwiftUI
 
 
 
-struct AllProductsView: View {
-    let productsList: [ProductModel]
+struct RecentlyViewedView: View {
+   
     @EnvironmentObject var navigationController: NavigationController
     @State private var filteredProducts: [ProductModel]
+    @State private var isProddetail: Bool = false
+    let userPreferences: UserPreferences
+    var productsList: [ProductModel]?
+
     init(productsList: [ProductModel]) {
-        self.productsList = productsList
-        self._filteredProducts = State(initialValue: productsList)
+        self.userPreferences = UserPreferences()
+        self.productsList = self.userPreferences.getUser()?.savedProducts
+        self.filteredProducts = productsList
     }
+
          func applyFilter(filter: String) {
             switch filter {
             case "PriceAscending":
                 // Apply filter based on Option1 (ascending price)
-                self.filteredProducts = self.productsList.sorted { (product1, product2) -> Bool in
+                self.filteredProducts = self.productsList!.sorted { (product1, product2) -> Bool in
                     guard let price1 = product1.price, let price2 = product2.price else {
                         return false
                     }
@@ -32,7 +38,7 @@ struct AllProductsView: View {
                 }
             case "PriceDescending":
                 // Apply filter based on Option2 (descending price)
-                self.filteredProducts = self.productsList.sorted { (product1, product2) -> Bool in
+                self.filteredProducts = self.productsList!.sorted { (product1, product2) -> Bool in
                     guard let price1 = product1.price, let price2 = product2.price else {
                         return false
                     }
@@ -40,12 +46,12 @@ struct AllProductsView: View {
                 }
             case "ForBid":
                 // Apply filter based on products with bid set to true
-                self.filteredProducts = self.productsList.filter { product in
+                self.filteredProducts = self.productsList!.filter { product in
                     return product.forBid == true
                 }
             default:
                 // Reset the filter
-                self.filteredProducts = self.productsList
+                self.filteredProducts = self.productsList!
             }
         }
 
@@ -64,10 +70,11 @@ struct AllProductsView: View {
                 } else {
                     List {
                         ForEach(filteredProducts, id: \._id) { product in
-                            Button(action: {
+                            NavigationLink(
+                                destination: ProductDetailsView(product: product),
+                                isActive: $isProddetail
                                 
-                                navigationController.navigate(to: ProductDetailsView(product: product))
-                            }) {
+                            ){
                                 HStack {
                                     // Display the image from the URL
                                     if let imageUrl = product.image?.first,

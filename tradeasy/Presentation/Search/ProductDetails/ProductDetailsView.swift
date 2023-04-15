@@ -13,6 +13,9 @@ struct ProductDetailsView: View {
     @StateObject var userDataViewModel = GetUserDataStateViewModel()
     @EnvironmentObject var navigationController: NavigationController
     let userPreferences = UserPreferences()
+    let productPreferences = ProductPreferences()
+    @State private var isProductSaved = false
+    @State private var showFullScreenImage = false
     
     func updateSavedProductStatus(completion: @escaping (Bool) -> Void) {
         userDataViewModel.getUserData { result in
@@ -28,16 +31,24 @@ struct ProductDetailsView: View {
             }
         }
     }
-
-    var isProductSaved: Bool {
-      
-        print(userPreferences.getUser()?.savedProducts)
-        guard let user = userPreferences.getUser(), let savedProducts = user.savedProducts else { return false }
-        
-        return savedProducts.contains { $0._id == product._id }
+    func updateSavedProductStatus() {
+        userDataViewModel.getUserData { result in
+            switch result {
+            case .success(let user):
+                if let savedProducts = user.savedProducts {
+                    self.isProductSaved = savedProducts.contains { $0._id == product._id }
+                } else {
+                    self.isProductSaved = false
+                }
+            case .failure(_):
+                self.isProductSaved = false
+            }
+        }
     }
-
-
+    
+    
+    
+    
     
     var body: some View {
         ScrollView {
@@ -48,15 +59,21 @@ struct ProductDetailsView: View {
                 
                 // Add an image view in the middle
                 if let imageUrl = product.image?.first, let url = URL(string: imageUrl) {
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width - 32)
-                    } placeholder: {
-                        ProgressView()
+                    NavigationLink("", destination: FullScreenImageView(url: url).edgesIgnoringSafeArea(.all), isActive: $showFullScreenImage).opacity(0)
+                    Button(action: {
+                        showFullScreenImage.toggle()
+                    }) {
+                        AsyncImage(url: url) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: (UIScreen.main.bounds.width - 32)/1)
+                        } placeholder: {
+                            ProgressView()
+                        }
                     }
                 }
+                
                 
                 Text(product.description ?? "")
                     .font(.body)
@@ -65,8 +82,8 @@ struct ProductDetailsView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Category: \(product.category ?? "")").padding(.bottom,5)
                     Text("Price: \(String(format: "%.2f", product.price!) ) TND").padding(.bottom,5)
-
-
+                    
+                    
                     HStack {
                         // Add user name and profile picture in a row
                         // Assuming there is a user property in the product model with name and profilePicture properties
@@ -86,7 +103,7 @@ struct ProductDetailsView: View {
                                 Circle()
                                     .fill(Color.gray)
                                     .frame(width: 40, height: 40)
-
+                                
                                 Image(systemName: "person.fill")
                                     .resizable()
                                     .foregroundColor(.white)
@@ -94,13 +111,13 @@ struct ProductDetailsView: View {
                                     .frame(width: 20, height: 20)
                             }
                         }
-
-
-                  
+                        
+                        
+                        
                         Text(product.username!).padding(.bottom,5)
-                   
+                        
                     }
-               
+                    
                     Text(product.userPhoneNumber!).padding(.bottom,30)
                     
                     if let forBid = product.forBid, forBid {
@@ -112,40 +129,35 @@ struct ProductDetailsView: View {
                             }
                         }.padding(.bottom,25)
                     }
-                    VStack(alignment: .center, spacing: 4) {
-                        HStack(alignment: .center) {
-                            ActionButton(text: "Call \(product.username!)", action: {
-                                userDataViewModel.getUserData() { result in
-                                    switch result {
-                                    case .success(let userModel):
-                                        //print("User logged in successfully: \(userModel)")
-                                        DispatchQueue.main.async {
-                                            userPreferences.setUser(user: userModel)
-                                            print(userPreferences.getUser() == nil)
-                                            navigationController.popToRoot()
-                                        }
-                                      
-                                    case .failure(let error):
-                                        if case let UseCaseError.error(message) = error {
-                                            
-                                            print("Errordsds logging in: \(message)")
-                                        } else {
-                                            print("Error 111 in: \(error)")
-                                        }
-                                    }
-                                }
-                                
-                            }, height: 20.0, width: .infinity, icon: "phone.fill")
-                        }
-                    }
-
-
-                    
-                
                 }
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
+            if let userId = userPreferences.getUser()?._id, product.user_id == userId {
+                Button(action: {
+                    if !viewModel.isListingOrUnlisting {
+                        viewModel.productListOrUnlist(productID: product._id ?? "")
+                    }
+                }) {
+                    Text(viewModel.isProductListed ? "Unlist" : "List")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .frame(maxWidth: .infinity)
+                        .background(viewModel.isListingOrUnlisting ? Color.gray : (viewModel.isProductListed ? Color("app_color") : Color("app_color")))
+                        .cornerRadius(10)
+                        .opacity(viewModel.isListingOrUnlisting ? 0.5 : 1.0)
+                }
+                .padding(.horizontal, 50)
+                .padding(.vertical, 20)
+                
+            }
+            
+            
+            
+            
+            
+            
             Button(action: {
                 let userDataManager = UserDataManager()
                 if isProductSaved {
@@ -154,6 +166,7 @@ struct ProductDetailsView: View {
                         switch result {
                         case .success(let userModel):
                             print("User logged in successfully: \(userModel)")
+                            updateSavedProductStatus()
                         case .failure(let error):
                             if case let UseCaseError.error(message) = error {
                                 print("Errordsds logging in: \(message)")
@@ -164,12 +177,11 @@ struct ProductDetailsView: View {
                     }
                 } else {
                     viewModel.saveProduct(productID: product._id ?? "")
-                  
-
                     userDataManager.getUserDataAndUpdatePreferences { result in
                         switch result {
                         case .success(let userModel):
                             print("User logged in successfully: \(userModel)")
+                            updateSavedProductStatus()
                         case .failure(let error):
                             if case let UseCaseError.error(message) = error {
                                 print("Errordsds logging in: \(message)")
@@ -179,18 +191,33 @@ struct ProductDetailsView: View {
                         }
                     }
                 }
-                
-            
-                    print(isProductSaved)
-            
             }) {
                 Image(systemName: isProductSaved ? "bookmark.fill" : "bookmark")
                     .font(.title2)
                     .foregroundColor(.blue)
             }
+            .onAppear {
+                viewModel.isProductListed = product.selling ?? false
+            }
+            .onAppear(perform: updateSavedProductStatus)
+        }.onAppear(perform: {print("aaa")
+            productPreferences.setProduct(product: product)
+        })
+    }
+}
 
-           
+struct FullScreenImageView: View {
+    let url: URL
+    
+    var body: some View {
+        AsyncImage(url: url) { image in
+            image
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.black)
+        } placeholder: {
+            ProgressView()
         }
     }
-    }
- 
+}
