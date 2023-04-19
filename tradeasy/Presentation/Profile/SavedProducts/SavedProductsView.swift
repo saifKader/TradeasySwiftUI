@@ -54,7 +54,23 @@ struct SavedProductsView: View {
             self.filteredProducts = self.productsList!
         }
     }
-    
+  /*  private func updateSavedProducts() {
+            userDataViewModel.getUserData { result in
+                switch result {
+                case .success(let user):
+                    if let savedProducts = user.savedProducts {
+                        self.productsList = savedProducts
+                        self.filteredProducts = savedProducts
+                    } else {
+                        self.productsList = []
+                        self.filteredProducts = []
+                    }
+                case .failure(_):
+                    self.productsList = []
+                    self.filteredProducts = []
+                }
+            }
+        }*/
     
     var body: some View {
         GeometryReader { geometry in
@@ -99,9 +115,6 @@ struct SavedProductsView: View {
                                     VStack(alignment: .leading) {
                                         Text(product.name!)
                                             .font(.headline)
-                                        Text(product.description!)
-                                            .font(.subheadline)
-                                            .foregroundColor(.white)
                                         Text("\(String(product.price!)) TND")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)

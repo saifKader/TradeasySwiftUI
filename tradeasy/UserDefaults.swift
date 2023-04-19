@@ -6,10 +6,10 @@
 //
 
 import Foundation
+private let userDefaults = UserDefaults.standard
 
 class UserPreferences {
-    private let userDefaults = UserDefaults.standard
-
+   
     func setUser(user: UserModel) {
         do {
             let jsonEncoder = JSONEncoder()
@@ -84,4 +84,7 @@ class ProductPreferences {
             return nil
         }
     }
+    func removeProd() {
+        userDefaults.removeObject(forKey: "product_data")
+     }
 }

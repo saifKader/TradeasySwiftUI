@@ -98,9 +98,6 @@ struct RecentlyViewedView: View {
                                     VStack(alignment: .leading) {
                                         Text(product.name!)
                                             .font(.headline)
-                                        Text(product.description!)
-                                            .font(.subheadline)
-                                            .foregroundColor(.white)
                                         Text("\(String(product.price!)) TND")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)

@@ -62,9 +62,7 @@ struct SearchView: View {
                                     VStack(alignment: .leading) {
                                         Text(product.name!)
                                             .font(.headline)
-                                        Text(product.description!)
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
+                                        
                                         Text("\(String(product.price!)) TND")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)

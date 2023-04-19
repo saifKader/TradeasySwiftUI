@@ -90,39 +90,40 @@ struct ProfileView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading,10)
                       
-                    VStack {
-                        NavigationLink(
-                            destination: SavedProductsView(productsList: userPreferences.getUser()?.savedProducts ?? []),
-                            isActive: $isSavedProductsViewActive
-                        ) {
-                            ProfileHstack(
-                                action: {
-                                    isSavedProductsViewActive = true
-                                },
-                                image: "heart",
-                                text: "Saved"
-                            )
-                        }
-
-                        Divider()
-                        ProfileHstack(action: {
-                            
-                            
-                        }, image: "hammer", text: "Bids")
-                        Divider()
-                        NavigationLink(
-                            destination: RecentlyViewedView(productsList: productPreferences.getProducts()!),
-                            isActive: $isRecentlyViewed
-                        ) {
-                            ProfileHstack(
-                                action: {
-                                    isRecentlyViewed = true
-                                },
-                                image: "clock.arrow.circlepath",
-                                text: "Recently viewed"
-                            )
-                        }
+            VStack {
+                NavigationLink(
+                    destination: SavedProductsView(productsList: userPreferences.getUser()?.savedProducts ?? []),
+                    isActive: $isSavedProductsViewActive
+                ) {
+                    ProfileHstack(
+                        action: {
+                            isSavedProductsViewActive = true
+                        },
+                        image: "heart",
+                        text: "Saved"
+                    )
+                }
+                
+                Divider()
+                ProfileHstack(action: {
+                    
+                    
+                }, image: "hammer", text: "Bids")
+                Divider()
+                if(productPreferences.getProducts() != nil){
+                    NavigationLink(
+                        destination: RecentlyViewedView(productsList: productPreferences.getProducts()!),
+                        isActive: $isRecentlyViewed
+                    ) {
+                        ProfileHstack(
+                            action: {
+                                isRecentlyViewed = true
+                            },
+                            image: "clock.arrow.circlepath",
+                            text: "Recently viewed"
+                        )
                     }
+                }}
                     .padding() // add padding to the VStack
                     .background(Color("card_color"))
                     .cornerRadius(10)
@@ -171,6 +172,7 @@ struct ProfileView: View {
             VStack {
                 ProfileHstack(action: {
                     userPreferences.removeUser()
+                    
                     DispatchQueue.main.async{navigationController.navigate(to: LoginView())}
                 }, image: "arrowshape.left", text: "Logout")
             }
@@ -188,7 +190,7 @@ struct ProfileView: View {
                     {
                         showLogin = true
                         navigationController.navigate(to: LoginView())
-                    }
+                    } 
                 }
                 .navigationBarTitle("Profile")
                        

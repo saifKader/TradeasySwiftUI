@@ -22,8 +22,11 @@ protocol GetUserProducts {
 protocol ProductListOrUnlistProtocol {
     func productListOrUnlist(_ unlistProductReq: UnlistProductReq) async -> Result<Bool, UseCaseError>
 }
+protocol EditProduct {
+    func editProduct(_ editProductReq: EditProductReq) async -> Result<ProductModel, UseCaseError>
+}
 
-struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts,GetUserProducts, ProductListOrUnlistProtocol{
+struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts,GetUserProducts, ProductListOrUnlistProtocol, EditProduct{
     var repo: IProductRepository
     
     func productListOrUnlist(_ unlistProductReq: UnlistProductReq) async -> Result<Bool, UseCaseError> {
@@ -113,6 +116,20 @@ struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts,GetUserProducts
             return .failure(.networkError)
         }
     }
-
+    func editProduct(_ editProductReq: EditProductReq) async -> Result<ProductModel, UseCaseError> {
+            do {
+                let product = try await repo.editProduct(editProductReq)
+                return .success(product)
+            } catch(let error as APIServiceError) {
+                switch(error) {
+                case .statusNotOK(let message):
+                    return .failure(.error(message: message))
+                default:
+                    return .failure(.networkError)
+                }
+            } catch {
+                return .failure(.networkError)
+            }
+        }
 }
     

@@ -94,10 +94,7 @@ struct ProductRowView: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
-            Text(product.description ?? "")
-                .font(.body)
-                .foregroundColor(.secondary)
-                .lineLimit(2)
+            
         }
         .padding()
         .background(Color(.systemBackground))

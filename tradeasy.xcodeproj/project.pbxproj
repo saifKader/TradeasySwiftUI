@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5917700729EC8A98009EEB11 /* EditProductReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700629EC8A98009EEB11 /* EditProductReq.swift */; };
+		5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */; };
+		5917700D29EC8E93009EEB11 /* EditProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700C29EC8E93009EEB11 /* EditProductView.swift */; };
+		5917700F29EC90F8009EEB11 /* EditProductView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700E29EC90F8009EEB11 /* EditProductView2.swift */; };
 		594F6AE029DEF45200C8F473 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594F6ADF29DEF45200C8F473 /* ImagePicker.swift */; };
 		5952D45029E71133003118CB /* AddProductReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952D44F29E71133003118CB /* AddProductReq.swift */; };
 		5952D45529E7130D003118CB /* AddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952D45429E7130D003118CB /* AddProductViewModel.swift */; };
@@ -107,6 +111,10 @@
 
 /* Begin PBXFileReference section */
 		30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
+		5917700629EC8A98009EEB11 /* EditProductReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductReq.swift; sourceTree = "<group>"; };
+		5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductviewModel.swift; sourceTree = "<group>"; };
+		5917700C29EC8E93009EEB11 /* EditProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView.swift; sourceTree = "<group>"; };
+		5917700E29EC90F8009EEB11 /* EditProductView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView2.swift; sourceTree = "<group>"; };
 		594F6ADF29DEF45200C8F473 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5952D44F29E71133003118CB /* AddProductReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductReq.swift; sourceTree = "<group>"; };
 		5952D45429E7130D003118CB /* AddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
@@ -222,12 +230,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5952D45129E712CF003118CB /* Product */ = {
+		5917700829EC8BB6009EEB11 /* AddProduct */ = {
 			isa = PBXGroup;
 			children = (
 				5952D45429E7130D003118CB /* AddProductViewModel.swift */,
 				5952D45629E71903003118CB /* AddProductView.swift */,
 				598EC98929E77CC100259A55 /* AdditionalInformationView.swift */,
+			);
+			path = AddProduct;
+			sourceTree = "<group>";
+		};
+		5917700929EC8BCE009EEB11 /* EditProduct */ = {
+			isa = PBXGroup;
+			children = (
+				5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */,
+				5917700C29EC8E93009EEB11 /* EditProductView.swift */,
+				5917700E29EC90F8009EEB11 /* EditProductView2.swift */,
+			);
+			path = EditProduct;
+			sourceTree = "<group>";
+		};
+		5952D45129E712CF003118CB /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				5917700929EC8BCE009EEB11 /* EditProduct */,
+				5917700829EC8BB6009EEB11 /* AddProduct */,
+				59CEBA3129E4DEA00027E016 /* ProductDetails */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -419,6 +447,7 @@
 				59CEBA2529E498A40027E016 /* ProdNameReq.swift */,
 				5952D44F29E71133003118CB /* AddProductReq.swift */,
 				59C78C7229EA2F390023DA8D /* UnlistProductReq.swift */,
+				5917700629EC8A98009EEB11 /* EditProductReq.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -434,7 +463,6 @@
 		59CEBA2C29E4A1DD0027E016 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				59CEBA3129E4DEA00027E016 /* ProductDetails */,
 				59CEBA2D29E4A1ED0027E016 /* SearchView.swift */,
 				59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */,
 				5990F3BB29E5A44400548859 /* AllProductsView.swift */,
@@ -910,7 +938,9 @@
 				59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */,
 				59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */,
 				59E5029F29DE105B005F8878 /* SendVerificationEmail.swift in Sources */,
+				5917700729EC8A98009EEB11 /* EditProductReq.swift in Sources */,
 				59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */,
+				5917700F29EC90F8009EEB11 /* EditProductView2.swift in Sources */,
 				598431F729CB9CBA001A6C40 /* UserAPI.swift in Sources */,
 				5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */,
 				5984320A29CBD180001A6C40 /* ForgetPasswordViewModel.swift in Sources */,
@@ -920,6 +950,7 @@
 				59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */,
 				59D17B2629C0F10700CD0703 /* RegisterViewModel.swift in Sources */,
 				59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */,
+				5917700D29EC8E93009EEB11 /* EditProductView.swift in Sources */,
 				597DE3F029E991CA00E4BEA8 /* SellingView.swift in Sources */,
 				598431FF29CBC6A8001A6C40 /* ResetPasswordReq.swift in Sources */,
 				59B858B029DC6073006ED7F1 /* EditProfileView.swift in Sources */,
@@ -932,6 +963,7 @@
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
 				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
+				5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */,
 				598EC98A29E77CC100259A55 /* AdditionalInformationView.swift in Sources */,
 				5972D6A129E446FF00DE7F5B /* GoogleAuthBtn.swift in Sources */,
 				59CEBA2629E498A40027E016 /* ProdNameReq.swift in Sources */,

@@ -29,4 +29,7 @@ struct ProductRepositoryImpl: IProductRepository {
     func productListOrUnlist(_ unlistProductReq: UnlistProductReq) async throws -> Bool {
         try await productApi.ProductListOrUnlist(unlistProductReq)
     }
+    func editProduct(_ editProductReq: EditProductReq) async throws -> ProductModel {
+            try await productApi.editProduct(editProductReq)
+        }
 }

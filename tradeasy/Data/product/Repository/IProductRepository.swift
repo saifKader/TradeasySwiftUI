@@ -13,6 +13,7 @@ protocol IProductRepository {
     func getAllProducts() async throws -> [ProductModel]
     func getUserProducts() async throws -> [ProductModel]
     func productListOrUnlist(_ unlistProductReq: UnlistProductReq) async throws -> Bool
+    func editProduct(_ editProductReq: EditProductReq) async throws -> ProductModel 
 }
 
 
