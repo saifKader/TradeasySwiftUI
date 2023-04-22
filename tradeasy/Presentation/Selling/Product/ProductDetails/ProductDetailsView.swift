@@ -19,6 +19,7 @@ struct ProductDetailsView: View {
     @State private var showFullDescription = false
     @State private var showEdit = false
     
+    
     func updateSavedProductStatus(completion: @escaping (Bool) -> Void) {
         userDataViewModel.getUserData { result in
             switch result {
@@ -60,10 +61,11 @@ struct ProductDetailsView: View {
                     .fontWeight(.bold)
                 
                 // Add an image view in the middle
-                if let imageUrl = product.image?.first, let url = URL(string: imageUrl) {
+                if let imageUrl = product.image?.first, let url = URL(string: kImageUrl + imageUrl) {
                     NavigationLink("", destination: FullScreenImageView(url: url).edgesIgnoringSafeArea(.all), isActive: $showFullScreenImage).opacity(0)
                     Button(action: {
                         showFullScreenImage.toggle()
+                        print(kImageUrl + imageUrl)
                     }) {
                         AsyncImage(url: url) { image in
                             image
@@ -79,6 +81,8 @@ struct ProductDetailsView: View {
                 
                 
                 
+                
+                
                 // Add the other elements under the image
                 VStack(alignment: .leading, spacing: 4) {
                     
@@ -87,7 +91,7 @@ struct ProductDetailsView: View {
                         // Add user name and profile picture in a row
                         // Assuming there is a user property in the product model with name and profilePicture properties
                         // Update the property names according to your product model
-                        if let userProfilePicture = product.userProfilePicture ?? userPreferences.getUser()?.profilePicture, let url = URL(string: userProfilePicture) {
+                        if let userProfilePicture = product.userProfilePicture ?? userPreferences.getUser()?.profilePicture, let url = URL(string: kImageUrl + userProfilePicture) {
                             AsyncImage(url: url) { image in
                                 image
                                     .resizable()
@@ -110,7 +114,7 @@ struct ProductDetailsView: View {
                                     .frame(width: 20, height: 20)
                             }
                         }
-
+                        
                         
                         Text(product.username!)
                             .padding(.bottom,5)
@@ -120,6 +124,7 @@ struct ProductDetailsView: View {
                         
                         Button(action: {
                             let userDataManager = UserDataManager()
+                            
                             if isProductSaved {
                                 viewModel.saveProduct(productID: product._id ?? "")
                                 userDataManager.getUserDataAndUpdatePreferences { result in
@@ -188,7 +193,7 @@ struct ProductDetailsView: View {
                             }
                         }
                         
-                       
+                        
                     }
                     
                     if let forBid = product.forBid, forBid {
@@ -206,13 +211,13 @@ struct ProductDetailsView: View {
             .navigationBarTitleDisplayMode(.inline)
             // Add NavigationLink to EditProductView here
             
-                if let userId = userPreferences.getUser()?._id, product.user_id == userId {
-                    NavigationLink(destination: EditProductView1(product: $product)) {
-                        Text("Edit")
-                            .fontWeight(.bold)
-                            .foregroundColor(.blue)
-                            .padding(8)
-                        
+            if let userId = userPreferences.getUser()?._id, product.user_id == userId {
+                NavigationLink(destination: EditProductView1(product: $product)) {
+                    Text("Edit")
+                        .fontWeight(.bold)
+                        .foregroundColor(.blue)
+                        .padding(8)
+                    
                 }
                 .padding(.bottom, 8)
             }
@@ -241,7 +246,7 @@ struct ProductDetailsView: View {
             updateSavedProductStatus()
             productPreferences.setProduct(product: product)
         }
-
+        
     }
 }
 

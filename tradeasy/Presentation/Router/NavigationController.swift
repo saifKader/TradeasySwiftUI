@@ -13,6 +13,8 @@ class NavigationController: ObservableObject {
     @Published var navigateToLoggin: Bool = false
     @Published var isUpdateEmailPresent: Bool = false
     @Published var isotp: Bool = false
+    var navigationController: UINavigationController?
+    
     init(startingView: AnyView) {
         self.currentView = startingView
     }
@@ -21,6 +23,7 @@ class NavigationController: ObservableObject {
         viewStack.append(currentView)
         currentView = AnyView(destination)
     }
+    
     func navigateWithArgs<ViewType: View, Args>(to destination: @escaping (Args) -> ViewType, args: Args) {
         viewStack.append(currentView)
         currentView = AnyView(destination(args))
@@ -29,18 +32,12 @@ class NavigationController: ObservableObject {
     func removeAllViews() {
         viewStack.removeAll()
     }
-    //navigation stacked
-    func pop() {
-        if viewStack.count > 0 {
-            currentView = viewStack.removeLast()
-        }
-    }
-    //remove all navigationlink and go to the first view
+    
     func popToRoot() {
-        if viewStack.count > 0 {
-            currentView = viewStack.first!
-            viewStack.removeAll()
+            if viewStack.count > 0 {
+                currentView = viewStack.first!
+                viewStack.removeAll()
+            }
         }
-    }
-
 }
+

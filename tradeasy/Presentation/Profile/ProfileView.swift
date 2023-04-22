@@ -19,8 +19,11 @@ struct ProfileView: View {
     @State private var showImagePicker = false
     @State private var isRefreshing = false // Add this state variable for the refresh control
     @State private var isSavedProductsViewActive: Bool = false
-    
+    @State private var profileImage: UIImage?
     @State private var isRecentlyViewed: Bool = false
+    
+    
+    @ObservedObject var viewModel = UploadProfilePictureViewModel()
     
     let productPreferences = ProductPreferences()
     var body: some View {
@@ -33,24 +36,30 @@ struct ProfileView: View {
                     VStack {
                         VStack {
                             if let imageUrlString = userPreferences.getUser()?.profilePicture,
-                                          let imageUrl = URL(string: imageUrlString) {
-                                           AsyncImage(url: imageUrl) { phase in
-                                               switch phase {
-                                               case .success(let image):
-                                                   image
-                                                       .resizable()
-                                                       .scaledToFit()
-                                                       .clipShape(Circle())
-                                                       .frame(width: 150, height: 150)
-                                               case .failure:
-                                                   Image(systemName: "person.fill")
-                                                       .resizable()
-                                                       .scaledToFit()
-                                               default:
-                                                   ProgressView()
-                                               }
-                                           }
-                                       } else {
+                                let imageUrl = URL(string: kImageUrl + imageUrlString) {
+                                AsyncImage(url: imageUrl) { phase in
+                                    switch phase {
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .clipShape(Circle())
+                                            .frame(width: 150, height: 150)
+                                    case .failure:
+                                        Image(systemName: "person.fill")
+                                            .resizable()
+                                            .scaledToFit()
+                                    default:
+                                        ProgressView()
+                                    }
+                                }
+                            } else if let profileImage = profileImage {
+                                Image(uiImage: profileImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .clipShape(Circle())
+                                    .frame(width: 150, height: 150)
+                            } else {
                                 Image(systemName: "person.crop.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -72,24 +81,23 @@ struct ProfileView: View {
                     isEditProfileViewActive = true
                 }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2, icon: "chevron.right")
                 .padding(.top, 20)
-                NavigationLink(destination:
-                     EditProfileView(), isActive: $isEditProfileViewActive) {
-                                                           
-                                                         }.navigationBarTitle("Profile")
-        
-    
-                        Spacer()
-                    }
-                    .padding() // add padding to the VStack
-                    .background(Color("card_color"))
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                    .padding(.bottom,50)
-                    Text("My Tradeasy")
-                        .foregroundColor(Color(CustomColors.greyColor))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading,10)
-                      
+                NavigationLink(destination: EditProfileView(profileImage: $profileImage),isActive: $isEditProfileViewActive) {
+                    
+                }.navigationBarTitle("Profile")
+                
+                
+                Spacer()
+            }
+            .padding() // add padding to the VStack
+            .background(Color("card_color"))
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .padding(.bottom,50)
+            Text("My Tradeasy")
+                .foregroundColor(Color(CustomColors.greyColor))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading,10)
+            
             VStack {
                 NavigationLink(
                     destination: SavedProductsView(productsList: userPreferences.getUser()?.savedProducts ?? []),
@@ -124,47 +132,47 @@ struct ProfileView: View {
                         )
                     }
                 }}
-                    .padding() // add padding to the VStack
-                    .background(Color("card_color"))
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                    .padding(.bottom,10)
-                    Text("Content & Display")
-                        .foregroundColor(Color(CustomColors.greyColor))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading,10)
-                    VStack {
-                        ProfileHstack(action: {
-                            
-                        }, image: "bell", text: "Push notifications")
-                      
-                        
-                        
-                      
-
-                    }
-                    .padding() // add padding to the VStack
-                    .background(Color("card_color"))
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                    .padding(.bottom,10)
-
-
+            .padding() // add padding to the VStack
+            .background(Color("card_color"))
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .padding(.bottom,10)
+            Text("Content & Display")
+                .foregroundColor(Color(CustomColors.greyColor))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading,10)
+            VStack {
+                ProfileHstack(action: {
+                    
+                }, image: "bell", text: "Push notifications")
+                
+                
+                
+                
+                
+            }
+            .padding() // add padding to the VStack
+            .background(Color("card_color"))
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .padding(.bottom,10)
             
-                    Text("Support & Privacy")
-                        .foregroundColor(Color(CustomColors.greyColor))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading,10)
-                    VStack {
-                        ProfileHstack(action: {
-                       
-                        }, image: "exclamationmark.triangle", text: "Report a problem")
-                    }
-                    .padding() // add padding to the VStack
-                    .background(Color("card_color"))
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-                    .padding(.bottom,10)
+            
+            
+            Text("Support & Privacy")
+                .foregroundColor(Color(CustomColors.greyColor))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading,10)
+            VStack {
+                ProfileHstack(action: {
+                    
+                }, image: "exclamationmark.triangle", text: "Report a problem")
+            }
+            .padding() // add padding to the VStack
+            .background(Color("card_color"))
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .padding(.bottom,10)
             Text("Login")
                 .foregroundColor(Color(CustomColors.greyColor))
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -181,27 +189,47 @@ struct ProfileView: View {
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
-               
-                    
-                }.onAppear {
-                    
-                    // Perform your action here
-                    if userPreferences.getUser() == nil
-                    {
-                        showLogin = true
-                        navigationController.navigate(to: LoginView())
-                    } 
-                }
-                .navigationBarTitle("Profile")
-                       
-                        .refreshable {
-                            // Add the RefreshControl to the ScrollView
-                            isRefreshing = true
-                            //userPreferences.refreshUserData()
-                            isRefreshing = false
-                        }
+            
+            
+        }.onAppear {
+            
+            // Perform your action here
+            if userPreferences.getUser() == nil
+            {
+                showLogin = true
+                navigationController.navigate(to: LoginView())
             }
+        }
+        .navigationBarTitle("Profile")
+        .onChange(of: profileImage) { newImage in
+            if let newImage = newImage {
+                viewModel.uploadProfilePicture(newImage) { result in
+                    switch result {
+                    case .success(let userModel):
+                        // Update the profile picture in the ProfileView as well
+                        DispatchQueue.main.async {
+                            profileImage = newImage
+                            userPreferences.setUser(user: userModel)
+                        }
+                        
+                    case .failure(let error):
+                        print("ff")
+                    }
+                }
+            }
+        }
+
+        .refreshable {
+            
+            userPreferences.getUser()?.profilePicture
+            
+            // Add the RefreshControl to the ScrollView
+            isRefreshing = true
+            //userPreferences.refreshUserData()
+            isRefreshing = false
+        }
     }
+}
 
 
 
@@ -215,7 +243,7 @@ struct ProfileHstack: View {
             HStack {
                 Image(systemName: image) // convert the string to an Image
                     .foregroundColor(Color(CustomColors.greyColor))
-                                   .font(.headline)
+                    .font(.headline)
                 
                 Text(text)
                     .font(.headline)
@@ -226,7 +254,7 @@ struct ProfileHstack: View {
                 
                 Image(systemName: "chevron.right")
                     .font(.headline)
-                      .foregroundColor(Color(CustomColors.greyColor))
+                    .foregroundColor(Color(CustomColors.greyColor))
             }
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditProductView2: View {
     @ObservedObject var viewModel: EditProductViewModel
-    
+    @EnvironmentObject var navigationController: NavigationController
     @Binding var prod_id: String
     @Binding var name: String
     @Binding var description: String
@@ -93,7 +93,11 @@ struct EditProductView2: View {
                             switch result {
                             case .success(let productModel):
                                 print("Product edited successfully: \(productModel)")
-                                presentationMode.wrappedValue.dismiss()
+                                
+                                DispatchQueue.main.async {
+                                    
+                                    navigationController.navigate(to: MainView())
+                                }
                             case .failure(let error):
                                 errorMessage = "Error editing product: \(error.localizedDescription)"
                                 showError = true

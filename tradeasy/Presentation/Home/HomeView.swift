@@ -80,7 +80,7 @@ struct ProductRowView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            KFImage(URL(string: product.image?.first ?? ""))
+            KFImage(URL(string: kImageUrl + (product.image?.first ?? "")))
                 .resizable()
                 .scaledToFit()
                 .frame(width: 150, height: 150)
