@@ -100,10 +100,17 @@ struct SellingView: View {
         }
     }
 }
+/*.navigationBarItems(
+ leading: Button(action: {
+     navigationController.popToRoot()
+ }) {
+     Image(systemName: "xmark")
+         .foregroundColor(Color("black_white"))
+ }
+)*/
 
 struct FloatingActionButton: View {
     let onClick: () -> Void
-
     var body: some View {
         NavigationLink(destination: AddProductView()) {
             ZStack {

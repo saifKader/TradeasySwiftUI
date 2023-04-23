@@ -85,7 +85,7 @@ struct EditProductView1: View {
             }
             .onAppear {
                 if let images = product.image, let imageUrl = images.first {
-                    viewModel.fetchCurrentImage(imageUrl: imageUrl) { fetchedImage in
+                    viewModel.fetchCurrentImage(imageUrl: kImageUrl + imageUrl) { fetchedImage in
                         image = fetchedImage
                     }
                 }

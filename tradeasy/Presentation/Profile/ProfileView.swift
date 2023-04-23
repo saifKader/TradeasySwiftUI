@@ -173,15 +173,18 @@ struct ProfileView: View {
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
-            Text("Login")
+            Text("Change Account")
                 .foregroundColor(Color(CustomColors.greyColor))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading,10)
             VStack {
                 ProfileHstack(action: {
-                    userPreferences.removeUser()
                     
-                    DispatchQueue.main.async{navigationController.navigate(to: LoginView())}
+                    
+                    DispatchQueue.main.async{
+                        userPreferences.removeUser()
+                        navigationController.navigate(to: LoginView())
+                    }
                 }, image: "arrowshape.left", text: "Logout")
             }
             .padding() // add padding to the VStack

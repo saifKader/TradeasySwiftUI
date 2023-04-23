@@ -10,7 +10,7 @@ import SwiftUI
 class NavigationController: ObservableObject {
     @Published var currentView: AnyView
     private var viewStack: [AnyView] = []
-    @Published var navigateToLoggin: Bool = false
+    
     @Published var isUpdateEmailPresent: Bool = false
     @Published var isotp: Bool = false
     var navigationController: UINavigationController?

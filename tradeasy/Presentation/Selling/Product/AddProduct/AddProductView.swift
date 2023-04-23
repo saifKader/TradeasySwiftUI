@@ -6,7 +6,7 @@ struct AddProductView: View {
     @State private var description = ""
     @State private var price = ""
     @State private var image: UIImage? = nil
-    @State private var isShowingImagePicker = false
+    
     @State private var category = "electronics"
     @State private var bid_end_date = "1 Minute"
     @State private var quantity = ""
@@ -14,8 +14,8 @@ struct AddProductView: View {
     @State private var errorMessage = ""
     @State private var showError = false
     @State private var showAdditionalInfoView = false
+    @EnvironmentObject var navigationController : NavigationController
     
-    @Environment(\.presentationMode) var presentationMode
     
     var isFormValid: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty &&
@@ -35,26 +35,38 @@ struct AddProductView: View {
                 CustomTextField(placeholder: "Price", text: $price, keyboardType: .decimalPad)
                 CustomTextField(placeholder: "Quantity", text: $quantity, keyboardType: .numberPad)
                 Spacer()
-                NavigationLink(destination: AdditionalInfoView(viewModel: viewModel, name: $name, description: $description, price: $price, quantity: $quantity, image: $image, isShowingImagePicker: $isShowingImagePicker, category: $category, forBid: $forBid, bid_end_date: $bid_end_date), isActive: $showAdditionalInfoView) {
-                    Button(action: {
-                        if isFormValid {
-                            showAdditionalInfoView = true
-                        }
-                    }) {
-                        Text("Next")
-                            .foregroundColor(isFormValid ? .white : .gray)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(isFormValid ? Color("app_color") : Color.gray.opacity(0.5))
-                            .cornerRadius(10)
+               
+                Button(action: {
+                    if isFormValid {
+                        showAdditionalInfoView = true
                     }
-                    .padding(.horizontal)
-                }.isDetailLink(false)
+                }) {
+                    Text("Next")
+                        .foregroundColor(isFormValid ? .white : .gray)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(isFormValid ? Color("app_color") : Color.gray.opacity(0.5))
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                .background(
+                    NavigationLink(
+                        destination: AdditionalInfoView(viewModel: viewModel, name: $name, description: $description, price: $price, quantity: $quantity, image: $image, category: $category, forBid: $forBid, bid_end_date: $bid_end_date),
+                        isActive: $showAdditionalInfoView,
+                        label: { EmptyView() }
+                    )
+                )
+                
                 Spacer()
             }
             .padding()
-            .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Add Product", displayMode: .inline)
+            .navigationBarItems(leading: Button(action: {
+                navigationController.popToRoot()
+            }) {
+                Image(systemName: "chevron.left")
+                    .foregroundColor(.black)
+            })
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }

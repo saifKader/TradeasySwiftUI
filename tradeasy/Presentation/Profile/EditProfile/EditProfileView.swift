@@ -74,9 +74,9 @@ struct EditProfileView: View {
                                 .padding(.top, 10)
                         }
                     }
-                    .sheet(isPresented: $showImagePicker) {
+                    /*.sheet(isPresented: $showImagePicker) {
                         ImagePicker(selectedImage: $profileImage)
-                    }
+                    }*/
                     
                     Spacer()
                 }

@@ -57,7 +57,7 @@ struct ResetPasswordView: View {
                                 viewModel.state = .success
                                 DispatchQueue.main.async {
                                     navigationController.popToRoot()
-                                    navigationController.navigateToLoggin = false
+                                    
                                 }
                                 
                             case .failure(let error):

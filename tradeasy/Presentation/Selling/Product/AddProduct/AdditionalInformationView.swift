@@ -15,15 +15,16 @@ struct AdditionalInfoView: View {
     @Binding var price: String
     @Binding var quantity: String
     @Binding var image: UIImage?
-    @Binding var isShowingImagePicker: Bool
+    
     @Binding var category: String
     @Binding var forBid: Bool
     @Binding var bid_end_date: String
-    
+    @EnvironmentObject var navigationController: NavigationController
     @State private var errorMessage = ""
     @State private var showError = false
-    
-    @Environment(\.presentationMode) var presentationMode
+    @State var isShowingImagePicker = false
+    @State var isShowingImagePickerLibrary = false
+    @State private var showingActionSheet = false
     
     let categories = ["electronics", "motors"]
     let bidEndDates = ["1 Minute", "1 Hour", "1 Day", "1 Week"]
@@ -31,7 +32,7 @@ struct AdditionalInfoView: View {
         !(image == nil) &&
         !category.isEmpty
     }
-
+    
     var addProductReq: AddProductReq {
         return AddProductReq(
             name: name.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -46,65 +47,85 @@ struct AdditionalInfoView: View {
     }
     
     var body: some View {
-        Form {
-            Section(header: Text("Additional Information")) {
-                Button(action: {
-                    isShowingImagePicker.toggle()
-                }) {
-                    if let image = image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 150, maxHeight: 150)
-                    } else {
-                        HStack {
-                            Image(systemName: "photo.on.rectangle")
-                            Text("Select Image")
-                        }
-                        .foregroundColor(.blue)
-                    }
-                }
-                .sheet(isPresented: $isShowingImagePicker) {
-                    ImagePicker(selectedImage: $image)
-                }
-                Picker("Category", selection: $category) {
-                    ForEach(categories, id: \.self) { category in
-                        Text(category)
-                    }
-                }
-                
-                Toggle("Enable Bidding?", isOn: $forBid)
-                if forBid {
-                    Picker("Bid End Date", selection: $bid_end_date) {
-                        ForEach(bidEndDates, id: \.self) { endDate in
-                            Text(endDate)
+        
+            
+            Form {
+                Section(header: Text("Additional Information")) {
+                    Button(action: {
+                        showingActionSheet = true
+                    }) {
+                        if let image = image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 150, maxHeight: 150)
+                        } else {
+                            HStack {
+                                Image(systemName: "photo.on.rectangle")
+                                Text("Select Image")
+                            }
+                            .foregroundColor(.blue)
                         }
                     }
-                }
-            }.listRowSeparator(.hidden)
-            Section {
-                AuthButton(
-                    text: "Add Product",
-                    action: {
-                        viewModel.addProduct(addProductReq: addProductReq) { result in
-                            switch result {
-                            case .success(let productModel):
-                                print("Product added successfully: \(productModel)")
-                                presentationMode.wrappedValue.dismiss()
-                            case .failure(let error):
-                                errorMessage = "Error adding product: \(error.localizedDescription)"
-                                showError = true
+                    .actionSheet(isPresented: $showingActionSheet) {
+                        ActionSheet(title: Text("Select Image"), buttons: [
+                            .default(Text("Take Photo"), action: {
+                                isShowingImagePicker = true
+                                
+                            }),
+                            .default(Text("Choose from Library"), action: {
+                                
+                                isShowingImagePickerLibrary = true
+                                
+                            }),
+                        ])
+                    }
+                    
+                    
+                    Picker("Category", selection: $category) {
+                        ForEach(categories, id: \.self) { category in
+                            Text(category)
+                        }
+                    }
+                    
+                    Toggle("Enable Bidding?", isOn: $forBid)
+                    if forBid {
+                        Picker("Bid End Date", selection: $bid_end_date) {
+                            ForEach(bidEndDates, id: \.self) { endDate in
+                                Text(endDate)
                             }
                         }
-                    },
-                    isEnabled: isFormValid,
-                    isLoading: viewModel.isLoading
-                )
-                .alert(isPresented: $showError) {
-                    Alert(title: Text("Add Product"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                    }
+                }.listRowSeparator(.hidden)
+                Section {
+                    AuthButton(
+                        text: "Add Product",
+                        action: {
+                            viewModel.addProduct(addProductReq: addProductReq) { result in
+                                switch result {
+                                case .success(let productModel):
+                                    print("Product added successfully: \(productModel)")
+                                    DispatchQueue.main.async {
+                                        navigationController.popToRoot()
+                                        //presentationMode.wrappedValue.dismiss()
+                                    }
+                                case .failure(let error):
+                                    errorMessage = "Error adding product: \(error.localizedDescription)"
+                                    showError = true
+                                }
+                            }
+                        },
+                        isEnabled: isFormValid,
+                        isLoading: viewModel.isLoading
+                    )
+                    .alert(isPresented: $showError) {
+                        Alert(title: Text("Add Product"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                    }
                 }
             }
-        }
-        .scrollContentBackground(.hidden)
+            .scrollContentBackground(.hidden)
+        
+        NavigationLink(destination: ImagePicker(selectedImage: $image, sourceType: .camera), isActive: $isShowingImagePicker,label: { EmptyView() })
+        NavigationLink(destination: ImagePicker(selectedImage: $image, sourceType: .photoLibrary), isActive: $isShowingImagePickerLibrary,label: { EmptyView() })
     }
 }

@@ -19,7 +19,9 @@ struct EditProductView2: View {
     @Binding var forBid: Bool
     @Binding var bid_end_date: String
     @Binding var image: UIImage?
-    @State private var showImagePicker = false
+    @State var isShowingImagePickerLibrary = false
+    @State var isShowingImagePicker = false
+    @State private var showingActionSheet = false
     @State private var errorMessage = ""
     @State private var showError = false
     
@@ -30,7 +32,7 @@ struct EditProductView2: View {
     // Update the bid end dates according to your app's requirements
     let bidEndDates = ["1 Minute", "1 Hour", "1 Day", "1 Week"]
     var isFormValid: Bool {
-        !category.isEmpty 
+        !category.isEmpty
     }
     
     var editProductReq: EditProductReq {
@@ -51,8 +53,8 @@ struct EditProductView2: View {
     var body: some View {
         Form {
             Section(header: Text("Additional Information")) {
-               Button(action: {
-                    showImagePicker.toggle()
+                Button(action: {
+                    showingActionSheet = true
                 }) {
                     if let image = image {
                         Image(uiImage: image)
@@ -67,8 +69,18 @@ struct EditProductView2: View {
                         .foregroundColor(.blue)
                     }
                 }
-                .sheet(isPresented: $showImagePicker) {
-                    ImagePicker(selectedImage: $image)
+                .actionSheet(isPresented: $showingActionSheet) {
+                    ActionSheet(title: Text("Select Image"), buttons: [
+                        .default(Text("Take Photo"), action: {
+                            isShowingImagePicker = true
+                            
+                        }),
+                        .default(Text("Choose from Library"), action: {
+                            
+                            isShowingImagePickerLibrary = true
+                            
+                        }),
+                    ])
                 }
                 Picker("Category", selection: $category) {
                     ForEach(categories, id: \.self) { category in
@@ -113,6 +125,8 @@ struct EditProductView2: View {
             }
         }
         .scrollContentBackground(.hidden)
+        NavigationLink(destination: ImagePicker(selectedImage: $image, sourceType: .camera), isActive: $isShowingImagePicker,label: { EmptyView() })
+        NavigationLink(destination: ImagePicker(selectedImage: $image, sourceType: .photoLibrary), isActive: $isShowingImagePickerLibrary,label: { EmptyView() })
     }
 }
 

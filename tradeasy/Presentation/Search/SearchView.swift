@@ -47,7 +47,7 @@ struct SearchView: View {
                                 HStack {
                                     // Display the image from the URL
                                     if let imageUrl = product.image?.first,
-                                       let url = URL(string: imageUrl) {
+                                       let url = URL(string: kImageUrl + imageUrl) {
                                         KFImage(url)
                                             .resizable()
                                             .scaledToFit()
@@ -72,15 +72,13 @@ struct SearchView: View {
                             .buttonStyle(PlainButtonStyle()) // Add this to remove the default button styling
 
                         }
-                        Button(action: {
-                            navigationController.navigate(to: AllProductsView(productsList: productsList))
-                                }) {
-                                    Text("View All")
-                                        .font(.headline)
-                                        .foregroundColor(Color(CustomColors.blueColor))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical)
+                        NavigationLink(destination: AllProductsView(productsList: productsList)) {
+                        Text("View All")
+                        .font(.headline)
+                        .foregroundColor(Color(CustomColors.blueColor))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical)
                     }
                     .listStyle(PlainListStyle())
                     .background(Color.white)
