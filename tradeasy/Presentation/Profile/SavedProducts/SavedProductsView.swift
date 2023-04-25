@@ -13,17 +13,16 @@ import SwiftUI
 
 
 struct SavedProductsView: View {
-    
     @EnvironmentObject var navigationController: NavigationController
     @State private var filteredProducts: [ProductModel]
     @State private var isProddetail: Bool = false
     let userPreferences: UserPreferences
     var productsList: [ProductModel]?
-    
+
     init(productsList: [ProductModel]) {
         self.userPreferences = UserPreferences()
         self.productsList = self.userPreferences.getUser()?.savedProducts
-        self.filteredProducts = productsList
+        self._filteredProducts = State(initialValue: productsList)
     }
     
     func applyFilter(filter: String) {
@@ -167,7 +166,9 @@ struct SavedProductsView: View {
                 Image(systemName: "slider.horizontal.3")
                     .font(.system(size: 20))
                     .foregroundColor(Color("app_color"))
-            })
+            }).onAppear {
+                self.filteredProducts = self.userPreferences.getUser()?.savedProducts ?? []
+            }
         }
     }
 }

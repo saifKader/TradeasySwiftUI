@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var navigationController: NavigationController
-    let userPreferences = UserPreferences()
+    @EnvironmentObject var userPreferences: UserPreferences
     @State var showError = false
     @State var navigateToLoggin = false
     @State var showLogin = false
@@ -21,14 +21,15 @@ struct ProfileView: View {
     @State private var isSavedProductsViewActive: Bool = false
     @State private var profileImage: UIImage?
     @State private var isRecentlyViewed: Bool = false
+    @State private var isPrivacyPolicyViewActive = false
     
     
     @ObservedObject var viewModel = UploadProfilePictureViewModel()
     
     let productPreferences = ProductPreferences()
+    
+    
     var body: some View {
-        
-        
         ScrollView {
             VStack {
                 HStack {
@@ -81,9 +82,9 @@ struct ProfileView: View {
                     isEditProfileViewActive = true
                 }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2, icon: "chevron.right")
                 .padding(.top, 20)
-                NavigationLink(destination: EditProfileView(profileImage: $profileImage),isActive: $isEditProfileViewActive) {
-                    
-                }.navigationBarTitle("Profile")
+                NavigationLink(destination: EditProfileView( profileImage: $profileImage), isActive: $isEditProfileViewActive) {
+                            EmptyView()
+                        }.navigationBarTitle("Profile")
                 
                 
                 Spacer()
@@ -145,34 +146,56 @@ struct ProfileView: View {
                 ProfileHstack(action: {
                     
                 }, image: "bell", text: "Push notifications")
-                
-                
-                
-                
-                
             }
             .padding() // add padding to the VStack
             .background(Color("card_color"))
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
-            
-            
-            
             Text("Support & Privacy")
                 .foregroundColor(Color(CustomColors.greyColor))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading,10)
-            VStack {
-                ProfileHstack(action: {
-                    
-                }, image: "exclamationmark.triangle", text: "Report a problem")
+            VStack{
+                
+              
+                    ProfileHstack(action: {
+                        
+                    }, image: "exclamationmark.triangle", text: "Report a problem")
+                
+                
+            Divider()
+                NavigationLink(
+                    destination: PrivacyPolicyView(),
+                    isActive: $isPrivacyPolicyViewActive) {
+                        
+                    }
+                    ProfileHstack(action: {
+                     
+                        isPrivacyPolicyViewActive = true
+                    }, image: "lock", text: "Terms & conditions")
+               
             }
             .padding() // add padding to the VStack
             .background(Color("card_color"))
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
+                
+            
+          
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             Text("Change Account")
                 .foregroundColor(Color(CustomColors.greyColor))
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -195,37 +218,27 @@ struct ProfileView: View {
             
             
         }.onAppear {
-            
-            // Perform your action here
-            if userPreferences.getUser() == nil
+            if let profilePicture = userPreferences.getUser()?.profilePicture,
+               let imageUrl = URL(string: kImageUrl + profilePicture) {
+                // Load the image asynchronously
+                URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                    if let data = data, let image = UIImage(data: data) {
+                        // Assign the downloaded image to profileImage on the main thread
+                        DispatchQueue.main.async {
+                            profileImage = image
+                        }
+                    }
+                }.resume()
+            } else if userPreferences.getUser() == nil
             {
                 showLogin = true
                 navigationController.navigate(to: LoginView())
             }
         }
-        .navigationBarTitle("Profile")
-        .onChange(of: profileImage) { newImage in
-            if let newImage = newImage {
-                viewModel.uploadProfilePicture(newImage) { result in
-                    switch result {
-                    case .success(let userModel):
-                        // Update the profile picture in the ProfileView as well
-                        DispatchQueue.main.async {
-                            profileImage = newImage
-                            userPreferences.setUser(user: userModel)
-                        }
-                        
-                    case .failure(let error):
-                        print("ff")
-                    }
-                }
-            }
-        }
 
+
+        .navigationBarTitle("Profile")
         .refreshable {
-            
-            userPreferences.getUser()?.profilePicture
-            
             // Add the RefreshControl to the ScrollView
             isRefreshing = true
             //userPreferences.refreshUserData()

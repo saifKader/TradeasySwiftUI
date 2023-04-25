@@ -13,7 +13,7 @@ struct UserModel: Codable, Equatable {
     let phoneNumber: String?
     let email: String?
     let password: String?
-    let profilePicture: String?
+    var profilePicture: String?
     let isVerified: Bool?
     let notificationToken: String?
     let notifications: [Notification]?

@@ -9,6 +9,10 @@ pod 'Alamofire'
 pod 'CountryPickerView'
 pod 'Kingfisher'
 pod 'GoogleSignIn'
-pod 'FirebaseAuth'
+pod 'Firebase/Auth'
+pod 'Firebase/Messaging'
+pod 'Firebase/Analytics'
+pod 'Mantis'
+
 
 end

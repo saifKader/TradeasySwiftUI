@@ -1,0 +1,6 @@
+framework module Mantis {
+  umbrella header "Mantis-umbrella.h"
+
+  export *
+  module * { export * }
+}

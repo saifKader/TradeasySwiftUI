@@ -27,7 +27,7 @@ protocol UpdatePassword {
     func execute(currentPassword: String,newPassword: String) async -> Result<UserModel, UseCaseError>
 }
 protocol SendEmailVerification {
-    func sendEmailVerification(_ forgetPasswordReq: ForgetPasswordReq) async -> Result<Void, UseCaseError>
+    func sendEmailVerification(_ forgetPasswordReq: ForgetPasswordReq) async -> Result<UserModel, UseCaseError>
 }
 protocol ChangeEmail {
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async -> Result<UserModel, UseCaseError>
@@ -44,10 +44,24 @@ protocol GetCurrentUserData {
 }
 
 struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,SendEmailVerification, ChangeEmail,uploadProfilePicure, AddToSavedItems, GetCurrentUserData{
- 
-  
-    
+   
     var repo: IUserRepository
+    
+    func sendEmailVerification(_ forgetPasswordReq: ForgetPasswordReq) async -> Result<UserModel, UseCaseError> {
+        do {
+            let userModel =  try await repo.sendVerificationEmail(forgetPasswordReq)
+            return .success(userModel)
+        } catch(let error as APIServiceError) {
+            switch(error) {
+            case .statusNotOK(let message):
+                return .failure(.error(message: message))
+            default:
+                return .failure(.networkError)
+            }
+        } catch {
+            return .failure(.networkError)
+        }
+    }
     
     func getCurrentUser() async throws -> UserModel {
         do {
@@ -155,21 +169,7 @@ struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,Se
             return .failure(.networkError)
         }
     }
-    func sendEmailVerification(_ forgetPasswordReq: ForgetPasswordReq) async -> Result<Void, UseCaseError> {
-        do {
-            try await repo.sendVerificationEmail(forgetPasswordReq)
-            return .success(())
-        } catch let error as APIServiceError {
-            switch error {
-            case .statusNotOK(let message):
-                return .failure(.error(message: message))
-            default:
-                return .failure(.networkError)
-            }
-        } catch {
-            return .failure(.networkError)
-        }
-    }
+   
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async -> Result<UserModel, UseCaseError> {
         do {
             let userModel = try await repo.changeEmail(changeEmailReq)

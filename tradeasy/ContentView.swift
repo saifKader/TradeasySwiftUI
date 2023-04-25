@@ -11,18 +11,21 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var navigationController: NavigationController
-
+    @ObservedObject var userPreferences = UserPreferences()
+    @ObservedObject var productPreferences = ProductPreferences()
+    
     var body: some View {
-        NavigationView {
-            navigationController.currentView
+            NavigationView {
+                navigationController.currentView
+            }
+            .environmentObject(userPreferences)
+            .environmentObject(productPreferences)
         }
     }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .environmentObject(NavigationController(startingView: AnyView(MainView())))
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                .environmentObject(NavigationController(startingView: AnyView(MainView())))
+        }
     }
-    
-}

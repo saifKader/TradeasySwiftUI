@@ -53,9 +53,14 @@ struct SendVerificationEmail: View {
                             }
                             viewModel.sendVerificationEmail(email: email) { result in
                                 switch result {
-                                case .success:
-                                    viewModel.state = .success
-                                    showVerification = true
+                                case .success(_):
+                                    
+                                    DispatchQueue.main.async {
+                                        
+                                        showVerification = true
+                                    }
+                                    
+                                  
                                 case .failure(let error):
                                     if case let UseCaseError.error(message) = error {
                                         errorMessage = message

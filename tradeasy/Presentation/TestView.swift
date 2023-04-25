@@ -1,26 +1,47 @@
+import SwiftUI
+import Mantis
 
- 
-import Foundation
-
-class UserDataManager {
-    private let userDataViewModel = GetUserDataStateViewModel()
-    private let userPreferences = UserPreferences()
-
-    func getUserDataAndUpdatePreferences(completion: @escaping (Result<UserModel, Error>) -> Void) {
-        userDataViewModel.getUserData() { result in
-            switch result {
-            case .success(let userModel):
-                DispatchQueue.main.async {
-                    self.userPreferences.setUser(user: userModel)
-                    completion(.success(userModel))
-                }
-            case .failure(let error):
-                if case let UseCaseError.error(message) = error {
-                    completion(.failure(UseCaseError.error(message: message)))
-                } else {
-                    completion(.failure(error))
-                }
-            }
+struct CropView: UIViewControllerRepresentable {
+    
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) var presentationMode
+    
+    func makeUIViewController(context: UIViewControllerRepresentableContext<CropView>) -> CropViewController {
+        let cropViewController = Mantis.cropViewController(image: image!)
+        cropViewController.delegate = context.coordinator
+        return cropViewController
+    }
+    
+    func updateUIViewController(_ uiViewController: CropViewController, context: UIViewControllerRepresentableContext<CropView>) {
+        // No need to update anything here
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, CropViewControllerDelegate {
+        func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation, cropInfo: Mantis.CropInfo) {
+            
+        }
+        
+        func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
+            
+        }
+        
+        var parent: CropView
+        
+        init(_ parent: CropView) {
+            self.parent = parent
+        }
+        
+        func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation) {
+            parent.image = cropped
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+        
+        func cropViewControllerDidCancel(_ cropViewController: CropViewController) {
+            parent.presentationMode.wrappedValue.dismiss()
         }
     }
 }

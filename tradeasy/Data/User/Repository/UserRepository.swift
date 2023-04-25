@@ -14,7 +14,7 @@ protocol IUserRepository {
     func verifyOtp(_ verifyOtpReq: VerifyOtpReq) async throws -> Void
     func updateUsername(_ username: String) async throws -> UserModel
     func updatePassword(_ currentPassword: String, _ newPassword: String) async throws -> UserModel
-    func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws -> Void
+    func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws -> UserModel
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async throws -> UserModel
     func uploadProfilePicture(_ image: UIImage) async throws -> UserModel
     func addToSavedItems(_ product_id: String) async throws -> UserModel

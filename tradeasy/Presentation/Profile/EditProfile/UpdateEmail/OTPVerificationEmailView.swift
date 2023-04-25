@@ -108,22 +108,29 @@ struct OTPVerificationEmailView: View {
         }
     }
 
-        private func verifyOTP() {
-            viewModel.changeEmail(otp: otpText, newEmail: email) { result in
-                switch result {
-                case .success:
-                    viewModel.state = .success
-                case .failure(let error):
-                    if case let UseCaseError.error(message) = error {
-                        errorMessage = message
-                        showError = true
-                    } else {
-                        print("Error changing email: \(error)")
-                    }
+    private func verifyOTP() {
+        viewModel.changeEmail(otp: otpText, newEmail: email) { result in
+            switch result {
+            case .success(let userModel):
+                print("User logged in successfully: \(userModel)")
+                DispatchQueue.main.async {
+                    userPreferences.setUser(user: userModel)
+                }
+                print("nik omake \(userModel)")
+                self.presentationMode.wrappedValue.dismiss()
+                
+                
+            case .failure(let error):
+                if case let UseCaseError.error(message) = error {
+                    errorMessage = message
+                    showError = true
+                    print("Error logging in: \(message)")
+                } else {
+                    print("Error logging in: \(error)")
                 }
             }
         }
-    
+    }
    
     @ViewBuilder
     func OTPTextBox(_ index: Int)->some View{

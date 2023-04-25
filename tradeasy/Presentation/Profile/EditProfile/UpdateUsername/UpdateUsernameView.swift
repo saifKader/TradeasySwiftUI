@@ -48,6 +48,7 @@ struct UpdateUsernameView: View {
                             DispatchQueue.main.async {
                                 userPreferences.setUser(user: userModel)
                             }
+                            print("zok omek \(userModel)")
                             self.presentationMode.wrappedValue.dismiss()
                             
                           

@@ -32,7 +32,7 @@ struct UserRepositoryImpl: IUserRepository {
         try await dataSource.updatePassword(currentPassword, newPassword)
     }
     
-    func sendVerificationEmail (_ forgetPasswordReq:ForgetPasswordReq) async throws {
+    func sendVerificationEmail (_ forgetPasswordReq:ForgetPasswordReq) async throws -> UserModel {
         try await dataSource.sendVerificationEmail(forgetPasswordReq)
     }
     

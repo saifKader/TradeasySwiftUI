@@ -10,7 +10,7 @@ import Foundation
 enum UpdateEmailState: Equatable {
     case idle
     case loading
-    case success
+    case success(UserModel)
     case error(Error)
 
     static func == (lhs: UpdateEmailState, rhs: UpdateEmailState) -> Bool {
@@ -46,7 +46,7 @@ class UpdateEmailViewModel: ObservableObject {
         self.userUseCase = UserUseCase(repo: userRepository)
     }
     
-    func sendVerificationEmail(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func sendVerificationEmail(email: String, completion: @escaping (Result<UserModel, Error>) -> Void) {
         DispatchQueue.main.async {
             self.state = .loading
         }
@@ -56,13 +56,15 @@ class UpdateEmailViewModel: ObservableObject {
             let result = await userUseCase.sendEmailVerification(forgetPasswordReq)
             DispatchQueue.main.async {
                 switch result {
-                case .success:
-                    self.state = .success
-                    completion(.success(()))
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self.state = .error(error) // Set state to error if an error occurs
-                        completion(.failure(error))
+                    case .success(let userModel):
+                        DispatchQueue.main.async {
+                            self.state = .success(userModel) // Set state to success if the request is successful
+                            completion(.success(userModel))
+                        }
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            self.state = .error(error) // Set state to error if an error occurs
+                            completion(.failure(error))
                     }
                 }
             }
@@ -77,7 +79,8 @@ class UpdateEmailViewModel: ObservableObject {
     }
 
     
-    func changeEmail(otp: String, newEmail: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func changeEmail(otp: String, newEmail: String, completion: @escaping (Result<UserModel, Error>) -> Void) {
+       
         DispatchQueue.main.async {
             self.state = .loading
         }
@@ -87,13 +90,15 @@ class UpdateEmailViewModel: ObservableObject {
             let result = await userUseCase.changeEmail(changeEmailReq)
             DispatchQueue.main.async {
                 switch result {
-                case .success:
-                    self.state = .success
-                    completion(.success(()))
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self.state = .error(error) // Set state to error if an error occurs
-                        completion(.failure(error))
+                    case .success(let userModel):
+                        DispatchQueue.main.async {
+                            self.state = .success(userModel) // Set state to success if the request is successful
+                            completion(.success(userModel))
+                        }
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            self.state = .error(error) // Set state to error if an error occurs
+                            completion(.failure(error))
                     }
                 }
             }

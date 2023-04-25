@@ -151,7 +151,7 @@ struct UserAPI {
         }
     }
     
-    func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws {
+    func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws -> UserModel {
             let url = "\(kbaseUrl)\(ksendVerificationEmail)"
             let userPreferences = UserPreferences()
             let headers: HTTPHeaders = [
@@ -159,18 +159,28 @@ struct UserAPI {
                 "jwt": (userPreferences.getUser()?.token)!
             ]
             let jsonBody = try JSONEncoder().encode(forgetPasswordReq)
-            return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
                 AF.upload(jsonBody, to: url, method: .post, headers: headers)
                     .validate(statusCode: 200..<202)
-                    .response { (response: AFDataResponse<Data?>) in
-                        if let error = response.error {
-                            continuation.resume(throwing: error)
-                        } else {
-                            continuation.resume(returning: ())
+                    .responseDecodable(of: UserModel.self) { response in
+                        switch response.result {
+                        case .success(let user):
+                            continuation.resume(returning: user)
+                        case .failure(let error):
+                            if let data = response.data {
+                                do {
+                                    throw errorFromResponseData(data)
+                                } catch {
+                                    continuation.resume(throwing: error)
+                                }
+                            } else {
+                                continuation.resume(throwing: error)
+                            }
                         }
                     }
             }
         }
+
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async throws -> UserModel {
         let url = "\(kbaseUrl)\(kchangeEmail)"
         let userPreferences = UserPreferences()

@@ -80,6 +80,7 @@ struct EditProductView2: View {
                             isShowingImagePickerLibrary = true
                             
                         }),
+                        .cancel()
                     ])
                 }
                 Picker("Category", selection: $category) {

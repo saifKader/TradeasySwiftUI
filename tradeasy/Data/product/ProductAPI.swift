@@ -61,8 +61,16 @@ struct ProductAPI {
         ]
         if let token = userPreferences.getUser()?.token {
             headers["jwt"] = token
+            
+        }
+        
+
+        if headers["jwt"] == nil {
+            headers.remove(name: "jwt")
         }
 
+        
+       
         return try await withCheckedThrowingContinuation { continuation in
             AF.request(url, method: .get, headers: headers)
                 .validate(statusCode: 200..<305)

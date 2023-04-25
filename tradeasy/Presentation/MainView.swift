@@ -7,6 +7,7 @@
 
 import SwiftUI
 let userPreferences = UserPreferences()
+
 struct MainView: View {
     @State  var isLoginShown: Bool = userPreferences.getUser() == nil
     @State private var selectedTab = 0

@@ -12,13 +12,13 @@ struct ProductDetailsView: View {
     @StateObject var viewModel = ProductDetailsViewModel()
     @StateObject var userDataViewModel = GetUserDataStateViewModel()
     @EnvironmentObject var navigationController: NavigationController
-    let userPreferences = UserPreferences()
+    
     let productPreferences = ProductPreferences()
     @State private var isProductSaved = false
     @State private var showFullScreenImage = false
     @State private var showFullDescription = false
     @State private var showEdit = false
-    
+    @State private var isShowingBidView: Bool = false
     
     func updateSavedProductStatus(completion: @escaping (Bool) -> Void) {
         userDataViewModel.getUserData { result in
@@ -77,12 +77,7 @@ struct ProductDetailsView: View {
                         }
                     }
                 }
-                
-                
-                
-                
-                
-                
+           
                 // Add the other elements under the image
                 VStack(alignment: .leading, spacing: 4) {
                     
@@ -196,15 +191,18 @@ struct ProductDetailsView: View {
                         
                     }
                     
-                    if let forBid = product.forBid, forBid {
-                        VStack(alignment: .center, spacing: 4) {
-                            HStack(alignment: .center) {
-                                ActionButton(text: "Place bid", action: {
-                                    
-                                }, height: 20.0, width: .infinity, icon: "hammer.fill")
-                            }
-                        }.padding(.bottom,25)
-                    }
+                        if let forBid = product.forBid, forBid {
+                            VStack(alignment: .center, spacing: 4) {
+                                HStack(alignment: .center) {
+                                    ActionButton(text: "Place bid", action: {
+                                        isShowingBidView = true
+                                    }, height: 20.0, width: .infinity, icon: "hammer.fill")
+                                }
+                            }.padding(.bottom,25)
+                                .sheet(isPresented: $isShowingBidView, content: {
+                                       BidView()
+                                   })
+                        }
                 }
             }
             .padding()

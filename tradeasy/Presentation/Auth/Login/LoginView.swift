@@ -250,7 +250,14 @@ struct LoginView: View {
                     }
                 }
                 .padding()
-                
+                .navigationBarItems(
+                    leading: Button(action: {
+                        navigationController.popToRoot()
+                    }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(Color("black_white"))
+                    }
+                )
                 
             }
         }

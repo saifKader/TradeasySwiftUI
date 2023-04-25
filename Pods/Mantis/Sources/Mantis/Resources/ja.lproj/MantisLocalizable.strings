@@ -1,0 +1,14 @@
+/* 
+  MantisLocalizable.strings
+  Mantis
+
+  Created by Echo on 11/11/18.
+  Copyright © 2018 Echo. All rights reserved.
+*/
+
+"Mantis.Done" = "完了";
+"Mantis.Cancel" = "キャンセル";
+"Mantis.Reset" = "リセット";
+"Mantis.Original" = "オリジナル";
+"Mantis.Square" = "正方形";
+

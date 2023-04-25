@@ -78,7 +78,7 @@ struct RecentlyViewedView: View {
                                 HStack {
                                     // Display the image from the URL
                                     if let imageUrl = product.image?.first,
-                                       let url = URL(string: imageUrl) {
+                                       let url = URL(string: kImageUrl + imageUrl) {
                                         AsyncImage(url: url) { image in
                                             image
                                                 .resizable()

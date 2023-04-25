@@ -78,6 +78,7 @@ struct AdditionalInfoView: View {
                                 isShowingImagePickerLibrary = true
                                 
                             }),
+                            .cancel()
                         ])
                     }
                     
