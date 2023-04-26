@@ -126,8 +126,8 @@ struct EditProductView2: View {
             }
         }
         .scrollContentBackground(.hidden)
-        NavigationLink(destination: ImagePicker(selectedImage: $image, sourceType: .camera), isActive: $isShowingImagePicker,label: { EmptyView() })
-        NavigationLink(destination: ImagePicker(selectedImage: $image, sourceType: .photoLibrary), isActive: $isShowingImagePickerLibrary,label: { EmptyView() })
+        NavigationLink(destination: ImagePickerWithCrop(selectedImage: $image, sourceType: .camera), isActive: $isShowingImagePicker,label: { EmptyView() })
+        NavigationLink(destination: ImagePickerWithCrop(selectedImage: $image, sourceType: .photoLibrary), isActive: $isShowingImagePickerLibrary,label: { EmptyView() })
     }
 }
 

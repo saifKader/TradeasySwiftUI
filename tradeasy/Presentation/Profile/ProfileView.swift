@@ -239,7 +239,22 @@ struct ProfileView: View {
 
         .navigationBarTitle("Profile")
         .refreshable {
-            // Add the RefreshControl to the ScrollView
+            if let profilePicture = userPreferences.getUser()?.profilePicture,
+               let imageUrl = URL(string: kImageUrl + profilePicture) {
+                // Load the image asynchronously
+                URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                    if let data = data, let image = UIImage(data: data) {
+                        // Assign the downloaded image to profileImage on the main thread
+                        DispatchQueue.main.async {
+                            profileImage = image
+                        }
+                    }
+                }.resume()
+            } else if userPreferences.getUser() == nil
+            {
+                showLogin = true
+                navigationController.navigate(to: LoginView())
+            }
             isRefreshing = true
             //userPreferences.refreshUserData()
             isRefreshing = false

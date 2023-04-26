@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1A0C0BC4B8D221EABC7A5A /* Pods_tradeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51B6D0FFD449EDFA2D679A7E /* Pods_tradeasy.framework */; };
 		5917700729EC8A98009EEB11 /* EditProductReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700629EC8A98009EEB11 /* EditProductReq.swift */; };
 		5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */; };
 		5917700D29EC8E93009EEB11 /* EditProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700C29EC8E93009EEB11 /* EditProductView.swift */; };
@@ -17,14 +18,10 @@
 		5952D45729E71903003118CB /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952D45629E71903003118CB /* AddProductView.swift */; };
 		5963000829F6DF180073DD7B /* BidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963000729F6DF180073DD7B /* BidView.swift */; };
 		596C556129F8043200DEACE4 /* TermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596C556029F8043200DEACE4 /* TermsAndConditionsView.swift */; };
-		596C556329F82F5C00DEACE4 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596C556229F82F5C00DEACE4 /* TestView.swift */; };
+		596C556329F82F5C00DEACE4 /* TestAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596C556229F82F5C00DEACE4 /* TestAView.swift */; };
 		5972D6A129E446FF00DE7F5B /* GoogleAuthBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972D6A029E446FF00DE7F5B /* GoogleAuthBtn.swift */; };
 		5972D6A729E4612500DE7F5B /* FirebaseInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972D6A629E4612500DE7F5B /* FirebaseInit.swift */; };
-		597DE3E029E8D3B700E4BEA8 /* Pods_tradeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597DE3DF29E8D3B700E4BEA8 /* Pods_tradeasy.framework */; };
-		597DE3E429E8D42700E4BEA8 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E329E8D42700E4BEA8 /* UserDataManager.swift */; };
-		597DE3E529E8D47200E4BEA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5972D6A229E4514A00DE7F5B /* GoogleService-Info.plist */; };
-		597DE3E629E8D47900E4BEA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59DDC7F629C1E84600FF6DFB /* Localizable.strings */; };
-		597DE3E729E8D49100E4BEA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
+		597DE3E429E8D42700E4BEA8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E329E8D42700E4BEA8 /* UserData.swift */; };
 		597DE3EA29E8DC1D00E4BEA8 /* SavedProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E929E8DC1D00E4BEA8 /* SavedProductsView.swift */; };
 		597DE3ED29E9909200E4BEA8 /* RecentlyViewedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3EC29E9909200E4BEA8 /* RecentlyViewedView.swift */; };
 		597DE3F029E991CA00E4BEA8 /* SellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3EF29E991CA00E4BEA8 /* SellingView.swift */; };
@@ -61,6 +58,9 @@
 		59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */; };
 		59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */; };
 		59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C0BCCC29C4FBBB006C5D6A /* MainView.swift */; };
+		59C7137C29F86167000B0516 /* BidSocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7137B29F86167000B0516 /* BidSocketIOClient.swift */; };
+		59C7137F29F86410000B0516 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 59C7137E29F86410000B0516 /* SocketIO */; };
+		59C7138429F8EFB5000B0516 /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 59C7138329F8EFB5000B0516 /* CombineExt */; };
 		59C78C7329EA2F3A0023DA8D /* UnlistProductReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C78C7229EA2F390023DA8D /* UnlistProductReq.swift */; };
 		59CEBA1629E466E90027E016 /* +View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA1529E466E90027E016 /* +View.swift */; };
 		59CEBA1829E467BD0027E016 /* GoogleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA1729E467BD0027E016 /* GoogleAuth.swift */; };
@@ -74,6 +74,8 @@
 		59CEBA2E29E4A1ED0027E016 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2D29E4A1ED0027E016 /* SearchView.swift */; };
 		59CEBA3029E4A2020027E016 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */; };
 		59CEBA3329E4DEB30027E016 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CEBA3229E4DEB30027E016 /* ProductDetailsView.swift */; };
+		59CECAAF29F8417400A2F99A /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 59CECAAE29F8414000A2F99A /* GoogleService-Info.plist */; };
+		59CECAB029F8419300A2F99A /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD729C0E40600CD0703 /* Assets.xcassets */; };
 		59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD329C0E40500CD0703 /* tradeasyApp.swift */; };
 		59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17AD529C0E40500CD0703 /* ContentView.swift */; };
 		59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17ADC29C0E40600CD0703 /* Persistence.swift */; };
@@ -113,7 +115,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
+		51B6D0FFD449EDFA2D679A7E /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5917700629EC8A98009EEB11 /* EditProductReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductReq.swift; sourceTree = "<group>"; };
 		5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductviewModel.swift; sourceTree = "<group>"; };
 		5917700C29EC8E93009EEB11 /* EditProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView.swift; sourceTree = "<group>"; };
@@ -124,12 +126,10 @@
 		5952D45629E71903003118CB /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		5963000729F6DF180073DD7B /* BidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidView.swift; sourceTree = "<group>"; };
 		596C556029F8043200DEACE4 /* TermsAndConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsView.swift; sourceTree = "<group>"; };
-		596C556229F82F5C00DEACE4 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		596C556229F82F5C00DEACE4 /* TestAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAView.swift; sourceTree = "<group>"; };
 		5972D6A029E446FF00DE7F5B /* GoogleAuthBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthBtn.swift; sourceTree = "<group>"; };
-		5972D6A229E4514A00DE7F5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5972D6A629E4612500DE7F5B /* FirebaseInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInit.swift; sourceTree = "<group>"; };
-		597DE3DF29E8D3B700E4BEA8 /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		597DE3E329E8D42700E4BEA8 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		597DE3E329E8D42700E4BEA8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		597DE3E929E8DC1D00E4BEA8 /* SavedProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedProductsView.swift; sourceTree = "<group>"; };
 		597DE3EC29E9909200E4BEA8 /* RecentlyViewedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewedView.swift; sourceTree = "<group>"; };
 		597DE3EF29E991CA00E4BEA8 /* SellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellingView.swift; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 		59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTextField.swift; sourceTree = "<group>"; };
 		59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameViewModel.swift; sourceTree = "<group>"; };
 		59C0BCCC29C4FBBB006C5D6A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		59C7137B29F86167000B0516 /* BidSocketIOClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidSocketIOClient.swift; sourceTree = "<group>"; };
 		59C78C7229EA2F390023DA8D /* UnlistProductReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlistProductReq.swift; sourceTree = "<group>"; };
 		59CEBA1429E463B60027E016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		59CEBA1529E466E90027E016 /* +View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		59CEBA2D29E4A1ED0027E016 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		59CEBA2F29E4A2020027E016 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		59CEBA3229E4DEB30027E016 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
+		59CECAAE29F8414000A2F99A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59D17AD029C0E40500CD0703 /* tradeasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tradeasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D17AD329C0E40500CD0703 /* tradeasyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tradeasyApp.swift; sourceTree = "<group>"; };
 		59D17AD529C0E40500CD0703 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -220,8 +222,8 @@
 		59EE253629C138C6000F7D55 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		59EE253829C1505E000F7D55 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		59FFAAEE29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProfilePictureViewModel.swift; sourceTree = "<group>"; };
-		928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tradeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.release.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.release.xcconfig"; sourceTree = "<group>"; };
+		98F413B5EEB12079123BEFCB /* Pods-tradeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.release.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.release.xcconfig"; sourceTree = "<group>"; };
+		B606C89ED2CD4C65E0848F43 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +231,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				597DE3E029E8D3B700E4BEA8 /* Pods_tradeasy.framework in Frameworks */,
+				0E1A0C0BC4B8D221EABC7A5A /* Pods_tradeasy.framework in Frameworks */,
+				59C7138429F8EFB5000B0516 /* CombineExt in Frameworks */,
+				59C7137F29F86410000B0516 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				5963000729F6DF180073DD7B /* BidView.swift */,
+				59C7137B29F86167000B0516 /* BidSocketIOClient.swift */,
 			);
 			path = Bid;
 			sourceTree = "<group>";
@@ -510,7 +515,7 @@
 				59D17AD229C0E40500CD0703 /* tradeasy */,
 				59D17AD129C0E40500CD0703 /* Products */,
 				6C90DBD215DCFD90EB73E916 /* Pods */,
-				9EF25499497F951BB587869B /* Frameworks */,
+				C7C09BCB5A6DB0624EA74B09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -525,8 +530,8 @@
 		59D17AD229C0E40500CD0703 /* tradeasy */ = {
 			isa = PBXGroup;
 			children = (
+				59CECAAE29F8414000A2F99A /* GoogleService-Info.plist */,
 				59CEBA1429E463B60027E016 /* Info.plist */,
-				5972D6A229E4514A00DE7F5B /* GoogleService-Info.plist */,
 				59D17AF229C0EC9B00CD0703 /* Data */,
 				59D17B0E29C0EF1600CD0703 /* Domain */,
 				59D17AED29C0E59700CD0703 /* Utils */,
@@ -696,7 +701,7 @@
 			isa = PBXGroup;
 			children = (
 				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
-				597DE3E329E8D42700E4BEA8 /* UserDataManager.swift */,
+				597DE3E329E8D42700E4BEA8 /* UserData.swift */,
 				597DE3EE29E991B200E4BEA8 /* Selling */,
 				59CEBA2C29E4A1DD0027E016 /* Search */,
 				598B503029DE7C53000187EC /* Home */,
@@ -704,7 +709,7 @@
 				59DDC7F129C1C35800FF6DFB /* Router */,
 				59EE252629C10431000F7D55 /* Components */,
 				59D17B2229C0F0EA00CD0703 /* Auth */,
-				596C556229F82F5C00DEACE4 /* TestView.swift */,
+				596C556229F82F5C00DEACE4 /* TestAView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -792,17 +797,16 @@
 		6C90DBD215DCFD90EB73E916 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */,
-				B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */,
+				B606C89ED2CD4C65E0848F43 /* Pods-tradeasy.debug.xcconfig */,
+				98F413B5EEB12079123BEFCB /* Pods-tradeasy.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		9EF25499497F951BB587869B /* Frameworks */ = {
+		C7C09BCB5A6DB0624EA74B09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				597DE3DF29E8D3B700E4BEA8 /* Pods_tradeasy.framework */,
-				928EE4C25DFAA5AA3FCE37A2 /* Pods_tradeasy.framework */,
+				51B6D0FFD449EDFA2D679A7E /* Pods_tradeasy.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -814,11 +818,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59D17AE329C0E40600CD0703 /* Build configuration list for PBXNativeTarget "tradeasy" */;
 			buildPhases = (
-				06D0769CA32ED5F9A747B539 /* [CP] Check Pods Manifest.lock */,
+				110B488C0D98376E275E3153 /* [CP] Check Pods Manifest.lock */,
 				59D17ACC29C0E40500CD0703 /* Sources */,
 				59D17ACD29C0E40500CD0703 /* Frameworks */,
-				59D17ACE29C0E40500CD0703 /* Resources */,
-				8A65A9DFB7D543965893DCC8 /* [CP] Embed Pods Frameworks */,
+				7906BE0E2FD3093F24EC7CE5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -826,6 +829,8 @@
 			);
 			name = tradeasy;
 			packageProductDependencies = (
+				59C7137E29F86410000B0516 /* SocketIO */,
+				59C7138329F8EFB5000B0516 /* CombineExt */,
 			);
 			productName = tradeasy;
 			productReference = 59D17AD029C0E40500CD0703 /* tradeasy.app */;
@@ -858,6 +863,8 @@
 			packageReferences = (
 				598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				5972D6A429E45A1B00DE7F5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				59C7137D29F86410000B0516 /* XCRemoteSwiftPackageReference "socket" */,
+				59C7138229F8EFB5000B0516 /* XCRemoteSwiftPackageReference "CombineExt" */,
 			);
 			productRefGroup = 59D17AD129C0E40500CD0703 /* Products */;
 			projectDirPath = "";
@@ -868,21 +875,8 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		59D17ACE29C0E40500CD0703 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				597DE3E729E8D49100E4BEA8 /* Assets.xcassets in Resources */,
-				597DE3E629E8D47900E4BEA8 /* Localizable.strings in Resources */,
-				597DE3E529E8D47200E4BEA8 /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXShellScriptBuildPhase section */
-		06D0769CA32ED5F9A747B539 /* [CP] Check Pods Manifest.lock */ = {
+		110B488C0D98376E275E3153 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -904,7 +898,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8A65A9DFB7D543965893DCC8 /* [CP] Embed Pods Frameworks */ = {
+		7906BE0E2FD3093F24EC7CE5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -928,6 +922,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59CECAB029F8419300A2F99A /* Assets.xcassets in Sources */,
+				59CECAAF29F8417400A2F99A /* GoogleService-Info.plist in Sources */,
 				5952D45029E71133003118CB /* AddProductReq.swift in Sources */,
 				59D17B1829C0F00000CD0703 /* AuthUseCase.swift in Sources */,
 				597DE3ED29E9909200E4BEA8 /* RecentlyViewedView.swift in Sources */,
@@ -947,12 +943,13 @@
 				59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */,
 				5984320129CBC6BA001A6C40 /* VerifyOtpReq.swift in Sources */,
 				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
+				59C7137C29F86167000B0516 /* BidSocketIOClient.swift in Sources */,
 				59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */,
 				59EE252929C10459000F7D55 /* Alert.swift in Sources */,
 				5952D45529E7130D003118CB /* AddProductViewModel.swift in Sources */,
 				59FFAAEF29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift in Sources */,
 				598B503229DE7C66000187EC /* HomeView.swift in Sources */,
-				596C556329F82F5C00DEACE4 /* TestView.swift in Sources */,
+				596C556329F82F5C00DEACE4 /* TestAView.swift in Sources */,
 				596C556129F8043200DEACE4 /* TermsAndConditionsView.swift in Sources */,
 				5984320329CBCC67001A6C40 /* UserUseCase.swift in Sources */,
 				598B502B29DE402C000187EC /* UpdateEmailReq.swift in Sources */,
@@ -1008,7 +1005,7 @@
 				59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */,
 				59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */,
 				594F6AE029DEF45200C8F473 /* ImagePicker.swift in Sources */,
-				597DE3E429E8D42700E4BEA8 /* UserDataManager.swift in Sources */,
+				597DE3E429E8D42700E4BEA8 /* UserData.swift in Sources */,
 				59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */,
 				59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */,
 				59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */,
@@ -1149,7 +1146,7 @@
 		};
 		59D17AE429C0E40600CD0703 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F662C7ED6145702723FEF1 /* Pods-tradeasy.debug.xcconfig */;
+			baseConfigurationReference = B606C89ED2CD4C65E0848F43 /* Pods-tradeasy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1181,7 +1178,7 @@
 		};
 		59D17AE529C0E40600CD0703 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B93AC52430D26E11C8200304 /* Pods-tradeasy.release.xcconfig */;
+			baseConfigurationReference = 98F413B5EEB12079123BEFCB /* Pods-tradeasy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1251,7 +1248,36 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		59C7137D29F86410000B0516 /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		59C7138229F8EFB5000B0516 /* XCRemoteSwiftPackageReference "CombineExt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineExt.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		59C7137E29F86410000B0516 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59C7137D29F86410000B0516 /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+		59C7138329F8EFB5000B0516 /* CombineExt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59C7138229F8EFB5000B0516 /* XCRemoteSwiftPackageReference "CombineExt" */;
+			productName = CombineExt;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		59D17ADE29C0E40600CD0703 /* tradeasy.xcdatamodeld */ = {

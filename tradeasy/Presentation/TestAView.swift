@@ -35,13 +35,6 @@ struct CropView: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation) {
-            parent.image = cropped
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-        
-        func cropViewControllerDidCancel(_ cropViewController: CropViewController) {
-            parent.presentationMode.wrappedValue.dismiss()
-        }
+     
     }
 }

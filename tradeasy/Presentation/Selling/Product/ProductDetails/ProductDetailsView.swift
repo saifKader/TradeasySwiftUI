@@ -200,7 +200,7 @@ struct ProductDetailsView: View {
                                 }
                             }.padding(.bottom,25)
                                 .sheet(isPresented: $isShowingBidView, content: {
-                                       BidView()
+                                    BidView(socketManager: SocketIOManager(product: product))
                                    })
                         }
                 }

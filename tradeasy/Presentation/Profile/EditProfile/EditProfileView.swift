@@ -25,14 +25,19 @@ struct EditProfileView: View {
     @State private var showCropView = false
     
     @ObservedObject var viewModel = UploadProfilePictureViewModel()
-    
+    func navigateToCropView(with image: UIImage) {
+           let cropView = CropView(image: $profileImage)
+          
+     
+             
+       }
     var body: some View {
         NavigationStack {
             NavigationLink(destination: UpdateUsernameView(), isActive: $isEditUsernamePresent) {}
             NavigationLink(destination: UpdatePasswordView(), isActive: $isUpdatePasswordPresent) {}
             NavigationLink(destination: SendVerificationEmail(), isActive: $navigationController.isUpdateEmailPresent){}
-            NavigationLink(destination: ImagePicker(selectedImage: $profileImage, sourceType: .camera), isActive: $showImagePickerCamera,label: { EmptyView() })
-            NavigationLink(destination: ImagePicker(selectedImage: $profileImage, sourceType: .photoLibrary), isActive: $showImagePickerLibrary,label: { EmptyView() })
+            NavigationLink(destination: ImagePickerWithCrop(selectedImage: $profileImage, sourceType: .camera), isActive: $showImagePickerCamera,label: { EmptyView() })
+            NavigationLink(destination: ImagePickerWithCrop(selectedImage: $profileImage, sourceType: .photoLibrary), isActive: $showImagePickerLibrary,label: { EmptyView() })
             ScrollView {
                 VStack {
                     HStack {
@@ -137,18 +142,12 @@ struct EditProfileView: View {
                     navigationController.navigate(to: LoginView())
                 }
                 
-                
-                
             }
             .onChange(of: profileImage) { newImage in
                 if let newImage = newImage {
-
+                    navigateToCropView(with: newImage)
                     
-                    // jareb el crop
-                    
-                //    NavigationLink(destination: CropView(image: newImage, ), isActive: $isEditUsernamePresent) {}
-                    
-             /*     viewModel.uploadProfilePicture(newImage) { result in
+             viewModel.uploadProfilePicture(newImage) { result in
                         switch result {
                         case .success(let userModel):
                             // Update the profile picture in the ProfileView as well
@@ -165,7 +164,7 @@ struct EditProfileView: View {
                         case .failure(let error):
                             print("error image")
                         }
-                    } */
+                    }
                 }
             }
         

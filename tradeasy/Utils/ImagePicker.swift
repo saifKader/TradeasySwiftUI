@@ -1,20 +1,21 @@
 import SwiftUI
+import Mantis
 
-struct ImagePicker: UIViewControllerRepresentable {
+struct ImagePickerWithCrop: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
-    
     @Binding var selectedImage: UIImage?
+    
     var sourceType: UIImagePickerController.SourceType
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerWithCrop>) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
         picker.sourceType = sourceType
         return picker
     }
     
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePickerWithCrop>) {
         
     }
     
@@ -22,22 +23,43 @@ struct ImagePicker: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: ImagePicker
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CropViewControllerDelegate {
+        func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation, cropInfo: Mantis.CropInfo) {
+            parent.selectedImage = cropped
+            cropViewController.dismiss(animated: true, completion: nil) // dismiss the crop view controller
+        }
+
+        func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
+            cropViewController.dismiss(animated: true, completion: nil) // dismiss the crop view controller
+        }
         
-        init(_ parent: ImagePicker) {
+        
+                
+           
+        
+        
+        let parent: ImagePickerWithCrop
+        
+        init(_ parent: ImagePickerWithCrop) {
             self.parent = parent
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            
             if let selectedImage = info[.originalImage] as? UIImage {
-                parent.selectedImage = selectedImage
+                
+                let cropViewController = Mantis.cropViewController(image: selectedImage)
+                cropViewController.delegate = self
+                picker.present(cropViewController, animated: true, completion: nil)
+                
             }
-            parent.presentationMode.wrappedValue.dismiss()
         }
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }
+        
+        
+        
     }
 }

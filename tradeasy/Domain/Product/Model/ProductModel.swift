@@ -6,14 +6,19 @@
 //
 
 import Foundation
+import Combine
 
-struct ProductModel: Codable {
+class ProductModel: Codable, ObservableObject {
     let _id: String?
     let user_id: String?
     let category: String?
     let name: String?
     let description: String?
-    let price: Float?
+    @Published var price: Float? {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     let image: [String]?
     let quantity: Int?
     let addedDate: Int?
@@ -48,7 +53,7 @@ struct ProductModel: Codable {
         case productId
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         _id = try container.decodeIfPresent(String.self, forKey: ._id)
         user_id = try container.decodeIfPresent(String.self, forKey: .user_id)

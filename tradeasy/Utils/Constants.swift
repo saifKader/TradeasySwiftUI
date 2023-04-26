@@ -6,8 +6,8 @@
 //
 
 import Foundation
-let kbaseUrl = "http://localhost:9090/"
-//let kbaseUrl = "http://192.168.1.13:9090/"
+//let kbaseUrl = "http://localhost:9090/"
+let kbaseUrl = "http://192.168.1.13:9090/"
 let kImageUrl = "\(kbaseUrl)img/"
 
 // authentification
