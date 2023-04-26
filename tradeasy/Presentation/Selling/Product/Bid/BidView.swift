@@ -5,6 +5,7 @@ import SocketIO
 struct BidView: View {
     @ObservedObject var socketManager: SocketIOManager
     @State var bidAmount: Double = 0.0
+    @State var refreshUI = false
     
     var body: some View {
         VStack {
@@ -16,8 +17,6 @@ struct BidView: View {
                         }
                     }
                 }
-
-                
 
             Text("Enter your bid:")
             TextField("Bid amount", value: $bidAmount, formatter: NumberFormatter())
@@ -32,12 +31,21 @@ struct BidView: View {
                 ]
 
                 socketManager.placeBid(bidData: bidData)
+                // Update the trigger to refresh the UI
+                self.refreshUI.toggle()
             }) {
                 Text("Place Bid")
             }
         }
         .onAppear {
             socketManager.socketBid.connect()
+        }
+        // Observe changes to the trigger and refresh the UI
+        .onChange(of: refreshUI) { _ in
+            DispatchQueue.main.async {
+                // Reload the view to reflect the updated product price
+                self.bidAmount = Double(socketManager.product?.price ?? 0.0)
+            }
         }
     }
 }

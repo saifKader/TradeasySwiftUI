@@ -191,18 +191,19 @@ struct ProductDetailsView: View {
                         
                     }
                     
-                        if let forBid = product.forBid, forBid {
-                            VStack(alignment: .center, spacing: 4) {
-                                HStack(alignment: .center) {
-                                    ActionButton(text: "Place bid", action: {
-                                        isShowingBidView = true
-                                    }, height: 20.0, width: .infinity, icon: "hammer.fill")
-                                }
-                            }.padding(.bottom,25)
-                                .sheet(isPresented: $isShowingBidView, content: {
-                                    BidView(socketManager: SocketIOManager(product: product))
-                                   })
+                    if let forBid = product.forBid, forBid {
+                        VStack(alignment: .center, spacing: 4) {
+                            HStack(alignment: .center) {
+                                ActionButton(text: "Place bid", action: {
+                                    isShowingBidView = true
+                                }, height: 20.0, width: .infinity, icon: "hammer.fill")
+                            }
+                        }.padding(.bottom,25)
+                        NavigationLink(destination: BidView(socketManager: SocketIOManager(product: product)), isActive: $isShowingBidView) {
+                            EmptyView()
                         }
+                    }
+
                 }
             }
             .padding()
