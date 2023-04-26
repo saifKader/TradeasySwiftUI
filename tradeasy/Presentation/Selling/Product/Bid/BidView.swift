@@ -1,7 +1,6 @@
 import SwiftUI
 import SocketIO
 
-
 struct BidView: View {
     @ObservedObject var socketManager: SocketIOManager
     @State var bidAmount: Double = 0.0
@@ -9,12 +8,11 @@ struct BidView: View {
     
     var body: some View {
         VStack {
+            
             Text("Current Price: \(socketManager.product?.price ?? 0.0)")
-                .onReceive(socketManager.$product) { product in
-                    if let price = product?.price {
-                        DispatchQueue.main.async {
-                            self.bidAmount = Double(price)
-                        }
+                .onReceive(socketManager.$refreshUI) { _ in
+                    DispatchQueue.main.async {
+                        self.bidAmount = Double(socketManager.product?.price ?? 0.0)
                     }
                 }
 
@@ -23,19 +21,23 @@ struct BidView: View {
                 .keyboardType(.decimalPad)
                 .padding()
 
-            Button(action: {
-                let bidData: [String: Any] = [
-                    "user_id": userPreferences.getUser()?._id ?? "",
-                    "product_id": socketManager.product?._id ?? "",
-                    "bid_amount": Float(bidAmount),
-                ]
+            
+                Button(action: {
+                    let bidData: [String: Any] = [
+                        "user_id": userPreferences.getUser()?._id ?? "",
+                        "product_id": socketManager.product?._id ?? "",
+                        "bid_amount": Float(bidAmount),
+                    ]
 
-                socketManager.placeBid(bidData: bidData)
-                // Update the trigger to refresh the UI
-                self.refreshUI.toggle()
-            }) {
-                Text("Place Bid")
-            }
+                    socketManager.placeBid(bidData: bidData)
+                    // Update the trigger to refresh the UI
+                    self.refreshUI.toggle()
+                }) {
+                    Text("Place Bid")
+                }
+            
+           
+            .disabled(bidAmount <= Double(socketManager.product?.price ?? 0.0))
         }
         .onAppear {
             socketManager.socketBid.connect()

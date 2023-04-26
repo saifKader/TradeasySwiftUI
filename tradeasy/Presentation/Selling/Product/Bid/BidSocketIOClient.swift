@@ -3,7 +3,8 @@ import SocketIO
 
 class SocketIOManager: ObservableObject {
     @Published var product: ProductModel?
-    
+    @Published var message: String = ""
+    @Published var refreshUI = false
     let managerBid = SocketManager(socketURL: URL(string: "http://192.168.1.13:9090")!, config: [.log(true), .compress])
     lazy var socketBid = managerBid.defaultSocket
 
@@ -16,6 +17,14 @@ class SocketIOManager: ObservableObject {
         socketBid.on(clientEvent: .connect) { data, ack in
             print("Socket connected")
         }
+        socketBid.on(BidPayloadEnum.OUTBID.rawValue) { data, ack in
+            print("Received outbid event: \(data)")
+            if let message = data.first as? String {
+                DispatchQueue.main.async {
+                    self.message = message
+                }
+            }
+        }
 
         socketBid.on(BidPayloadEnum.NEW_BID.rawValue) { data, ack in
             print("Received new bid data: \(data)")
@@ -25,6 +34,7 @@ class SocketIOManager: ObservableObject {
                 if self.product?._id == productId {
                     DispatchQueue.main.async {
                         self.product?.price = Float(newPrice)
+                        self.refreshUI.toggle() // Add this line to trigger UI update
                     }
                     print("Received new bid for product \(productId)")
                     print("Product price updated to \(newPrice)")
@@ -45,6 +55,7 @@ class SocketIOManager: ObservableObject {
             }
         }
     }
+    
 
 }
 
