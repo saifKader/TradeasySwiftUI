@@ -102,6 +102,7 @@
 		59DE03E629F9492D00ACD9EE /* VerifyAccountAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E529F9492D00ACD9EE /* VerifyAccountAlert.swift */; };
 		59DE03E829F95A3100ACD9EE /* VerifyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E729F95A3100ACD9EE /* VerifyAccountView.swift */; };
 		59DE03EA29F9A25A00ACD9EE /* VerifyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E929F9A25A00ACD9EE /* VerifyAccountViewModel.swift */; };
+		59DE781529FCD2700025D620 /* RatingReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE781429FCD2700025D620 /* RatingReq.swift */; };
 		59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029429DDD4A7005F8878 /* HiddenTabView.swift */; };
 		59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029729DDD992005F8878 /* UpdatePasswordView.swift */; };
 		59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */; };
@@ -215,6 +216,7 @@
 		59DE03E529F9492D00ACD9EE /* VerifyAccountAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountAlert.swift; sourceTree = "<group>"; };
 		59DE03E729F95A3100ACD9EE /* VerifyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountView.swift; sourceTree = "<group>"; };
 		59DE03E929F9A25A00ACD9EE /* VerifyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountViewModel.swift; sourceTree = "<group>"; };
+		59DE781429FCD2700025D620 /* RatingReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingReq.swift; sourceTree = "<group>"; };
 		59E5029429DDD4A7005F8878 /* HiddenTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenTabView.swift; sourceTree = "<group>"; };
 		59E5029729DDD992005F8878 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewModel.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				5952D44F29E71133003118CB /* AddProductReq.swift */,
 				59C78C7229EA2F390023DA8D /* UnlistProductReq.swift */,
 				5917700629EC8A98009EEB11 /* EditProductReq.swift */,
+				59DE781429FCD2700025D620 /* RatingReq.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 				597DE3ED29E9909200E4BEA8 /* RecentlyViewedView.swift in Sources */,
 				59CEBA3329E4DEB30027E016 /* ProductDetailsView.swift in Sources */,
 				598EC98C29E7890700259A55 /* HomeViewModel.swift in Sources */,
+				59DE781529FCD2700025D620 /* RatingReq.swift in Sources */,
 				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
 				59E5029D29DE0EDD005F8878 /* UpdateEmailViewModel.swift in Sources */,
 				59B858B529DC7342006ED7F1 /* UpdatePhoneNumberView.swift in Sources */,

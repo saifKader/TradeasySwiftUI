@@ -14,6 +14,41 @@ struct ProductAPI {
         let data: [ProductModel]
     }
 
+    func addRatingToProduct(_ addRatingReq: AddRatingReq) async throws -> ProductModel {
+        let url = "\(kbaseUrl)\(kAddRatingToProduct)"
+        let userPreferences = UserPreferences()
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "jwt": (userPreferences.getUser()?.token)!
+        ]
+
+        let parameters: [String: Any] = [
+            "product_id": addRatingReq.productId,
+            "rating": addRatingReq.rating
+        ]
+
+        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<ProductModel, Error>) in
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: ProductModel.self) { response in
+                    switch response.result {
+                    case .success(let productModel):
+                        continuation.resume(returning: productModel)
+                    case .failure(let error):
+                        if let data = response.data {
+                            do {
+                                throw errorFromResponseData(data)
+                            } catch {
+                                continuation.resume(throwing: error)
+                            }
+                        } else {
+                            continuation.resume(throwing: error)
+                        }
+                    }
+                }
+        }
+    }
+
 
     func searchProductByname(_ productNameReq: ProdNameReq) async throws -> [ProductModel]  {
         let url = "\(kbaseUrl)\(ksearchProdByName)"

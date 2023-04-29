@@ -8,6 +8,11 @@
 import Foundation
 import Combine
 
+struct Rating: Codable {
+    let user_id: String
+    let rating: Float
+}
+
 class ProductModel: Codable, ObservableObject {
     let _id: String?
     let user_id: String?
@@ -19,6 +24,7 @@ class ProductModel: Codable, ObservableObject {
             objectWillChange.send()
         }
     }
+    let rating: [Rating]?
     let image: [String]?
     let quantity: Int?
     let addedDate: Int?
@@ -39,6 +45,7 @@ class ProductModel: Codable, ObservableObject {
         case name
         case description
         case price
+        case rating
         case image
         case quantity
         case addedDate
@@ -61,6 +68,7 @@ class ProductModel: Codable, ObservableObject {
         name = try container.decodeIfPresent(String.self, forKey: .name)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         price = try container.decodeIfPresent(Float.self, forKey: .price)
+        rating = try container.decodeIfPresent([Rating].self, forKey: .rating)
         image = try container.decodeIfPresent([String].self, forKey: .image)
         quantity = try container.decodeIfPresent(Int.self, forKey: .quantity)
         addedDate = try container.decodeIfPresent(Int.self, forKey: .addedDate)
@@ -74,6 +82,7 @@ class ProductModel: Codable, ObservableObject {
         selling = try container.decodeIfPresent(Bool.self, forKey: .selling)
         productId = try container.decodeIfPresent(String.self, forKey: .productId)
     }
+
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -83,6 +92,7 @@ class ProductModel: Codable, ObservableObject {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(price, forKey: .price)
+        try container.encodeIfPresent(rating, forKey: .rating)
         try container.encodeIfPresent(image, forKey: .image)
         try container.encodeIfPresent(quantity, forKey: .quantity)
         try container.encodeIfPresent(addedDate, forKey: .addedDate)

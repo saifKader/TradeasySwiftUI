@@ -25,10 +25,27 @@ protocol ProductListOrUnlistProtocol {
 protocol EditProduct {
     func editProduct(_ editProductReq: EditProductReq) async -> Result<ProductModel, UseCaseError>
 }
+protocol AddRatingToProduct {
+    func addRatingToProduct(_ addRatingReq: AddRatingReq) async -> Result<ProductModel, UseCaseError>
+}
 
-struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts,GetUserProducts, ProductListOrUnlistProtocol, EditProduct{
+struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts,GetUserProducts, ProductListOrUnlistProtocol, EditProduct, AddRatingToProduct{
     var repo: IProductRepository
-    
+    func addRatingToProduct(_ addRatingReq: AddRatingReq) async -> Result<ProductModel, UseCaseError> {
+            do {
+                let product = try await repo.addRatingToProduct(addRatingReq)
+                return .success(product)
+            } catch let error as APIServiceError {
+                switch error {
+                case .statusNotOK(let message):
+                    return .failure(.error(message: message))
+                default:
+                    return .failure(.networkError)
+                }
+            } catch {
+                return .failure(.networkError)
+            }
+        }
     func productListOrUnlist(_ unlistProductReq: UnlistProductReq) async -> Result<Bool, UseCaseError> {
            do {
                let success = try await repo.productListOrUnlist(unlistProductReq)

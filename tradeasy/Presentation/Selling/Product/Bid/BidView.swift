@@ -28,6 +28,14 @@ struct BidView: View {
             self._timerManager = StateObject(wrappedValue: TimerManager(endDate: Date()))
         }
     }
+    func formatTime(_ seconds: Int) -> String {
+        let hours = seconds / 3600
+        let minutes = (seconds % 3600) / 60
+        let remainingSeconds = (seconds % 3600) % 60
+
+        let timeString = String(format: "%02d:%02d:%02d", hours, minutes, remainingSeconds)
+        return timeString
+    }
     
     var body: some View {
         VStack( spacing: 20) {
@@ -82,7 +90,7 @@ struct BidView: View {
             }
             .onChange(of: bidAmount) { newValue in
                 canPlaceBid = newValue != 0 && Double(newValue) != Double(socketManager.product?.price ?? 0.0) &&  newValue >=   Double(socketManager.product?.price ?? 0.0)
-                newValue != bidAmount
+                print("used to avoid bug")
                
             }
 
@@ -118,14 +126,7 @@ struct BidView: View {
             }
         }
     }
-    func formatTime(_ seconds: Int) -> String {
-        let hours = seconds / 3600
-        let minutes = (seconds % 3600) / 60
-        let remainingSeconds = (seconds % 3600) % 60
-
-        let timeString = String(format: "%02d:%02d:%02d", hours, minutes, remainingSeconds)
-        return timeString
-    }
+ 
     
    
 }

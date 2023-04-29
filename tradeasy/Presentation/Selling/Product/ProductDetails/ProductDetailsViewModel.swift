@@ -42,6 +42,7 @@ class ProductDetailsViewModel: ObservableObject {
     @Published var listUnlistState: ListUnlistState = .idle
     @Published var isListingOrUnlisting: Bool = false
     @Published var isProductListed: Bool = false
+    @Published var ratingState: SaveState = .idle
 
     var isLoading: Bool {
         if case .loading = state {
@@ -76,6 +77,28 @@ class ProductDetailsViewModel: ObservableObject {
         }
         return false
     }
+    func addRatingToProduct(productID: String, rating: Float) {
+        DispatchQueue.main.async {
+                self.ratingState = .loading
+            }
+
+            Task {
+                let addRatingReq = AddRatingReq(productId: productID, rating: rating)
+                let result = await productUseCase.addRatingToProduct(addRatingReq)
+                
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let updatedProduct):
+                        self.ratingState = .success
+                        self.state = .success(updatedProduct)
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        self.ratingState = .error(error)
+                    }
+                }
+            }
+        }
+
     func productListOrUnlist(productID: String) {
         DispatchQueue.main.async {
             self.isListingOrUnlisting = true

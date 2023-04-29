@@ -32,4 +32,7 @@ struct ProductRepositoryImpl: IProductRepository {
     func editProduct(_ editProductReq: EditProductReq) async throws -> ProductModel {
             try await productApi.editProduct(editProductReq)
         }
+    func addRatingToProduct(_ addRatingReq: AddRatingReq) async throws -> ProductModel {
+           try await productApi.addRatingToProduct(addRatingReq)
+       }
 }

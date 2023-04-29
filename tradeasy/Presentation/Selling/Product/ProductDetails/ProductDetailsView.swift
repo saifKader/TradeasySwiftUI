@@ -20,7 +20,28 @@ struct ProductDetailsView: View {
     @State private var showEdit = false
     @State private var isShowingBidView: Bool = false
     @State private var showEditView: Bool = false
-    
+    @State private var userRating: Float = 0
+
+    init(product: ProductModel) {
+        _product = State(initialValue: product)
+        getUserRatingCount(product: product)
+    }
+
+    func getUserRatingCount(product: ProductModel) -> Int {
+        guard let currentUserID = userPreferences.getUser()?._id else {
+            return 0
+        }
+        if let userRating = product.rating?.first(where: { $0.user_id == currentUserID })?.rating {
+            self.userRating = userRating
+            return 1
+        }
+        return 0
+    }
+
+
+
+
+
     func updateSavedProductStatus(completion: @escaping (Bool) -> Void) {
         userDataViewModel.getUserData { result in
             switch result {
@@ -230,12 +251,24 @@ struct ProductDetailsView: View {
                             }
                         }.padding(.bottom,25)
                         
-                        
-                
-                        
                     }
+                    HStack {
+                              Text("Rating:")
+                              RatingView(rating: $userRating, maxRating: 5)
+                          }
+                          .padding(.bottom, 5)
 
-
+                          Button(action: {
+                              viewModel.addRatingToProduct(productID: product._id ?? "", rating: userRating)
+                          }) {
+                              Text("Submit Rating")
+                                  .foregroundColor(.white)
+                                  .padding()
+                                  .background(Color.blue)
+                                  .cornerRadius(10)
+                          }
+                          .disabled(userRating == 0)
+                      
                 }
             }
             .padding()
@@ -268,3 +301,21 @@ struct FullScreenImageView: View {
         }
     }
 }
+struct RatingView: View {
+    @Binding var rating: Float
+    var maxRating: Int
+    
+    var body: some View {
+        HStack {
+            ForEach(0..<maxRating, id: \.self) { index in
+                Button(action: {
+                    rating = Float(index + 1)
+                }) {
+                    Image(systemName: index < Int(rating) ? "star.fill" : "star")
+                        .foregroundColor(.yellow)
+                }
+            }
+        }
+    }
+}
+
