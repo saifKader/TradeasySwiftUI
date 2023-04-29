@@ -19,7 +19,6 @@ protocol ResetPassword {
 protocol VerifyOtp {
     func execute(_ verifyOtpReq: VerifyOtpReq) async -> Result<Void, UseCaseError>
 }
-
 protocol UpdateUsername {
     func execute(username: String) async -> Result<UserModel, UseCaseError>
 }
@@ -42,8 +41,17 @@ protocol AddToSavedItems {
 protocol GetCurrentUserData {
     func getCurrentUser() async throws -> UserModel // Change the return type to UserModel
 }
+protocol VerifyAccount {
+    func sendVerificationSms() async throws -> Result<Void, UseCaseError> // Change the return type to UserModel
+}
+protocol VerifyAccountOTP{
+    func verifyAccountOTP(otp: String) async -> Result<UserModel, UseCaseError>
+}
 
-struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,SendEmailVerification, ChangeEmail,uploadProfilePicure, AddToSavedItems, GetCurrentUserData{
+struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,SendEmailVerification, ChangeEmail,uploadProfilePicure, AddToSavedItems, GetCurrentUserData,VerifyAccount,VerifyAccountOTP{
+
+    
+    
    
     var repo: IUserRepository
     
@@ -73,8 +81,22 @@ struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,Se
         }
     }
 
-    
 
+    func sendVerificationSms() async-> Result<Void, UseCaseError> {
+        do {
+            try await repo.sendSmsToVerifyAccount()
+            return .success(())
+        } catch let error as APIServiceError {
+            switch error {
+            case .statusNotOK(let message):
+                return .failure(.error(message: message))
+            default:
+                return .failure(.networkError)
+            }
+        } catch {
+            return .failure(.networkError)
+        }
+    }
     
     func addToSavedItems(_ product_id: String) async throws -> UserModel {
            do {
@@ -130,6 +152,23 @@ struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,Se
             return .success(())
         } catch let error as APIServiceError {
             switch error {
+            case .statusNotOK(let message):
+                return .failure(.error(message: message))
+            default:
+                return .failure(.networkError)
+            }
+        } catch {
+            return .failure(.networkError)
+        }
+    }
+    func verifyAccountOTP(otp: String) async -> Result<UserModel, UseCaseError> {
+        do {
+            print(otp)
+            let otp = try await repo.verifyAccount(otp)
+            print("ahawa1\(otp)")
+            return .success(otp)
+        } catch(let error as APIServiceError) {
+            switch(error) {
             case .statusNotOK(let message):
                 return .failure(.error(message: message))
             default:

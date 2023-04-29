@@ -60,16 +60,7 @@ struct AddProductView: View {
                 Spacer()
             }
             .padding()
-            .navigationBarTitle("Add Product", displayMode: .inline)
-            .navigationBarItems(leading: Button(action: {
-                navigationController.popToRoot()
-            }) {
-                Image(systemName: "chevron.left")
-                    .foregroundColor(.black)
-            })
-            .onTapGesture {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
+           
         }
     }
 }

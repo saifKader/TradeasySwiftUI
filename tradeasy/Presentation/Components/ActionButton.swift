@@ -13,7 +13,8 @@ struct ActionButton: View {
     var action: () -> Void
     var height: CGFloat
     var width: CGFloat
-    var icon: String
+    var icon: String?
+    var isEnabled: Bool = true
 
     var body: some View {
         Button(action: action) {
@@ -22,19 +23,22 @@ struct ActionButton: View {
                     Text(text)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-
-                    Image(systemName: icon)
-                        .foregroundColor(.white)
+                    
+                    if let icon = icon {
+                        Image(systemName: icon)
+                            .foregroundColor(.white)
+                    }
                 }
             }
-            .frame(width: width, height: height)
+            
         }
         .padding(.vertical, 10)
         .frame(maxWidth: .infinity)
-        .background(Color("app_color"))
+        .background(isEnabled ? Color("app_color") : Color.gray)
         .cornerRadius(10)
         .padding(.horizontal, 20)
         .padding(.top, 10)
-        .frame(width: width, height: height)
+        
+        .disabled(!isEnabled)
     }
 }

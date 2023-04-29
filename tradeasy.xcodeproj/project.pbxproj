@@ -58,7 +58,7 @@
 		59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */; };
 		59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */; };
 		59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C0BCCC29C4FBBB006C5D6A /* MainView.swift */; };
-		59C7137C29F86167000B0516 /* BidSocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7137B29F86167000B0516 /* BidSocketIOClient.swift */; };
+		59C7137C29F86167000B0516 /* BidSocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C7137B29F86167000B0516 /* BidSocketIOManager.swift */; };
 		59C7137F29F86410000B0516 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = 59C7137E29F86410000B0516 /* SocketIO */; };
 		59C7138429F8EFB5000B0516 /* CombineExt in Frameworks */ = {isa = PBXBuildFile; productRef = 59C7138329F8EFB5000B0516 /* CombineExt */; };
 		59C78C7329EA2F3A0023DA8D /* UnlistProductReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C78C7229EA2F390023DA8D /* UnlistProductReq.swift */; };
@@ -99,6 +99,9 @@
 		59D5E04429DBC0EA001BDCCC /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D5E04329DBC0EA001BDCCC /* ActionButton.swift */; };
 		59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */; };
 		59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DDC7FB29C21E2800FF6DFB /* UserDataManager.swift */; };
+		59DE03E629F9492D00ACD9EE /* VerifyAccountAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E529F9492D00ACD9EE /* VerifyAccountAlert.swift */; };
+		59DE03E829F95A3100ACD9EE /* VerifyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E729F95A3100ACD9EE /* VerifyAccountView.swift */; };
+		59DE03EA29F9A25A00ACD9EE /* VerifyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E929F9A25A00ACD9EE /* VerifyAccountViewModel.swift */; };
 		59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029429DDD4A7005F8878 /* HiddenTabView.swift */; };
 		59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029729DDD992005F8878 /* UpdatePasswordView.swift */; };
 		59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */; };
@@ -166,7 +169,7 @@
 		59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTextField.swift; sourceTree = "<group>"; };
 		59B858B829DCDD24006ED7F1 /* UpdateUsernameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameViewModel.swift; sourceTree = "<group>"; };
 		59C0BCCC29C4FBBB006C5D6A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		59C7137B29F86167000B0516 /* BidSocketIOClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidSocketIOClient.swift; sourceTree = "<group>"; };
+		59C7137B29F86167000B0516 /* BidSocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidSocketIOManager.swift; sourceTree = "<group>"; };
 		59C78C7229EA2F390023DA8D /* UnlistProductReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlistProductReq.swift; sourceTree = "<group>"; };
 		59CEBA1429E463B60027E016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		59CEBA1529E466E90027E016 /* +View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+View.swift"; sourceTree = "<group>"; };
@@ -209,6 +212,9 @@
 		59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation\U0010Controller.swift"; sourceTree = "<group>"; };
 		59DDC7F629C1E84600FF6DFB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		59DDC7FB29C21E2800FF6DFB /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		59DE03E529F9492D00ACD9EE /* VerifyAccountAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountAlert.swift; sourceTree = "<group>"; };
+		59DE03E729F95A3100ACD9EE /* VerifyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountView.swift; sourceTree = "<group>"; };
+		59DE03E929F9A25A00ACD9EE /* VerifyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountViewModel.swift; sourceTree = "<group>"; };
 		59E5029429DDD4A7005F8878 /* HiddenTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenTabView.swift; sourceTree = "<group>"; };
 		59E5029729DDD992005F8878 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewModel.swift; sourceTree = "<group>"; };
@@ -267,6 +273,7 @@
 				5917700929EC8BCE009EEB11 /* EditProduct */,
 				5917700829EC8BB6009EEB11 /* AddProduct */,
 				59CEBA3129E4DEA00027E016 /* ProductDetails */,
+				59DE03E729F95A3100ACD9EE /* VerifyAccountView.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -275,7 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				5963000729F6DF180073DD7B /* BidView.swift */,
-				59C7137B29F86167000B0516 /* BidSocketIOClient.swift */,
+				59C7137B29F86167000B0516 /* BidSocketIOManager.swift */,
 			);
 			path = Bid;
 			sourceTree = "<group>";
@@ -320,6 +327,7 @@
 				5952D45129E712CF003118CB /* Product */,
 				597DE3EF29E991CA00E4BEA8 /* SellingView.swift */,
 				597DE3F129E999BA00E4BEA8 /* SellingViewModel.swift */,
+				59DE03E929F9A25A00ACD9EE /* VerifyAccountViewModel.swift */,
 			);
 			path = Selling;
 			sourceTree = "<group>";
@@ -762,6 +770,7 @@
 				59D5E04329DBC0EA001BDCCC /* ActionButton.swift */,
 				59B858B629DCCD49006ED7F1 /* EditProfileTextField.swift */,
 				59E5029429DDD4A7005F8878 /* HiddenTabView.swift */,
+				59DE03E529F9492D00ACD9EE /* VerifyAccountAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -943,7 +952,7 @@
 				59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */,
 				5984320129CBC6BA001A6C40 /* VerifyOtpReq.swift in Sources */,
 				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
-				59C7137C29F86167000B0516 /* BidSocketIOClient.swift in Sources */,
+				59C7137C29F86167000B0516 /* BidSocketIOManager.swift in Sources */,
 				59C0BCCD29C4FBBB006C5D6A /* MainView.swift in Sources */,
 				59EE252929C10459000F7D55 /* Alert.swift in Sources */,
 				5952D45529E7130D003118CB /* AddProductViewModel.swift in Sources */,
@@ -960,6 +969,7 @@
 				59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */,
 				59CEBA2329E4984F0027E016 /* IProductRepository.swift in Sources */,
 				598431FB29CB9D37001A6C40 /* ErrorFromResponseData.swift in Sources */,
+				59DE03E629F9492D00ACD9EE /* VerifyAccountAlert.swift in Sources */,
 				59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */,
 				59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */,
 				59E5029F29DE105B005F8878 /* SendVerificationEmail.swift in Sources */,
@@ -1008,11 +1018,13 @@
 				597DE3E429E8D42700E4BEA8 /* UserData.swift in Sources */,
 				59D17B2429C0F0FA00CD0703 /* RegisterView.swift in Sources */,
 				59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */,
+				59DE03E829F95A3100ACD9EE /* VerifyAccountView.swift in Sources */,
 				59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */,
 				59B858B329DC6BC5006ED7F1 /* UpdateUsernameView.swift in Sources */,
 				59CEBA3029E4A2020027E016 /* SearchViewModel.swift in Sources */,
 				598431E629C8C03E001A6C40 /* ForgetPasswordView.swift in Sources */,
 				5952D45729E71903003118CB /* AddProductView.swift in Sources */,
+				59DE03EA29F9A25A00ACD9EE /* VerifyAccountViewModel.swift in Sources */,
 				59CEBA1829E467BD0027E016 /* GoogleAuth.swift in Sources */,
 				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
 				5984320629CBCEB9001A6C40 /* UseCaseError.swift in Sources */,

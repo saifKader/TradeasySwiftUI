@@ -10,7 +10,7 @@ import Kingfisher
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
-
+    let currentUser = userPreferences.getUser()
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
@@ -21,10 +21,10 @@ struct HomeView: View {
                             .font(.title)
                             .padding(.leading, 10)
                             .padding(.top, 5)
-
+                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 15) {
-                                ForEach(viewModel.products.filter { !$0.forBid! }, id: \._id) { product in
+                                ForEach(viewModel.products.filter { !$0.forBid! && $0.username != currentUser?.username}, id: \._id) { product in
                                     NavigationLink(destination: ProductDetailsView(product: product)) {
                                        
                                         ProductRowView(product: product)
@@ -46,7 +46,7 @@ struct HomeView: View {
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 15) {
-                                ForEach(viewModel.products.filter { $0.forBid! }, id: \._id) { product in
+                                ForEach(viewModel.products.filter { $0.forBid! && $0.username != currentUser?.username}, id: \._id) { product in
                                     NavigationLink(destination: ProductDetailsView(product: product)) {
                                         ProductRowView(product: product)
                                     }

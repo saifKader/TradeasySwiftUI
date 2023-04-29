@@ -83,8 +83,3 @@ struct ResetPasswordView: View {
     }
 }
 
-struct resetpasswordview: PreviewProvider {
-    static var previews: some View {
-        ResetPasswordView(email: "", otp: "")
-    }
-}

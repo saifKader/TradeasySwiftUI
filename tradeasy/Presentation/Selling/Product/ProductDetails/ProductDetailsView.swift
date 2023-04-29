@@ -12,13 +12,14 @@ struct ProductDetailsView: View {
     @StateObject var viewModel = ProductDetailsViewModel()
     @StateObject var userDataViewModel = GetUserDataStateViewModel()
     @EnvironmentObject var navigationController: NavigationController
-    
+    @State private var bidEnded = false
     let productPreferences = ProductPreferences()
     @State private var isProductSaved = false
     @State private var showFullScreenImage = false
     @State private var showFullDescription = false
     @State private var showEdit = false
     @State private var isShowingBidView: Bool = false
+    @State private var showEditView: Bool = false
     
     func updateSavedProductStatus(completion: @escaping (Bool) -> Void) {
         userDataViewModel.getUserData { result in
@@ -199,10 +200,41 @@ struct ProductDetailsView: View {
                                 }, height: 20.0, width: .infinity, icon: "hammer.fill")
                             }
                         }.padding(.bottom,25)
-                        NavigationLink(destination: BidView(socketManager: SocketIOManager(product: product)), isActive: $isShowingBidView) {
+                        NavigationLink(destination: BidView(socketManager: SocketIOManager(product: product), bidEnded: $bidEnded), isActive: $isShowingBidView) {
                             EmptyView()
                         }
                     }
+                   
+                    if let userId = userPreferences.getUser()?._id, product.user_id == userId {
+                        VStack(alignment: .center, spacing: 4) {
+                            HStack(alignment: .center) {
+                                ActionButton(text: "Edit product", action: {
+                                    showEditView = true
+                                }, height: 20.0, width: .infinity, icon: "pencil")
+                            }
+                        }.padding(.bottom,25)
+                        NavigationLink(destination: EditProductView1(product: $product), isActive: $showEditView) {
+                            EmptyView()
+                        }
+                    }
+                    if let userId = userPreferences.getUser()?._id, product.user_id == userId {
+                        
+                        
+                        VStack(alignment: .center, spacing: 4) {
+                            HStack(alignment: .center) {
+                                ActionButton(text: viewModel.isProductListed ? "Unlist" : "List", action: {
+                                    if !viewModel.isListingOrUnlisting {
+                                        viewModel.productListOrUnlist(productID: product._id ?? "")
+                                    }
+                                }, height: 20.0, width: .infinity)
+                            }
+                        }.padding(.bottom,25)
+                        
+                        
+                
+                        
+                    }
+
 
                 }
             }
@@ -210,35 +242,7 @@ struct ProductDetailsView: View {
             .navigationBarTitleDisplayMode(.inline)
             // Add NavigationLink to EditProductView here
             
-            if let userId = userPreferences.getUser()?._id, product.user_id == userId {
-                NavigationLink(destination: EditProductView1(product: $product)) {
-                    Text("Edit")
-                        .fontWeight(.bold)
-                        .foregroundColor(.blue)
-                        .padding(8)
-                    
-                }
-                .padding(.bottom, 8)
-            }
-            if let userId = userPreferences.getUser()?._id, product.user_id == userId {
-                Button(action: {
-                    if !viewModel.isListingOrUnlisting {
-                        viewModel.productListOrUnlist(productID: product._id ?? "")
-                    }
-                }) {
-                    Text(viewModel.isProductListed ? "Unlist" : "List")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .padding(.vertical, 10)
-                        .frame(maxWidth: .infinity)
-                        .background(viewModel.isListingOrUnlisting ? Color.gray : (viewModel.isProductListed ? Color("app_color") : Color("app_color")))
-                        .cornerRadius(10)
-                        .opacity(viewModel.isListingOrUnlisting ? 0.5 : 1.0)
-                }
-                .padding(.horizontal, 50)
-                .padding(.vertical, 20)
-                
-            }
+          
             
         }.onAppear {
             viewModel.isProductListed = product.selling ?? false

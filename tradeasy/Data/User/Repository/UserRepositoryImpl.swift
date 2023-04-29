@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 struct UserRepositoryImpl: IUserRepository {
-
+    
+    
+    
+    
+    
     var dataSource: UserAPI
     
     func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws {
@@ -27,7 +31,7 @@ struct UserRepositoryImpl: IUserRepository {
     func updateUsername(_ username: String) async throws -> UserModel {
         try await dataSource.updateUsername(username)
     }
-  
+    
     func updatePassword(_ currentPassword: String, _ newPassword: String) async throws -> UserModel {
         try await dataSource.updatePassword(currentPassword, newPassword)
     }
@@ -49,5 +53,12 @@ struct UserRepositoryImpl: IUserRepository {
     }
     func getCurrentUser() async throws -> UserModel {
         return try await dataSource.getCurrentUser()
+    }
+    func sendSmsToVerifyAccount() async throws  {
+        return try await dataSource.sendVerificationSms()
+    }
+    func verifyAccount(_ otp: String) async throws -> UserModel {
+        print("ahawa2\(otp)")
+        return try await dataSource.verifyAccount(otp)
     }
 }

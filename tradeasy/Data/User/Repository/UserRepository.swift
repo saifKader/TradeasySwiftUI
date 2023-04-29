@@ -18,7 +18,10 @@ protocol IUserRepository {
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async throws -> UserModel
     func uploadProfilePicture(_ image: UIImage) async throws -> UserModel
     func addToSavedItems(_ product_id: String) async throws -> UserModel
-    func getCurrentUser() async throws -> UserModel 
+    func getCurrentUser() async throws -> UserModel
+    func sendSmsToVerifyAccount() async throws -> Void
+    func verifyAccount(_ otp: String) async throws -> UserModel
+    
 }
 
 

@@ -165,6 +165,7 @@ struct ProfileView: View {
                 
                 
             Divider()
+                Spacer()
                 NavigationLink(
                     destination: PrivacyPolicyView(),
                     isActive: $isPrivacyPolicyViewActive) {

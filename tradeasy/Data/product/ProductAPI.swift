@@ -97,12 +97,15 @@ struct ProductAPI {
     func getUserProducts() async throws -> [ProductModel] {
         let url = "\(kbaseUrl)\(kGetUserProducts)"
         let userPreferences = UserPreferences()
+        print("aaaa")
+        print(userPreferences.getUser()?.token)
         var headers: HTTPHeaders = [
             "Content-Type": "multipart/form-data"
         ]
         if let token = userPreferences.getUser()?.token {
             headers["jwt"] = token
         }
+        
 
         return try await withCheckedThrowingContinuation { continuation in
             AF.request(url, method: .get, headers: headers)

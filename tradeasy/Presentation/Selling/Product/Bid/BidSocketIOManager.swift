@@ -5,7 +5,9 @@ class SocketIOManager: ObservableObject {
     @Published var product: ProductModel?
     @Published var message: String = ""
     @Published var refreshUI = false
-    let managerBid = SocketManager(socketURL: URL(string: "http://192.168.1.13:9090")!, config: [.log(true), .compress])
+    @Published var bidEnded: Bool = false
+    
+    let managerBid = SocketManager(socketURL: URL(string: kbaseUrl)!, config: [.log(true), .compress])
     lazy var socketBid = managerBid.defaultSocket
 
     init(product: ProductModel) {
@@ -25,6 +27,12 @@ class SocketIOManager: ObservableObject {
                 }
             }
         }
+        socketBid.on(BidPayloadEnum.BID_ENDED.rawValue) { data, ack in
+                print("Received bidend event: wfa \(data)")
+                    DispatchQueue.main.async { [self] in
+                        bidEnded = true
+                    }
+            }
 
         socketBid.on(BidPayloadEnum.NEW_BID.rawValue) { data, ack in
             print("Received new bid data: \(data)")
@@ -63,4 +71,5 @@ enum BidPayloadEnum: String {
     case BID_PLACED = "bid_placed"
     case NEW_BID = "new_bid"
     case OUTBID = "outbid"
+    case BID_ENDED = "bid_ended"
 }

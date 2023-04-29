@@ -12,6 +12,8 @@ struct SellingView: View {
     @State private var showAddProductView = false
     @EnvironmentObject var navigationController: NavigationController
     @State var showLogin = false
+    @State var showingAlert = false
+  
     var body: some View {
         NavigationView {
             ZStack {
@@ -81,7 +83,7 @@ struct SellingView: View {
                     HStack {
                         Spacer()
                         FloatingActionButton(onClick: {
-                            showAddProductView = true
+                            showingAlert = true
                         })
                         .padding(.trailing, 16)
                         .padding(.bottom, 16)
@@ -111,19 +113,75 @@ struct SellingView: View {
 
 struct FloatingActionButton: View {
     let onClick: () -> Void
+    @State var showLogin = false
+    @State var showAddProduct = false
+    @State var showingAlert = false
+    @State var showVerificationSheet = false
+    @EnvironmentObject var userPreferences: UserPreferences
+    @StateObject var smsViewModel = SendVerificationSmsViewModel()
+    @EnvironmentObject var navigationController: NavigationController
     var body: some View {
-        NavigationLink(destination: AddProductView()) {
-            ZStack {
-                Circle()
-                    .foregroundColor(Color("app_color"))
-                    .frame(width: 60, height: 60)
-                Image(systemName: "plus")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(Color.white)
+        if !(userPreferences.getUser()?.isVerified ?? false) {
+            Button(action: {
+                showingAlert.toggle() // Show alert
+            }) {
+                ZStack {
+                    Circle()
+                        .foregroundColor(Color("app_color"))
+                        .frame(width: 60, height: 60)
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(Color.white)
+                }
             }
+            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text("Verify your account"),
+                    message: Text("You need to verify your account to start selling"),
+                    primaryButton: .default(Text("OK")) {
+                        showVerificationSheet = true
+                        smsViewModel.sendVerificationSms(){ result in
+                            switch result {
+                            case .success:
+                                smsViewModel.state = .success
+                                DispatchQueue.main.async {
+                                    navigationController.popToRoot()
+                                    
+                                }
+                                
+                            case .failure(let error):
+                                if case let UseCaseError.error(message) = error {
+                                 
+                                    print("Error resetting password: \(message)")
+                                } else {
+                                    print("Error resetting password: \(error)")
+                                }
+                            }
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+            .sheet(isPresented: $showVerificationSheet) { // Present the verification view as a sheet
+                OTPVerificationAccount()
+                        }
+        } else {
+            NavigationLink(destination: AddProductView()) {
+                ZStack {
+                    Circle()
+                        .foregroundColor(Color("app_color"))
+                        .frame(width: 60, height: 60)
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(Color.white)
+                }
+            }
+            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
         }
-        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
     }
 }
+
 

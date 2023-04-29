@@ -11,6 +11,8 @@ struct UserAPI {
     
     let userPreferences = UserPreferences()
    
+   
+
     func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws {
         guard let url = URL(string: "\(kbaseUrl)\(kforgetpassword)") else {
             throw APIServiceError.badUrl
@@ -61,6 +63,42 @@ struct UserAPI {
             throw errorFromResponseData(data)
         }
     }
+    func verifyAccount(_ otp: String) async throws -> UserModel {
+        let url = "\(kbaseUrl)\(kVerifyAccount)"
+        let headers: HTTPHeaders = ["Content-Type": "application/json", "jwt": (userPreferences.getUser()?.token)!]
+        let parameters: [String: Any] = ["otp": otp]
+
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .validate(statusCode: 200..<202)
+                .responseJSON { response in
+                    guard response.response?.statusCode != 401 else {
+                        continuation.resume(throwing: errorFromResponseData(response.data!))
+                        return
+                    }
+
+                    switch response.result {
+                    case .success(let data):
+                        print("hedhi data\(data)")
+                        guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
+                            continuation.resume(throwing: APIServiceError.decodingError)
+                            return
+                        }
+                        do {
+                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                            userModel.token = token
+                            continuation.resume(returning: userModel)
+                        } catch {
+                            continuation.resume(throwing: error)
+                        }
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+        }
+    }
+
+
     func updateUsername(_ username: String) async throws -> UserModel {
         let url = "\(kbaseUrl)\(kupdateUsername)"
   
@@ -78,6 +116,7 @@ struct UserAPI {
 
                     switch response.result {
                     case .success(let data):
+                        print("hedhi data\(data)")
                         guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
                             continuation.resume(throwing: APIServiceError.decodingError)
                             return
@@ -359,6 +398,36 @@ struct UserAPI {
 
 
 
+
+    
+    func sendVerificationSms() async throws {
+        let url = "\(kbaseUrl)\(kSendVerificationSms)"
+        let userPreferences = UserPreferences()
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "jwt": (userPreferences.getUser()?.token)!
+        ]
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url,method: .post, headers: headers)
+                .validate(statusCode: 200..<202)
+                .response { response in
+                    switch response.result {
+                    case .success:
+                        continuation.resume()
+                    case .failure(let error):
+                        if let data = response.data {
+                            do {
+                                throw errorFromResponseData(data)
+                            } catch {
+                                continuation.resume(throwing: error)
+                            }
+                        } else {
+                            continuation.resume(throwing: error)
+                        }
+                    }
+                }
+        }
+    }
 
 
    

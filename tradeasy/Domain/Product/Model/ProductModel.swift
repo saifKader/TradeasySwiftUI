@@ -43,7 +43,7 @@ class ProductModel: Codable, ObservableObject {
         case quantity
         case addedDate
         case forBid
-        case bidEndDate
+        case bid_end_date
         case bade
         case sold
         case username
@@ -65,7 +65,7 @@ class ProductModel: Codable, ObservableObject {
         quantity = try container.decodeIfPresent(Int.self, forKey: .quantity)
         addedDate = try container.decodeIfPresent(Int.self, forKey: .addedDate)
         forBid = try container.decodeIfPresent(Bool.self, forKey: .forBid)
-        bidEndDate = try container.decodeIfPresent(Int.self, forKey: .bidEndDate)
+        bidEndDate = try container.decodeIfPresent(Int.self, forKey: .bid_end_date)
         bade = try container.decodeIfPresent(Bool.self, forKey: .bade)
         sold = try container.decodeIfPresent(Bool.self, forKey: .sold)
         username = try container.decodeIfPresent(String.self, forKey: .username)
@@ -87,7 +87,7 @@ class ProductModel: Codable, ObservableObject {
         try container.encodeIfPresent(quantity, forKey: .quantity)
         try container.encodeIfPresent(addedDate, forKey: .addedDate)
         try container.encodeIfPresent(forBid, forKey: .forBid)
-        try container.encodeIfPresent(bidEndDate, forKey: .bidEndDate)
+        try container.encodeIfPresent(bidEndDate, forKey: .bid_end_date)
         try container.encodeIfPresent(bade, forKey: .bade)
         try container.encodeIfPresent(sold, forKey: .sold)
         try container.encodeIfPresent(username, forKey: .username)
