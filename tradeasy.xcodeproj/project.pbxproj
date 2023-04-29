@@ -103,6 +103,7 @@
 		59DE03E829F95A3100ACD9EE /* VerifyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E729F95A3100ACD9EE /* VerifyAccountView.swift */; };
 		59DE03EA29F9A25A00ACD9EE /* VerifyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E929F9A25A00ACD9EE /* VerifyAccountViewModel.swift */; };
 		59DE781529FCD2700025D620 /* RatingReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE781429FCD2700025D620 /* RatingReq.swift */; };
+		59DE781829FD11D30025D620 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 59DE781729FD11D30025D620 /* SDWebImageSwiftUI */; };
 		59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029429DDD4A7005F8878 /* HiddenTabView.swift */; };
 		59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029729DDD992005F8878 /* UpdatePasswordView.swift */; };
 		59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */; };
@@ -239,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59DE781829FD11D30025D620 /* SDWebImageSwiftUI in Frameworks */,
 				0E1A0C0BC4B8D221EABC7A5A /* Pods_tradeasy.framework in Frameworks */,
 				59C7138429F8EFB5000B0516 /* CombineExt in Frameworks */,
 				59C7137F29F86410000B0516 /* SocketIO in Frameworks */,
@@ -843,6 +845,7 @@
 			packageProductDependencies = (
 				59C7137E29F86410000B0516 /* SocketIO */,
 				59C7138329F8EFB5000B0516 /* CombineExt */,
+				59DE781729FD11D30025D620 /* SDWebImageSwiftUI */,
 			);
 			productName = tradeasy;
 			productReference = 59D17AD029C0E40500CD0703 /* tradeasy.app */;
@@ -877,6 +880,7 @@
 				5972D6A429E45A1B00DE7F5B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				59C7137D29F86410000B0516 /* XCRemoteSwiftPackageReference "socket" */,
 				59C7138229F8EFB5000B0516 /* XCRemoteSwiftPackageReference "CombineExt" */,
+				59DE781629FD11D30025D620 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 59D17AD129C0E40500CD0703 /* Products */;
 			projectDirPath = "";
@@ -1280,6 +1284,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		59DE781629FD11D30025D620 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1292,6 +1304,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59C7138229F8EFB5000B0516 /* XCRemoteSwiftPackageReference "CombineExt" */;
 			productName = CombineExt;
+		};
+		59DE781729FD11D30025D620 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DE781629FD11D30025D620 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 

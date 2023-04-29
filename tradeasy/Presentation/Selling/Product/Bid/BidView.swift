@@ -29,12 +29,18 @@ struct BidView: View {
         }
     }
     func formatTime(_ seconds: Int) -> String {
-        let hours = seconds / 3600
-        let minutes = (seconds % 3600) / 60
-        let remainingSeconds = (seconds % 3600) % 60
+        let days = seconds / (24 * 3600)
+        let remainingSeconds = seconds % (24 * 3600)
+        let hours = remainingSeconds / 3600
+        let remainingMinutes = remainingSeconds % 3600
+        let minutes = remainingMinutes / 60
+        let remainingSeconds2 = remainingMinutes % 60
 
-        let timeString = String(format: "%02d:%02d:%02d", hours, minutes, remainingSeconds)
-        return timeString
+        if days > 0 {
+            return String(format: "%d days, %02d:%02d:%02d", days, hours, minutes, remainingSeconds2)
+        } else {
+            return String(format: "%02d:%02d:%02d", hours, minutes, remainingSeconds2)
+        }
     }
     
     var body: some View {
