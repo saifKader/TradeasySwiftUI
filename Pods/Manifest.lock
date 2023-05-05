@@ -129,6 +129,8 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Messaging
+  - FirebaseCore
+  - FirebaseMessaging
   - GoogleSignIn
   - Kingfisher
   - Mantis
@@ -178,6 +180,6 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
 
-PODFILE CHECKSUM: befff847b732623d51dcdbbae44895e0d5f77bde
+PODFILE CHECKSUM: 24a01e5d328ad9b83171dd3317cd4507b0b07f8a
 
 COCOAPODS: 1.12.0

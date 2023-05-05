@@ -12,6 +12,8 @@
 		5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */; };
 		5917700D29EC8E93009EEB11 /* EditProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700C29EC8E93009EEB11 /* EditProductView.swift */; };
 		5917700F29EC90F8009EEB11 /* EditProductView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700E29EC90F8009EEB11 /* EditProductView2.swift */; };
+		5941E2262A04DF8100A3B9E7 /* BidListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941E2252A04DF8100A3B9E7 /* BidListView.swift */; };
+		5941E2282A04E3C500A3B9E7 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941E2272A04E3C500A3B9E7 /* KeyboardDismiss.swift */; };
 		594F6AE029DEF45200C8F473 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594F6ADF29DEF45200C8F473 /* ImagePicker.swift */; };
 		5952D45029E71133003118CB /* AddProductReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952D44F29E71133003118CB /* AddProductReq.swift */; };
 		5952D45529E7130D003118CB /* AddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952D45429E7130D003118CB /* AddProductViewModel.swift */; };
@@ -97,6 +99,7 @@
 		59D17B2A29C0F1BD00CD0703 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */; };
 		59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D17B2B29C0F1CE00CD0703 /* DI.swift */; };
 		59D5E04429DBC0EA001BDCCC /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D5E04329DBC0EA001BDCCC /* ActionButton.swift */; };
+		59D64A752A04B48E00DEC749 /* Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D64A742A04B48E00DEC749 /* Bid.swift */; };
 		59DDC7F529C1C54A00FF6DFB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */; };
 		59DDC7FC29C21E2800FF6DFB /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DDC7FB29C21E2800FF6DFB /* UserDataManager.swift */; };
 		59DE03E629F9492D00ACD9EE /* VerifyAccountAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE03E529F9492D00ACD9EE /* VerifyAccountAlert.swift */; };
@@ -105,6 +108,8 @@
 		59DE781529FCD2700025D620 /* RatingReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE781429FCD2700025D620 /* RatingReq.swift */; };
 		59DE781829FD11D30025D620 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 59DE781729FD11D30025D620 /* SDWebImageSwiftUI */; };
 		59DE781B29FD1B2C0025D620 /* UIView-Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 59DE781A29FD1B2C0025D620 /* UIView-Shimmer */; };
+		59DE781F29FD420C0025D620 /* NewProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE781E29FD420C0025D620 /* NewProductDetailView.swift */; };
+		59E0A0832A04C0FD0065985D /* BidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E0A0822A04C0FD0065985D /* BidModel.swift */; };
 		59E5029529DDD4A7005F8878 /* HiddenTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029429DDD4A7005F8878 /* HiddenTabView.swift */; };
 		59E5029829DDD992005F8878 /* UpdatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029729DDD992005F8878 /* UpdatePasswordView.swift */; };
 		59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */; };
@@ -126,6 +131,8 @@
 		5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductviewModel.swift; sourceTree = "<group>"; };
 		5917700C29EC8E93009EEB11 /* EditProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView.swift; sourceTree = "<group>"; };
 		5917700E29EC90F8009EEB11 /* EditProductView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView2.swift; sourceTree = "<group>"; };
+		5941E2252A04DF8100A3B9E7 /* BidListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidListView.swift; sourceTree = "<group>"; };
+		5941E2272A04E3C500A3B9E7 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		594F6ADF29DEF45200C8F473 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5952D44F29E71133003118CB /* AddProductReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductReq.swift; sourceTree = "<group>"; };
 		5952D45429E7130D003118CB /* AddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
@@ -135,6 +142,7 @@
 		596C556229F82F5C00DEACE4 /* TestAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAView.swift; sourceTree = "<group>"; };
 		5972D6A029E446FF00DE7F5B /* GoogleAuthBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthBtn.swift; sourceTree = "<group>"; };
 		5972D6A629E4612500DE7F5B /* FirebaseInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInit.swift; sourceTree = "<group>"; };
+		597D2E062A0439CF0075206C /* tradeasy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tradeasy.entitlements; sourceTree = "<group>"; };
 		597DE3E329E8D42700E4BEA8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		597DE3E929E8DC1D00E4BEA8 /* SavedProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedProductsView.swift; sourceTree = "<group>"; };
 		597DE3EC29E9909200E4BEA8 /* RecentlyViewedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewedView.swift; sourceTree = "<group>"; };
@@ -212,6 +220,7 @@
 		59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		59D17B2B29C0F1CE00CD0703 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		59D5E04329DBC0EA001BDCCC /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		59D64A742A04B48E00DEC749 /* Bid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bid.swift; sourceTree = "<group>"; };
 		59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation\U0010Controller.swift"; sourceTree = "<group>"; };
 		59DDC7F629C1E84600FF6DFB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		59DDC7FB29C21E2800FF6DFB /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -219,6 +228,8 @@
 		59DE03E729F95A3100ACD9EE /* VerifyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountView.swift; sourceTree = "<group>"; };
 		59DE03E929F9A25A00ACD9EE /* VerifyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountViewModel.swift; sourceTree = "<group>"; };
 		59DE781429FCD2700025D620 /* RatingReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingReq.swift; sourceTree = "<group>"; };
+		59DE781E29FD420C0025D620 /* NewProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductDetailView.swift; sourceTree = "<group>"; };
+		59E0A0822A04C0FD0065985D /* BidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidModel.swift; sourceTree = "<group>"; };
 		59E5029429DDD4A7005F8878 /* HiddenTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenTabView.swift; sourceTree = "<group>"; };
 		59E5029729DDD992005F8878 /* UpdatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordView.swift; sourceTree = "<group>"; };
 		59E5029929DDE662005F8878 /* UpdatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewModel.swift; sourceTree = "<group>"; };
@@ -289,6 +300,8 @@
 			children = (
 				5963000729F6DF180073DD7B /* BidView.swift */,
 				59C7137B29F86167000B0516 /* BidSocketIOManager.swift */,
+				59D64A742A04B48E00DEC749 /* Bid.swift */,
+				5941E2252A04DF8100A3B9E7 /* BidListView.swift */,
 			);
 			path = Bid;
 			sourceTree = "<group>";
@@ -520,6 +533,7 @@
 				59CEBA3229E4DEB30027E016 /* ProductDetailsView.swift */,
 				598EC98F29E7CA8200259A55 /* ProductDetailsViewModel.swift */,
 				598EC99129E82D1B00259A55 /* RefreshuseViewModel.swift */,
+				59DE781E29FD420C0025D620 /* NewProductDetailView.swift */,
 			);
 			path = ProductDetails;
 			sourceTree = "<group>";
@@ -545,6 +559,7 @@
 		59D17AD229C0E40500CD0703 /* tradeasy */ = {
 			isa = PBXGroup;
 			children = (
+				597D2E062A0439CF0075206C /* tradeasy.entitlements */,
 				59CECAAE29F8414000A2F99A /* GoogleService-Info.plist */,
 				59CEBA1429E463B60027E016 /* Info.plist */,
 				59D17AF229C0EC9B00CD0703 /* Data */,
@@ -582,6 +597,7 @@
 				59D17B2929C0F1BD00CD0703 /* DependencyInjector.swift */,
 				59EE252C29C10EE1000F7D55 /* Animations.swift */,
 				594F6ADF29DEF45200C8F473 /* ImagePicker.swift */,
+				5941E2272A04E3C500A3B9E7 /* KeyboardDismiss.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -645,6 +661,7 @@
 		59D17B0E29C0EF1600CD0703 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				59E0A0812A04C0F20065985D /* Bid */,
 				59D17B1D29C0F09300CD0703 /* Notification */,
 				59D17B1929C0F05F00CD0703 /* Product */,
 				59D17B0F29C0EF2D00CD0703 /* User */,
@@ -745,6 +762,14 @@
 				59DDC7F429C1C54A00FF6DFB /* NavigationController.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		59E0A0812A04C0F20065985D /* Bid */ = {
+			isa = PBXGroup;
+			children = (
+				59E0A0822A04C0FD0065985D /* BidModel.swift */,
+			);
+			path = Bid;
 			sourceTree = "<group>";
 		};
 		59E5029629DDD947005F8878 /* UpdatePassword */ = {
@@ -970,11 +995,13 @@
 				5952D45529E7130D003118CB /* AddProductViewModel.swift in Sources */,
 				59FFAAEF29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift in Sources */,
 				598B503229DE7C66000187EC /* HomeView.swift in Sources */,
+				5941E2262A04DF8100A3B9E7 /* BidListView.swift in Sources */,
 				596C556329F82F5C00DEACE4 /* TestAView.swift in Sources */,
 				596C556129F8043200DEACE4 /* TermsAndConditionsView.swift in Sources */,
 				5984320329CBCC67001A6C40 /* UserUseCase.swift in Sources */,
 				598B502B29DE402C000187EC /* UpdateEmailReq.swift in Sources */,
 				5984321529CDFA84001A6C40 /* otptest.swift in Sources */,
+				59DE781F29FD420C0025D620 /* NewProductDetailView.swift in Sources */,
 				59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */,
 				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
 				59EE253929C1505E000F7D55 /* Colors.swift in Sources */,
@@ -989,6 +1016,7 @@
 				59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */,
 				5917700F29EC90F8009EEB11 /* EditProductView2.swift in Sources */,
 				598431F729CB9CBA001A6C40 /* UserAPI.swift in Sources */,
+				59E0A0832A04C0FD0065985D /* BidModel.swift in Sources */,
 				5984321329CDCE24001A6C40 /* FocusedTextField.swift in Sources */,
 				5984320A29CBD180001A6C40 /* ForgetPasswordViewModel.swift in Sources */,
 				59CEBA2E29E4A1ED0027E016 /* SearchView.swift in Sources */,
@@ -1011,6 +1039,7 @@
 				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
 				5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */,
+				5941E2282A04E3C500A3B9E7 /* KeyboardDismiss.swift in Sources */,
 				598EC98A29E77CC100259A55 /* AdditionalInformationView.swift in Sources */,
 				5972D6A129E446FF00DE7F5B /* GoogleAuthBtn.swift in Sources */,
 				59CEBA2629E498A40027E016 /* ProdNameReq.swift in Sources */,
@@ -1022,6 +1051,7 @@
 				598431F929CB9CD4001A6C40 /* ForgetPasswordReq.swift in Sources */,
 				59D17AD429C0E40500CD0703 /* tradeasyApp.swift in Sources */,
 				59E5029A29DDE662005F8878 /* UpdatePasswordViewModel.swift in Sources */,
+				59D64A752A04B48E00DEC749 /* Bid.swift in Sources */,
 				5984320E29CCA388001A6C40 /* ResetPasswordView.swift in Sources */,
 				598B502F29DE5040000187EC /* OTPVerificationEmailView.swift in Sources */,
 				59D17B1629C0EFE000CD0703 /* AuthRepository.swift in Sources */,
@@ -1174,6 +1204,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = tradeasy/tradeasy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"tradeasy/Preview Content\"";
@@ -1181,7 +1212,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tradeasy/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) Need Camera Access To Take Photos Of Your Product";
+				INFOPLIST_KEY_NSCameraUsageDescription = "tradeasy Need Camera Access To Take Photos Of Your Product";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1192,7 +1223,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.funest.tradeasy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.esprit.tradeasy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1206,6 +1237,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = tradeasy/tradeasy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"tradeasy/Preview Content\"";
@@ -1213,7 +1245,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tradeasy/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) Need Camera Access To Take Photos Of Your Product";
+				INFOPLIST_KEY_NSCameraUsageDescription = "tradeasy Need Camera Access To Take Photos Of Your Product";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1224,7 +1256,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.funest.tradeasy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.esprit.tradeasy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

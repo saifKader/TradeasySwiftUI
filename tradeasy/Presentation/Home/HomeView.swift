@@ -246,54 +246,54 @@ struct SectionView: View {
     let products: [ProductModel]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                // Add an icon before the title, depending on the section
-                switch title {
-                case "Products for Sale":
-                    Image(systemName: "bag.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.green)
-                    Divider()
-                case "TradesyFlesh":
-                    Image(systemName: "bolt.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.yellow)
-                    Divider()
-                case "Products Forbid":
-                    Text("💰")
-                    Divider()
-                default:
-                    EmptyView()
-                }
-                
-                Text(title)
-                    .font(Font.custom("Helvetica Neue Bold", size: 26))
-                    .foregroundColor(Color(.label))
-
-            }
-            .padding(.leading, 20)
-            .padding(.top, 20)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 15) {
-                    ForEach(products, id: \._id) { product in
-                        NavigationLink(destination: ProductDetailsView(product: product)) {
-                            ProductRowView(product: product)
-                        }
-                        .buttonStyle(PlainButtonStyle())
+        if !products.isEmpty {
+            VStack(alignment: .leading) {
+                HStack {
+                    // Add an icon before the title, depending on the section
+                    switch title {
+                    case "Products for Sale":
+                        Image(systemName: "bag.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.green)
+                        Divider()
+                    case "TradesyFlesh":
+                        Image(systemName: "bolt.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.yellow)
+                        Divider()
+                    case "Products Forbid":
+                        Text("💰")
+                        Divider()
+                    default:
+                        EmptyView()
                     }
+                    
+                    Text(title)
+                        .font(Font.custom("Helvetica Neue Bold", size: 26))
+                        .foregroundColor(Color(.label))
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 20)
+                .padding(.leading, 20)
+                .padding(.top, 20)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 15) {
+                        ForEach(products, id: \._id) { product in
+                            NavigationLink(destination: ProductDetailsView(product: product)) {
+                                ProductRowView(product: product)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 20)
+                }
             }
+            .padding(.bottom)
+            .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
         }
-        .background(Color(.systemGray6))
-        
-        .padding(.bottom)
-        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
     }
 }
+
 

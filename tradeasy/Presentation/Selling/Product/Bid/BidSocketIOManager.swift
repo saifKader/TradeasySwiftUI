@@ -6,7 +6,9 @@ class SocketIOManager: ObservableObject {
     @Published var message: String = ""
     @Published var refreshUI = false
     @Published var bidEnded: Bool = false
-    
+    @Published var bids: [Bid] = []
+
+
     let managerBid = SocketManager(socketURL: URL(string: kbaseUrl)!, config: [.log(true), .compress])
     lazy var socketBid = managerBid.defaultSocket
 
@@ -37,18 +39,25 @@ class SocketIOManager: ObservableObject {
         socketBid.on(BidPayloadEnum.NEW_BID.rawValue) { data, ack in
             print("Received new bid data: \(data)")
             if let bidData = data.first as? [String: Any],
-               let productId = bidData["product_id"] as? String,
-               let newPrice = bidData["bid_amount"] as? Double {
-                if self.product?._id == productId {
-                    DispatchQueue.main.async {
-                        self.product?.price = Float(newPrice)
-                        self.refreshUI.toggle() // Add this line to trigger UI update
+                let productId = bidData["product_id"] as? String,
+                let newPrice = bidData["bid_amount"] as? Double,
+                let userName = bidData["user_name"] as? String,
+                let userProfilePic = bidData["user_profile_pic"] as? String {
+                    if self.product?._id == productId {
+                        DispatchQueue.main.async {
+                            self.product?.price = Float(newPrice)
+                            self.refreshUI.toggle() // Add this line to trigger UI update
+
+                            // Append the new bid to the bids array
+                            let newBid = Bid(id: UUID().uuidString, userName: userName, userProfilePic: userProfilePic, bidAmount: newPrice)
+                            self.bids.append(newBid)
+                        }
+                        print("Received new bid for product \(productId)")
+                        print("Product price updated to \(newPrice)")
                     }
-                    print("Received new bid for product \(productId)")
-                    print("Product price updated to \(newPrice)")
-                }
             }
         }
+
     }
 
     func placeBid(bidData: [String: Any]) {
