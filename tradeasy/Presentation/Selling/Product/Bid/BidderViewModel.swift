@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum BidderListState {
     case idle
@@ -38,26 +39,29 @@ class ProductBidderListViewModel: ObservableObject {
 
     
     func fetchBids(forProduct productId: String) {
-        DispatchQueue.main.async {
-            self.bidderListState = .loading
-        }
-
-        Task {
-            let result = await bidderUseCase.fetchBids(forProduct: productId)
-
             DispatchQueue.main.async {
-                switch result {
-                case .success(let bidderList):
-                    self.bidderListState = .success(bidderList)
-                    for bidder in bidderList {
-                        print("Bidder username: \(bidder.userProfilePic)")
+                self.bidderListState = .loading
+            }
+
+            Task {
+                let result = await bidderUseCase.fetchBids(forProduct: productId)
+
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let bidderList):
+                        self.bidderListState = .success(bidderList)
+                        self.bidders = bidderList // Save the bidders array in the view model
+                    case .failure(let error):
+                        print("hehe boy\(error)")
+                        print("Error: \(error)")
+                        self.bidderListState = .error(error)
                     }
-                case .failure(let error):
-                    print("hehe boy\(error)")
-                    print("Error: \(error)")
-                    self.bidderListState = .error(error)
                 }
             }
         }
+        
+        // Pass the bidders array to the BidListView
+        var bidListView: some View {
+            BidListView(bidders: bidders)
+        }
     }
-}

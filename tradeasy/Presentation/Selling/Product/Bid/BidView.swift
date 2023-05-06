@@ -1,5 +1,6 @@
 import SwiftUI
 import SocketIO
+import Combine
 
 struct BidView: View {
     @ObservedObject var socketManager: SocketIOManager
@@ -12,6 +13,7 @@ struct BidView: View {
     @State private var potentialWinner: BidderModel?
     @State private var step: Double = 1.0
     @StateObject private var bidderListViewModel: ProductBidderListViewModel
+    @State private var cancellables = Set<AnyCancellable>()
 
     let productId: String
     
@@ -22,8 +24,6 @@ struct BidView: View {
         return formatter
     }
     
-   
-
     init(socketManager: SocketIOManager, bidEnded: Binding<Bool>, productId: String) {
         self.socketManager = socketManager
         self._bidEnded = bidEnded
@@ -190,7 +190,10 @@ struct BidView: View {
             let highestBidsByUser = Dictionary(grouping: socketManager.bids, by: { $0.userName }).map { $0.value.max(by: { $0.bidAmount < $1.bidAmount })! }
             let sortedBids = highestBidsByUser.sorted(by: { $0.bidAmount > $1.bidAmount })
             let groupedBids = Dictionary(grouping: sortedBids, by: { $0.userName })
-            BidListView(viewModel: bidderListViewModel, sortedBids: sortedBids, groupedBids: groupedBids, productId: productId)
+            BidListView(bidders: socketManager.bids)
+
+
+                        
 
 
 
@@ -206,10 +209,27 @@ struct BidView: View {
         
         .onAppear {
             socketManager.socketBid.connect()
+
+            // Fetch bids for the product
             bidderListViewModel.fetchBids(forProduct: productId)
-           
-            print( bidderListViewModel.fetchBids(forProduct: productId))
+
+            // If socketManager.bids is empty, initialize it with the data from bidderListViewModel.bidders
+            if socketManager.bids.isEmpty {
+                socketManager.bids = bidderListViewModel.bidders
+            }
+
+            // Add a didSet observer to the bidders property of the ProductBidderListViewModel
+            // to update the bids property of the SocketIOManager when the data has been fetched
+            bidderListViewModel.$bidders
+                .dropFirst() // Ignore the initial empty value
+                .sink { bidders in
+                    socketManager.bids = bidders
+                }
+                .store(in: &cancellables)
         }
+
+
+
         .onChange(of: socketManager.bidEnded) { newValue in
             if newValue {
                 bidEnded = newValue

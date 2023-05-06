@@ -70,9 +70,12 @@ class SocketIOManager: ObservableObject {
            self.product?._id == productId {
             DispatchQueue.main.async {
                 self.product?.price = Float(newPrice)
+                let newBid = BidderModel(id: UUID().uuidString, userName: userPreferences.getUser()?.username ?? "", userProfilePic: userPreferences.getUser()?.profilePicture ?? "", bidAmount: Float(newPrice))
+                self.bids.append(newBid)
             }
         }
     }
+
     
 
 }
