@@ -9,8 +9,12 @@ struct BidView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var canPlaceBid = false
     @StateObject var timerManager: TimerManager
-    @State private var potentialWinner: Bid?
+    @State private var potentialWinner: BidderModel?
     @State private var step: Double = 1.0
+    @StateObject private var bidderListViewModel: ProductBidderListViewModel
+
+    let productId: String
+    
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -18,10 +22,14 @@ struct BidView: View {
         return formatter
     }
     
-    init(socketManager: SocketIOManager, bidEnded: Binding<Bool>) {
+   
+
+    init(socketManager: SocketIOManager, bidEnded: Binding<Bool>, productId: String) {
         self.socketManager = socketManager
         self._bidEnded = bidEnded
-        
+        self.productId = productId
+        self._bidderListViewModel = StateObject(wrappedValue: ProductBidderListViewModel(socketManager: socketManager, productId: productId))
+
         if let bidEndDate = socketManager.product?.bidEndDate {
             let endDate = Date(timeIntervalSince1970: TimeInterval(bidEndDate / 1000))
             self._timerManager = StateObject(wrappedValue: TimerManager(endDate: endDate))
@@ -29,6 +37,8 @@ struct BidView: View {
             self._timerManager = StateObject(wrappedValue: TimerManager(endDate: Date()))
         }
     }
+
+    
     func formatTime(_ seconds: Int) -> String {
         let days = seconds / (24 * 3600)
         let remainingSeconds = seconds % (24 * 3600)
@@ -45,32 +55,36 @@ struct BidView: View {
     }
     
     var body: some View {
-        VStack( spacing: 20) {
+        VStack( spacing: 5) {
             if let bidEndDate = socketManager.product?.bidEndDate, timerManager.remainingTime > 0 {
                 let endDate = Date(timeIntervalSince1970: TimeInterval(bidEndDate / 1000))
                 let duration = endDate.timeIntervalSince(Date())
                 VStack {
                     ProgressView(value: min(max(0, Double(timerManager.remainingTime)), timerManager.duration), total: timerManager.duration)
                         .padding(.bottom, 5)
+                        //.tint(Color.white)
                     Text("Bid ends in: \(formatTime(Int(timerManager.remainingTime)))")
                         .font(.headline)
+                        .foregroundColor(Color.white)
+                        
                 }
-                .foregroundColor(.white)
-                .padding()
+                .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .background(Color("app_color"))
-                .cornerRadius(10)
-                
-                .padding(.horizontal,15)
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(.systemGray5), lineWidth: 1))
+                    .padding(.horizontal)
             } else {
                 VStack {
                     Text("Bid has ended.")
                         .font(.headline)
                 }
-                .foregroundColor(.white)
-                .padding()
-                .background(Color.gray.opacity(0.8))
-                .cornerRadius(10)
+                .frame(width: 100, height: 100)
+                .background(Color.white)
+                .cornerRadius(50)
+                .overlay(RoundedRectangle(cornerRadius: 50).stroke(Color(.systemGray5), lineWidth: 1))
+                .padding(.horizontal, 20)
             }
+            
             Text("Current Price:")
                 .font(.headline)
                 .foregroundColor(.gray)
@@ -90,7 +104,7 @@ struct BidView: View {
 
             
 
-            VStack(spacing: 20) {
+            VStack(spacing: 5) {
                 Text("Enter your bid:")
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -173,15 +187,17 @@ struct BidView: View {
             // ...
 
             // Bid list
-            let groupedBids = Dictionary(grouping: socketManager.bids, by: { $0.userName })
-            let highestBids = groupedBids.map { (userName, bids) in
-                (userName, bids.max { $0.bidAmount < $1.bidAmount }?.bidAmount ?? 0)
-            }
-            let sortedBids = highestBids.sorted { $0.1 > $1.1 }
+            let highestBidsByUser = Dictionary(grouping: socketManager.bids, by: { $0.userName }).map { $0.value.max(by: { $0.bidAmount < $1.bidAmount })! }
+            let sortedBids = highestBidsByUser.sorted(by: { $0.bidAmount > $1.bidAmount })
+            let groupedBids = Dictionary(grouping: sortedBids, by: { $0.userName })
+            BidListView(viewModel: bidderListViewModel, sortedBids: sortedBids, groupedBids: groupedBids, productId: productId)
 
-            BidListView(sortedBids: sortedBids, groupedBids: groupedBids)
+
+
+
 
             // ...
+
 
             
             Spacer()
@@ -190,6 +206,9 @@ struct BidView: View {
         
         .onAppear {
             socketManager.socketBid.connect()
+            bidderListViewModel.fetchBids(forProduct: productId)
+           
+            print( bidderListViewModel.fetchBids(forProduct: productId))
         }
         .onChange(of: socketManager.bidEnded) { newValue in
             if newValue {

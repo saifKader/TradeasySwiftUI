@@ -6,7 +6,7 @@ class SocketIOManager: ObservableObject {
     @Published var message: String = ""
     @Published var refreshUI = false
     @Published var bidEnded: Bool = false
-    @Published var bids: [Bid] = []
+    @Published var bids: [BidderModel] = []
 
 
     let managerBid = SocketManager(socketURL: URL(string: kbaseUrl)!, config: [.log(true), .compress])
@@ -49,8 +49,9 @@ class SocketIOManager: ObservableObject {
                             self.refreshUI.toggle() // Add this line to trigger UI update
 
                             // Append the new bid to the bids array
-                            let newBid = Bid(id: UUID().uuidString, userName: userName, userProfilePic: userProfilePic, bidAmount: newPrice)
+                            let newBid = BidderModel(id: UUID().uuidString, userName: userName, userProfilePic: userProfilePic, bidAmount: Float(newPrice))
                             self.bids.append(newBid)
+
                         }
                         print("Received new bid for product \(productId)")
                         print("Product price updated to \(newPrice)")

@@ -21,6 +21,7 @@ struct TradeasySwiftUIApp: App {
                 .environmentObject(navigationController)
                 .navigationViewStyle(StackNavigationViewStyle())
         }
+        
     }
 }
 

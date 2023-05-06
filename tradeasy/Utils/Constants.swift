@@ -6,8 +6,8 @@
 //
 
 import Foundation
-//let kbaseUrl = "http://localhost:9090/"
-let kbaseUrl = "http://192.168.1.180:9090/"
+let kbaseUrl = "http://localhost:9090/"
+//let kbaseUrl = "http://172.20.10.2:9090/"
 let kImageUrl = "\(kbaseUrl)img/"
 
 // authentification
@@ -35,3 +35,8 @@ let kGetUserProducts = "product/userproducts"
 let kUnlistProduct = "product/unlistproduct"
 let kEditProduct = "product/editproduct"
 let kAddRatingToProduct = "product/addrating"
+//bid
+let kFetchBids = "bid/fetch"
+
+let kFetchCategory = "category/get"
+

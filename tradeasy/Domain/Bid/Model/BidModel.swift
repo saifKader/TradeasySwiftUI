@@ -10,16 +10,16 @@ import Combine
 
 class BidModel: Codable, ObservableObject {
     let _id: String?
-    let user_id: String
+    let winner: String
     let product_id: String
     let bid_amount: Float
     let socket_id: String
     let createdAt: String?
     let updatedAt: String?
-    var bids: [Bid]?
+
     enum CodingKeys: String, CodingKey {
         case _id
-        case user_id = "user"
+        case winner = "winner"
         case product_id
         case bid_amount
         case socket_id
@@ -30,7 +30,7 @@ class BidModel: Codable, ObservableObject {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         _id = try container.decodeIfPresent(String.self, forKey: ._id)
-        user_id = try container.decode(String.self, forKey: .user_id)
+        winner = try container.decode(String.self, forKey: .winner)
         product_id = try container.decode(String.self, forKey: .product_id)
         bid_amount = try container.decode(Float.self, forKey: .bid_amount)
         socket_id = try container.decode(String.self, forKey: .socket_id)
@@ -41,7 +41,7 @@ class BidModel: Codable, ObservableObject {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(_id, forKey: ._id)
-        try container.encode(user_id, forKey: .user_id)
+        try container.encode(winner, forKey: .winner)
         try container.encode(product_id, forKey: .product_id)
         try container.encode(bid_amount, forKey: .bid_amount)
         try container.encode(socket_id, forKey: .socket_id)

@@ -12,82 +12,107 @@ import SDWebImageSwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
+    @StateObject var categoryViewModel = CategoryViewModel()
     let currentUser = userPreferences.getUser()
     
     @State private var searchText: String = ""
     @State private var showSearchBar: Bool = false
-    
-    var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    // Search Bar
-                    if showSearchBar {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
-                                .padding(.leading, 8)
-                            TextField("Search", text: $searchText)
-                                .font(.system(size: 16))
-                            if !searchText.isEmpty {
-                                Button(action: {
-                                    searchText = ""
-                                }) {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(.gray)
-                                }
-                                .padding(.trailing, 8)
-                            }
-                        }
-                        .padding(.horizontal)
-                        //.transition(.move(edge: .top))
-                        //.animation(.easeInOut(duration: 0.3))
-                    }
-                    
-                    
-                    // Products for Sale
-                    SectionView(title: "Products for Sale", products: viewModel.products.filter { !$0.forBid! && $0.username != currentUser?.username && (searchText.isEmpty || $0.name!.localizedCaseInsensitiveContains(searchText)) })
-                    // Products Forbid - Less than 1 hour
-                    SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
-                        if let bidEndDate = product.bidEndDate {
-                            let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
-                            return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime <= 3600
-                        }
-                        return false
-                    })
-
-                    // Products Forbid
-                    SectionView(title: "Products Forbid", products: viewModel.products.filter { product in
-                        if let bidEndDate = product.bidEndDate {
-                            let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
-                            return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime > 3600
-                        }
-                        return false
-                    })
-
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Home")
-                        .font(.headline)
-                        .foregroundColor(Color.primary)
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { showSearchBar.toggle() }, label: {
-                        Image(systemName: "magnifyingglass")
-                    })
-                }
-            }
-            .refreshable {
-                viewModel.loadProducts()
-            }
-            .onAppear {
-                viewModel.loadProducts()
-            }
+    @State private var categoryList: [CategoryModel] = []
+    func updateCategoryList() {
+        if case let .categorySuccess(categories) = categoryViewModel.state {
+            categoryList = categories
         }
     }
+    
+    var body: some View {
+        
+        
+        
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                
+                VStack{
+                
+                
+                
+               
+                
+                
+                
+                // Products for Sale
+                SectionView(title: "Products for Sale", products: viewModel.products.filter { !$0.forBid! && $0.username != currentUser?.username && (searchText.isEmpty || $0.name!.localizedCaseInsensitiveContains(searchText)) })
+                    // Explore Categories
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 24, height: 24)
+                            Divider()
+                            Text("Explore popular categories")
+                                .font(.body)
+                            Spacer()
+                        }
+                        
+                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), spacing: 12) {
+                            CategoryCardView(icon: "motors", category: "Motors", products: viewModel.products)
+                            CategoryCardView(icon: "electronics", category: "Electronics", products: viewModel.products)
+                            CategoryCardView(icon: "real estate", category: "Real estate", products: viewModel.products)
+                            CategoryCardView(icon: "all categories", category: "All", products: viewModel.products)
+                        }
+                       
+                    }
+                    .padding(.horizontal)
+                // Products Forbid - Less than 1 hour
+                SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
+                    if let bidEndDate = product.bidEndDate {
+                        let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
+                        return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime <= 3600
+                    }
+                    return false
+                })
+                
+                
+                // Products Forbid
+                SectionView(title: "Products Forbid", products: viewModel.products.filter { product in
+                    if let bidEndDate = product.bidEndDate {
+                        let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
+                        return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime > 3600
+                    }
+                    return false
+                })
+                
+                
+                
+                
+                
+                
+                
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Home")
+                    .font(.headline)
+                    .foregroundColor(Color.primary)
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: { showSearchBar.toggle() }, label: {
+                    Image(systemName: "magnifyingglass")
+                })
+            }
+        }
+        .refreshable {
+            viewModel.loadProducts()
+        }
+        .onAppear {
+            categoryViewModel.fetchCategories()
+            viewModel.loadProducts()
+            updateCategoryList()
+        }
+    }
+}
 }
 
 struct ProductRowView: View {
@@ -293,6 +318,45 @@ struct SectionView: View {
             .padding(.bottom)
             .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 10)
         }
+    }
+}
+
+
+
+struct CategoryCardView: View {
+    let icon: String
+    let category: String
+    let products: [ProductModel]
+    
+    var body: some View {
+        if category == "All" {
+            NavigationLink(destination: AllCategoriesView()) {
+                categoryCardView()
+            }
+        } else {
+            NavigationLink(destination: ProductsByCategoryView(productsList: products,category: category.lowercased())) {
+                categoryCardView()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func categoryCardView() -> some View {
+        VStack(spacing: 8) {
+            Image(icon)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 80, height: 25)
+                .padding(.top, 8)
+            Text(category)
+                .font(.system(size: 14, weight: .semibold))
+                .multilineTextAlignment(.center)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .padding(.all, 10)
+        .background(Color(CustomColors.backgroundColor))
+        .cornerRadius(10)
+        .shadow(radius: 3)
     }
 }
 

@@ -28,7 +28,7 @@ struct SellingView: View {
                                 .background(Color.green.opacity(0.9))
                                 .cornerRadius(10)
                             if (viewModel.products.filter { $0.selling! }.isEmpty) {
-                                Text("You have no unlisted products")
+                                Text("You have no listed products")
                                     .foregroundColor(.gray)
                             } else {
                                 ScrollView(.horizontal, showsIndicators: false) {

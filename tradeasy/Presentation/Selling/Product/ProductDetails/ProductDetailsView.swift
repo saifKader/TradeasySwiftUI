@@ -221,7 +221,8 @@ struct ProductDetailsView: View {
                                 }, height: 20.0, width: .infinity, icon: "hammer.fill")
                             }
                         }.padding(.bottom,25)
-                        NavigationLink(destination: BidView(socketManager: SocketIOManager(product: product), bidEnded: $bidEnded), isActive: $isShowingBidView) {
+                        NavigationLink(destination: BidView(socketManager: SocketIOManager(product: product), bidEnded: $bidEnded, productId: product._id!), isActive: $isShowingBidView) {
+                        
                             EmptyView()
                         }
                     }
