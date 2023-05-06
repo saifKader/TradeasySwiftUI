@@ -67,6 +67,14 @@
 		598EC99029E7CA8200259A55 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598EC98F29E7CA8200259A55 /* ProductDetailsViewModel.swift */; };
 		598EC99229E82D1B00259A55 /* RefreshuseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598EC99129E82D1B00259A55 /* RefreshuseViewModel.swift */; };
 		5990F3BC29E5A44400548859 /* AllProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5990F3BB29E5A44400548859 /* AllProductsView.swift */; };
+		599FDA1D2A0668D600E1737B /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA1C2A0668D600E1737B /* NotificationsView.swift */; };
+		599FDA202A06754700E1737B /* NotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA1F2A06754700E1737B /* NotificationUseCase.swift */; };
+		599FDA242A06758400E1737B /* NotificationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA232A06758400E1737B /* NotificationApi.swift */; };
+		599FDA262A06761200E1737B /* NotificationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA252A06761200E1737B /* NotificationRepositoryImpl.swift */; };
+		599FDA282A06761E00E1737B /* INotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA272A06761E00E1737B /* INotificationRepository.swift */; };
+		599FDA2A2A06782F00E1737B /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA292A06782F00E1737B /* NotificationViewModel.swift */; };
+		599FDA2C2A067FBC00E1737B /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA2B2A067FBC00E1737B /* TimeAgo.swift */; };
+		599FDA342A06B74F00E1737B /* Cd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA332A06B74F00E1737B /* Cd.swift */; };
 		59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A480FE29C25D77007C0CE3 /* UserDefaults.swift */; };
 		59A4810229C26516007C0CE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A4810129C26516007C0CE3 /* ProfileView.swift */; };
 		59B858B029DC6073006ED7F1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B858AF29DC6073006ED7F1 /* EditProfileView.swift */; };
@@ -201,6 +209,14 @@
 		598EC98F29E7CA8200259A55 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
 		598EC99129E82D1B00259A55 /* RefreshuseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshuseViewModel.swift; sourceTree = "<group>"; };
 		5990F3BB29E5A44400548859 /* AllProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsView.swift; sourceTree = "<group>"; };
+		599FDA1C2A0668D600E1737B /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		599FDA1F2A06754700E1737B /* NotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUseCase.swift; sourceTree = "<group>"; };
+		599FDA232A06758400E1737B /* NotificationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationApi.swift; sourceTree = "<group>"; };
+		599FDA252A06761200E1737B /* NotificationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepositoryImpl.swift; sourceTree = "<group>"; };
+		599FDA272A06761E00E1737B /* INotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INotificationRepository.swift; sourceTree = "<group>"; };
+		599FDA292A06782F00E1737B /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		599FDA2B2A067FBC00E1737B /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
+		599FDA332A06B74F00E1737B /* Cd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cd.swift; sourceTree = "<group>"; };
 		59A480FE29C25D77007C0CE3 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		59A4810129C26516007C0CE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		59B858AF29DC6073006ED7F1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
@@ -553,6 +569,42 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		599FDA1B2A0668C200E1737B /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				599FDA1C2A0668D600E1737B /* NotificationsView.swift */,
+				599FDA292A06782F00E1737B /* NotificationViewModel.swift */,
+				599FDA332A06B74F00E1737B /* Cd.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		599FDA1E2A06752E00E1737B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				599FDA1F2A06754700E1737B /* NotificationUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		599FDA212A06756000E1737B /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				599FDA222A06756E00E1737B /* Repository */,
+				599FDA232A06758400E1737B /* NotificationApi.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		599FDA222A06756E00E1737B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				599FDA252A06761200E1737B /* NotificationRepositoryImpl.swift */,
+				599FDA272A06761E00E1737B /* INotificationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		59A4810029C264F8007C0CE3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +768,7 @@
 				59EE252C29C10EE1000F7D55 /* Animations.swift */,
 				594F6ADF29DEF45200C8F473 /* ImagePicker.swift */,
 				5941E2272A04E3C500A3B9E7 /* KeyboardDismiss.swift */,
+				599FDA2B2A067FBC00E1737B /* TimeAgo.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -723,6 +776,7 @@
 		59D17AF229C0EC9B00CD0703 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				599FDA212A06756000E1737B /* Notification */,
 				5941E2412A058B0300A3B9E7 /* Category */,
 				5941E22D2A05452B00A3B9E7 /* Bid */,
 				59CEBA1E29E490B80027E016 /* product */,
@@ -837,6 +891,7 @@
 		59D17B1D29C0F09300CD0703 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				599FDA1E2A06752E00E1737B /* UseCase */,
 				59D17B1E29C0F0A000CD0703 /* Model */,
 			);
 			path = Notification;
@@ -853,6 +908,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				599FDA1B2A0668C200E1737B /* Notifications */,
 				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
 				597DE3E329E8D42700E4BEA8 /* UserData.swift */,
 				597DE3EE29E991B200E4BEA8 /* Selling */,
@@ -1101,7 +1157,9 @@
 				5941E2322A05462F00A3B9E7 /* IBidderRepository.swift in Sources */,
 				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
 				5941E2532A05C33000A3B9E7 /* AllCategoriesView.swift in Sources */,
+				599FDA2A2A06782F00E1737B /* NotificationViewModel.swift in Sources */,
 				59E5029D29DE0EDD005F8878 /* UpdateEmailViewModel.swift in Sources */,
+				599FDA2C2A067FBC00E1737B /* TimeAgo.swift in Sources */,
 				59B858B529DC7342006ED7F1 /* UpdatePhoneNumberView.swift in Sources */,
 				59CEBA1D29E478420027E016 /* FirebaseRegisterViewModel.swift in Sources */,
 				59D17AEF29C0E5AF00CD0703 /* Constants.swift in Sources */,
@@ -1109,6 +1167,7 @@
 				5941E2442A058C8300A3B9E7 /* CategoryRespositoryImpl.swift in Sources */,
 				59D17B2829C0F11500CD0703 /* CCPicker.swift in Sources */,
 				5963000829F6DF180073DD7B /* BidView.swift in Sources */,
+				599FDA282A06761E00E1737B /* INotificationRepository.swift in Sources */,
 				59D17B2029C0F0B100CD0703 /* NotificationModel.swift in Sources */,
 				59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */,
 				59CEBA1B29E471220027E016 /* FirebaseRegisterView.swift in Sources */,
@@ -1122,8 +1181,10 @@
 				59FFAAEF29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift in Sources */,
 				598B503229DE7C66000187EC /* HomeView.swift in Sources */,
 				5941E2262A04DF8100A3B9E7 /* BidListView.swift in Sources */,
+				599FDA342A06B74F00E1737B /* Cd.swift in Sources */,
 				5941E2402A058A7300A3B9E7 /* CategoryModel.swift in Sources */,
 				596C556329F82F5C00DEACE4 /* TestAView.swift in Sources */,
+				599FDA262A06761200E1737B /* NotificationRepositoryImpl.swift in Sources */,
 				596C556129F8043200DEACE4 /* TermsAndConditionsView.swift in Sources */,
 				5984320329CBCC67001A6C40 /* UserUseCase.swift in Sources */,
 				598B502B29DE402C000187EC /* UpdateEmailReq.swift in Sources */,
@@ -1168,6 +1229,7 @@
 				59EE253729C138C7000F7D55 /* AuthButton.swift in Sources */,
 				598EC99029E7CA8200259A55 /* ProductDetailsViewModel.swift in Sources */,
 				59D17B0129C0EE3F00CD0703 /* AuthAPIImpl.swift in Sources */,
+				599FDA202A06754700E1737B /* NotificationUseCase.swift in Sources */,
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
 				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
@@ -1201,6 +1263,7 @@
 				5952D45729E71903003118CB /* AddProductView.swift in Sources */,
 				5941E2382A0547FD00A3B9E7 /* BidderViewModel.swift in Sources */,
 				59DE03EA29F9A25A00ACD9EE /* VerifyAccountViewModel.swift in Sources */,
+				599FDA242A06758400E1737B /* NotificationApi.swift in Sources */,
 				59CEBA1829E467BD0027E016 /* GoogleAuth.swift in Sources */,
 				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
 				5984320629CBCEB9001A6C40 /* UseCaseError.swift in Sources */,
@@ -1208,6 +1271,7 @@
 				59D17AF629C0ED1600CD0703 /* AuthRepositoryImpl.swift in Sources */,
 				59EE252D29C10EE1000F7D55 /* Animations.swift in Sources */,
 				59D17B1429C0EF9B00CD0703 /* UserModel.swift in Sources */,
+				599FDA1D2A0668D600E1737B /* NotificationsView.swift in Sources */,
 				5984320C29CCA352001A6C40 /* OTPVerificationView.swift in Sources */,
 				59D5E04429DBC0EA001BDCCC /* ActionButton.swift in Sources */,
 				5941E2302A05461800A3B9E7 /* BidderRepositoryImpl.swift in Sources */,
@@ -1354,6 +1418,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1387,6 +1452,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

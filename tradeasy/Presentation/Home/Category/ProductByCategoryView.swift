@@ -67,6 +67,9 @@ struct ProductsByCategoryView: View {
                     .edgesIgnoringSafeArea(.bottom)
                 }
             }
+        }.onAppear{
+            
+            print(productsList)
         }
     }
 }

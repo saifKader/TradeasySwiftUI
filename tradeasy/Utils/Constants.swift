@@ -39,4 +39,5 @@ let kAddRatingToProduct = "product/addrating"
 let kFetchBids = "bid/fetch"
 
 let kFetchCategory = "category/get"
+let kFetchNotification = "user/getnotifications"
 

@@ -35,7 +35,14 @@ struct HomeView: View {
                 
                 
                 
-               
+                    // Products Forbid - Less than 1 hour
+                    SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
+                        if let bidEndDate = product.bidEndDate {
+                            let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
+                            return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime <= 3600
+                        }
+                        return false
+                    })
                 
                 
                 
@@ -63,14 +70,7 @@ struct HomeView: View {
                        
                     }
                     .padding(.horizontal)
-                // Products Forbid - Less than 1 hour
-                SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
-                    if let bidEndDate = product.bidEndDate {
-                        let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
-                        return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime <= 3600
-                    }
-                    return false
-                })
+                
                 
                 
                 // Products Forbid

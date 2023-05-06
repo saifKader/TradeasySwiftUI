@@ -37,7 +37,7 @@ struct ProfileView: View {
                     VStack {
                         VStack {
                             if let imageUrlString = userPreferences.getUser()?.profilePicture,
-                                let imageUrl = URL(string: kImageUrl + imageUrlString) {
+                               let imageUrl = URL(string: kImageUrl + imageUrlString) {
                                 AsyncImage(url: imageUrl) { phase in
                                     switch phase {
                                     case .success(let image):
@@ -83,8 +83,8 @@ struct ProfileView: View {
                 }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2, icon: "chevron.right")
                 .padding(.top, 20)
                 NavigationLink(destination: EditProfileView( profileImage: $profileImage), isActive: $isEditProfileViewActive) {
-                            EmptyView()
-                        }.navigationBarTitle("Profile")
+                    EmptyView()
+                }.navigationBarTitle("Profile")
                 
                 
                 Spacer()
@@ -118,7 +118,6 @@ struct ProfileView: View {
                     
                     
                 }, image: "hammer", text: "Bids")
-                Divider()
                 if(productPreferences.getProducts() != nil){
                     NavigationLink(
                         destination: RecentlyViewedView(productsList: productPreferences.getProducts()!),
@@ -158,34 +157,45 @@ struct ProfileView: View {
                 .padding(.leading,10)
             VStack{
                 
-              
-                    ProfileHstack(action: {
-                        
-                    }, image: "exclamationmark.triangle", text: "Report a problem")
+                
+                ProfileHstack(action: {
+                    
+                }, image: "exclamationmark.triangle", text: "Report a problem")
                 
                 
-            Divider()
+                Divider()
                 Spacer()
                 NavigationLink(
                     destination: PrivacyPolicyView(),
                     isActive: $isPrivacyPolicyViewActive) {
                         
                     }
-                    ProfileHstack(action: {
-                     
-                        isPrivacyPolicyViewActive = true
-                    }, image: "lock", text: "Terms & conditions")
-               
+                ProfileHstack(action: {
+                    
+                    isPrivacyPolicyViewActive = true
+                }, image: "lock", text: "Terms & conditions")
+                Divider()
+                Spacer()
+                
+                NavigationLink(
+                    destination: PrivacyPolicyView(),
+                    isActive: $isPrivacyPolicyViewActive) {
+                        
+                    }
+                ProfileHstack(action: {
+                    
+                    isPrivacyPolicyViewActive = true
+                }, image: "ellipsis.message", text: "Assistant")
+                
             }
             .padding() // add padding to the VStack
             .background(Color("card_color"))
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
-                
             
-          
-          
+            
+            
             
             
             
@@ -216,6 +226,14 @@ struct ProfileView: View {
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
+            
+
+              
+         
+      
+       
+            
+            
             
             
         }.onAppear {
@@ -279,7 +297,7 @@ struct ProfileHstack: View {
                 
                 Text(text)
                     .font(.headline)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("font_color"))
                 
                 
                 Spacer()

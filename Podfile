@@ -15,6 +15,7 @@ pod 'Firebase/Analytics'
 pod 'FirebaseCore'
 pod 'FirebaseMessaging'
 pod 'Mantis'
+pod 'ToastSwiftUI'
 
 
 end

@@ -20,6 +20,7 @@ struct MainView: View {
             TabView(selection: $selectedTab) {
                 
                // FirebaseRegisterView(email: "")
+               // TestView()
                 HomeView()
                 
                            .tabItem {
@@ -42,7 +43,7 @@ struct MainView: View {
                                }
                            }.tag(2)
 
-                       Text("Notifications Screen")
+                NotificationView()
                            .tabItem {
                                TabIcon(selected: $selectedTab, index: 3) {
                                    Label("Notifications", systemImage: "bell")

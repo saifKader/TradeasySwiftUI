@@ -78,7 +78,7 @@ struct SavedProductsView: View {
                 
                 if filteredProducts.isEmpty {
                     
-                    Text("Sorry, there are no products that match your criteria. Please try with different filter options")
+                    Text("Sorry, there are no saved products")
                         .foregroundColor(.gray)
                         .padding()
                     

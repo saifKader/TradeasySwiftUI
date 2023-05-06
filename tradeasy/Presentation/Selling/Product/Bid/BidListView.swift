@@ -68,6 +68,7 @@ struct BidListView: View {
                                     VStack(alignment: .leading, spacing: 5) {
                                         HStack {
                                             Text(userName)
+                                                .foregroundColor(Color("font_color"))
                                                 .font(.headline)
                                                 .foregroundColor(.primary)
                                                 .lineLimit(1)
@@ -80,7 +81,7 @@ struct BidListView: View {
                                 }
                                 .padding(.vertical, 15)
                                 .padding(.horizontal, 20)
-                                .background(Color.white)
+                                .background(Color("bid_list"))
                                 .cornerRadius(20)
                                 .shadow(color: .gray.opacity(0.3), radius: 10, x: 0, y: 5)
                             })

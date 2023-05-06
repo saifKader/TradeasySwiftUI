@@ -16,7 +16,7 @@ struct UserModel: Codable, Equatable {
     var profilePicture: String?
     let isVerified: Bool?
     let notificationToken: String?
-    let notifications: [Notification]?
+    let notifications: [NotificationModel]?
     let savedProducts: [ProductModel]?
     let otp: Int?
     let countryCode: String?
@@ -52,7 +52,7 @@ struct UserModel: Codable, Equatable {
         profilePicture = try container.decodeIfPresent(String.self, forKey: .profilePicture)
         isVerified = try container.decodeIfPresent(Bool.self, forKey: .isVerified)
         notificationToken = try container.decodeIfPresent(String.self, forKey: .notificationToken)
-        notifications = try container.decodeIfPresent([Notification].self, forKey: .notifications)
+        notifications = try container.decodeIfPresent([NotificationModel].self, forKey: .notifications)
         savedProducts = try container.decodeIfPresent([ProductModel].self, forKey: .savedProducts)
         otp = try container.decodeIfPresent(Int.self, forKey: .otp)
         countryCode = try container.decodeIfPresent(String.self, forKey: .countryCode)
