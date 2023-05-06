@@ -40,4 +40,5 @@ let kFetchBids = "bid/fetch"
 
 let kFetchCategory = "category/get"
 let kFetchNotification = "user/getnotifications"
+let kDeleteNotification = "user/deletenotification"
 

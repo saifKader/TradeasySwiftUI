@@ -1,22 +1,40 @@
 import SwiftUI
-
 import CoreData
+
 struct NotificationView: View {
     @State private var myList: [NotificationModel] = []
     @State private var deletedNotification: NotificationModel?
+    @State private var showAlert: Bool = false
     let viewModel = NotificationViewModel()
     @Environment(\.managedObjectContext) private var managedContext
     @EnvironmentObject var navigationController: NavigationController
- 
 
+    let notificationApi = NotificationAPI()
 
     func deleteNotification(at indexSet: IndexSet) {
-        if let index = indexSet.first {
-            deletedNotification = myList[index]
-            myList.remove(at: index)
+            if let index = indexSet.first {
+                deletedNotification = myList[index]
+                myList.remove(at: index)
+                showAlert = true
+            }
         }
-    }
-    
+
+        func confirmDeleteNotification() {
+            if let deleted = deletedNotification {
+                print(deleted.id)
+                Task {
+                    do {
+                        
+                        let req = DeleteNotificationReq(id: deleted.id)
+                        try await notificationApi.deleteNotification(req)
+                    } catch {
+                        print("Error deleting notification: \(error)")
+                    }
+                }
+                showAlert = false
+            }
+        }
+
     func undoDelete() {
         if let deleted = deletedNotification {
             myList.append(deleted)
@@ -40,14 +58,10 @@ struct NotificationView: View {
                             Text(getTimeAgo(time: notification.date!)!)
                                 .font(.footnote)
                                 .foregroundColor(.gray)
-                         
-                          
                         }
                         Text(notification.description!)
                             .font(.subheadline)
                             .foregroundColor(.black)
-          
-                           
                     }
                     .padding(.vertical, 8)
                 }
@@ -56,35 +70,41 @@ struct NotificationView: View {
             .listStyle(.plain)
             .padding(.horizontal)
         }.onAppear{
-            if userPreferences.getUser() == nil
-            {
-              
+            if userPreferences.getUser() == nil {
                 navigationController.navigate(to: LoginView())
                 return
             }
             Task.init(priority: .userInitiated) {
-                           await loadNotifications()
-                       }
-            
-            
-            
-            
+                await loadNotifications()
+            }
         }
-         .refreshable {
-             Task.init(priority: .userInitiated) {
-                            await loadNotifications()
-                        }
+        .refreshable {
+            Task.init(priority: .userInitiated) {
+                await loadNotifications()
+            }
         }
-        .alert(isPresented: .constant(deletedNotification != nil), content: {
-                    Alert(
-                        title: Text("Notification Deleted"),
-                        message: Text("Your notification was deleted"),
-                        primaryButton: .default(Text("OK")),
-                        secondaryButton: .default(Text("Undo"), action: undoDelete)
-                    )
+        .alert(isPresented: $showAlert, content: {
+            Alert(
+                title: Text("Notification Deleted"),
+                message: Text("Your notification was deleted"),
+                primaryButton: .default(Text("OK"), action: confirmDeleteNotification),
+                secondaryButton: .default(Text("Undo"), action: {
+                    undoDelete()
+                    showAlert = false
+                })
+            )
         })
-        
     }
+
+
+    
+    
+    
+    
+    
+    
+    
+    
     func loadNotifications() async {
         Task {
             viewModel.fetchNotifications() { result in
