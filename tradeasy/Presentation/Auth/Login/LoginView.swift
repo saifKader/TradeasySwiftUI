@@ -232,7 +232,7 @@ struct LoginView: View {
                             Spacer()
                             
                             Text(LocalizedStringKey("New member?"))
-                                .foregroundColor(Color("black_white"))
+                                .foregroundColor(Color("font_color"))
                             
                             
                             Button(action: {
@@ -255,7 +255,7 @@ struct LoginView: View {
                         navigationController.popToRoot()
                     }) {
                         Image(systemName: "xmark")
-                            .foregroundColor(Color("black_white"))
+                            .foregroundColor(Color("font_color"))
                     }
                 )
                 

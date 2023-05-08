@@ -79,13 +79,7 @@ struct SellingView: View {
                             }
                         }
                     }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            Text("Sellings")
-                                .font(.headline)
-                        }
-                    }
+                  
                     .refreshable {
                         viewModel.loadUserProducts()
                     }

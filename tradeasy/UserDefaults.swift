@@ -131,6 +131,12 @@ class ProductPreferences: ObservableObject {
             return nil
         }
     }
+    func isProductSaved(product: ProductModel) -> Bool {
+        guard let savedProducts = products else {
+            return false
+        }
+        return savedProducts.contains(where: { $0._id == product._id })
+    }
 
     func removeProd() {
         userDefaults.removeObject(forKey: "product_data")

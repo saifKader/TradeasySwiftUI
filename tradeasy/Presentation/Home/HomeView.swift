@@ -90,19 +90,8 @@ struct HomeView: View {
                 
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Home")
-                    .font(.headline)
-                    .foregroundColor(Color.primary)
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: { showSearchBar.toggle() }, label: {
-                    Image(systemName: "magnifyingglass")
-                })
-            }
-        }
+            .background(Color("bid_list"))
+            
         .refreshable {
             viewModel.loadProducts()
         }

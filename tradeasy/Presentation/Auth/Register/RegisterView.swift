@@ -107,11 +107,11 @@ struct RegisterView: View {
                     .padding()
                     .onAppear {
                         // set the initial selected country code
-                        countryCode = selectedCountry?.phoneCode ?? "+216"
+                        countryCode = selectedCountry?.phoneCode ?? "+1"
                     }
                     .onChange(of: selectedCountry) { country in
                         // update the view model's countryCode property when the selected country changes
-                        countryCode = country?.phoneCode ?? "+216"
+                        countryCode = country?.phoneCode ?? "+1"
                     }
                 VStack(alignment: .leading){
                     TextField(LocalizedStringKey("Phone Number"), text: $phoneNumber)
@@ -238,7 +238,7 @@ struct RegisterView: View {
                     Spacer()
                     
                     Text(LocalizedStringKey("Already have an account?"))
-                        .foregroundColor(Color("black_white"))
+                        .foregroundColor(Color("font_color"))
                     
                     
                     Button(action: {

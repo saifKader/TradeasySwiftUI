@@ -27,17 +27,16 @@ struct ProfileView: View {
     @ObservedObject var viewModel = UploadProfilePictureViewModel()
     
     let productPreferences = ProductPreferences()
-    
-    
+
     var body: some View {
         ScrollView {
-            VStack {
+            VStack (spacing: 0){
                 HStack {
                     Spacer()
                     VStack {
                         VStack {
                             if let imageUrlString = userPreferences.getUser()?.profilePicture,
-                               let imageUrl = URL(string: kImageUrl + imageUrlString) {
+                                let imageUrl = URL(string: kImageUrl + imageUrlString) {
                                 AsyncImage(url: imageUrl) { phase in
                                     switch phase {
                                     case .success(let image):
@@ -74,17 +73,22 @@ struct ProfileView: View {
                     }
                     Spacer()
                 }
-                .padding(.horizontal, 20)
-                Text(((userPreferences.getUser()?.username) ?? "") )
-                    .foregroundColor(Color(CustomColors.greyColor)).bold()// add padding to the HStack
+                
+                let username = userPreferences.getUser()?.username ?? ""
+                Text(username.capitalized)
+                    .bold()
+                    .font(.custom("AvenirNext-DemiBold", size: 24))
+                    .foregroundColor(Color("font_color"))
+                .padding(.leading) // Add padding to the left of the text
+
                 
                 ActionButton(text: "editProfile", action: {
                     isEditProfileViewActive = true
                 }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2, icon: "chevron.right")
                 .padding(.top, 20)
                 NavigationLink(destination: EditProfileView( profileImage: $profileImage), isActive: $isEditProfileViewActive) {
-                    EmptyView()
-                }.navigationBarTitle("Profile")
+                            EmptyView()
+                        }.navigationBarTitle("Profile")
                 
                 
                 Spacer()
@@ -93,7 +97,7 @@ struct ProfileView: View {
             .background(Color("card_color"))
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-            .padding(.bottom,50)
+            .padding(.bottom, 50)
             Text("My Tradeasy")
                 .foregroundColor(Color(CustomColors.greyColor))
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -118,6 +122,7 @@ struct ProfileView: View {
                     
                     
                 }, image: "hammer", text: "Bids")
+                Divider()
                 if(productPreferences.getProducts() != nil){
                     NavigationLink(
                         destination: RecentlyViewedView(productsList: productPreferences.getProducts()!),
@@ -157,45 +162,34 @@ struct ProfileView: View {
                 .padding(.leading,10)
             VStack{
                 
+              
+                    ProfileHstack(action: {
+                        
+                    }, image: "exclamationmark.triangle", text: "Report a problem")
                 
-                ProfileHstack(action: {
-                    
-                }, image: "exclamationmark.triangle", text: "Report a problem")
                 
-                
-                Divider()
+            Divider()
                 Spacer()
                 NavigationLink(
                     destination: PrivacyPolicyView(),
                     isActive: $isPrivacyPolicyViewActive) {
                         
                     }
-                ProfileHstack(action: {
-                    
-                    isPrivacyPolicyViewActive = true
-                }, image: "lock", text: "Terms & conditions")
-                Divider()
-                Spacer()
-                
-                NavigationLink(
-                    destination: PrivacyPolicyView(),
-                    isActive: $isPrivacyPolicyViewActive) {
-                        
-                    }
-                ProfileHstack(action: {
-                    
-                    isPrivacyPolicyViewActive = true
-                }, image: "ellipsis.message", text: "Assistant")
-                
+                    ProfileHstack(action: {
+                     
+                        isPrivacyPolicyViewActive = true
+                    }, image: "lock", text: "Terms & conditions")
+               
             }
             .padding() // add padding to the VStack
             .background(Color("card_color"))
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
+                
             
-            
-            
+          
+          
             
             
             
@@ -227,16 +221,12 @@ struct ProfileView: View {
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
             .padding(.bottom,10)
             
-
-              
-         
-      
-       
             
-            
-            
-            
-        }.onAppear {
+        }
+        
+        .navigationBarTitleDisplayMode(.inline)
+     
+        .onAppear {
             if let profilePicture = userPreferences.getUser()?.profilePicture,
                let imageUrl = URL(string: kImageUrl + profilePicture) {
                 // Load the image asynchronously
@@ -278,6 +268,7 @@ struct ProfileView: View {
             //userPreferences.refreshUserData()
             isRefreshing = false
         }
+       
     }
 }
 
