@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var navigationController: NavigationController
-    @EnvironmentObject var userPreferences: UserPreferences
+    let userPreferences = UserPreferences()
     @State var showError = false
     @State var navigateToLoggin = false
     @State var showLogin = false
@@ -35,6 +35,7 @@ struct ProfileView: View {
                     Spacer()
                     VStack {
                         VStack {
+                        
                             if let imageUrlString = userPreferences.getUser()?.profilePicture,
                                 let imageUrl = URL(string: kImageUrl + imageUrlString) {
                                 AsyncImage(url: imageUrl) { phase in
@@ -82,7 +83,7 @@ struct ProfileView: View {
                 .padding(.leading) // Add padding to the left of the text
 
                 
-                ActionButton(text: "editProfile", action: {
+                ActionButton(text: "Edit Profile", action: {
                     isEditProfileViewActive = true
                 }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2, icon: "chevron.right")
                 .padding(.top, 20)
@@ -227,6 +228,9 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
      
         .onAppear {
+            
+            print("heeere")
+  
             if let profilePicture = userPreferences.getUser()?.profilePicture,
                let imageUrl = URL(string: kImageUrl + profilePicture) {
                 // Load the image asynchronously
@@ -261,6 +265,7 @@ struct ProfileView: View {
                 }.resume()
             } else if userPreferences.getUser() == nil
             {
+             
                 showLogin = true
                 navigationController.navigate(to: LoginView())
             }

@@ -53,14 +53,18 @@ struct ProductAPI {
     func searchProductByname(_ productNameReq: ProdNameReq) async throws -> [ProductModel]  {
         let url = "\(kbaseUrl)\(ksearchProdByName)"
         let userPreferences = UserPreferences()
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "jwt": (userPreferences.getUser()?.token)!
+        var headers: HTTPHeaders = [
+            "Content-Type": "application/json"
         ]
-
+        
+        if let token = userPreferences.getUser()?.token {
+            headers["jwt"] = token
+        }
+        
         let parameters: [String: Any] = [
             "name": productNameReq.name
         ]
+        
         return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[ProductModel], Error>) in
             AF.request(url, method: .get, parameters: parameters, headers: headers)
                 .validate(statusCode: 200..<202)
@@ -85,7 +89,7 @@ struct ProductAPI {
                 }
         }
     }
-   
+
     
     func getAllProducts() async throws -> [ProductModel] {
         let url = "\(kbaseUrl)\(kGetAllProducts)"

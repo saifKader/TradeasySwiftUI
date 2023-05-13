@@ -51,9 +51,7 @@ struct EditProductView1: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                Text("Edit Product Details")
-                    .font(.headline)
-                
+             
                 CustomTextField(placeholder: "Product Name", text: $name)
                 CustomTextField(placeholder: "Description", text: $description)
                 CustomTextField(placeholder: "Price", text: $price, keyboardType: .decimalPad)

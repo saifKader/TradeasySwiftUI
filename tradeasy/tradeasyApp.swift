@@ -12,11 +12,11 @@ struct TradeasySwiftUIApp: App {
     let persistenceController = PersistenceController.shared
     private var initDI = InitDepedencyInjection()
 
-    @StateObject private var navigationController = NavigationController(startingView: AnyView(MainView()))
+    @StateObject private var navigationController = NavigationController(startingView: AnyView(SplashView()))
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(navigationController)
                 .navigationViewStyle(StackNavigationViewStyle())

@@ -146,7 +146,7 @@ struct LoginView: View {
                     ).alert(isPresented: $showError) {
                         AlertHelper.showAlert(title: "Login", message: errorMessage)
                     }
-                    GoogleSignInButtonView {
+                    SignInWithGoogleButton {
                         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
                         // Create Google Sign In configuration object.
                         let config = GIDConfiguration(clientID: clientID)

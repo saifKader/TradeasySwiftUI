@@ -38,6 +38,11 @@
 		596C556329F82F5C00DEACE4 /* TestAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596C556229F82F5C00DEACE4 /* TestAView.swift */; };
 		5972D6A129E446FF00DE7F5B /* GoogleAuthBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972D6A029E446FF00DE7F5B /* GoogleAuthBtn.swift */; };
 		5972D6A729E4612500DE7F5B /* FirebaseInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5972D6A629E4612500DE7F5B /* FirebaseInit.swift */; };
+		59750FF62A0EE0A3005C8875 /* ChangePhoneNumberReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FF52A0EE0A3005C8875 /* ChangePhoneNumberReq.swift */; };
+		59750FF92A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FF82A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift */; };
+		59750FFD2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FFC2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift */; };
+		597510002A0F0629005C8875 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FFF2A0F0629005C8875 /* PhoneNumber.swift */; };
+		597510032A0F1DD0005C8875 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597510022A0F1DD0005C8875 /* SplashScreenView.swift */; };
 		597865442A070E1F000A227E /* NotificationIdReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597865432A070E1F000A227E /* NotificationIdReq.swift */; };
 		597DE3E429E8D42700E4BEA8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E329E8D42700E4BEA8 /* UserData.swift */; };
 		597DE3EA29E8DC1D00E4BEA8 /* SavedProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E929E8DC1D00E4BEA8 /* SavedProductsView.swift */; };
@@ -180,6 +185,11 @@
 		596C556229F82F5C00DEACE4 /* TestAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAView.swift; sourceTree = "<group>"; };
 		5972D6A029E446FF00DE7F5B /* GoogleAuthBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthBtn.swift; sourceTree = "<group>"; };
 		5972D6A629E4612500DE7F5B /* FirebaseInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInit.swift; sourceTree = "<group>"; };
+		59750FF52A0EE0A3005C8875 /* ChangePhoneNumberReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberReq.swift; sourceTree = "<group>"; };
+		59750FF82A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhoneNumberViewModel.swift; sourceTree = "<group>"; };
+		59750FFC2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationPhoneNumber.swift; sourceTree = "<group>"; };
+		59750FFF2A0F0629005C8875 /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
+		597510022A0F1DD0005C8875 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		597865432A070E1F000A227E /* NotificationIdReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationIdReq.swift; sourceTree = "<group>"; };
 		597D2E062A0439CF0075206C /* tradeasy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tradeasy.entitlements; sourceTree = "<group>"; };
 		597DE3E329E8D42700E4BEA8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -457,6 +467,32 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		59750FF72A0EE3EE005C8875 /* UpdatePhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				59B858B429DC7342006ED7F1 /* UpdatePhoneNumberView.swift */,
+				59750FF82A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift */,
+				59750FFC2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift */,
+			);
+			path = UpdatePhoneNumber;
+			sourceTree = "<group>";
+		};
+		59750FFE2A0F060F005C8875 /* Validations */ = {
+			isa = PBXGroup;
+			children = (
+				59750FFF2A0F0629005C8875 /* PhoneNumber.swift */,
+			);
+			path = Validations;
+			sourceTree = "<group>";
+		};
+		597510012A0F1DB3005C8875 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				597510022A0F1DD0005C8875 /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
 		597865422A070E08000A227E /* DTO */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +583,7 @@
 				5984320029CBC6BA001A6C40 /* VerifyOtpReq.swift */,
 				598B502A29DE402C000187EC /* UpdateEmailReq.swift */,
 				598B502C29DE4A06000187EC /* ChangeEmailReq.swift */,
+				59750FF52A0EE0A3005C8875 /* ChangePhoneNumberReq.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -631,10 +668,10 @@
 		59B858AE29DC6061006ED7F1 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
+				59750FF72A0EE3EE005C8875 /* UpdatePhoneNumber */,
 				59FFAAED29E60E0300D31E73 /* UploadProfilePicture */,
 				59E5029B29DE0EC1005F8878 /* UpdateEmail */,
 				59E5029629DDD947005F8878 /* UpdatePassword */,
-				59B858B429DC7342006ED7F1 /* UpdatePhoneNumberView.swift */,
 				59B858B129DC6B89006ED7F1 /* UpdateUsername */,
 				59B858AF29DC6073006ED7F1 /* EditProfileView.swift */,
 			);
@@ -771,6 +808,7 @@
 		59D17AED29C0E59700CD0703 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				59750FFE2A0F060F005C8875 /* Validations */,
 				5972D6A529E4610E00DE7F5B /* Helper */,
 				59D17AEE29C0E5AF00CD0703 /* Constants.swift */,
 				59D17AF029C0E5CF00CD0703 /* ScreenSize.swift */,
@@ -919,6 +957,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				597510012A0F1DB3005C8875 /* SplashScreen */,
 				599FDA1B2A0668C200E1737B /* Notifications */,
 				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
 				597DE3E329E8D42700E4BEA8 /* UserData.swift */,
@@ -1167,6 +1206,7 @@
 				597865442A070E1F000A227E /* NotificationIdReq.swift in Sources */,
 				59DE781529FCD2700025D620 /* RatingReq.swift in Sources */,
 				5941E2322A05462F00A3B9E7 /* IBidderRepository.swift in Sources */,
+				597510032A0F1DD0005C8875 /* SplashScreenView.swift in Sources */,
 				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
 				5941E2532A05C33000A3B9E7 /* AllCategoriesView.swift in Sources */,
 				599FDA2A2A06782F00E1737B /* NotificationViewModel.swift in Sources */,
@@ -1205,6 +1245,7 @@
 				59D17AD629C0E40500CD0703 /* ContentView.swift in Sources */,
 				59D17B1C29C0F08000CD0703 /* ProductModel.swift in Sources */,
 				59EE253929C1505E000F7D55 /* Colors.swift in Sources */,
+				59750FF62A0EE0A3005C8875 /* ChangePhoneNumberReq.swift in Sources */,
 				59D17B2C29C0F1CE00CD0703 /* DI.swift in Sources */,
 				59CEBA2329E4984F0027E016 /* IProductRepository.swift in Sources */,
 				5941E24A2A05942800A3B9E7 /* CategoryViewModel.swift in Sources */,
@@ -1215,6 +1256,7 @@
 				5941E2512A05BE6000A3B9E7 /* ProductByCategoryView.swift in Sources */,
 				59E5029F29DE105B005F8878 /* SendVerificationEmail.swift in Sources */,
 				5941E2482A058E4600A3B9E7 /* CategoriesApi.swift in Sources */,
+				59750FFD2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift in Sources */,
 				5917700729EC8A98009EEB11 /* EditProductReq.swift in Sources */,
 				59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */,
 				5917700F29EC90F8009EEB11 /* EditProductView2.swift in Sources */,
@@ -1237,6 +1279,7 @@
 				59C78C7329EA2F3A0023DA8D /* UnlistProductReq.swift in Sources */,
 				5941E22C2A053BF300A3B9E7 /* BiddersFetchApi.swift in Sources */,
 				597DE3EA29E8DC1D00E4BEA8 /* SavedProductsView.swift in Sources */,
+				597510002A0F0629005C8875 /* PhoneNumber.swift in Sources */,
 				5941E2362A0547AC00A3B9E7 /* BidderUseCase.swift in Sources */,
 				59EE253729C138C7000F7D55 /* AuthButton.swift in Sources */,
 				598EC99029E7CA8200259A55 /* ProductDetailsViewModel.swift in Sources */,
@@ -1245,6 +1288,7 @@
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
 				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
+				59750FF92A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift in Sources */,
 				5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */,
 				5941E2282A04E3C500A3B9E7 /* KeyboardDismiss.swift in Sources */,
 				598EC98A29E77CC100259A55 /* AdditionalInformationView.swift in Sources */,
@@ -1346,7 +1390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1400,7 +1444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1416,6 +1460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = tradeasy/tradeasy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1450,6 +1495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = tradeasy/tradeasy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

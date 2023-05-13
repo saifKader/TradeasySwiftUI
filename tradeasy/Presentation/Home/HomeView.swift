@@ -32,9 +32,6 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 
                 VStack{
-                
-                
-                
                     // Products Forbid - Less than 1 hour
                     SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
                         if let bidEndDate = product.bidEndDate {
@@ -90,7 +87,7 @@ struct HomeView: View {
                 
             }
         }
-            .background(Color("bid_list"))
+            .background(Color("background_color"))
             
         .refreshable {
             viewModel.loadProducts()

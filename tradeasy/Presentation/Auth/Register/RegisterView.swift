@@ -43,11 +43,7 @@ struct RegisterView: View {
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
     }
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        let phoneRegex = #"^\d{8,}$"#
-        let phonePredicate = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
-        return phonePredicate.evaluate(with: phoneNumber)
-    }
+
 
 
 

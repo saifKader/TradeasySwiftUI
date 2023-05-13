@@ -428,6 +428,35 @@ struct UserAPI {
                 }
         }
     }
+    func changePhoneNumber(_ changePhoneNumberReq: ChangePhoneNumberReq) async throws -> UserModel {
+        let url = "\(kbaseUrl)\(kChangePhoneNumber)"
+        let userPreferences = UserPreferences()
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "jwt": (userPreferences.getUser()?.token)!
+        ]
+        let jsonBody = try JSONEncoder().encode(changePhoneNumberReq)
+        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
+            AF.upload(jsonBody, to: url, method: .post, headers: headers)
+                .validate(statusCode: 200..<202)
+                .responseDecodable(of: UserModel.self) { response in
+                    switch response.result {
+                    case .success(let user):
+                        continuation.resume(returning: user)
+                    case .failure(let error):
+                        if let data = response.data {
+                            do {
+                                throw errorFromResponseData(data)
+                            } catch {
+                                continuation.resume(throwing: error)
+                            }
+                        } else {
+                            continuation.resume(throwing: error)
+                        }
+                    }
+                }
+        }
+    }
 
 
    

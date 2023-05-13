@@ -1,5 +1,5 @@
 //
-//  OTPVerificationEmailView.swift
+//  OTPPhoneNumberView.swift
 //  tradeasy
 //
 //  Created by abdelkader seif eddine on 6/4/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OTPVerificationEmailView: View {
+struct OTPVerificationPhoneNumberView: View {
     
     enum isKeyBoardShowing: Hashable {
         case field
@@ -16,7 +16,7 @@ struct OTPVerificationEmailView: View {
     @StateObject var viewModel = UpdateEmailViewModel()
     @State private var otpText: String = ""
     @FocusState private var isKeyBoardShowing: isKeyBoardShowing?
-    let email: String
+    let phoneNumber: String
     @State private var showError = false
     @State private var errorMessage = ""
     @EnvironmentObject var navigationController: NavigationController
@@ -31,17 +31,17 @@ struct OTPVerificationEmailView: View {
         VStack(spacing: 30) {
             Text("Verify OTP")
                 .font(.largeTitle)
-            Text("Enter the 6-digit OTP sent to your email \(userPreferences.getUser()?.email ?? "")")
+            Text("Enter the 6-digit OTP sent to your phoneNumber \(userPreferences.getUser()?.phoneNumber ?? "")")
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             Button(action: {
-                viewModel.resendVerificationEmail(email: email) { error in
-                    if let error = error {
-                        errorMessage = error.localizedDescription
-                        showError = true
-                    }
-                }
+//                viewModel.resendPhoneNumber(phoneNumber: phoneNumber) { error in
+//                    if let error = error {
+//                        errorMessage = error.localizedDescription
+//                        showError = true
+//                    }
+//                }
             }) {
                 Text("Resend?")
                     .foregroundColor(Color.blue)
@@ -100,7 +100,7 @@ struct OTPVerificationEmailView: View {
                     errorMessage = message
                     showError = true
                 } else {
-                    print("Error changing email: \(error)")
+                    print("Error changing phoneNumber: \(error)")
                 }
             case .idle:
                 break // Do nothing
@@ -109,10 +109,10 @@ struct OTPVerificationEmailView: View {
     }
 
     private func verifyOTP() {
-        viewModel.changeEmail(otp: otpText, newEmail: email) { result in
+        viewModel.changeEmail(otp: otpText, newEmail: phoneNumber) { result in
             switch result {
             case .success(let userModel):
-                print("Update email succesfully: \(userModel)")
+                print("Update phoneNumber succesfully: \(userModel)")
                 DispatchQueue.main.async {
                     userPreferences.setUser(user: userModel)
                 }

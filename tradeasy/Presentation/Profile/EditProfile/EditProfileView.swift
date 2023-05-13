@@ -23,6 +23,7 @@ struct EditProfileView: View {
     @State private var showingActionSheet = false
     @State private var showImagePickerLibrary = false
     @State private var showCropView = false
+    @State private var isUpdatePhoneNumberPresent = false
     
     @ObservedObject var viewModel = UploadProfilePictureViewModel()
     func navigateToCropView(with image: UIImage) {
@@ -35,6 +36,7 @@ struct EditProfileView: View {
         NavigationStack {
             NavigationLink(destination: UpdateUsernameView(), isActive: $isEditUsernamePresent) {}
             NavigationLink(destination: UpdatePasswordView(), isActive: $isUpdatePasswordPresent) {}
+            NavigationLink(destination: UpdatePhoneNumberView(), isActive: $isUpdatePhoneNumberPresent) {}
             NavigationLink(destination: SendVerificationEmail(), isActive: $navigationController.isUpdateEmailPresent){}
             NavigationLink(destination: ImagePickerWithCrop(selectedImage: $profileImage, sourceType: .camera), isActive: $showImagePickerCamera,label: { EmptyView() })
             NavigationLink(destination: ImagePickerWithCrop(selectedImage: $profileImage, sourceType: .photoLibrary), isActive: $showImagePickerLibrary,label: { EmptyView() })
@@ -113,7 +115,10 @@ struct EditProfileView: View {
                         isEditUsernamePresent=true
                     }, image: "person.fill", text: "Username", rightText: (userPreferences.getUser()?.username)!)
                     Divider()
-                    EditProfileHstack(action: {}, image: "phone.fill", text: "Phone Number", rightText: (userPreferences.getUser()?.phoneNumber)!)
+                    EditProfileHstack(action: {
+                        
+                        isUpdatePhoneNumberPresent = true
+                    }, image: "phone.fill", text: "Phone Number", rightText: (userPreferences.getUser()?.phoneNumber)!)
                     Divider()
                     EditProfileHstack(action: {
                         navigationController.isUpdateEmailPresent = true
@@ -124,7 +129,7 @@ struct EditProfileView: View {
                     EditProfileHstack(action: {
                         isUpdatePasswordPresent = true
                         
-                    }, image: "lock.fill", text: "Password",rightText: "Change password")
+                    }, image: "lock.fill", text: "Password",rightText: "change password")
                 }
                 
                 .padding() // add padding to the VStack
@@ -156,7 +161,7 @@ struct EditProfileView: View {
                                 if var currentUser = userPreferences.getUser() {
                                     currentUser.profilePicture = userModel.profilePicture
                                     userPreferences.setUser(user: currentUser)
-                                    print("ahawanayek\(String(describing: currentUser.profilePicture))")
+                             
                                     
                                 }
                             }
@@ -188,7 +193,7 @@ struct EditProfileHstack: View {
                 
                 Text(text)
                     .font(.headline)
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color("font_color"))
                     .font(.system(size: 10))
                     .fontWeight(.regular)
                 

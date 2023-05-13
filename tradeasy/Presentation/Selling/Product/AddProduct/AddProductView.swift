@@ -26,15 +26,18 @@ struct AddProductView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
+            VStack(alignment: .leading ,spacing: 10) {
                 Text("Product Details")
                     .font(.headline)
-                    
-                CustomTextField(placeholder: "Product Name", text: $name)
-                CustomTextField(placeholder: "Description", text: $description)
-                CustomTextField(placeholder: "Price", text: $price, keyboardType: .decimalPad)
-                CustomTextField(placeholder: "Quantity", text: $quantity, keyboardType: .numberPad)
-                Spacer()
+                  Text("Product Name")
+                CustomTextField(placeholder: "", text: $name)
+                Text("Description")
+                CustomTextField(placeholder: "", text: $description)
+                Text("Price")
+                CustomTextField(placeholder: "", text: $price, keyboardType: .decimalPad)
+                Text("Quantity")
+                CustomTextField(placeholder: "", text: $quantity, keyboardType: .numberPad)
+    
                
                 Button(action: {
                     if isFormValid {
@@ -57,7 +60,7 @@ struct AddProductView: View {
                     )
                 )
                 
-                Spacer()
+              
             }
             .padding()
            
@@ -74,15 +77,17 @@ struct CustomTextField: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
+                .fill(Color("bid_list"))
                 .shadow(radius: 3)
                 .onTapGesture {
                     UIApplication.shared.endEditing()
                 }
+              
             
             TextField(placeholder, text: $text)
                 .keyboardType(keyboardType)
                 .padding(.horizontal)
+            
         }
         .frame(height: 50)
     }

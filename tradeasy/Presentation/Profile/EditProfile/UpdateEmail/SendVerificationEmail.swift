@@ -17,9 +17,15 @@ struct SendVerificationEmail: View {
     
     @State private var showVerification = false
     @State private var isOTPVerificationEmail = false
+    let userPreferences = UserPreferences()
     var isFormValid: Bool {
-        !email.trimmingCharacters(in: .whitespaces).isEmpty
+        let trimmedEmail = email.trimmingCharacters(in: .whitespaces)
+        let currentEmail = userPreferences.getUser()?.email ?? ""
+        print("here \(trimmedEmail)")
+        print("here2 \(currentEmail)")
+        return !trimmedEmail.isEmpty && trimmedEmail != currentEmail
     }
+
     var isEmailValid: Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
@@ -31,8 +37,10 @@ struct SendVerificationEmail: View {
             ZStack {
                 VStack(spacing: 10) {
                     Text("Update email")
-                        .font(.largeTitle)
-                    Text("Please enter your email to receive an OTP code to verify the email")
+                        .font(.title)
+                    Text("We'll send you an OTP to verify your email. ")
+
+
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
                     
@@ -42,6 +50,10 @@ struct SendVerificationEmail: View {
                         .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .onChange(of: email) { newValue in
+                                print(isFormValid)
+                            }
+                    
                     
                     AuthButton(
                         text: "Send Email",
@@ -78,14 +90,16 @@ struct SendVerificationEmail: View {
                     Spacer(minLength: 0)
                 }
             }
+       
             .padding(.horizontal, 20)
             .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
             .frame(width: geometry.size.width, height: geometry.size.height)
-            .background(Color.white.edgesIgnoringSafeArea(.all))
+            .background(Color("background_color"))
             .alert(isPresented: $showError) {
                 Alert(title: Text("Error"), message: Text(errorMessage))
             }
             .background(
+              
                 NavigationLink(
                     destination: OTPVerificationEmailView(email: email),
                     isActive: $showVerification,

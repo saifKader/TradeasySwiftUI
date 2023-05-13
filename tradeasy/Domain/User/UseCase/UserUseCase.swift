@@ -47,8 +47,11 @@ protocol VerifyAccount {
 protocol VerifyAccountOTP{
     func verifyAccountOTP(otp: String) async -> Result<UserModel, UseCaseError>
 }
+protocol ChangePhoneNumber {
+    func changePhoneNumber(_ changePhoneNumberReq: ChangePhoneNumberReq) async -> Result<UserModel, UseCaseError>
+}
 
-struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,SendEmailVerification, ChangeEmail,uploadProfilePicure, AddToSavedItems, GetCurrentUserData,VerifyAccount,VerifyAccountOTP{
+struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,SendEmailVerification, ChangeEmail,uploadProfilePicure, AddToSavedItems, GetCurrentUserData,VerifyAccount,VerifyAccountOTP,ChangePhoneNumber{
 
     
     
@@ -241,7 +244,21 @@ struct UserUseCase: ForgotPassword, ResetPassword, VerifyOtp , UpdateUsername,Se
             return .failure(.networkError)
         }
     }
-  
+    func changePhoneNumber(_ changePhoneNumberReq: ChangePhoneNumberReq) async -> Result<UserModel, UseCaseError> {
+        do {
+            let userModel = try await repo.changePhoneNumber(changePhoneNumberReq)
+            return .success(userModel)
+        } catch(let error as APIServiceError) {
+            switch(error) {
+            case .statusNotOK(let message):
+                return .failure(.error(message: message))
+            default:
+                return .failure(.networkError)
+            }
+        } catch {
+            return .failure(.networkError)
+        }
+    }
     
 }
     

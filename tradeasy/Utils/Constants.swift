@@ -24,6 +24,7 @@ let kregisterFirebaseUser = "user/registerfirebaseuser"
 let kUploadProfilePicture = "user/uploadprofilepicture"
 let kSendVerificationSms = "user/smstoverify"
 let kVerifyAccount = "user/verifyaccount"
+let kChangePhoneNumber = "user/changePhoneNumber"
 
 // product
 let kAddProduct = "product/user/add"

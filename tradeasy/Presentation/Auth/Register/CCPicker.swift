@@ -16,6 +16,7 @@ struct CountryPickerViewWrapper: UIViewRepresentable {
         countryPickerView.dataSource = context.coordinator
         countryPickerView.showPhoneCodeInView = false
         countryPickerView.showCountryCodeInView = false
+        
         return countryPickerView
     }
 

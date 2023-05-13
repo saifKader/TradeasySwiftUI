@@ -63,7 +63,7 @@ struct ProductsByCategoryView: View {
                         .padding(.vertical)
                     }
                     .listStyle(PlainListStyle())
-                    .background(Color.white)
+                    .background(Color("background_color"))
                     .edgesIgnoringSafeArea(.bottom)
                 }
             }
@@ -71,5 +71,6 @@ struct ProductsByCategoryView: View {
             
             print(productsList)
         }
+        
     }
 }
