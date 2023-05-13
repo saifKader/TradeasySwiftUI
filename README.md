@@ -76,12 +76,6 @@ The application follows the principles of clean architecture by dividing the cod
 
 
 
-
-## Contributors
-
-
-This project was successfully developed with the collaboration of [Souhail Krissaane ](https://github.com/SouhailKrs).
-
 ## Build Process
 
 - Follow the [SwiftUI Guide](https://developer.apple.com/tutorials/swiftui) for getting started building a project with native code.
