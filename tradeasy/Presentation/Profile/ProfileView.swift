@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject var navigationController: NavigationController
-    let userPreferences = UserPreferences()
+    @EnvironmentObject var userPreferences: UserPreferences
     @State var showError = false
     @State var navigateToLoggin = false
     @State var showLogin = false
@@ -35,7 +35,6 @@ struct ProfileView: View {
                     Spacer()
                     VStack {
                         VStack {
-                        
                             if let imageUrlString = userPreferences.getUser()?.profilePicture,
                                 let imageUrl = URL(string: kImageUrl + imageUrlString) {
                                 AsyncImage(url: imageUrl) { phase in
@@ -228,9 +227,6 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
      
         .onAppear {
-            
-            print("heeere")
-  
             if let profilePicture = userPreferences.getUser()?.profilePicture,
                let imageUrl = URL(string: kImageUrl + profilePicture) {
                 // Load the image asynchronously
@@ -265,7 +261,6 @@ struct ProfileView: View {
                 }.resume()
             } else if userPreferences.getUser() == nil
             {
-             
                 showLogin = true
                 navigationController.navigate(to: LoginView())
             }

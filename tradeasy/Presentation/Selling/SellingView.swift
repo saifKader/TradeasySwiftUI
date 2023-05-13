@@ -127,7 +127,7 @@ struct FloatingActionButton: View {
     @State var showAddProduct = false
     @State var showingAlert = false
     @State var showVerificationSheet = false
-    let userPreferences = UserPreferences()
+    @EnvironmentObject var userPreferences: UserPreferences
     @StateObject var smsViewModel = SendVerificationSmsViewModel()
     @EnvironmentObject var navigationController: NavigationController
     var body: some View {

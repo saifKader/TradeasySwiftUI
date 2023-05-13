@@ -42,7 +42,6 @@
 		59750FF92A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FF82A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift */; };
 		59750FFD2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FFC2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift */; };
 		597510002A0F0629005C8875 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FFF2A0F0629005C8875 /* PhoneNumber.swift */; };
-		597510032A0F1DD0005C8875 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597510022A0F1DD0005C8875 /* SplashScreenView.swift */; };
 		597865442A070E1F000A227E /* NotificationIdReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597865432A070E1F000A227E /* NotificationIdReq.swift */; };
 		597DE3E429E8D42700E4BEA8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E329E8D42700E4BEA8 /* UserData.swift */; };
 		597DE3EA29E8DC1D00E4BEA8 /* SavedProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E929E8DC1D00E4BEA8 /* SavedProductsView.swift */; };
@@ -189,7 +188,6 @@
 		59750FF82A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		59750FFC2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationPhoneNumber.swift; sourceTree = "<group>"; };
 		59750FFF2A0F0629005C8875 /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
-		597510022A0F1DD0005C8875 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		597865432A070E1F000A227E /* NotificationIdReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationIdReq.swift; sourceTree = "<group>"; };
 		597D2E062A0439CF0075206C /* tradeasy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tradeasy.entitlements; sourceTree = "<group>"; };
 		597DE3E329E8D42700E4BEA8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -483,14 +481,6 @@
 				59750FFF2A0F0629005C8875 /* PhoneNumber.swift */,
 			);
 			path = Validations;
-			sourceTree = "<group>";
-		};
-		597510012A0F1DB3005C8875 /* SplashScreen */ = {
-			isa = PBXGroup;
-			children = (
-				597510022A0F1DD0005C8875 /* SplashScreenView.swift */,
-			);
-			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 		597865422A070E08000A227E /* DTO */ = {
@@ -957,7 +947,6 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				597510012A0F1DB3005C8875 /* SplashScreen */,
 				599FDA1B2A0668C200E1737B /* Notifications */,
 				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
 				597DE3E329E8D42700E4BEA8 /* UserData.swift */,
@@ -1206,7 +1195,6 @@
 				597865442A070E1F000A227E /* NotificationIdReq.swift in Sources */,
 				59DE781529FCD2700025D620 /* RatingReq.swift in Sources */,
 				5941E2322A05462F00A3B9E7 /* IBidderRepository.swift in Sources */,
-				597510032A0F1DD0005C8875 /* SplashScreenView.swift in Sources */,
 				59D17AF129C0E5CF00CD0703 /* ScreenSize.swift in Sources */,
 				5941E2532A05C33000A3B9E7 /* AllCategoriesView.swift in Sources */,
 				599FDA2A2A06782F00E1737B /* NotificationViewModel.swift in Sources */,
@@ -1472,7 +1460,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "tradeasy Need Camera Access To Take Photos Of Your Product";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -1507,7 +1494,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "tradeasy Need Camera Access To Take Photos Of Your Product";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;

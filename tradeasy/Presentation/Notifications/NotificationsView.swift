@@ -71,6 +71,8 @@ struct NotificationView: View {
             .padding(.horizontal)
         }.onAppear{
             if userPreferences.getUser() == nil {
+                
+                print("heeeere")
                 navigationController.navigate(to: LoginView())
                 return
             }

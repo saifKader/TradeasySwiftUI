@@ -18,11 +18,19 @@ struct HomeView: View {
     @State private var searchText: String = ""
     @State private var showSearchBar: Bool = false
     @State private var categoryList: [CategoryModel] = []
-    func updateCategoryList() {
-        if case let .categorySuccess(categories) = categoryViewModel.state {
-            categoryList = categories
+    func updateCategoryList() async {
+        do {
+            try await categoryViewModel.fetchCategories()
+            if case let .categorySuccess(categories) = categoryViewModel.state {
+                categoryList = categories
+                print("First Category: \(categories[0].name)")// Add this print statement
+            }
+        } catch {
+            // Handle error here
+            print("Failed to fetch categories: \(error)")
         }
     }
+
     
     var body: some View {
         
@@ -59,11 +67,12 @@ struct HomeView: View {
                         }
                         
                         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), spacing: 12) {
-                            CategoryCardView(icon: "motors", category: "Motors", products: viewModel.products)
-                            CategoryCardView(icon: "electronics", category: "Electronics", products: viewModel.products)
-                            CategoryCardView(icon: "real estate", category: "Real estate", products: viewModel.products)
-                            CategoryCardView(icon: "all categories", category: "All", products: viewModel.products)
+                            ForEach(categoryList.prefix(3), id: \.self) { category in
+                                CategoryCardView(icon: category.name!, category: category.name!, products: viewModel.products, categories: categoryList)
+                            }
+                            CategoryCardView(icon: "all categories", category: "All", products: viewModel.products,categories: categoryList)
                         }
+
                        
                     }
                     .padding(.horizontal)
@@ -93,9 +102,11 @@ struct HomeView: View {
             viewModel.loadProducts()
         }
         .onAppear {
-            categoryViewModel.fetchCategories()
+           
             viewModel.loadProducts()
-            updateCategoryList()
+            Task {
+                   await updateCategoryList()
+               }
         }
     }
 }
@@ -313,10 +324,11 @@ struct CategoryCardView: View {
     let icon: String
     let category: String
     let products: [ProductModel]
+    let categories: [CategoryModel]
     
     var body: some View {
         if category == "All" {
-            NavigationLink(destination: AllCategoriesView()) {
+            NavigationLink(destination: AllCategoriesView(productsList: products,categories: categories)) {
                 categoryCardView()
             }
         } else {

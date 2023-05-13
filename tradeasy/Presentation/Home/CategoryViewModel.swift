@@ -38,23 +38,36 @@ class CategoryViewModel: ObservableObject {
            return []
        }
     
-    func fetchCategories() {
-           state = .loading
-           Task {
-               print("Before calling getAllProducts") // Add this print statement
-                       let result = await getCategoryUseCase.fetchCategories()
-                       print("After calling getAllProducts") // Add this print statement
-               DispatchQueue.main.async { [weak self] in
-                   switch result {
-                   case .success(let categories):
-                       print("Product success: \(categories)") // Add this print statement
-                       self?.state = .categorySuccess(categories)
-                   case .failure(let error):
-                       self?.state = .error(error)
-                       print("Product error: \(error.localizedDescription)") // Add this print statement
-                   }
-               }
-           }
-       }
+    func fetchCategories() async throws -> [CategoryModel] {
+        state = .loading
+        do {
+            print("Before calling fetchCategories") // Add this print statement
+            let result = await getCategoryUseCase.fetchCategories()
+            print("After calling fetchCategories") // Add this print statement
+
+            switch result {
+            case .success(let categories):
+                DispatchQueue.main.async { [weak self] in
+                    self?.state = .categorySuccess(categories)
+                }
+                print("Category success: \(categories)")
+          
+                return categories
+            case .failure(let error):
+                DispatchQueue.main.async { [weak self] in
+                    self?.state = .error(error)
+                }
+                print("Category error: \(error.localizedDescription)") // Add this print statement
+                throw error
+            }
+        } catch {
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .error(error)
+            }
+            throw error
+        }
+    }
+
+
    }
 

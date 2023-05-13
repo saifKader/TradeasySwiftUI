@@ -7,19 +7,19 @@ struct Category: Identifiable {
 }
 
 struct AllCategoriesView: View {
+    let productsList: [ProductModel]
+    let categories : [CategoryModel]
     
     
-
-    let categories = [        Category(name: "Electronics", imageName: "electronics"),        Category(name: "Real estate", imageName: "real estate"),        Category(name: "Motors", imageName: "motors"),           ]
     
     var body: some View {
-        NavigationLink(destination: AllCategoriesView()) {
+        NavigationLink(destination: ProductsByCategoryView(productsList: productsList,category: "electronics")) {
             List(categories) { category in
                 HStack {
-                    Image(category.imageName)
+                    Image(category.name!)
                         .resizable()
                         .frame(width: 50, height: 50)
-                    Text(category.name)
+                    Text(category.name!)
                     Spacer()
                     Image(systemName: "chevron.right")
                         .foregroundColor(.gray)

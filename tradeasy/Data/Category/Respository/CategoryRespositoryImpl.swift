@@ -12,6 +12,6 @@ struct CategoryRepositoryImpl: ICategoryRepository {
     let categoryApi: CategoryAPI
 
         func fetchCategories()async throws -> [CategoryModel] {
-            try await categoryApi.fetchBids()
+            try await categoryApi.fetchCategories()
         }
 }

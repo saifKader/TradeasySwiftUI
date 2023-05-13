@@ -27,5 +27,14 @@
 		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>background_color</string>
+		<key>UIImageName</key>
+		<string>app_logo_48</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

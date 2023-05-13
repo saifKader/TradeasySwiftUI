@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="1024" height="768">
+
+<g transform="matrix(16 0 0 16 128 -0)">
+    <path d="M0.75 24C 0.75 11.021308 11.159379 0.5 24 0.5C 36.840622 0.5 47.25 11.021308 47.25 24C 47.25 36.97869 36.840622 47.5 24 47.5C 11.159379 47.5 0.75 36.97869 0.75 24" stroke="#010101" stroke-width="1" fill="#FFFFFF" fill-rule="nonzero" />
+    <path d="M10.4 27.98L30.36 9.53" stroke="#EB4A5A" stroke-width="1" fill="none" />
+    <path d="M38.79 18.84L18.84 37.3" stroke="#AEADAD" stroke-width="1" fill="none" />
+    <path d="M25.5 8.96L29.91 8.9800005C 29.99 8.97 30.07 8.97 30.17 9.01C 30.34 9.08 30.47 9.2300005 30.56 9.39C 30.68 9.610001 30.74 9.87 30.74 10.120001L30.74 10.120001L30.73 14.230001" stroke="#EB4A5A" stroke-width="1" fill="none" />
+    <path d="M23.87 37.71L19.460001 37.69C 19.380001 37.699997 19.300001 37.699997 19.2 37.66C 19.03 37.59 18.900002 37.44 18.810001 37.28C 18.69 37.059998 18.630001 36.8 18.630001 36.55L18.630001 36.55L18.640001 32.44" stroke="#AEADAD" stroke-width="1" fill="none" />
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+</g>
+</svg>
