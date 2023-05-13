@@ -1,7 +1,7 @@
 <h1 align="center"> Tradeasy </h1> <br>
 <p align="center">
-  <a href="https://gitpoint.co/">
-    <img alt="GitPoint" title="GitPoint" src="https://raw.githubusercontent.com/SouhailKrs/TradeasyAndroid/master/app/src/main/res/drawable/app%20logo.png" width="100">
+  <a href="https://github.com/saifKader/TradeasySwiftUI">
+       <img alt="Tradeasy" title="Tradeasy" src="https://raw.githubusercontent.com/saifKader/TradeasySwiftUI/49c3b36539a085bb9f0d35c6d853c5b440b60212/tradeasy/Assets.xcassets/app_logo_48.imageset/app_logo_48.svg" width="100">
   </a>
 </p>
 
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://itunes.apple.com/us/app/gitpoint/id1251245162?mt=8">
+  <a href="#">
     <img alt="Download on the App Store" title="App Store" src="http://i.imgur.com/0n2zqHD.png" width="140">
   </a>
 
@@ -36,7 +36,7 @@
 
 Treadeasy allows you to find products that fits your needs , sell yours , make auctions and so on. This app will help you become a better reseller and start your shopping spree easily.
 
-**Available for both iOS and Android.**
+**Available for both [iOS](https://github.com/saifKader/TradeasySwiftUI) and  [Android](https://github.com/SouhailKrs/TradeasyAndroid).**
 
 ## App structure
 Tradeasy is built using a **clean architecutre.** , with a focus on separation of concerns and maintainability. The clean architecture provides a clear structure and helps to keep the codebase organized and modular.
@@ -80,7 +80,7 @@ The application follows the principles of clean architecture by dividing the cod
 ## Contributors
 
 
-This project was successfully developed with the collaboration of [Souhail Krissaane ](https://github.com/saifKader).
+This project was successfully developed with the collaboration of [Souhail Krissaane ](https://github.com/SouhailKrs).
 
 ## Build Process
 
@@ -92,6 +92,6 @@ git clone https://github.com/saifKader/TradeasySwiftUI
 
 ```
 
-- Additionally, to set up the backend , you can obtain the necessary resources and instructions [here](https://github.com/SouhailKrs).
+- Additionally, to set up the backend , you can obtain the necessary resources and instructions [here](https://github.com/SouhailKrs/TradeasyBackend).
 
 
