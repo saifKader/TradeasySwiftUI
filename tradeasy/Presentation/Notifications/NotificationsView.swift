@@ -13,7 +13,7 @@ struct NotificationView: View {
     @State private var showSnackbar: Bool = false
     let notificationApi = NotificationAPI()
     @State private var deletedIndex: Int?
-    
+
     func deleteNotification(at indexSet: IndexSet) {
         if let index = indexSet.first {
             deletedNotification = myList[index]
@@ -22,7 +22,7 @@ struct NotificationView: View {
             showSnackbarWith(message: "Notification Deleted")
         }
     }
-    
+
     func showSnackbarWith(message: String) {
         snackbarMessage = message
         showSnackbar = true
@@ -33,7 +33,7 @@ struct NotificationView: View {
             self.showSnackbar = false
         }
     }
-    
+
     func confirmDeleteNotification() {
         if let deleted = deletedNotification {
             print(deleted.id)
@@ -48,7 +48,7 @@ struct NotificationView: View {
             showAlert = false
         }
     }
-    
+
     func undoDelete() {
         if let deleted = deletedNotification, let index = deletedIndex {
             myList.insert(deleted, at: index)
@@ -57,7 +57,7 @@ struct NotificationView: View {
         }
         self.showSnackbar = false
     }
-    
+
     var body: some View {
         VStack {
             List {
@@ -92,35 +92,41 @@ struct NotificationView: View {
             .listStyle(PlainListStyle())
             
             if showSnackbar {
-                HStack {
-                    Text(snackbarMessage)
-                        .foregroundColor(.white)
-                        .padding()
-                    Spacer()
-                    Button(action: {
-                        undoDelete()
-                        self.showSnackbar = false
-                    }) {
-                        Text("Undo")
-                            .foregroundColor(.white)
-                            .padding([.trailing, .top, .bottom])
-                    }
-                }
-                .background(Color.red)
-                .cornerRadius(10)
-                .padding()
-                .transition(.move(edge: .bottom))
-                .animation(.easeInOut)
-                .gesture(
-                    DragGesture()
-                        .onChanged { _ in }
-                        .onEnded { value in
-                            if value.translation.height > 50 {
+                        HStack {
+                            Text(snackbarMessage)
+                                .foregroundColor(.white)
+                                .padding()
+                            Spacer()
+                            Button(action: {
+                                undoDelete()
                                 self.showSnackbar = false
+                            }) {
+                                Text("Undo")
+                                    .foregroundColor(.white)
+                                    .padding([.trailing, .top, .bottom])
                             }
                         }
-                )
-            }
+                        .background(Color.red)
+                        .cornerRadius(10)
+                        .padding()
+                        .transition(.move(edge: .bottom))
+                        .animation(.easeInOut(duration: 0.5))
+                        .onDisappear {
+                            if self.showSnackbar {
+                                confirmDeleteNotification()
+                            }
+                        }
+                        .gesture(
+                            DragGesture()
+                                .onChanged { _ in }
+                                .onEnded { value in
+                                    if value.translation.height > 50 {
+                                        confirmDeleteNotification()
+                                        self.showSnackbar = false
+                                    }
+                                }
+                        )
+                    }
         }
         .onAppear {
             if userPreferences.getUser() == nil {
@@ -138,7 +144,7 @@ struct NotificationView: View {
             }
         }
     }
-    
+
     
     
     
@@ -217,8 +223,8 @@ struct NotificationView: View {
             print("Error saving to Core Data: \(error)")
         }
     }
-    
-    
+
+
 }
 
 
