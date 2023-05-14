@@ -48,7 +48,7 @@ struct TradeasyTextEditor: View {
                 .scrollContentBackground(.hidden)
         }
         .padding(.top, textValue.isEmpty ? 0 : 15)
-        .frame(height: 150)
+        .frame(height: 100)
         .padding(.horizontal, 16)
         .overlay(RoundedRectangle(cornerRadius: 12).stroke(lineWidth: 1).foregroundColor(.gray))
         

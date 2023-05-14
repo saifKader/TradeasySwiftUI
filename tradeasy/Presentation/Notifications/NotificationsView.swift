@@ -1,6 +1,6 @@
 import SwiftUI
 import CoreData
-
+import SwiftUIX
 
 struct NotificationView: View {
     @State private var myList: [NotificationModel] = []
@@ -9,49 +9,63 @@ struct NotificationView: View {
     let viewModel = NotificationViewModel()
     @Environment(\.managedObjectContext) private var managedContext
     @EnvironmentObject var navigationController: NavigationController
-
+    @State private var snackbarMessage: String = ""
+    @State private var showSnackbar: Bool = false
     let notificationApi = NotificationAPI()
-
+    @State private var deletedIndex: Int?
+    
     func deleteNotification(at indexSet: IndexSet) {
-            if let index = indexSet.first {
-                deletedNotification = myList[index]
-                myList.remove(at: index)
-                showAlert = true
-            }
-        }
-
-
-        func confirmDeleteNotification() {
-            if let deleted = deletedNotification {
-                print(deleted.id)
-                Task {
-                    do {
-                        
-                        let req = DeleteNotificationReq(id: deleted.id)
-                        try await notificationApi.deleteNotification(req)
-                    } catch {
-                        print("Error deleting notification: \(error)")
-                    }
-                }
-                showAlert = false
-            }
-        }
-
-    func undoDelete() {
-        if let deleted = deletedNotification {
-            myList.append(deleted)
-            deletedNotification = nil
+        if let index = indexSet.first {
+            deletedNotification = myList[index]
+            deletedIndex = index
+            myList.remove(at: index)
+            showSnackbarWith(message: "Notification Deleted")
         }
     }
-
+    
+    func showSnackbarWith(message: String) {
+        snackbarMessage = message
+        showSnackbar = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            if self.showSnackbar {
+                self.confirmDeleteNotification()
+            }
+            self.showSnackbar = false
+        }
+    }
+    
+    func confirmDeleteNotification() {
+        if let deleted = deletedNotification {
+            print(deleted.id)
+            Task {
+                do {
+                    let req = DeleteNotificationReq(id: deleted.id)
+                    try await notificationApi.deleteNotification(req)
+                } catch {
+                    print("Error deleting notification: \(error)")
+                }
+            }
+            showAlert = false
+        }
+    }
+    
+    func undoDelete() {
+        if let deleted = deletedNotification, let index = deletedIndex {
+            myList.insert(deleted, at: index)
+            deletedNotification = nil
+            deletedIndex = nil
+        }
+        self.showSnackbar = false
+    }
+    
     var body: some View {
         VStack {
             List {
                 ForEach(myList.indices, id: \.self) { index in
                     VStack(alignment: .leading) {
                         HStack {
-                            Image(systemName: "bell")
-                                .foregroundColor(Color.purple)
+                            Image(systemName: "hammer.fill")
+                                .foregroundColor(Color("app_color"))
                                 .imageScale(.large)
                             Text(myList[index].title!)
                                 .font(.title3)
@@ -68,21 +82,48 @@ struct NotificationView: View {
                             .lineLimit(2)
                     }
                     .padding()
-                    .background(Color("card_color").opacity(0.8))
-                    .cornerRadius(10)
+                    .background(Color("card_color"))
+                    .cornerRadius(4)
                     .shadow(color: .gray, radius: 2, x: 0, y: 2)
                 }
                 .onDelete(perform: deleteNotification)
                 .listRowSeparator(.hidden)
-                
             }
             .listStyle(PlainListStyle())
+            
+            if showSnackbar {
+                HStack {
+                    Text(snackbarMessage)
+                        .foregroundColor(.white)
+                        .padding()
+                    Spacer()
+                    Button(action: {
+                        undoDelete()
+                        self.showSnackbar = false
+                    }) {
+                        Text("Undo")
+                            .foregroundColor(.white)
+                            .padding([.trailing, .top, .bottom])
+                    }
+                }
+                .background(Color.red)
+                .cornerRadius(10)
+                .padding()
+                .transition(.move(edge: .bottom))
+                .animation(.easeInOut)
+                .gesture(
+                    DragGesture()
+                        .onChanged { _ in }
+                        .onEnded { value in
+                            if value.translation.height > 50 {
+                                self.showSnackbar = false
+                            }
+                        }
+                )
+            }
         }
-        
-        
-        .onAppear{
+        .onAppear {
             if userPreferences.getUser() == nil {
-                
                 print("heeeere")
                 navigationController.navigate(to: LoginView())
                 return
@@ -96,22 +137,7 @@ struct NotificationView: View {
                 await loadNotifications()
             }
         }
-        .alert(isPresented: $showAlert, content: {
-            Alert(
-                title: Text("Notification Deleted"),
-                message: Text("Your notification was deleted"),
-                primaryButton: .default(Text("OK"), action: confirmDeleteNotification),
-                secondaryButton: .default(Text("Undo"), action: {
-                    undoDelete()
-                    showAlert = false
-                })
-            )
-        })
     }
-
-
-    
-    
     
     
     
@@ -191,8 +217,8 @@ struct NotificationView: View {
             print("Error saving to Core Data: \(error)")
         }
     }
-
-
+    
+    
 }
 
 

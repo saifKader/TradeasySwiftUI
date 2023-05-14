@@ -47,6 +47,7 @@
 		59763D7F2A10471300855699 /* ChatBotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59763D7E2A10471300855699 /* ChatBotViewModel.swift */; };
 		59763D822A11097300855699 /* SwipeCellSUI in Frameworks */ = {isa = PBXBuildFile; productRef = 59763D812A11097300855699 /* SwipeCellSUI */; };
 		59763D862A111E1A00855699 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59763D852A111E1A00855699 /* TextFieldView.swift */; };
+		59763D892A1184A100855699 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 59763D882A1184A100855699 /* SwiftUIX */; };
 		597865442A070E1F000A227E /* NotificationIdReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597865432A070E1F000A227E /* NotificationIdReq.swift */; };
 		597DE3E429E8D42700E4BEA8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E329E8D42700E4BEA8 /* UserData.swift */; };
 		597DE3EA29E8DC1D00E4BEA8 /* SavedProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E929E8DC1D00E4BEA8 /* SavedProductsView.swift */; };
@@ -317,6 +318,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59763D892A1184A100855699 /* SwiftUIX in Frameworks */,
 				59DE781829FD11D30025D620 /* SDWebImageSwiftUI in Frameworks */,
 				59763D822A11097300855699 /* SwipeCellSUI in Frameworks */,
 				59DE781B29FD1B2C0025D620 /* UIView-Shimmer in Frameworks */,
@@ -1133,6 +1135,7 @@
 				59DE781729FD11D30025D620 /* SDWebImageSwiftUI */,
 				59DE781A29FD1B2C0025D620 /* UIView-Shimmer */,
 				59763D812A11097300855699 /* SwipeCellSUI */,
+				59763D882A1184A100855699 /* SwiftUIX */,
 			);
 			productName = tradeasy;
 			productReference = 59D17AD029C0E40500CD0703 /* tradeasy.app */;
@@ -1170,6 +1173,7 @@
 				59DE781629FD11D30025D620 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				59DE781929FD1B2C0025D620 /* XCRemoteSwiftPackageReference "UIView-Shimmer" */,
 				59763D802A11097300855699 /* XCRemoteSwiftPackageReference "SwipeCellSUI" */,
+				59763D872A1184A100855699 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 59D17AD129C0E40500CD0703 /* Products */;
 			projectDirPath = "";
@@ -1600,6 +1604,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		59763D872A1184A100855699 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1647,6 +1659,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59763D802A11097300855699 /* XCRemoteSwiftPackageReference "SwipeCellSUI" */;
 			productName = SwipeCellSUI;
+		};
+		59763D882A1184A100855699 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59763D872A1184A100855699 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		59C7137E29F86410000B0516 /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;

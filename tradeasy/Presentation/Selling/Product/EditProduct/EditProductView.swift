@@ -51,7 +51,7 @@ struct EditProductView1: View {
                 TradeasyTextEditor(placeHolder: "Description", textValue: $description)
                 TradeasyTextField(placeHolder: "Price", textValue: $price, keyboardType: .decimalPad)
                 TradeasyTextField(placeHolder: "Quantity", textValue: $quantity, keyboardType: .numberPad)
-                Spacer()
+                Spacer(minLength: 20)
                 NavigationLink(destination: EditProductView2(viewModel: viewModel, prod_id: $prod_id, name: $name, description: $description, price: $price, quantity: $quantity, category: $category, forBid: $forBid, bid_end_date: $bid_end_date, image: $image), isActive: $showAdditionalInfoView) {
                     Button(action: {
                         if isFormValid {
@@ -72,7 +72,24 @@ struct EditProductView1: View {
             }
             .padding()
             .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-            .navigationTitle("Edit Product")
+            .navigationBarTitle("Edit Product", displayMode: .inline)
+           /* .toolbar {
+                            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    if isFormValid {
+                                        showAdditionalInfoView = true
+                                    }
+                                }) {
+                                    Text("Next")
+                                        .foregroundColor(isFormValid ? .white : .gray)
+                                        .padding(.vertical, 8)
+                                        .padding(.horizontal, 16)
+                                        .background(isFormValid ? Color("app_color") : Color.gray.opacity(0.5))
+                                        .cornerRadius(10)
+                                }
+                                .disabled(!isFormValid)
+                            }
+                        }*/
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }

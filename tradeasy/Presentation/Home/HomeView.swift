@@ -11,6 +11,9 @@ import SDWebImageSwiftUI
 
 
 struct HomeView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     @StateObject var viewModel = HomeViewModel()
     @StateObject var categoryViewModel = CategoryViewModel()
     let currentUser = userPreferences.getUser()
@@ -18,6 +21,7 @@ struct HomeView: View {
     @State private var searchText: String = ""
     @State private var showSearchBar: Bool = false
     @State private var categoryList: [CategoryModel] = []
+    
     func updateCategoryList() async {
         do {
             try await categoryViewModel.fetchCategories()
@@ -30,42 +34,67 @@ struct HomeView: View {
             print("Failed to fetch categories: \(error)")
         }
     }
-
     
     var body: some View {
-        
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack{
-                    //category
-                    
-                    DisclosureGroup("Explore popular categories", isExpanded: $isExpanded) {
-                                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), spacing: 16) {
-                                            ForEach(categoryList.prefix(3), id: \.self) { category in
-                                                CategoryCardView(icon: category.name!, category: category.name!, products: viewModel.products, categories: categoryList)
-                                            }
-                                            CategoryCardView(icon: "all categories", category: "All", products: viewModel.products, categories: categoryList)
-                                        }
-                                        .padding(.top)
-                                    }
-                                    .padding(.horizontal)
-                                    .accentColor(.primary)
-                                    .font(.headline)
-                    
-                    
-                    // Products Forbid - Less than 1 hour
-                    SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
-                        if let bidEndDate = product.bidEndDate {
-                            let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
-                            return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime <= 3600
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                // Category
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 24, height: 24)
+                        
+                        Divider()
+                        
+                        Text("Explore categories")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            withAnimation {
+                                isExpanded.toggle()
+                            }
+                        }) {
+                            Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                                .font(.title2)
+                                .foregroundColor(.primary)
                         }
-                        return false
-                    })
+                    }
+                    
+                    if isExpanded {
+                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), spacing: 16) {
+                            ForEach(categoryList.prefix(3), id: \.self) { category in
+                                CategoryCardView(icon: category.name!, category: category.name!, products: viewModel.products, categories: categoryList)
+                                    .transition(.scale)
+                                    .animation(.easeInOut)
+                            }
+                            CategoryCardView(icon: "all categories", category: "All", products: viewModel.products, categories: categoryList)
+                                .transition(.scale)
+                                .animation(.easeInOut)
+                        }
+                        .padding(.top)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.top, 20)
                 
                 
+                // Products Forbid - Less than 1 hour
+                SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
+                    if let bidEndDate = product.bidEndDate {
+                        let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
+                        return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime <= 3600
+                    }
+                    return false
+                })
                 
                 // Products for Sale
                 SectionView(title: "Products for Sale", products: viewModel.products.filter { !$0.forBid! && $0.username != currentUser?.username && (searchText.isEmpty || $0.name!.localizedCaseInsensitiveContains(searchText)) })
-                
                 
                 
                 // Products Forbid
@@ -76,30 +105,21 @@ struct HomeView: View {
                     }
                     return false
                 })
-                
-                
-                
-                
-                
-                
-                
             }
         }
-            .background(Color("background_color"))
-            
+        .background(Color("background_color"))
         .refreshable {
             viewModel.loadProducts()
         }
         .onAppear {
-           
             viewModel.loadProducts()
             Task {
-                   await updateCategoryList()
-               }
+                await updateCategoryList()
+            }
         }
-    
+    }
 }
-}
+
 
 struct ProductRowView: View {
     let product: ProductModel
