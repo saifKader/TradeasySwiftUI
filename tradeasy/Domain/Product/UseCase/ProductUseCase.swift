@@ -29,6 +29,7 @@ protocol AddRatingToProduct {
     func addRatingToProduct(_ addRatingReq: AddRatingReq) async -> Result<ProductModel, UseCaseError>
 }
 
+
 struct ProductUseCase: SearchProdByName, AddProd, GetAllProducts,GetUserProducts, ProductListOrUnlistProtocol, EditProduct, AddRatingToProduct{
     var repo: IProductRepository
     func addRatingToProduct(_ addRatingReq: AddRatingReq) async -> Result<ProductModel, UseCaseError> {

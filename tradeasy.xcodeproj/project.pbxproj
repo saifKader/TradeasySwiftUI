@@ -42,6 +42,11 @@
 		59750FF92A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FF82A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift */; };
 		59750FFD2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FFC2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift */; };
 		597510002A0F0629005C8875 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59750FFF2A0F0629005C8875 /* PhoneNumber.swift */; };
+		59763D7A2A10463900855699 /* ChatBotUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59763D792A10463900855699 /* ChatBotUseCase.swift */; };
+		59763D7D2A1046F900855699 /* ChatBotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59763D7C2A1046F900855699 /* ChatBotView.swift */; };
+		59763D7F2A10471300855699 /* ChatBotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59763D7E2A10471300855699 /* ChatBotViewModel.swift */; };
+		59763D822A11097300855699 /* SwipeCellSUI in Frameworks */ = {isa = PBXBuildFile; productRef = 59763D812A11097300855699 /* SwipeCellSUI */; };
+		59763D862A111E1A00855699 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59763D852A111E1A00855699 /* TextFieldView.swift */; };
 		597865442A070E1F000A227E /* NotificationIdReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597865432A070E1F000A227E /* NotificationIdReq.swift */; };
 		597DE3E429E8D42700E4BEA8 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E329E8D42700E4BEA8 /* UserData.swift */; };
 		597DE3EA29E8DC1D00E4BEA8 /* SavedProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DE3E929E8DC1D00E4BEA8 /* SavedProductsView.swift */; };
@@ -72,6 +77,7 @@
 		598EC99029E7CA8200259A55 /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598EC98F29E7CA8200259A55 /* ProductDetailsViewModel.swift */; };
 		598EC99229E82D1B00259A55 /* RefreshuseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598EC99129E82D1B00259A55 /* RefreshuseViewModel.swift */; };
 		5990F3BC29E5A44400548859 /* AllProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5990F3BB29E5A44400548859 /* AllProductsView.swift */; };
+		5995AFA22A1020240024A1B2 /* ChatBotReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995AFA12A1020240024A1B2 /* ChatBotReq.swift */; };
 		599FDA1D2A0668D600E1737B /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA1C2A0668D600E1737B /* NotificationsView.swift */; };
 		599FDA202A06754700E1737B /* NotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA1F2A06754700E1737B /* NotificationUseCase.swift */; };
 		599FDA242A06758400E1737B /* NotificationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599FDA232A06758400E1737B /* NotificationApi.swift */; };
@@ -188,6 +194,10 @@
 		59750FF82A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		59750FFC2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationPhoneNumber.swift; sourceTree = "<group>"; };
 		59750FFF2A0F0629005C8875 /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
+		59763D792A10463900855699 /* ChatBotUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotUseCase.swift; sourceTree = "<group>"; };
+		59763D7C2A1046F900855699 /* ChatBotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotView.swift; sourceTree = "<group>"; };
+		59763D7E2A10471300855699 /* ChatBotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotViewModel.swift; sourceTree = "<group>"; };
+		59763D852A111E1A00855699 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		597865432A070E1F000A227E /* NotificationIdReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationIdReq.swift; sourceTree = "<group>"; };
 		597D2E062A0439CF0075206C /* tradeasy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tradeasy.entitlements; sourceTree = "<group>"; };
 		597DE3E329E8D42700E4BEA8 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -219,6 +229,7 @@
 		598EC98F29E7CA8200259A55 /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
 		598EC99129E82D1B00259A55 /* RefreshuseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshuseViewModel.swift; sourceTree = "<group>"; };
 		5990F3BB29E5A44400548859 /* AllProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProductsView.swift; sourceTree = "<group>"; };
+		5995AFA12A1020240024A1B2 /* ChatBotReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotReq.swift; sourceTree = "<group>"; };
 		599FDA1C2A0668D600E1737B /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		599FDA1F2A06754700E1737B /* NotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUseCase.swift; sourceTree = "<group>"; };
 		599FDA232A06758400E1737B /* NotificationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationApi.swift; sourceTree = "<group>"; };
@@ -307,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59DE781829FD11D30025D620 /* SDWebImageSwiftUI in Frameworks */,
+				59763D822A11097300855699 /* SwipeCellSUI in Frameworks */,
 				59DE781B29FD1B2C0025D620 /* UIView-Shimmer in Frameworks */,
 				0E1A0C0BC4B8D221EABC7A5A /* Pods_tradeasy.framework in Frameworks */,
 				59C7138429F8EFB5000B0516 /* CombineExt in Frameworks */,
@@ -483,6 +495,31 @@
 			path = Validations;
 			sourceTree = "<group>";
 		};
+		59763D772A10461100855699 /* ChatBot */ = {
+			isa = PBXGroup;
+			children = (
+				59763D782A10462400855699 /* UseCase */,
+			);
+			path = ChatBot;
+			sourceTree = "<group>";
+		};
+		59763D782A10462400855699 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				59763D792A10463900855699 /* ChatBotUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		59763D7B2A1046ED00855699 /* ChatBot */ = {
+			isa = PBXGroup;
+			children = (
+				59763D7C2A1046F900855699 /* ChatBotView.swift */,
+				59763D7E2A10471300855699 /* ChatBotViewModel.swift */,
+			);
+			path = ChatBot;
+			sourceTree = "<group>";
+		};
 		597865422A070E08000A227E /* DTO */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +611,7 @@
 				598B502A29DE402C000187EC /* UpdateEmailReq.swift */,
 				598B502C29DE4A06000187EC /* ChangeEmailReq.swift */,
 				59750FF52A0EE0A3005C8875 /* ChangePhoneNumberReq.swift */,
+				5995AFA12A1020240024A1B2 /* ChatBotReq.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -808,6 +846,7 @@
 				594F6ADF29DEF45200C8F473 /* ImagePicker.swift */,
 				5941E2272A04E3C500A3B9E7 /* KeyboardDismiss.swift */,
 				599FDA2B2A067FBC00E1737B /* TimeAgo.swift */,
+				59763D852A111E1A00855699 /* TextFieldView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -874,6 +913,7 @@
 		59D17B0E29C0EF1600CD0703 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				59763D772A10461100855699 /* ChatBot */,
 				5941E2392A0589CD00A3B9E7 /* Category */,
 				59E0A0812A04C0F20065985D /* Bid */,
 				59D17B1D29C0F09300CD0703 /* Notification */,
@@ -947,6 +987,7 @@
 		59D17B2129C0F0DE00CD0703 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				59763D7B2A1046ED00855699 /* ChatBot */,
 				599FDA1B2A0668C200E1737B /* Notifications */,
 				59C0BCCC29C4FBBB006C5D6A /* MainView.swift */,
 				597DE3E329E8D42700E4BEA8 /* UserData.swift */,
@@ -1091,6 +1132,7 @@
 				59C7138329F8EFB5000B0516 /* CombineExt */,
 				59DE781729FD11D30025D620 /* SDWebImageSwiftUI */,
 				59DE781A29FD1B2C0025D620 /* UIView-Shimmer */,
+				59763D812A11097300855699 /* SwipeCellSUI */,
 			);
 			productName = tradeasy;
 			productReference = 59D17AD029C0E40500CD0703 /* tradeasy.app */;
@@ -1127,6 +1169,7 @@
 				59C7138229F8EFB5000B0516 /* XCRemoteSwiftPackageReference "CombineExt" */,
 				59DE781629FD11D30025D620 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				59DE781929FD1B2C0025D620 /* XCRemoteSwiftPackageReference "UIView-Shimmer" */,
+				59763D802A11097300855699 /* XCRemoteSwiftPackageReference "SwipeCellSUI" */,
 			);
 			productRefGroup = 59D17AD129C0E40500CD0703 /* Products */;
 			projectDirPath = "";
@@ -1212,6 +1255,7 @@
 				59D17ADD29C0E40600CD0703 /* Persistence.swift in Sources */,
 				59CEBA1B29E471220027E016 /* FirebaseRegisterView.swift in Sources */,
 				59B858B729DCCD49006ED7F1 /* EditProfileTextField.swift in Sources */,
+				59763D7F2A10471300855699 /* ChatBotViewModel.swift in Sources */,
 				5984320129CBC6BA001A6C40 /* VerifyOtpReq.swift in Sources */,
 				59EE253329C133E9000F7D55 /* LoginView.swift in Sources */,
 				59C7137C29F86167000B0516 /* BidSocketIOManager.swift in Sources */,
@@ -1221,6 +1265,7 @@
 				59FFAAEF29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift in Sources */,
 				598B503229DE7C66000187EC /* HomeView.swift in Sources */,
 				5941E2262A04DF8100A3B9E7 /* BidListView.swift in Sources */,
+				5995AFA22A1020240024A1B2 /* ChatBotReq.swift in Sources */,
 				599FDA342A06B74F00E1737B /* Cd.swift in Sources */,
 				5941E2402A058A7300A3B9E7 /* CategoryModel.swift in Sources */,
 				596C556329F82F5C00DEACE4 /* TestAView.swift in Sources */,
@@ -1276,11 +1321,13 @@
 				59EE252F29C12D9A000F7D55 /* LoginReq.swift in Sources */,
 				59CEBA2129E491ED0027E016 /* ProductRepositoryImpl.swift in Sources */,
 				59D17AE029C0E40600CD0703 /* tradeasy.xcdatamodeld in Sources */,
+				59763D7A2A10463900855699 /* ChatBotUseCase.swift in Sources */,
 				59750FF92A0EE410005C8875 /* UpdatePhoneNumberViewModel.swift in Sources */,
 				5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */,
 				5941E2282A04E3C500A3B9E7 /* KeyboardDismiss.swift in Sources */,
 				598EC98A29E77CC100259A55 /* AdditionalInformationView.swift in Sources */,
 				5972D6A129E446FF00DE7F5B /* GoogleAuthBtn.swift in Sources */,
+				59763D7D2A1046F900855699 /* ChatBotView.swift in Sources */,
 				59CEBA2629E498A40027E016 /* ProdNameReq.swift in Sources */,
 				5941E2462A058C9C00A3B9E7 /* ICategoryRepository.swift in Sources */,
 				598431FD29CB9F35001A6C40 /* UserRepository.swift in Sources */,
@@ -1309,6 +1356,7 @@
 				59DE03EA29F9A25A00ACD9EE /* VerifyAccountViewModel.swift in Sources */,
 				599FDA242A06758400E1737B /* NotificationApi.swift in Sources */,
 				59CEBA1829E467BD0027E016 /* GoogleAuth.swift in Sources */,
+				59763D862A111E1A00855699 /* TextFieldView.swift in Sources */,
 				59A480FF29C25D77007C0CE3 /* UserDefaults.swift in Sources */,
 				5984320629CBCEB9001A6C40 /* UseCaseError.swift in Sources */,
 				598431F129CB9C5B001A6C40 /* UserRepositoryImpl.swift in Sources */,
@@ -1457,6 +1505,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tradeasy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tradeasy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "tradeasy Need Camera Access To Take Photos Of Your Product";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1491,6 +1540,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tradeasy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tradeasy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "tradeasy Need Camera Access To Take Photos Of Your Product";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1542,6 +1592,14 @@
 				kind = branch;
 			};
 		};
+		59763D802A11097300855699 /* XCRemoteSwiftPackageReference "SwipeCellSUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DominikButz/SwipeCellSUI#";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		598B503529DE7E20000187EC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1585,6 +1643,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		59763D812A11097300855699 /* SwipeCellSUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59763D802A11097300855699 /* XCRemoteSwiftPackageReference "SwipeCellSUI" */;
+			productName = SwipeCellSUI;
+		};
 		59C7137E29F86410000B0516 /* SocketIO */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 59C7137D29F86410000B0516 /* XCRemoteSwiftPackageReference "socket" */;

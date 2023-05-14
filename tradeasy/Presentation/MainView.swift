@@ -25,7 +25,7 @@ struct MainView: View {
             TabView(selection: $selectedTab) {
                 
                 // FirebaseRegisterView(email: "")
-                // TestView()
+                //ChatBotView()
                 HomeView()
                     .tabItem {
                         TabIcon(selected: $selectedTab, index: 0) {

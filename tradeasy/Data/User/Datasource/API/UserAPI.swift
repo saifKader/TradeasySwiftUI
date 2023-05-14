@@ -10,9 +10,9 @@ import Alamofire
 struct UserAPI {
     
     let userPreferences = UserPreferences()
-   
-   
-
+    
+    
+    
     func forgotPassword(_ forgetPasswordReq: ForgetPasswordReq) async throws {
         guard let url = URL(string: "\(kbaseUrl)\(kforgetpassword)") else {
             throw APIServiceError.badUrl
@@ -67,159 +67,159 @@ struct UserAPI {
         let url = "\(kbaseUrl)\(kVerifyAccount)"
         let headers: HTTPHeaders = ["Content-Type": "application/json", "jwt": (userPreferences.getUser()?.token)!]
         let parameters: [String: Any] = ["otp": otp]
-
-        return try await withCheckedThrowingContinuation { continuation in
-            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-                .validate(statusCode: 200..<202)
-                .responseJSON { response in
-                    guard response.response?.statusCode != 401 else {
-                        continuation.resume(throwing: errorFromResponseData(response.data!))
-                        return
-                    }
-
-                    switch response.result {
-                    case .success(let data):
-                        print("hedhi data\(data)")
-                        guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
-                            continuation.resume(throwing: APIServiceError.decodingError)
-                            return
-                        }
-                        do {
-                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
-                            userModel.token = token
-                            continuation.resume(returning: userModel)
-                        } catch {
-                            continuation.resume(throwing: error)
-                        }
-                    case .failure(let error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-        }
-    }
-
-
-    func updateUsername(_ username: String) async throws -> UserModel {
-        let url = "\(kbaseUrl)\(kupdateUsername)"
-  
-        let headers: HTTPHeaders = ["Content-Type": "application/json", "jwt": (userPreferences.getUser()?.token)!]
-        let parameters: [String: Any] = ["username": username]
-
-        return try await withCheckedThrowingContinuation { continuation in
-            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-                .validate(statusCode: 200..<202)
-                .responseJSON { response in
-                    guard response.response?.statusCode != 401 else {
-                        continuation.resume(throwing: errorFromResponseData(response.data!))
-                        return
-                    }
-
-                    switch response.result {
-                    case .success(let data):
-                        print("hedhi data\(data)")
-                        guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
-                            continuation.resume(throwing: APIServiceError.decodingError)
-                            return
-                        }
-                        do {
-                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
-                            userModel.token = token
-                            continuation.resume(returning: userModel)
-                        } catch {
-                            continuation.resume(throwing: error)
-                        }
-                    case .failure(let error):
-                        continuation.resume(throwing: error)
-                    }
-                }
-        }
-    }
-
-    func updatePassword(_ currentPassword: String, _ newPassword: String) async throws -> UserModel {
-        let userPreferences = UserPreferences()
-        let url = "\(kbaseUrl)\(kupdatePassword)"
-           
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "jwt": (userPreferences.getUser()?.token)!
-        ]
-
-        let parameters: [String: Any] = [
-            "currentPassword": currentPassword,
-            "newPassword": newPassword
-        ]
-
-        return try await withCheckedThrowingContinuation { continuation in
-            AF.request(url,
-                       method: .post,
-                       parameters: parameters,
-                       encoding: JSONEncoding.default,
-                       headers: headers)
-                .validate(statusCode: 200..<202)
-                .responseJSON { response in
-                    // Check for status code 401
-                    if response.response?.statusCode == 401 {
-                        print("here1")
-                        print(response.data!)
-                        continuation.resume(throwing: errorFromResponseData(response.data!))
-                        return
-                    }
-
-                    switch response.result {
-                    case .success(let data):
-                        guard let jsonData = data as? [String: Any],
-                              let userData = jsonData["data"] as? [String: Any],
-                              let token = jsonData["token"] as? String else {
-                            continuation.resume(throwing: APIServiceError.decodingError)
-                                  return
-                              }
-                        do {
-                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
-                            userModel.token = token
-                            continuation.resume(returning: userModel)
-                        } catch {
-                            print("herrre11")
-                            continuation.resume(throwing: error)
-                        }
-                    case .failure(let error):
-             print("herrre")
         
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .validate(statusCode: 200..<202)
+                .responseJSON { response in
+                    guard response.response?.statusCode != 401 else {
+                        continuation.resume(throwing: errorFromResponseData(response.data!))
+                        return
+                    }
+                    
+                    switch response.result {
+                    case .success(let data):
+                        print("hedhi data\(data)")
+                        guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
+                            continuation.resume(throwing: APIServiceError.decodingError)
+                            return
+                        }
+                        do {
+                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                            userModel.token = token
+                            continuation.resume(returning: userModel)
+                        } catch {
+                            continuation.resume(throwing: error)
+                        }
+                    case .failure(let error):
                         continuation.resume(throwing: error)
                     }
                 }
         }
     }
     
-    func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws -> UserModel {
-            let url = "\(kbaseUrl)\(ksendVerificationEmail)"
-            let userPreferences = UserPreferences()
-            let headers: HTTPHeaders = [
-                "Content-Type": "application/json",
-                "jwt": (userPreferences.getUser()?.token)!
-            ]
-            let jsonBody = try JSONEncoder().encode(forgetPasswordReq)
-            return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
-                AF.upload(jsonBody, to: url, method: .post, headers: headers)
-                    .validate(statusCode: 200..<202)
-                    .responseDecodable(of: UserModel.self) { response in
-                        switch response.result {
-                        case .success(let user):
-                            continuation.resume(returning: user)
-                        case .failure(let error):
-                            if let data = response.data {
-                                do {
-                                    throw errorFromResponseData(data)
-                                } catch {
-                                    continuation.resume(throwing: error)
-                                }
-                            } else {
-                                continuation.resume(throwing: error)
-                            }
-                        }
+    
+    func updateUsername(_ username: String) async throws -> UserModel {
+        let url = "\(kbaseUrl)\(kupdateUsername)"
+        
+        let headers: HTTPHeaders = ["Content-Type": "application/json", "jwt": (userPreferences.getUser()?.token)!]
+        let parameters: [String: Any] = ["username": username]
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .validate(statusCode: 200..<202)
+                .responseJSON { response in
+                    guard response.response?.statusCode != 401 else {
+                        continuation.resume(throwing: errorFromResponseData(response.data!))
+                        return
                     }
+                    
+                    switch response.result {
+                    case .success(let data):
+                        print("hedhi data\(data)")
+                        guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
+                            continuation.resume(throwing: APIServiceError.decodingError)
+                            return
+                        }
+                        do {
+                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                            userModel.token = token
+                            continuation.resume(returning: userModel)
+                        } catch {
+                            continuation.resume(throwing: error)
+                        }
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+        }
+    }
+    
+    func updatePassword(_ currentPassword: String, _ newPassword: String) async throws -> UserModel {
+        let userPreferences = UserPreferences()
+        let url = "\(kbaseUrl)\(kupdatePassword)"
+        
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "jwt": (userPreferences.getUser()?.token)!
+        ]
+        
+        let parameters: [String: Any] = [
+            "currentPassword": currentPassword,
+            "newPassword": newPassword
+        ]
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url,
+                       method: .post,
+                       parameters: parameters,
+                       encoding: JSONEncoding.default,
+                       headers: headers)
+            .validate(statusCode: 200..<202)
+            .responseJSON { response in
+                // Check for status code 401
+                if response.response?.statusCode == 401 {
+                    print("here1")
+                    print(response.data!)
+                    continuation.resume(throwing: errorFromResponseData(response.data!))
+                    return
+                }
+                
+                switch response.result {
+                case .success(let data):
+                    guard let jsonData = data as? [String: Any],
+                          let userData = jsonData["data"] as? [String: Any],
+                          let token = jsonData["token"] as? String else {
+                        continuation.resume(throwing: APIServiceError.decodingError)
+                        return
+                    }
+                    do {
+                        var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                        userModel.token = token
+                        continuation.resume(returning: userModel)
+                    } catch {
+                        print("herrre11")
+                        continuation.resume(throwing: error)
+                    }
+                case .failure(let error):
+                    print("herrre")
+                    
+                    continuation.resume(throwing: error)
+                }
             }
         }
-
+    }
+    
+    func sendVerificationEmail(_ forgetPasswordReq: ForgetPasswordReq) async throws -> UserModel {
+        let url = "\(kbaseUrl)\(ksendVerificationEmail)"
+        let userPreferences = UserPreferences()
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "jwt": (userPreferences.getUser()?.token)!
+        ]
+        let jsonBody = try JSONEncoder().encode(forgetPasswordReq)
+        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
+            AF.upload(jsonBody, to: url, method: .post, headers: headers)
+                .validate(statusCode: 200..<202)
+                .responseDecodable(of: UserModel.self) { response in
+                    switch response.result {
+                    case .success(let user):
+                        continuation.resume(returning: user)
+                    case .failure(let error):
+                        if let data = response.data {
+                            do {
+                                throw errorFromResponseData(data)
+                            } catch {
+                                continuation.resume(throwing: error)
+                            }
+                        } else {
+                            continuation.resume(throwing: error)
+                        }
+                    }
+                }
+        }
+    }
+    
     func changeEmail(_ changeEmailReq: ChangeEmailReq) async throws -> UserModel {
         let url = "\(kbaseUrl)\(kchangeEmail)"
         let userPreferences = UserPreferences()
@@ -249,9 +249,9 @@ struct UserAPI {
                 }
         }
     }
-
-
-
+    
+    
+    
     func uploadProfilePicture(_ image: UIImage) async throws -> UserModel {
         let url = "\(kbaseUrl)\(kUploadProfilePicture)"
         let userPreferences = UserPreferences()
@@ -294,7 +294,7 @@ struct UserAPI {
             }
         }
     }
-
+    
     func addToSavedItems(_ productId: String) async throws -> UserModel {
         let url = "\(kbaseUrl)\(kAddProdToSaved)"
         let userPreferences = UserPreferences()
@@ -316,7 +316,7 @@ struct UserAPI {
                         continuation.resume(throwing: errorFromResponseData(response.data!))
                         return
                     }
-
+                    
                     switch response.result {
                     case .success(let data):
                         guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
@@ -339,66 +339,66 @@ struct UserAPI {
     struct UserResponseModel: Codable {
         let data: UserModel
     }
-
+    
     func getCurrentUser() async throws -> UserModel {
         let userPreferences = UserPreferences()
         let url = "\(kbaseUrl)\(kGetCurrentUser)"
-           
+        
         // Use optional binding to safely unwrap the token
         guard let token = userPreferences.getUser()?.token else {
             throw APIServiceError.invalidUserToken // Custom error case for missing token
         }
-
+        
         let headers: HTTPHeaders = [
             "Content-Type": "application/json",
             "jwt": token
         ]
         print("here1")
-       
+        
         return try await withCheckedThrowingContinuation { continuation in
             AF.request(url,
                        method: .get,
                        encoding: JSONEncoding.default,
                        headers: headers)
-                .validate(statusCode: 200..<202)
-                .responseJSON { response in
-                    // Check for status code 401
-                    if response.response?.statusCode == 401 {
-                        print("here1")
-                        print(response.data!)
-                        continuation.resume(throwing: errorFromResponseData(response.data!))
+            .validate(statusCode: 200..<202)
+            .responseJSON { response in
+                // Check for status code 401
+                if response.response?.statusCode == 401 {
+                    print("here1")
+                    print(response.data!)
+                    continuation.resume(throwing: errorFromResponseData(response.data!))
+                    return
+                }
+                
+                switch response.result {
+                case .success(let data):
+                    
+                    guard let jsonData = data as? [String: Any],
+                          let userData = jsonData["data"] as? [String: Any],
+                          let token = jsonData["token"] as? String else {
+                        continuation.resume(throwing: APIServiceError.decodingError)
                         return
                     }
-
-                    switch response.result {
-                    case .success(let data):
-                        
-                        guard let jsonData = data as? [String: Any],
-                              let userData = jsonData["data"] as? [String: Any],
-                              let token = jsonData["token"] as? String else {
-                            continuation.resume(throwing: APIServiceError.decodingError)
-                                  return
-                              }
-                        do {
-                            print("here11")
-                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
-                            userModel.token = token
-                            continuation.resume(returning: userModel)
-                        } catch {
-                            print("herrre11")
-                            continuation.resume(throwing: error)
-                        }
-                    case .failure(let error):
-                        print("herrre")
+                    do {
+                        print("here11")
+                        var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                        userModel.token = token
+                        continuation.resume(returning: userModel)
+                    } catch {
+                        print("herrre11")
                         continuation.resume(throwing: error)
                     }
+                case .failure(let error):
+                    print("herrre")
+                    continuation.resume(throwing: error)
                 }
+            }
         }
     }
-
-
-
-
+    
+    
+    
+    
     
     func sendVerificationSms() async throws {
         let url = "\(kbaseUrl)\(kSendVerificationSms)"
@@ -457,7 +457,46 @@ struct UserAPI {
                 }
         }
     }
+    
+    
+    func chatBot(_ message: ChatBotReq) async throws -> String {
+        let url = "http://192.168.1.22:9090/\(KChatBot)"
+
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(message)
+
+        // Convert Data back into [String: Any] dictionary
+        guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+            throw NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+        }
+
+        let headers: HTTPHeaders = [.contentType("application/json")]
+
+        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<String, Error>) in
+            AF.request(url, method: .post, parameters: json, encoding: JSONEncoding.default, headers: headers)
+                .validate(statusCode: 200..<202)
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        if let responseDict = value as? [String: Any], let message = responseDict["message"] as? String {
+                            continuation.resume(returning: message)
+                        } else {
+                            continuation.resume(throwing: NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"]))
+                        }
+                    case .failure(let error):
+                        if let data = response.data {
+                            do {
+                                throw errorFromResponseData(data)
+                            } catch {
+                                continuation.resume(throwing: error)
+                            }
+                        } else {
+                            continuation.resume(throwing: error)
+                        }
+                    }
+                }
+        }
+    }
 
 
-   
 }

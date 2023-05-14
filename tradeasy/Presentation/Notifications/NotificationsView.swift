@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreData
 
+
 struct NotificationView: View {
     @State private var myList: [NotificationModel] = []
     @State private var deletedNotification: NotificationModel?
@@ -18,6 +19,7 @@ struct NotificationView: View {
                 showAlert = true
             }
         }
+
 
         func confirmDeleteNotification() {
             if let deleted = deletedNotification {
@@ -45,31 +47,40 @@ struct NotificationView: View {
     var body: some View {
         VStack {
             List {
-                ForEach(myList, id: \.self) { notification in
-                
-                    VStack {
+                ForEach(myList.indices, id: \.self) { index in
+                    VStack(alignment: .leading) {
                         HStack {
-                            Image(systemName: "hammer.circle")
-                                .foregroundColor(.gray)
-                            Text(notification.title!)
-                                .font(.headline)
-                                .foregroundColor(.black)
+                            Image(systemName: "bell")
+                                .foregroundColor(Color.purple)
+                                .imageScale(.large)
+                            Text(myList[index].title!)
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("font_color"))
                             Spacer()
-                            Text(getTimeAgo(time: notification.date!)!)
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                            Text(getTimeAgo(time: myList[index].date!)!)
+                                .font(.caption)
+                                .foregroundColor(Color.gray)
                         }
-                        Text(notification.description!)
+                        Text(myList[index].description!)
                             .font(.subheadline)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("font_color"))
+                            .lineLimit(2)
                     }
-                    .padding(.vertical, 8)
+                    .padding()
+                    .background(Color("card_color").opacity(0.8))
+                    .cornerRadius(10)
+                    .shadow(color: .gray, radius: 2, x: 0, y: 2)
                 }
                 .onDelete(perform: deleteNotification)
+                .listRowSeparator(.hidden)
+                
             }
-            .listStyle(.plain)
-            .padding(.horizontal)
-        }.onAppear{
+            .listStyle(PlainListStyle())
+        }
+        
+        
+        .onAppear{
             if userPreferences.getUser() == nil {
                 
                 print("heeeere")
@@ -120,6 +131,7 @@ struct NotificationView: View {
                                 switch result {
                                 case .success(let notificationModels):
                                     myList = notificationModels
+                                    print("notif list\(myList)")
                                 case .failure(let error):
                                     print("Error fetching notifications from Core Data: \(error)")
                                 }

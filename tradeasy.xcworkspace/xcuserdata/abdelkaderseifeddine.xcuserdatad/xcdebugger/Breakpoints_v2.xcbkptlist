@@ -3,22 +3,4 @@
    uuid = "C8739B94-E14A-4D76-98D7-312EFB294B4E"
    type = "0"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B6B9BF69-1178-472B-846E-B45E4017F007"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "tradeasy/Presentation/Selling/SellingView.swift"
-            startingColumnNumber = "29"
-            endingColumnNumber = "41"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

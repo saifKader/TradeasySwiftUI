@@ -15,8 +15,8 @@ struct SellingView: View {
     @State var showingAlert = false
   
     var body: some View {
-        NavigationView {
-            ZStack {
+        
+            ZStack() {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack {
                         VStack(alignment: .center) {
@@ -99,7 +99,6 @@ struct SellingView: View {
                         .padding(.bottom, 16)
                     }
                 }
-            }
         }
         .onAppear {
             
@@ -127,7 +126,7 @@ struct FloatingActionButton: View {
     @State var showAddProduct = false
     @State var showingAlert = false
     @State var showVerificationSheet = false
-    @EnvironmentObject var userPreferences: UserPreferences
+    let userPreferences = UserPreferences()
     @StateObject var smsViewModel = SendVerificationSmsViewModel()
     @EnvironmentObject var navigationController: NavigationController
     var body: some View {

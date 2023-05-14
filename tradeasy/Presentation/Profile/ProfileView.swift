@@ -29,7 +29,7 @@ struct ProfileView: View {
     let productPreferences = ProductPreferences()
 
     var body: some View {
-        ScrollView {
+        ScrollView() {
             VStack (spacing: 0){
                 HStack {
                     Spacer()

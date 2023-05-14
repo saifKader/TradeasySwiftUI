@@ -16,7 +16,7 @@ struct TradeasySwiftUIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView()
+            ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(navigationController)
                 .navigationViewStyle(StackNavigationViewStyle())

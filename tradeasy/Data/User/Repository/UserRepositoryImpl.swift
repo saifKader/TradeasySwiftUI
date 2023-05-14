@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 struct UserRepositoryImpl: IUserRepository {
+  
    
    
     
@@ -65,6 +66,9 @@ struct UserRepositoryImpl: IUserRepository {
     }
     func changePhoneNumber(_ changePhoneNumberReq: ChangePhoneNumberReq) async throws -> UserModel {
         return try await dataSource.changePhoneNumber(changePhoneNumberReq)
+    }
+    func chatBot(_ message: ChatBotReq) async throws -> String {
+        return try await dataSource.chatBot(message)
     }
     
 }

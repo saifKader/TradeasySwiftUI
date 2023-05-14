@@ -154,6 +154,15 @@
       }
     },
     {
+      "identity" : "swipecellsui#",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DominikButz/SwipeCellSUI#",
+      "state" : {
+        "revision" : "7c0437c567733f99edf79432dd8b3390c173b0b5",
+        "version" : "2.1.3"
+      }
+    },
+    {
       "identity" : "uiview-shimmer",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/omerfarukozturk/UIView-Shimmer",

@@ -6,8 +6,8 @@
 //
 
 import Foundation
-let kbaseUrl = "http://localhost:9090/"
-//let kbaseUrl = "http://172.20.10.2:9090/"
+//let kbaseUrl = "http://localhost:9090/"
+let kbaseUrl = "http://192.168.1.18:9090/"
 let kImageUrl = "\(kbaseUrl)img/"
 
 // authentification
@@ -25,6 +25,7 @@ let kUploadProfilePicture = "user/uploadprofilepicture"
 let kSendVerificationSms = "user/smstoverify"
 let kVerifyAccount = "user/verifyaccount"
 let kChangePhoneNumber = "user/changePhoneNumber"
+let KChatBot = "chatbot/chat"
 
 // product
 let kAddProduct = "product/user/add"

@@ -128,6 +128,7 @@ public extension View {
         let toastView = ToastView(message: message, icon: icon, backgroundColor: backgroundColor, textColor: textColor)
         
         return modifier(PopupModifier(isPresenting: isPresenting, hasShadow: true, cornerRadius: 10, overlayColor: .clear, isTapOutsideToDismiss: false, autoDismiss: popupAutoDismiss, onDisappear: onDisappear, popup: toastView))
+            
     }
     
     func toast(

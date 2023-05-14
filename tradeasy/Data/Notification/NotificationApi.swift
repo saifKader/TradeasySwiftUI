@@ -30,13 +30,14 @@ struct NotificationAPI {
     
             
             return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[NotificationModel], Error>) in
-                AF.request(url, method: .get, headers: headers)
-                    .validate(statusCode: 200..<300)
-                    .responseDecodable(of: NotificationResponse.self) { response in
-                        switch response.result {
-                        case .success(let bidsResponse):
-                            continuation.resume(returning: bidsResponse.data)
-                        case .failure(let error):
+                        AF.request(url, method: .get, headers: headers)
+                            .validate(statusCode: 200..<300)
+                            .responseDecodable(of: NotificationResponse.self) { response in
+                                switch response.result {
+                                case .success(let notificationResponse):
+                                    print("api notif test \(notificationResponse)")
+                                    continuation.resume(returning: notificationResponse.data)
+                                case .failure(let error):
                             if let data = response.data {
                                 do {
                                     throw errorFromResponseData(data)

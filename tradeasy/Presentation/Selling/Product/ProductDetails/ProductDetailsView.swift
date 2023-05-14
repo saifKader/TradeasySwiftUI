@@ -67,7 +67,10 @@ struct ProductDetailsView: View {
             }
         }
     }
-    
+    func getRatingForUser(product: ProductModel, userId: String) -> Rating? {
+        return product.rating?.first(where: { $0.user_id == userId })
+    }
+
     
     //views
     func getImageView(url: URL?) -> some View {
@@ -99,8 +102,6 @@ struct ProductDetailsView: View {
             }
         }
     }
-    
-    
     
     func getProfilePictureView(url: URL?) -> some View {
         Group {
@@ -165,12 +166,6 @@ struct ProductDetailsView: View {
         .scaleEffect(isAnimating ? 1.2 : 1.0) // Scale the button up when animation flag is true
     }
     
-    
-    
-    
-    
-    
-    
     func getDescriptionView() -> some View {
         let description = product.description ?? ""
         let showButton = description.count > 150
@@ -212,7 +207,6 @@ struct ProductDetailsView: View {
         )
     }
 
-    
     func getBidButtonView() -> some View {
         VStack(alignment: .center, spacing: 4) {
             Button(action: { isShowingBidView = true }) {
@@ -297,14 +291,13 @@ struct ProductDetailsView: View {
         .padding(.bottom, 25)
     }
     
-    
-    
     func formatPrice(_ price: Double?) -> String {
         guard let price = price else {
             return ""
         }
         return String(format: "%.2f", price) + "$"
     }
+    
     func getCategoryView() -> some View {
         HStack(alignment: .center, spacing: 5) {
             Image(systemName: "tag.fill")
@@ -318,14 +311,18 @@ struct ProductDetailsView: View {
     func getRatingView() -> some View {
         HStack {
             Text("Rating:")
-            RatingView(rating: $userRating, maxRating: 5)
+            RatingView(rating: $userRating, maxRating: 5, product: product, viewModel: viewModel)
         }
         .padding(.bottom, 5)
     }
+
     func onAppearSetup() {
         viewModel.isProductListed = product.selling ?? false
         updateSavedProductStatus()
         productPreferences.setProduct(product: product)
+        if let user = userPreferences.getUser() {
+            _ = getUserRatingCount(product: product)
+        }
     }
     
     //views
@@ -467,16 +464,6 @@ struct ProductDetailsView: View {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 struct FullScreenImageView: View {
     let url: URL
     
@@ -492,15 +479,22 @@ struct FullScreenImageView: View {
         }
     }
 }
+
 struct RatingView: View {
     @Binding var rating: Float
     var maxRating: Int
-    
+    var product: ProductModel
+    var viewModel: ProductDetailsViewModel
     var body: some View {
+        
+    
         HStack {
             ForEach(0..<maxRating, id: \.self) { index in
                 Button(action: {
                     rating = Float(index + 1)
+                    if let productID = product._id {
+                        viewModel.addRatingToProduct(productID: productID, rating: rating)
+                    }
                 }) {
                     Image(systemName: index < Int(rating) ? "star.fill" : "star")
                         .foregroundColor(.yellow)
@@ -509,4 +503,8 @@ struct RatingView: View {
         }
     }
 }
+
+
+
+
 

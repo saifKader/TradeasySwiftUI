@@ -35,11 +35,7 @@ struct EditProductView1: View {
         _bid_end_date = State(initialValue: product.wrappedValue.forBid ?? false ? String(product.wrappedValue.bidEndDate ?? 1) : "1 Minute")
         _forBid = State(initialValue: product.wrappedValue.forBid!)
         self.viewModel = viewModel // pass viewModel here
-        
-        
     }
-    
-    
     
     var isFormValid: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty &&
@@ -51,11 +47,10 @@ struct EditProductView1: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-             
-                CustomTextField(placeholder: "Product Name", text: $name)
-                CustomTextField(placeholder: "Description", text: $description)
-                CustomTextField(placeholder: "Price", text: $price, keyboardType: .decimalPad)
-                CustomTextField(placeholder: "Quantity", text: $quantity, keyboardType: .numberPad)
+                TradeasyTextField(placeHolder: "Product Name", textValue: $name, keyboardType: .default)
+                TradeasyTextEditor(placeHolder: "Description", textValue: $description)
+                TradeasyTextField(placeHolder: "Price", textValue: $price, keyboardType: .decimalPad)
+                TradeasyTextField(placeHolder: "Quantity", textValue: $quantity, keyboardType: .numberPad)
                 Spacer()
                 NavigationLink(destination: EditProductView2(viewModel: viewModel, prod_id: $prod_id, name: $name, description: $description, price: $price, quantity: $quantity, category: $category, forBid: $forBid, bid_end_date: $bid_end_date, image: $image), isActive: $showAdditionalInfoView) {
                     Button(action: {
@@ -77,7 +72,7 @@ struct EditProductView1: View {
             }
             .padding()
             .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-            .navigationBarTitle("Edit Product", displayMode: .inline)
+            .navigationTitle("Edit Product")
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }

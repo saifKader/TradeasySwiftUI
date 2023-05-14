@@ -195,6 +195,7 @@ struct LoginView: View {
                                     case .success(let userModel):
                                         print("User logged in successfully: \(userModel)")
                                         DispatchQueue.main.async {
+                                            print("user is \(userModel) ")
                                             userPreferences.setUser(user: userModel)
                                             print(userPreferences.getUser() == nil)
                                             navigationController.popToRoot()

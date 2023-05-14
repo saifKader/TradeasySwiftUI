@@ -22,6 +22,7 @@ protocol IUserRepository {
     func sendSmsToVerifyAccount() async throws -> Void
     func verifyAccount(_ otp: String) async throws -> UserModel
     func changePhoneNumber(_ changePhoneNumberReq: ChangePhoneNumberReq) async throws -> UserModel
+    func chatBot(_ message: ChatBotReq) async throws -> String
     
 }
 

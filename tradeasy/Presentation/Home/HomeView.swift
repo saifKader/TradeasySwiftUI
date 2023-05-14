@@ -14,7 +14,7 @@ struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
     @StateObject var categoryViewModel = CategoryViewModel()
     let currentUser = userPreferences.getUser()
-    
+    @State private var isExpanded: Bool = false
     @State private var searchText: String = ""
     @State private var showSearchBar: Bool = false
     @State private var categoryList: [CategoryModel] = []
@@ -34,12 +34,24 @@ struct HomeView: View {
     
     var body: some View {
         
-        
-        
-        NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                
                 VStack{
+                    //category
+                    
+                    DisclosureGroup("Explore popular categories", isExpanded: $isExpanded) {
+                                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), spacing: 16) {
+                                            ForEach(categoryList.prefix(3), id: \.self) { category in
+                                                CategoryCardView(icon: category.name!, category: category.name!, products: viewModel.products, categories: categoryList)
+                                            }
+                                            CategoryCardView(icon: "all categories", category: "All", products: viewModel.products, categories: categoryList)
+                                        }
+                                        .padding(.top)
+                                    }
+                                    .padding(.horizontal)
+                                    .accentColor(.primary)
+                                    .font(.headline)
+                    
+                    
                     // Products Forbid - Less than 1 hour
                     SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
                         if let bidEndDate = product.bidEndDate {
@@ -53,29 +65,6 @@ struct HomeView: View {
                 
                 // Products for Sale
                 SectionView(title: "Products for Sale", products: viewModel.products.filter { !$0.forBid! && $0.username != currentUser?.username && (searchText.isEmpty || $0.name!.localizedCaseInsensitiveContains(searchText)) })
-                    // Explore Categories
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 24, height: 24)
-                            Divider()
-                            Text("Explore popular categories")
-                                .font(.body)
-                            Spacer()
-                        }
-                        
-                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), spacing: 12) {
-                            ForEach(categoryList.prefix(3), id: \.self) { category in
-                                CategoryCardView(icon: category.name!, category: category.name!, products: viewModel.products, categories: categoryList)
-                            }
-                            CategoryCardView(icon: "all categories", category: "All", products: viewModel.products,categories: categoryList)
-                        }
-
-                       
-                    }
-                    .padding(.horizontal)
                 
                 
                 
@@ -108,7 +97,7 @@ struct HomeView: View {
                    await updateCategoryList()
                }
         }
-    }
+    
 }
 }
 
@@ -352,7 +341,7 @@ struct CategoryCardView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(.all, 10)
-        .background(Color(CustomColors.backgroundColor))
+        .background(Color(.systemGray5))
         .cornerRadius(10)
         .shadow(radius: 3)
     }
