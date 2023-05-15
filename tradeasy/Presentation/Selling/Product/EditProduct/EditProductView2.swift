@@ -108,7 +108,6 @@ struct EditProductView2: View {
                                 print("Product edited successfully: \(productModel)")
                                 
                                 DispatchQueue.main.async {
-                                    
                                     navigationController.navigate(to: MainView())
                                 }
                             case .failure(let error):

@@ -168,7 +168,7 @@ struct ProductDetailsView: View {
     
     func getDescriptionView() -> some View {
         let description = product.description ?? ""
-        let showButton = description.count > 150
+        let showButton = description.count > 100
         let maxLines = showFullDescription ? nil : 3
         
         return VStack(alignment: .leading, spacing: 10) {
@@ -319,6 +319,7 @@ struct ProductDetailsView: View {
     func onAppearSetup() {
         viewModel.isProductListed = product.selling ?? false
         updateSavedProductStatus()
+        
         productPreferences.setProduct(product: product)
         if let user = userPreferences.getUser() {
             _ = getUserRatingCount(product: product)

@@ -26,43 +26,33 @@ struct AddProductView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading ,spacing: 10) {
-                Text("Product Details")
-                    .font(.headline)
-                  Text("Product Name")
-                CustomTextField(placeholder: "", text: $name)
-                Text("Description")
-                CustomTextField(placeholder: "", text: $description)
-                Text("Price")
-                CustomTextField(placeholder: "", text: $price, keyboardType: .decimalPad)
-                Text("Quantity")
-                CustomTextField(placeholder: "", text: $quantity, keyboardType: .numberPad)
-    
-               
-                Button(action: {
-                    if isFormValid {
-                        showAdditionalInfoView = true
+            VStack(spacing: 20) {
+                TradeasyTextField(placeHolder: "Product Name", textValue: $name, keyboardType: .default)
+                TradeasyTextEditor(placeHolder: "Description", textValue: $description)
+                TradeasyTextField(placeHolder: "Price", textValue: $price, keyboardType: .decimalPad)
+                TradeasyTextField(placeHolder: "Quantity", textValue: $quantity, keyboardType: .numberPad)
+                Spacer(minLength: 20)
+                NavigationLink(destination: AdditionalInfoView(viewModel: viewModel, name: $name, description: $description, price: $price, quantity: $quantity, image: $image, category: $category, forBid: $forBid, bid_end_date: $bid_end_date), isActive: $showAdditionalInfoView) {
+                    Button(action: {
+                        if isFormValid {
+                            showAdditionalInfoView = true
+                        }
+                    }) {
+                        Text("Next")
+                            .foregroundColor(isFormValid ? .white : .gray)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(isFormValid ? Color("app_color") : Color.gray.opacity(0.5))
+                            .cornerRadius(10)
                     }
-                }) {
-                    Text("Next")
-                        .foregroundColor(isFormValid ? .white : .gray)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(isFormValid ? Color("app_color") : Color.gray.opacity(0.5))
-                        .cornerRadius(10)
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
-                .background(
-                    NavigationLink(
-                        destination: AdditionalInfoView(viewModel: viewModel, name: $name, description: $description, price: $price, quantity: $quantity, image: $image, category: $category, forBid: $forBid, bid_end_date: $bid_end_date),
-                        isActive: $showAdditionalInfoView,
-                        label: { EmptyView() }
-                    )
-                )
-                
-              
+                .isDetailLink(false)
+                Spacer()
             }
             .padding()
+            .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+            .navigationBarTitle("Edit Product", displayMode: .inline)
            
         }
     }

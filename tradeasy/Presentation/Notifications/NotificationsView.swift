@@ -1,7 +1,6 @@
 import SwiftUI
 import CoreData
-import SwiftUIX
-
+import SwiftUISnackbar
 struct NotificationView: View {
     @State private var myList: [NotificationModel] = []
     @State private var deletedNotification: NotificationModel?
@@ -80,11 +79,12 @@ struct NotificationView: View {
                             .font(.subheadline)
                             .foregroundColor(Color("font_color"))
                             .lineLimit(2)
+                        
                     }
                     .padding()
                     .background(Color("card_color"))
-                    .cornerRadius(4)
-                    .shadow(color: .gray, radius: 2, x: 0, y: 2)
+                    //.cornerRadius(4)
+                    //.shadow(color: .gray, radius: 2, x: 0, y: 2)
                 }
                 .onDelete(perform: deleteNotification)
                 .listRowSeparator(.hidden)
@@ -92,41 +92,47 @@ struct NotificationView: View {
             .listStyle(PlainListStyle())
             
             if showSnackbar {
-                        HStack {
-                            Text(snackbarMessage)
-                                .foregroundColor(.white)
-                                .padding()
-                            Spacer()
-                            Button(action: {
-                                undoDelete()
-                                self.showSnackbar = false
-                            }) {
-                                Text("Undo")
-                                    .foregroundColor(.white)
-                                    .padding([.trailing, .top, .bottom])
-                            }
-                        }
-                        .background(Color.red)
-                        .cornerRadius(10)
+                HStack {
+                    Text(snackbarMessage)
+                        .foregroundColor(.white)
                         .padding()
-                        .transition(.move(edge: .bottom))
-                        .animation(.easeInOut(duration: 0.5))
-                        .onDisappear {
-                            if self.showSnackbar {
-                                confirmDeleteNotification()
+                    Spacer()
+                    Button(action: {
+                        undoDelete()
+                        self.showSnackbar = false
+                    }) {
+                        Text("Undo")
+                            .foregroundColor(.white)
+                            .padding([.trailing, .top, .bottom])
+                    }
+                }
+                .background(Color.black.opacity(0.7))
+                .cornerRadius(10) 
+                .padding()
+                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+                .transition(.move(edge: .bottom))
+                .animation(.easeInOut(duration: 0.5))
+                .onDisappear {
+                    if self.showSnackbar {
+                        confirmDeleteNotification()
+                    }
+                }
+                .gesture(
+                    DragGesture()
+                        .onChanged { _ in }
+                        .onEnded { value in
+                            if value.translation.height > 50 {
+                                // Drop down the snackbar
+                                self.showSnackbar = false
+                            } else {
+                                // Hold the snackbar
+                                self.showSnackbar = true
                             }
                         }
-                        .gesture(
-                            DragGesture()
-                                .onChanged { _ in }
-                                .onEnded { value in
-                                    if value.translation.height > 50 {
-                                        confirmDeleteNotification()
-                                        self.showSnackbar = false
-                                    }
-                                }
-                        )
-                    }
+                )
+            }
+
+
         }
         .onAppear {
             if userPreferences.getUser() == nil {
