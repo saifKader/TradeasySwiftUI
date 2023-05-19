@@ -59,38 +59,51 @@ struct NotificationView: View {
 
     var body: some View {
         VStack {
-            List {
-                ForEach(myList.indices, id: \.self) { index in
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Image(systemName: "hammer.fill")
-                                .foregroundColor(Color("app_color"))
-                                .imageScale(.large)
-                            Text(myList[index].title!)
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("font_color"))
-                            Spacer()
-                            Text(getTimeAgo(time: myList[index].date!)!)
-                                .font(.caption)
-                                .foregroundColor(Color.gray)
-                        }
-                        Text(myList[index].description!)
-                            .font(.subheadline)
-                            .foregroundColor(Color("font_color"))
-                            .lineLimit(2)
-                        
-                    }
-                    .padding()
-                    .background(Color("card_color"))
-                    //.cornerRadius(4)
-                    //.shadow(color: .gray, radius: 2, x: 0, y: 2)
+            if myList.isEmpty {
+                VStack{
+                    Image(systemName: "bell.slash.fill") // convert the string to an Image
+                        .foregroundColor(Color("app_color"))
+                        .font(.system(size: 80)) 
+                    
+                    Text("No notifications")
+                        .foregroundColor(Color.gray)
+                        .font(.title)
+                    
                 }
-                .onDelete(perform: deleteNotification)
-                .listRowSeparator(.hidden)
+                   
+            } else {
+                List {
+                    ForEach(myList.indices, id: \.self) { index in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Image(systemName: "hammer.fill")
+                                    .foregroundColor(Color("app_color"))
+                                    .imageScale(.large)
+                                Text(myList[index].title!)
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("font_color"))
+                                Spacer()
+                                Text(getTimeAgo(time: myList[index].date!)!)
+                                    .font(.caption)
+                                    .foregroundColor(Color.gray)
+                            }
+                            Text(myList[index].description!)
+                                .font(.subheadline)
+                                .foregroundColor(Color("font_color"))
+                                .lineLimit(2)
+                            
+                        }
+                        .padding()
+                        .background(Color("card_color"))
+                        //.cornerRadius(4)
+                        //.shadow(color: .gray, radius: 2, x: 0, y: 2)
+                    }
+                    .onDelete(perform: deleteNotification)
+                    .listRowSeparator(.hidden)
+                }
+                .listStyle(PlainListStyle())
             }
-            .listStyle(PlainListStyle())
-            
             if showSnackbar {
                 HStack {
                     Text(snackbarMessage)

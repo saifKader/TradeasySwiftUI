@@ -21,4 +21,5 @@ struct FirebaseRegisterReq : Codable {
     let countryCode: String
     let phoneNumber: String
     let email: String
+    let profilePicture : String
 }

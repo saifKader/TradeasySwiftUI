@@ -44,3 +44,18 @@ func fetchNotificationsFromCoreData(context: NSManagedObjectContext, completion:
         completion(.failure(error))
     }
 }
+@MainActor
+func deleteAllNotifications(context: NSManagedObjectContext, completion: @escaping (Result<Void, Error>) -> Void) {
+    let request: NSFetchRequest<NSFetchRequestResult> = CDNotification.fetchRequest()
+
+    // Create a batch delete request
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+
+    do {
+        try context.execute(deleteRequest)
+        try context.save()
+        completion(.success(()))
+    } catch {
+        completion(.failure(error))
+    }
+}

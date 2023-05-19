@@ -78,7 +78,7 @@ struct RegisterView: View {
             .padding(.horizontal, 5)
             .padding(.top, 120)
             
-            TradeasyTextField(placeHolder: "Username", textValue: $username, keyboardType: .default)
+            TradeasyTextField(placeHolder: "Username",maxLength: 30, textValue: $username, keyboardType: .default)
                             .padding(.horizontal, 5)
                             .padding(.top, 10)
                 .onChange(of: username) { newValue in
@@ -108,7 +108,7 @@ struct RegisterView: View {
                         countryCode = country?.phoneCode ?? "+1"
                     }
                 VStack(alignment: .leading){
-                                    TradeasyTextField(placeHolder: "Phone Number", textValue: $phoneNumber, keyboardType: .numberPad)
+                                    TradeasyTextField(placeHolder: "Phone Number", maxLength: 30,textValue: $phoneNumber, keyboardType: .numberPad)
                                         .padding(.top, 5)
                                     if isPhoneNumberInvalid {
                                         Text("Invalid phone number")
@@ -126,7 +126,7 @@ struct RegisterView: View {
             }
             .padding(.horizontal, 5)
             
-            TradeasyTextField(placeHolder: "Email", textValue: $email, keyboardType: .emailAddress)
+            TradeasyTextField(placeHolder: "Email",maxLength: 50, textValue: $email, keyboardType: .emailAddress)
                 .padding(.horizontal, 5)
                 .padding(.top, 5)
                 .autocapitalization(.none)

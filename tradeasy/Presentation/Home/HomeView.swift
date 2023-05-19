@@ -8,8 +8,7 @@
 import SwiftUI
 import Kingfisher
 import SDWebImageSwiftUI
-
-
+import Network
 struct HomeView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -21,7 +20,14 @@ struct HomeView: View {
     @State private var searchText: String = ""
     @State private var showSearchBar: Bool = false
     @State private var categoryList: [CategoryModel] = []
-    
+    @StateObject var connectivityMonitor = ConnectivityMonitor()
+    @State private var isConnected: Bool = false
+    func checkInternet() -> Bool {
+      
+        
+        return connectivityMonitor.isConnected
+    }
+
     func updateCategoryList() async {
         do {
             try await categoryViewModel.fetchCategories()
@@ -39,6 +45,8 @@ struct HomeView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 // Category
+                if checkInternet(){
+                    
                 VStack(alignment: .leading) {
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -105,6 +113,33 @@ struct HomeView: View {
                     }
                     return false
                 })
+                } else {
+                    
+                    VStack {
+                        Button(action: {
+                            if checkInternet() {
+                                viewModel.loadProducts()
+                                Task {
+                                    await updateCategoryList()
+                                }
+                            }
+                        
+                        }) {
+                            VStack {
+                                Image(systemName: "wifi.slash")
+                                    .foregroundColor(Color("app_color"))
+                                    .font(.system(size: 80))
+                                
+                                Text("No internet connection")
+                                    .font(.headline)
+                                    .foregroundColor(Color("font_color"))
+                                    .padding()
+                            }
+                        }
+                    }
+
+                                  
+                               }
             }
         }
         .background(Color("background_color"))
@@ -112,13 +147,25 @@ struct HomeView: View {
             viewModel.loadProducts()
         }
         .onAppear {
-            viewModel.loadProducts()
-            Task {
-                await updateCategoryList()
+                    viewModel.loadProducts()
+                    Task {
+                        await updateCategoryList()
+                    }
+                    connectivityMonitor.startMonitoring()
+                }
+               
+                .onReceive(connectivityMonitor.objectWillChange) { _ in
+                    isConnected = connectivityMonitor.isConnected
+                    print("here12121 \(isConnected)")
+                    if isConnected {
+                        viewModel.loadProducts()
+                        Task {
+                            await updateCategoryList()
+                        }
+                    }
+                }
             }
-        }
     }
-}
 
 
 struct ProductRowView: View {
@@ -147,9 +194,14 @@ struct ProductRowView: View {
             return String(format: "%02d:%02d:%02d", hours, minutes, remainingSeconds2)
         }
     }
+    
+    var productNameDisplay: String {
+        guard let name = product.name else { return "" }
+        let components = name.components(separatedBy: .whitespacesAndNewlines)
+        return components.prefix(3).joined(separator: " ")
+    }
+    
     var body: some View {
-        
-        
         VStack(alignment: .leading, spacing: 10) {
             ZStack {
                 WebImage(url: URL(string: kImageUrl + (product.image?.first ?? "")))
@@ -178,10 +230,10 @@ struct ProductRowView: View {
                 }
             }
             VStack(alignment: .leading, spacing: 5) {
-                Text(product.name ?? "")
+                Text(productNameDisplay)
                     .font(.system(size: 18, weight: .semibold, design: .default))
                     .foregroundColor(.primary)
-                    .lineLimit(2)
+                    .lineLimit(1)
                 
                 Text(String(format: "$%.2f", product.price ?? 0))
                     .font(.system(size: 16, weight: .medium, design: .default))

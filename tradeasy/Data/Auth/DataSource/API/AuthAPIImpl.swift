@@ -83,7 +83,7 @@ struct AuthAPIImpl: IAuthDataSource {
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse
         let code = httpResponse?.statusCode ?? 0
-        if code != 201 {
+        if code != 201  {
             
             throw errorFromResponseData(data)
         }

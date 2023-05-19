@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AdditionalInfoView: View {
     @ObservedObject var viewModel = AddProductViewModel()
-    
+    @StateObject var categoryViewModel = CategoryViewModel()
     @Binding var name: String
     @Binding var description: String
     @Binding var price: String
@@ -25,12 +25,26 @@ struct AdditionalInfoView: View {
     @State var isShowingImagePicker = false
     @State var isShowingImagePickerLibrary = false
     @State private var showingActionSheet = false
-    
+    @State private var categoryList: [CategoryModel] = []
     let categories = ["electronics", "motors","real estate","furniture","clothing"]
     let bidEndDates = ["1 Minute", "1 Hour", "1 Day", "1 Week"]
     var isFormValid: Bool {
         !(image == nil) &&
         !category.isEmpty
+    }
+    
+    func updateCategoryList() async {
+        do {
+            try await categoryViewModel.fetchCategories()
+            if case let .categorySuccess(categories) = categoryViewModel.state {
+                
+                categoryList = categories
+                
+            }
+        } catch {
+            // Handle error here
+            print("Failed to fetch categories: \(error)")
+        }
     }
     
     var addProductReq: AddProductReq {
@@ -125,7 +139,12 @@ struct AdditionalInfoView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-        
+            .onAppear {
+         
+                Task {
+                    await updateCategoryList()
+                }
+            }
         NavigationLink(destination: ImagePickerWithCrop(selectedImage: $image, sourceType: .camera), isActive: $isShowingImagePicker,label: { EmptyView() })
         NavigationLink(destination: ImagePickerWithCrop(selectedImage: $image, sourceType: .photoLibrary), isActive: $isShowingImagePickerLibrary,label: { EmptyView() })
     }

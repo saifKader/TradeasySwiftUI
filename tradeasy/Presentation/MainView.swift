@@ -5,6 +5,13 @@
 //  Created by abdelkader seif eddine on 17/3/2023.
 //
 
+//
+//  MainView.swift
+//  tradeasy
+//
+//  Created by abdelkader seif eddine on 17/3/2023.
+//
+
 import SwiftUI
 let userPreferences = UserPreferences()
 
@@ -21,59 +28,58 @@ struct MainView: View {
        
     
     var body: some View {
-            NavigationStack{
-                TabView(selection: $navigationController.currentTab) {
+        NavigationStack{
+            TabView(selection: $navigationController.currentTab) {
                 
                 // FirebaseRegisterView(email: "")
                 //ChatBotView()
-                //TestView()
-                    HomeView()
+                HomeView()
                     .tabItem {
-                        TabIcon(selected: $selectedTab, index: 0) {
+                        TabIcon(selected: $navigationController.currentTab, index: 0) {
                             Label("Home", systemImage: "house")
                         }
                     }.tag(0)
                 
                 SellingView()
                     .tabItem {
-                        TabIcon(selected: $selectedTab, index: 1) {
+                        TabIcon(selected: $navigationController.currentTab, index: 1) {
                             Label("Sellings", systemImage: "cart.badge.plus")
                         }
                     }.tag(1)
                 
                 SearchView()
                     .tabItem {
-                        TabIcon(selected: $selectedTab, index: 2) {
+                        TabIcon(selected: $navigationController.currentTab, index: 2) {
                             Label("Search", systemImage: "magnifyingglass")
                         }
                     }.tag(2)
                 
                 NotificationView()
                     .tabItem {
-                        TabIcon(selected: $selectedTab, index: 3) {
+                        TabIcon(selected: $navigationController.currentTab, index: 3) {
                             Label("Notifications", systemImage: "bell")
                         }
                     }.tag(3)
                 
                 ProfileView()
                     .tabItem {
-                        TabIcon(selected: $selectedTab, index: 4) {
+                        TabIcon(selected: $navigationController.currentTab, index: 4) {
                             Label("Profile", systemImage: "person")
                         }
                     }.tag(4)
-                }
-                .accentColor(Color("app_color"))
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        HStack {
-                            Text(tabTitle(for: navigationController.currentTab))
-                                .font(.headline)
-                                .foregroundColor(Color.primary)
-                        }
+            }
+            .accentColor(Color("app_color"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text(tabTitle(for: navigationController.currentTab))
+                            .font(.headline)
+                            .foregroundColor(Color.primary)
                     }
                 }
             }
+        }
     }
     func tabTitle(for index: Int) -> String {
             switch index {

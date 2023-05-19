@@ -492,7 +492,7 @@ struct UserAPI {
     }
 
     func chatBot(_ message: ChatBotReq) async throws -> String {
-        let url = "http://192.168.0.2:9090/\(KChatBot)"
+        let url = "http://172.20.10.7:9090/\(KChatBot)"
 
         let encoder = JSONEncoder()
         let data = try encoder.encode(message)

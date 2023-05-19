@@ -26,10 +26,10 @@ struct AddProductView: View {
     
     var body: some View {
             VStack(spacing: 20) {
-                TradeasyTextField(placeHolder: "Product Name", textValue: $name, keyboardType: .default)
-                TradeasyTextEditor(placeHolder: "Description", textValue: $description)
-                TradeasyTextField(placeHolder: "Price", textValue: $price, keyboardType: .decimalPad)
-                TradeasyTextField(placeHolder: "Quantity", textValue: $quantity, keyboardType: .numberPad)
+                TradeasyTextField(placeHolder: "Product Name", maxLength: 30,textValue: $name, keyboardType: .default)
+                TradeasyTextEditor(placeHolder: "Description",maxLength: 255, textValue: $description)
+                TradeasyTextField(placeHolder: "Price", maxLength: 15,textValue: $price, keyboardType: .decimalPad)
+                TradeasyTextField(placeHolder: "Quantity", maxLength: 100,textValue: $quantity, keyboardType: .numberPad)
                 Spacer(minLength: 20)
                 NavigationLink(destination: AdditionalInfoView(viewModel: viewModel, name: $name, description: $description, price: $price, quantity: $quantity, image: $image, category: $category, forBid: $forBid, bid_end_date: $bid_end_date), isActive: $showAdditionalInfoView) {
                     Button(action: {

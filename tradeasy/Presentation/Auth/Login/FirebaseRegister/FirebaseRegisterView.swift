@@ -12,7 +12,7 @@ import CountryPickerView
 
 struct FirebaseRegisterView: View {
     @ObservedObject var viewModel = RegisterViewModel()
-    @State private var selectedCountry: Country?
+
     @State var username = ""
     @State var countryCode = ""
     @State var phoneNumber = ""
@@ -24,8 +24,9 @@ struct FirebaseRegisterView: View {
     @EnvironmentObject var navigationController: NavigationController
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var firebaseRegisterViewModel = FirebaseRegisterViewModel()
+    @Binding var profilePicture : String
     
-    
+    @State private var selectedCountry: Country?
     
     
     let userPreferences = UserPreferences()
@@ -52,8 +53,9 @@ struct FirebaseRegisterView: View {
         return FirebaseRegisterReq(
             username: username.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
             countryCode: countryCode.trimmingCharacters(in: .whitespacesAndNewlines),
-            phoneNumber: phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines).lowercased(),
-            email: email
+            phoneNumber: countryCode + phoneNumber.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ,
+            email: email,
+            profilePicture: profilePicture
         )
     }
 
@@ -151,7 +153,7 @@ struct FirebaseRegisterView: View {
                         firebaseRegisterViewModel.firebaseRegister(firebaseRegisterReq: firebaseRegisterReq) { result in
                             switch result {
                             case .success(let userModel):
-                                print("User logged in successfully: \(userModel)")
+                                print("User logged in succeaaaaessfully: \(userModel)")
                                 userPreferences.setUser(user: userModel)
                                 navigationController.navigate(to: MainView())
                                 print("sucesssssssssss")

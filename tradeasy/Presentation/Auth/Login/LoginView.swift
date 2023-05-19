@@ -22,6 +22,7 @@ struct LoginView: View {
     @State var phoneNumber = ""
     @State var email = ""
     @State var password = ""
+    @State var profilePicture = ""
     @State private var isPasswordVisible = false
     @State private var errorMessage = ""
     @State var showError = false
@@ -68,7 +69,7 @@ struct LoginView: View {
                     
                         .padding(.horizontal, 5)
                         .padding(.top, 20)
-                    TradeasyTextField(placeHolder: "Username", textValue: $username, keyboardType: .default)
+                    TradeasyTextField(placeHolder: "Username", maxLength: 30,textValue: $username, keyboardType: .default)
                         .onChange(of: username) { newValue in
                             if newValue.count > 30 {
                                 username = String(newValue.prefix(30))
@@ -170,8 +171,17 @@ struct LoginView: View {
                                         print("Error signing in to Firebase: \(error!.localizedDescription)")
                                         return
                                     }
+                           
                                     var email = ""
                                     // Get the user's email address
+                                if let photoURL = authResult?.user.photoURL {
+                                       let profilePictureURLString = photoURL.absoluteString
+                                       print("Profile picture URL: \(profilePictureURLString)")
+                                       // You can use the URL string to display or manipulate the profile picture
+                                       
+                                       // Assign the profile picture URL string to your variable if needed
+                                       profilePicture = profilePictureURLString
+                                   }
                                 if let userEmail = authResult?.user.email {
                                         print("User email: \(userEmail)")
                                     email = userEmail
@@ -181,7 +191,7 @@ struct LoginView: View {
                              
                                 var firebaseRegisterReq: FirebaseRegisterReq {
                                     return FirebaseRegisterReq(
-                                        username: "", countryCode: "", phoneNumber: "", email: email
+                                        username: "", countryCode: "", phoneNumber: "", email: email, profilePicture: profilePicture
                                     )
                                 }
                                 firebaseRegisterViewModel.firebaseRegister(firebaseRegisterReq: firebaseRegisterReq){ result in
@@ -191,7 +201,7 @@ struct LoginView: View {
                                         DispatchQueue.main.async {
                                             print("user is \(userModel) ")
                                             userPreferences.setUser(user: userModel)
-                                            print(userPreferences.getUser() == nil)
+                                           
                                             navigationController.popToRoot()
                                         }
                                       
@@ -201,10 +211,11 @@ struct LoginView: View {
                                     
                                             print("Error logging in: \(message)")
                                             if message == "410" {
-                                                navigationController.navigate(to: FirebaseRegisterView(email: email))
+                                                navigationController.navigate(to: FirebaseRegisterView(email: email, profilePicture: $profilePicture))
                                                 
                                             }
                                             if message == "408" {
+                                          
                                                 navigationController.navigate(to: MainView())
                                          
                                                 

@@ -32,17 +32,17 @@ struct ChatBotView: View {
                                      Text("Welcome to the Tradeasy Assistant!")
                                          .font(.largeTitle)
                                          .fontWeight(.bold)
-                                         .foregroundColor(.black)
+                                         .foregroundColor(Color("font_color"))
                                      
                                      Text("The chat bot that will help you answer the most common questions about the app.")
                                          .font(.headline)
-                                         .foregroundColor(.black)
+                                         .foregroundColor(Color("font_color"))
                                          .multilineTextAlignment(.center)
                                          .padding(.horizontal, 30)
                                      
                                      Text("Type 'Hi' to start the conversation.")
                                          .font(.subheadline)
-                                         .foregroundColor(.gray)
+                                         .foregroundColor(Color("font_color"))
                                          .padding()
                                          .overlay(
                                              RoundedRectangle(cornerRadius: 10)
@@ -53,7 +53,7 @@ struct ChatBotView: View {
                                  .padding()
                                  .background(
                                      RoundedRectangle(cornerRadius: 20)
-                                         .fill(Color.white)
+                                         .fill(Color("card_color"))
                                          .shadow(color: Color.gray.opacity(0.3), radius: 10, x: 0, y: 5)
                                  )
                                  .padding(.horizontal)

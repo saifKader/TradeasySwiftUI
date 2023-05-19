@@ -16,95 +16,97 @@ struct SellingView: View {
   
     var body: some View {
         
-            ZStack() {
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack {
-                        VStack(alignment: .center) {
-                            Text("Listed Products")
-                                .font(Font.custom("Helvetica Neue Bold", size: 26))
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 4)
-                                .background(Color.green.opacity(0.9))
-                                .cornerRadius(10)
-                            if (viewModel.products.filter { $0.selling! }.isEmpty) {
-                                Text("You have no listed products")
-                                    .foregroundColor(.gray)
-                            } else {
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(spacing: 15) {
-                                        ForEach(viewModel.products.filter { $0.selling! }, id: \._id) { product in
-                                            Button(action: {
-                                                withAnimation {
-                                                    navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
-                                                    }
-                                            }) {
-                                                ProductRowView(product: product)
-                                            }
-                                            .buttonStyle(PlainButtonStyle())
-                                        }
-
-                                    }
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 20)
-                                }
-                            }
-                        }
-                        
-                        // Products Forbid
-                        VStack(alignment: .center) {
-                            
-                            Text("Unlisted Products")
-                                .font(Font.custom("Helvetica Neue Bold", size: 26))
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 4)
-                                .background(Color.gray)
-                                .cornerRadius(10)
-                                
-                            if (viewModel.products.filter { !$0.selling! }.isEmpty) {
-                                Text("You have no unlisted products")
-                                    .foregroundColor(.gray)
-                            } else {
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(spacing: 15) {
-                                        ForEach(viewModel.products.filter { !$0.selling! }, id: \._id) { product in
-                                            Button(action: {
-                                                withAnimation {
-                                                    navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
-                                                    }
-                                            }) {
-                                                ProductRowView(product: product)
-                                            }
-                                            .buttonStyle(PlainButtonStyle())
-                                        }
-                                    }
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 20)
-                                }
-                            }
-                        }
-                    }
-                  
-                    .refreshable {
-                        viewModel.loadUserProducts()
-                    }
-                    .onAppear {
-                        viewModel.loadUserProducts()
-                    }
-                }
-                
+        ZStack() {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        FloatingActionButton(onClick: {
-                            showingAlert = true
-                        })
-                        .padding(.trailing, 16)
-                        .padding(.bottom, 16)
+                    VStack(alignment: .center) {
+                        
+                        
+                        Text("Listed Products")
+                            .font(Font.custom("Helvetica Neue Bold", size: 26))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 4)
+                            .background(Color.green.opacity(0.9))
+                            .cornerRadius(10)
+                        
+                        if (viewModel.products.filter { $0.selling! }.isEmpty) {
+                            Text("You have no listed products")
+                                .foregroundColor(.gray)
+                        } else {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack(spacing: 15) {
+                                    ForEach(viewModel.products.filter { $0.selling! }, id: \._id) { product in
+                                        Button(action: {
+                                            withAnimation {
+                                                navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                                            }
+                                        }) {
+                                            ProductRowView(product: product)
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                    }
+                                    
+                                }
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 20)
+                            }
+                        }
+                    }
+                    
+                    // Products Forbid
+                    VStack(alignment: .center) {
+                        
+                        Text("Unlisted Products")
+                            .font(Font.custom("Helvetica Neue Bold", size: 26))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 4)
+                            .background(Color.gray)
+                            .cornerRadius(10)
+                        
+                        if (viewModel.products.filter { !$0.selling! }.isEmpty) {
+                            Text("You have no unlisted products")
+                                .foregroundColor(.gray)
+                        } else {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack(spacing: 15) {
+                                    ForEach(viewModel.products.filter { !$0.selling! }, id: \._id) { product in
+                                        Button(action: {
+                                            withAnimation {
+                                                navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                                            }
+                                        }) {
+                                            ProductRowView(product: product)
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                    }
+                                }
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 20)
+                            }
+                        }
                     }
                 }
+                .refreshable {
+                    viewModel.loadUserProducts()
+                }
+                .onAppear {
+                    viewModel.loadUserProducts()
+                }
+            }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    FloatingActionButton(onClick: {
+                        showingAlert = true
+                    })
+                    .padding(.trailing, 16)
+                    .padding(.bottom, 16)
+                }
+            }
         }
         .onAppear {
             

@@ -19,6 +19,7 @@ struct SlideInTransition: ViewModifier {
 }
 
 struct ProductDetailsView: View {
+    @State private var isExpanded: Bool = false
     @State  var product: ProductModel
     @StateObject var viewModel = ProductDetailsViewModel()
     @StateObject var userDataViewModel = GetUserDataStateViewModel()
@@ -104,7 +105,7 @@ struct ProductDetailsView: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.7)
+                    .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.width * 0.7)
                     .cornerRadius(50)
                     .padding(.horizontal, 20)
             } placeholder: {
@@ -379,16 +380,26 @@ struct ProductDetailsView: View {
         )
     }
         
-    
+    func limitProductName(_ name: String, to maxWords: Int) -> String {
+        let components = name.components(separatedBy: .whitespacesAndNewlines)
+        return components.prefix(maxWords).joined(separator: " ")
+    }
     func getCardView() -> some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
-                    
-                        Text(product.name ?? "")
+                    Text(product.name ?? "")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(Color("font_color"))
+                            .lineLimit(isExpanded ? nil : 1)
+                            .fixedSize(horizontal: false, vertical: true) // Add this line
+                            .onTapGesture {
+                                withAnimation {
+                                    self.isExpanded.toggle()
+                                }
+                            }
+                            .padding(.bottom, isExpanded ? 10 : 0)
                         
                     Spacer() // Add Spacer to push the saved button to the right
                     VStack(alignment: .trailing, spacing: 10) {
