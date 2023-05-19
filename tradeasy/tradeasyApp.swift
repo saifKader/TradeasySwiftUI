@@ -8,11 +8,11 @@ import SwiftUI
 
 @main
 struct TradeasySwiftUIApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate	 		
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let persistenceController = PersistenceController.shared
     private var initDI = InitDepedencyInjection()
 
-    @StateObject private var navigationController = NavigationController(startingView: AnyView(MainView()))
+    @StateObject private var navigationController = NavigationController(startingView: AnyView(MainView()), startingViewType: .productDetailsView, startingTab: 0)
 
     var body: some Scene {
         WindowGroup {
@@ -20,8 +20,10 @@ struct TradeasySwiftUIApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(navigationController)
                 .navigationViewStyle(StackNavigationViewStyle())
+                .onAppear {
+                    navigationController.currentTab = 0
+                }
         }
-        
     }
 }
 

@@ -61,10 +61,9 @@ struct AllProductsView: View {
                 } else {
                     List {
                         ForEach(filteredProducts, id: \._id) { product in
-                            NavigationLink(
-                                destination: ProductDetailsView(product: product),
-                                isActive: $showProductDetails,
-                                label: {
+                            Button(action: {
+                                navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                            }) {
                                     HStack {
                                         // Display the image from the URL
                                         if let imageUrl = product.image?.first,
@@ -97,7 +96,7 @@ struct AllProductsView: View {
                                         }
                                     }
                                     .buttonStyle(PlainButtonStyle()) // Add this to remove the default button styling
-                                })
+                                }
                         }
                     }
                     .listStyle(PlainListStyle())

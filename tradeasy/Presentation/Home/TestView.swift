@@ -2,27 +2,32 @@
 import SwiftUI
 import ToastSwiftUI
 
+struct NavObj: Identifiable, Hashable {
+    let id = UUID()
+    let name: String
+}
+
 struct TestView: View {
-    @State private var errorMessage: String? = nil
-    @State private var responseMessage: String? = nil
-    let userApi = UserAPI()
-    let message = ChatBotReq(message: "hello")
-    
+    @State private var path = NavigationPath()
     var body: some View {
-        VStack(spacing: 20) {
-            Button("Chat") {
-                Task {
-                    do {
-                        let response = try await userApi.chatBot(message)
-                        self.responseMessage = response
-                    } catch {
-                        self.errorMessage = error.localizedDescription
-                    }
-                }
+        NavigationStack() {
+            VStack {
+                NavigationLink(destination: T0121(test: 1), label: {Text("Click")})
+
             }
-            Text(errorMessage ?? "")
-                .foregroundColor(.red)
-            Text(responseMessage ?? "")
+            .navigationDestination(for: NavObj.self) { item in
+                T0121(test: 2)
+            }
+        }
+    }
+}
+
+struct T0121: View{
+    @State var test: Int
+    var body: some View{
+        VStack{
+            Text(String(test))
+            NavigationLink(value: NavObj.init(name: "Next"), label: {Text("Click")})
         }
     }
 }

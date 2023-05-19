@@ -11,7 +11,7 @@
 		5917700729EC8A98009EEB11 /* EditProductReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700629EC8A98009EEB11 /* EditProductReq.swift */; };
 		5917700B29EC8BE0009EEB11 /* EditProductviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */; };
 		5917700D29EC8E93009EEB11 /* EditProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700C29EC8E93009EEB11 /* EditProductView.swift */; };
-		5917700F29EC90F8009EEB11 /* EditProductView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700E29EC90F8009EEB11 /* EditProductView2.swift */; };
+		5917700F29EC90F8009EEB11 /* EditProductAdditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5917700E29EC90F8009EEB11 /* EditProductAdditional.swift */; };
 		5941E2262A04DF8100A3B9E7 /* BidListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941E2252A04DF8100A3B9E7 /* BidListView.swift */; };
 		5941E2282A04E3C500A3B9E7 /* KeyboardDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941E2272A04E3C500A3B9E7 /* KeyboardDismiss.swift */; };
 		5941E22A2A05273900A3B9E7 /* BidderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5941E2292A05273900A3B9E7 /* BidderModel.swift */; };
@@ -165,7 +165,7 @@
 		5917700629EC8A98009EEB11 /* EditProductReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductReq.swift; sourceTree = "<group>"; };
 		5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductviewModel.swift; sourceTree = "<group>"; };
 		5917700C29EC8E93009EEB11 /* EditProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView.swift; sourceTree = "<group>"; };
-		5917700E29EC90F8009EEB11 /* EditProductView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView2.swift; sourceTree = "<group>"; };
+		5917700E29EC90F8009EEB11 /* EditProductAdditional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductAdditional.swift; sourceTree = "<group>"; };
 		5941E2252A04DF8100A3B9E7 /* BidListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidListView.swift; sourceTree = "<group>"; };
 		5941E2272A04E3C500A3B9E7 /* KeyboardDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismiss.swift; sourceTree = "<group>"; };
 		5941E2292A05273900A3B9E7 /* BidderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidderModel.swift; sourceTree = "<group>"; };
@@ -348,7 +348,7 @@
 			children = (
 				5917700A29EC8BE0009EEB11 /* EditProductviewModel.swift */,
 				5917700C29EC8E93009EEB11 /* EditProductView.swift */,
-				5917700E29EC90F8009EEB11 /* EditProductView2.swift */,
+				5917700E29EC90F8009EEB11 /* EditProductAdditional.swift */,
 			);
 			path = EditProduct;
 			sourceTree = "<group>";
@@ -1300,7 +1300,7 @@
 				59750FFD2A0EE950005C8875 /* OTPVerificationPhoneNumber.swift in Sources */,
 				5917700729EC8A98009EEB11 /* EditProductReq.swift in Sources */,
 				59B858B929DCDD24006ED7F1 /* UpdateUsernameViewModel.swift in Sources */,
-				5917700F29EC90F8009EEB11 /* EditProductView2.swift in Sources */,
+				5917700F29EC90F8009EEB11 /* EditProductAdditional.swift in Sources */,
 				598431F729CB9CBA001A6C40 /* UserAPI.swift in Sources */,
 				5941E23C2A0589F300A3B9E7 /* CategoryUseCase.swift in Sources */,
 				59E0A0832A04C0FD0065985D /* BidModel.swift in Sources */,

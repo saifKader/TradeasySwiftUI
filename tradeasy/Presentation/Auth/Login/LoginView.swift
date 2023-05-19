@@ -52,7 +52,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                VStack() {
+                VStack {
                     HStack{
                         Spacer()
                         Image("app_logo_48")
@@ -68,13 +68,7 @@ struct LoginView: View {
                     
                         .padding(.horizontal, 5)
                         .padding(.top, 20)
-                    
-                    TextField(LocalizedStringKey("Username"), text: $username)
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-                        .padding(.top, 10)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
+                    TradeasyTextField(placeHolder: "Username", textValue: $username, keyboardType: .default)
                         .onChange(of: username) { newValue in
                             if newValue.count > 30 {
                                 username = String(newValue.prefix(30))
@@ -225,6 +219,7 @@ struct LoginView: View {
                         }
 
                     }
+                    
                     VStack{
                         
                         Spacer()
@@ -253,6 +248,7 @@ struct LoginView: View {
                 .padding()
                 .navigationBarItems(
                     leading: Button(action: {
+                        navigationController.currentTab = 0
                         navigationController.popToRoot()
                     }) {
                         Image(systemName: "xmark")

@@ -19,7 +19,7 @@ struct TradeasyTextField: View {
                 .foregroundColor(Color(.placeholderText))
                 .offset(y: textValue.isEmpty ? 0 : -25)
                 .scaleEffect(textValue.isEmpty ? 1: 0.8, anchor: .leading)
-                
+               // .animation(.default)
             TextField("", text: $textValue)
                 .keyboardType(keyboardType) // Apply the keyboardType here
         }
@@ -43,11 +43,10 @@ struct TradeasyTextEditor: View {
                 .scaleEffect(textValue.isEmpty ? 1: 0.8, anchor: .leading)
                 .padding(.top,8)
                 .padding(.horizontal,2)
-                
+               // .animation(.default)
             TextEditor(text: $textValue)
                 .scrollContentBackground(.hidden)
         }
-        
         .padding(.top, textValue.isEmpty ? 0 : 15)
         .frame(height: 100)
         .padding(.horizontal, 16)

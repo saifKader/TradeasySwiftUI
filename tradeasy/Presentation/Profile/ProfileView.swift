@@ -22,6 +22,7 @@ struct ProfileView: View {
     @State private var profileImage: UIImage?
     @State private var isRecentlyViewed: Bool = false
     @State private var isPrivacyPolicyViewActive = false
+    @State private var isChatBotViewActive = false
     
     
     @ObservedObject var viewModel = UploadProfilePictureViewModel()
@@ -73,22 +74,21 @@ struct ProfileView: View {
                     }
                     Spacer()
                 }
-                
-                let username = userPreferences.getUser()?.username ?? ""
-                Text(username.capitalized)
-                    .bold()
-                    .font(.custom("AvenirNext-DemiBold", size: 24))
-                    .foregroundColor(Color("font_color"))
-                .padding(.leading) // Add padding to the left of the text
-
+                HStack{
+                    Spacer()
+                    let username = userPreferences.getUser()?.username ?? ""
+                    Text(username.capitalized)
+                        .bold()
+                        .font(.custom("AvenirNext-DemiBold", size: 24))
+                        .foregroundColor(Color("font_color"))
+                    Spacer()
+                    Spacer()
+                }
                 
                 ActionButton(text: "Edit Profile", action: {
-                    isEditProfileViewActive = true
-                }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2, icon: "chevron.right")
+                    navigationController.navigate(to: EditProfileView( profileImage: $profileImage))
+                }, height: getScreenSize().width * 0.05, width: getScreenSize().height * 0.2)
                 .padding(.top, 20)
-                NavigationLink(destination: EditProfileView( profileImage: $profileImage), isActive: $isEditProfileViewActive) {
-                            EmptyView()
-                        }.navigationBarTitle("Profile")
                 
                 
                 Spacer()
@@ -162,11 +162,16 @@ struct ProfileView: View {
                 .padding(.leading,10)
             VStack{
                 
-              
-                    ProfileHstack(action: {
+                NavigationLink(
+                    destination: ChatBotView(),
+                    isActive: $isChatBotViewActive) {
                         
-                    }, image: "exclamationmark.triangle", text: "Report a problem")
-                
+                    }
+                    ProfileHstack(action: {
+                     
+                        isChatBotViewActive = true
+                    }, image: "hand.raised", text: "Assistance")
+                   
                 
             Divider()
                 Spacer()
@@ -201,7 +206,7 @@ struct ProfileView: View {
             
             
             
-            Text("Change Account")
+            Text("Account")
                 .foregroundColor(Color(CustomColors.greyColor))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading,10)

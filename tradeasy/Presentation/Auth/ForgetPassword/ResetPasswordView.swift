@@ -56,6 +56,7 @@ struct ResetPasswordView: View {
                             case .success:
                                 viewModel.state = .success
                                 DispatchQueue.main.async {
+                                    navigationController.currentTab = 0
                                     navigationController.popToRoot()
                                     
                                 }
@@ -74,6 +75,7 @@ struct ResetPasswordView: View {
                     isEnabled: isFormValid,
                     isLoading: viewModel.isLoading
                 )
+                Spacer()
             }
             .padding()
             .alert(isPresented: $showError) {

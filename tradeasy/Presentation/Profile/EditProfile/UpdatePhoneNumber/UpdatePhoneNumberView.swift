@@ -123,7 +123,7 @@ struct UpdatePhoneNumberView: View {
             .background(
               
                 NavigationLink(
-                    destination: OTPVerificationPhoneNumberView(phoneNumber: phoneNumber),
+                    destination: OTPVerificationPhoneNumberView(phoneNumber: phoneNumber,countryCode: countryCode),
                     isActive: $showVerification,
                     label: { EmptyView() }
                 )

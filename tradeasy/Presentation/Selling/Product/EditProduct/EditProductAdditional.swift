@@ -25,10 +25,25 @@ struct EditProductView2: View {
     @State private var errorMessage = ""
     @State private var showError = false
     
-    @Environment(\.presentationMode) var presentationMode
     
-    // Replace with the categories available in your app
-    let categories = ["electronics", "motors"]
+    @StateObject var categoryViewModel = CategoryViewModel()
+    @State private var categoryList: [CategoryModel] = []
+    
+    func updateCategoryList() async {
+        do {
+            try await categoryViewModel.fetchCategories()
+            if case let .categorySuccess(categories) = categoryViewModel.state {
+                categoryList = categories
+                print("First Category: \(categories[0].name)")// Add this print statement
+            }
+        } catch {
+            // Handle error here
+            print("Failed to fetch categories: \(error)")
+        }
+    }
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+
     // Update the bid end dates according to your app's requirements
     let bidEndDates = ["1 Minute", "1 Hour", "1 Day", "1 Week"]
     var isFormValid: Bool {
@@ -84,8 +99,8 @@ struct EditProductView2: View {
                     ])
                 }
                 Picker("Category", selection: $category) {
-                    ForEach(categories, id: \.self) { category in
-                        Text(category)
+                    ForEach(categoryList, id: \.self) { category in
+                        Text(category.name!)
                     }
                 }
                 
@@ -97,31 +112,37 @@ struct EditProductView2: View {
                         }
                     }
                 }
-            }.listRowSeparator(.hidden)
+            }
+            .listRowSeparator(.hidden)
             Section {
-                AuthButton(
-                    text: "Save Changes",
-                    action: {
-                        viewModel.editProduct(editProductReq: editProductReq) { result in
-                            switch result {
-                            case .success(let productModel):
-                                print("Product edited successfully: \(productModel)")
-                                
-                                DispatchQueue.main.async {
-                                    navigationController.navigate(to: MainView())
-                                }
-                            case .failure(let error):
-                                errorMessage = "Error editing product: \(error.localizedDescription)"
-                                showError = true
+                            AuthButton(
+                                text: "Save Changes",
+                                action: {
+                                    viewModel.editProduct(editProductReq: editProductReq) { result in
+                                        switch result {
+                                        case .success(let productModel):
+                                            print("Product edited successfully: \(productModel)")
+                                            
+                                            DispatchQueue.main.async {
+                                                navigationController.popToRoot() // Add this line
+                                            }
+                                        case .failure(let error):
+                                            errorMessage = "Error editing product: \(error.localizedDescription)"
+                                            showError = true
+                                        }
+                                    }
+                                },
+                                isEnabled: isFormValid,
+                                isLoading: viewModel.isLoading
+                            )
+                            .alert(isPresented: $showError) {
+                                Alert(title: Text("Edit Product"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
                             }
                         }
-                    },
-                    isEnabled: isFormValid,
-                    isLoading: viewModel.isLoading
-                )
-                .alert(isPresented: $showError) {
-                    Alert(title: Text("Edit Product"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-                }
+        }.onAppear{
+            
+            Task {
+                await updateCategoryList()
             }
         }
         .scrollContentBackground(.hidden)

@@ -5,15 +5,13 @@ struct Category: Identifiable {
     let name: String
     let imageName: String
 }
-
 struct AllCategoriesView: View {
     let productsList: [ProductModel]
-    let categories : [CategoryModel]
-    
-    
+    let categories: [CategoryModel]
+    @State private var selectedCategory: String? = nil
     
     var body: some View {
-        NavigationLink(destination: ProductsByCategoryView(productsList: productsList,category: "electronics")) {
+        NavigationLink(destination: ProductsByCategoryView(productsList: productsList, category: selectedCategory ?? "")) {
             List(categories) { category in
                 HStack {
                     Image(category.name!)
@@ -24,8 +22,13 @@ struct AllCategoriesView: View {
                     Image(systemName: "chevron.right")
                         .foregroundColor(.gray)
                 }
+                .onTapGesture {
+                    print("selected category is \(category.name)")
+                    selectedCategory = category.name
+                }
             }
             .navigationTitle("Categories")
         }
     }
 }
+

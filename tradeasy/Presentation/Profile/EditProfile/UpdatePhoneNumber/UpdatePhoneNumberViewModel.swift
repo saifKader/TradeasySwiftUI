@@ -48,15 +48,15 @@ class UpdatePhoneNumberViewModel: ObservableObject {
     
 
     
-    func changePhoneNumber(otp: String, newPhoneNumber: String, countryCode:String, completion: @escaping (Result<UserModel, Error>) -> Void) {
+    func changePhoneNumber(req:ChangePhoneNumberReq, completion: @escaping (Result<UserModel, Error>) -> Void) {
        
         DispatchQueue.main.async {
             self.state = .loading
         }
         
         Task {
-            let changePhoneNumberReq = ChangePhoneNumberReq(otp: otp, newPhoneNumber: newPhoneNumber, countryCode: countryCode)
-            let result = await userUseCase.changePhoneNumber(changePhoneNumberReq)
+           
+            let result = await userUseCase.changePhoneNumber(req)
             DispatchQueue.main.async {
                 switch result {
                     case .success(let userModel):

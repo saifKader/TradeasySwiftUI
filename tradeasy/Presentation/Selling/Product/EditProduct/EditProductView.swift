@@ -20,11 +20,11 @@ struct EditProductView1: View {
     @State private var bid_end_date: String
     @State private var forBid: Bool
     @State private var image: UIImage? = nil
-    
     @State private var showAdditionalInfoView = false
     @Environment(\.presentationMode) var presentationMode
     
     init(product: Binding<ProductModel>) {
+        
         _product = product
         _prod_id = State(initialValue: product.wrappedValue._id!)
         _name = State(initialValue: product.wrappedValue.name!)
@@ -45,7 +45,7 @@ struct EditProductView1: View {
     }
     
     var body: some View {
-        NavigationView {
+        
             VStack(spacing: 20) {
                 TradeasyTextField(placeHolder: "Product Name", textValue: $name, keyboardType: .default)
                 TradeasyTextEditor(placeHolder: "Description", textValue: $description)
@@ -67,12 +67,12 @@ struct EditProductView1: View {
                     }
                     .padding(.horizontal)
                 }
-                .isDetailLink(false)
+               
                 Spacer()
             }
             .padding()
             .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-            .navigationBarTitle("Edit Product", displayMode: .inline)
+            
            /* .toolbar {
                             ToolbarItemGroup(placement: .navigationBarTrailing) {
                                 Button(action: {
@@ -100,11 +100,5 @@ struct EditProductView1: View {
                     }
                 }
             }
-        }
     }
 }
-
-
-
-
-

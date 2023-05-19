@@ -26,7 +26,7 @@ struct AdditionalInfoView: View {
     @State var isShowingImagePickerLibrary = false
     @State private var showingActionSheet = false
     
-    let categories = ["electronics", "motors"]
+    let categories = ["electronics", "motors","real estate","furniture","clothing"]
     let bidEndDates = ["1 Minute", "1 Hour", "1 Day", "1 Week"]
     var isFormValid: Bool {
         !(image == nil) &&

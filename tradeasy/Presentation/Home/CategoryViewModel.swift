@@ -32,42 +32,37 @@ class CategoryViewModel: ObservableObject {
         getCategoryUseCase = CategoryUseCase(repo: repository)
     }
     var category: [CategoryModel] {
-           if case let .categorySuccess(category) = state {
-               return category
-           }
-           return []
-       }
+        if case let .categorySuccess(category) = state {
+            return category
+        }
+        return []
+    }
     
     func fetchCategories() async throws -> [CategoryModel] {
-        state = .loading
+        DispatchQueue.main.async {
+            self.state = .loading
+        }
         do {
-            print("Before calling fetchCategories") // Add this print statement
             let result = await getCategoryUseCase.fetchCategories()
-            print("After calling fetchCategories") // Add this print statement
-
+            
             switch result {
             case .success(let categories):
-                DispatchQueue.main.async { [weak self] in
-                    self?.state = .categorySuccess(categories)
+                DispatchQueue.main.async {
+                    self.state = .categorySuccess(categories)
                 }
-                print("Category success: \(categories)")
-          
                 return categories
             case .failure(let error):
-                DispatchQueue.main.async { [weak self] in
-                    self?.state = .error(error)
+                DispatchQueue.main.async {
+                    self.state = .error(error)
                 }
-                print("Category error: \(error.localizedDescription)") // Add this print statement
                 throw error
             }
         } catch {
-            DispatchQueue.main.async { [weak self] in
-                self?.state = .error(error)
+            DispatchQueue.main.async {
+                self.state = .error(error)
             }
             throw error
         }
     }
-
-
-   }
+}
 

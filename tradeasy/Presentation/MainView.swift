@@ -11,7 +11,7 @@ let userPreferences = UserPreferences()
 struct MainView: View {
     @State  var isLoginShown: Bool = userPreferences.getUser() == nil
     @State private var selectedTab = 0
-    
+    @EnvironmentObject var navigationController: NavigationController
     
     init() {
         if let color = UIColor(named: "card_color") {
@@ -21,12 +21,13 @@ struct MainView: View {
        
     
     var body: some View {
-        NavigationStack{
-            TabView(selection: $selectedTab) {
+            NavigationStack{
+                TabView(selection: $navigationController.currentTab) {
                 
                 // FirebaseRegisterView(email: "")
                 //ChatBotView()
-                HomeView()
+                //TestView()
+                    HomeView()
                     .tabItem {
                         TabIcon(selected: $selectedTab, index: 0) {
                             Label("Home", systemImage: "house")
@@ -60,19 +61,19 @@ struct MainView: View {
                             Label("Profile", systemImage: "person")
                         }
                     }.tag(4)
-            }
-            .accentColor(Color("app_color"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Text(tabTitle(for: selectedTab))
-                            .font(.headline)
-                            .foregroundColor(Color.primary)
+                }
+                .accentColor(Color("app_color"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Text(tabTitle(for: navigationController.currentTab))
+                                .font(.headline)
+                                .foregroundColor(Color.primary)
+                        }
                     }
                 }
             }
-        }
     }
     func tabTitle(for index: Int) -> String {
             switch index {

@@ -18,7 +18,7 @@ struct SavedProductsView: View {
     @State private var isProddetail: Bool = false
     let userPreferences: UserPreferences
     var productsList: [ProductModel]?
-
+    
     init(productsList: [ProductModel]) {
         self.userPreferences = UserPreferences()
         self.productsList = self.userPreferences.getUser()?.savedProducts
@@ -53,23 +53,23 @@ struct SavedProductsView: View {
             self.filteredProducts = self.productsList!
         }
     }
-  /*  private func updateSavedProducts() {
-            userDataViewModel.getUserData { result in
-                switch result {
-                case .success(let user):
-                    if let savedProducts = user.savedProducts {
-                        self.productsList = savedProducts
-                        self.filteredProducts = savedProducts
-                    } else {
-                        self.productsList = []
-                        self.filteredProducts = []
-                    }
-                case .failure(_):
-                    self.productsList = []
-                    self.filteredProducts = []
-                }
-            }
-        }*/
+    /*  private func updateSavedProducts() {
+     userDataViewModel.getUserData { result in
+     switch result {
+     case .success(let user):
+     if let savedProducts = user.savedProducts {
+     self.productsList = savedProducts
+     self.filteredProducts = savedProducts
+     } else {
+     self.productsList = []
+     self.filteredProducts = []
+     }
+     case .failure(_):
+     self.productsList = []
+     self.filteredProducts = []
+     }
+     }
+     }*/
     
     var body: some View {
         GeometryReader { geometry in
@@ -85,12 +85,9 @@ struct SavedProductsView: View {
                 } else {
                     List {
                         ForEach(filteredProducts, id: \._id) { product in
-                            NavigationLink(
-                                destination: ProductDetailsView(product: product),
-                                isActive: $isProddetail
-                                
-                            )
-                            {
+                            Button(action: {
+                                navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                            }) {
                                 HStack {
                                     // Display the image from the URL
                                     if let imageUrl = product.image?.first,
@@ -124,11 +121,9 @@ struct SavedProductsView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .background( Color("background_color"))
+                    .background(Color("background_color"))
                     .edgesIgnoringSafeArea(.bottom)
                 }
-                
-                
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)

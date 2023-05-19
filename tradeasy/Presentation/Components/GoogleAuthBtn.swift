@@ -16,14 +16,14 @@ struct SignInWithGoogleButton: View {
                 Text("Sign in with Google")
                     .foregroundColor(.black)
             }
-            .frame(width: 250, height: 40)
+            .frame(maxWidth: .infinity) // Match the width to the AuthButton
+            .frame(height: 40) // Set a fixed height
+            
             .background(Color.white)
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 2) // Add a slight shadow
         }
+        .padding(.horizontal, 20) // Apply the same horizontal padding as AuthButton
+        .padding(.top, 10)
     }
 }
-
-
-
-

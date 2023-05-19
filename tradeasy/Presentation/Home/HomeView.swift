@@ -27,7 +27,7 @@ struct HomeView: View {
             try await categoryViewModel.fetchCategories()
             if case let .categorySuccess(categories) = categoryViewModel.state {
                 categoryList = categories
-                print("First Category: \(categories[0].name)")// Add this print statement
+                
             }
         } catch {
             // Handle error here
@@ -275,7 +275,7 @@ struct RatingStarsView: View {
 struct SectionView: View {
     let title: String
     let products: [ProductModel]
-    
+    @EnvironmentObject var navigationController: NavigationController
     var body: some View {
         if !products.isEmpty {
             VStack(alignment: .leading) {
@@ -311,7 +311,9 @@ struct SectionView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 15) {
                         ForEach(products, id: \._id) { product in
-                            NavigationLink(destination: ProductDetailsView(product: product)) {
+                            Button(action: {
+                                navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                            }) {
                                 ProductRowView(product: product)
                             }
                             .buttonStyle(PlainButtonStyle())

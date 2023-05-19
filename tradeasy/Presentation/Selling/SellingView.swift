@@ -34,14 +34,16 @@ struct SellingView: View {
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     LazyHStack(spacing: 15) {
                                         ForEach(viewModel.products.filter { $0.selling! }, id: \._id) { product in
-                                            
-                                            NavigationLink(destination: ProductDetailsView(product: product)) {
-                                                
+                                            Button(action: {
+                                                withAnimation {
+                                                    navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                                                    }
+                                            }) {
                                                 ProductRowView(product: product)
-                                                
                                             }
                                             .buttonStyle(PlainButtonStyle())
                                         }
+
                                     }
                                     .padding(.horizontal, 10)
                                     .padding(.vertical, 20)
@@ -67,7 +69,11 @@ struct SellingView: View {
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     LazyHStack(spacing: 15) {
                                         ForEach(viewModel.products.filter { !$0.selling! }, id: \._id) { product in
-                                            NavigationLink(destination: ProductDetailsView(product: product)) {
+                                            Button(action: {
+                                                withAnimation {
+                                                    navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                                                    }
+                                            }) {
                                                 ProductRowView(product: product)
                                             }
                                             .buttonStyle(PlainButtonStyle())
@@ -177,18 +183,20 @@ struct FloatingActionButton: View {
                 OTPVerificationAccount()
                         }
         } else {
-            NavigationLink(destination: AddProductView()) {
-                ZStack {
-                    Circle()
-                        .foregroundColor(Color("app_color"))
-                        .frame(width: 60, height: 60)
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(Color.white)
-                }
-            }
-            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+            Button(action: {
+                   navigationController.navigate(to: AddProductView())
+               }) {
+                   ZStack {
+                       Circle()
+                           .foregroundColor(Color("app_color"))
+                           .frame(width: 60, height: 60)
+                       Image(systemName: "plus")
+                           .resizable()
+                           .frame(width: 24, height: 24)
+                           .foregroundColor(Color.white)
+                   }
+               }
+               .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
         }
     }
 }

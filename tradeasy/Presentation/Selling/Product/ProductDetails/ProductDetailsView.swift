@@ -7,6 +7,17 @@
 
 import Foundation
 import SwiftUI
+
+struct SlideInTransition: ViewModifier {
+    let isPresented: Bool
+
+    func body(content: Content) -> some View {
+        content
+            .transition(.move(edge: .trailing))
+            .animation(isPresented ? .default : .none)
+    }
+}
+
 struct ProductDetailsView: View {
     @State  var product: ProductModel
     @StateObject var viewModel = ProductDetailsViewModel()
@@ -23,6 +34,7 @@ struct ProductDetailsView: View {
     @State private var userRating: Float = 0
     private let profilePictureSize: CGFloat = 40
     @State private var isAnimating = false
+    @State private var selectedIndex = 0
     
     init(product: ProductModel) {
         _product = State(initialValue: product)
@@ -72,36 +84,42 @@ struct ProductDetailsView: View {
     }
 
     
-    //views
-    func getImageView(url: URL?) -> some View {
-        Group {
-            if let imageUrl = url {
-                // Show the full screen image view when the image is tapped
-                ZStack {
-                    AsyncImage(url: imageUrl) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(maxWidth: .infinity, maxHeight: 300)
-                            .cornerRadius(20)
-                            .padding(.horizontal, 20)
-                    } placeholder: {
-                        ProgressView()
-                    }
+    //imageview
+    func getCarouselView(urls: [URL]) -> some View {
+            TabView(selection: $selectedIndex) {
+                ForEach(urls.indices, id: \.self) { index in
+                    getImageView(url: urls[index])
+                        .tag(index)
                 }
-                .clipped()
-                .onTapGesture {
-                    showFullScreenImage.toggle()
-                }
-                .sheet(isPresented: $showFullScreenImage) {
-                    FullScreenImageView(url: imageUrl)
-                }
-            } else {
-                Rectangle()
-                    .fill(Color.gray)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+            .frame(height: 300)
+            .onAppear(perform: {
+                selectedIndex = 0  // Reset the carousel to the first image when this view appears.
+            })
+        }
+    func getImageView(url: URL) -> some View {
+        ZStack {
+            AsyncImage(url: url) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.7)
+                    .cornerRadius(50)
+                    .padding(.horizontal, 20)
+            } placeholder: {
+                ProgressView()
             }
         }
+        .clipped()
+        .onTapGesture {
+            showFullScreenImage.toggle()
+        }
+        .sheet(isPresented: $showFullScreenImage) {
+            FullScreenImageView(url: url)
+        }
     }
+
     
     func getProfilePictureView(url: URL?) -> some View {
         Group {
@@ -236,30 +254,28 @@ struct ProductDetailsView: View {
     
     func getEditButtonView() -> some View {
         VStack(alignment: .center, spacing: 4) {
-            Button(action: { showEditView = true }) {
-                HStack(alignment: .center, spacing: 10) {
-                    Image(systemName: "pencil")
-                        .foregroundColor(.white)
-                    
-                    Text("Edit")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                    
+            NavigationLink(destination: EditProductView1(product: $product), isActive: $showEditView) {
+                Button(action: { showEditView = true }) {
+                    HStack(alignment: .center, spacing: 10) {
+                        Image(systemName: "pencil")
+                            .foregroundColor(.white)
+                        
+                        Text("Edit")
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                        
+                    }
+                    .frame(height: 40.0)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("app_color"))
+                    .cornerRadius(20)
+                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                 }
-                .frame(height: 40.0)
-                .frame(maxWidth: .infinity)
-                .background(Color("app_color"))
-                .cornerRadius(20)
-                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
             }
         }
         .padding(.bottom, 25)
-        .background(
-            NavigationLink(destination: EditProductView1(product: $product), isActive: $showEditView) {
-                EmptyView()
-            }
-        )
     }
+
     
     func getListUnlistButtonView() -> some View {
         VStack(alignment: .center, spacing: 4) {
@@ -332,7 +348,8 @@ struct ProductDetailsView: View {
             VStack(alignment: .leading, spacing: 10) {
                 // Extracted the image view to a separate method to reduce nesting.
                 // Used guard statements to unwrap optionals early in the code.
-                getImageView(url: URL(string: kImageUrl + (product.image?.first ?? "")))
+                let imageUrls = product.image?.compactMap { URL(string: kImageUrl + $0) } ?? []
+                                getCarouselView(urls: imageUrls)
                 
                 // Extracted the card view to a separate method to reduce nesting.
                 getCardView()
@@ -348,7 +365,20 @@ struct ProductDetailsView: View {
             // Extracted the code to a separate method for readability.
             onAppearSetup()
         }
+        .animation(.easeInOut)
+        .navigationTitle("\(product.name!)'s details")
+        .navigationBarItems(
+            leading: Button(action: {
+                
+                    navigationController.popToRoot()
+                
+            }) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(Color("font_color"))
+            }
+        )
     }
+        
     
     func getCardView() -> some View {
         GeometryReader { geometry in

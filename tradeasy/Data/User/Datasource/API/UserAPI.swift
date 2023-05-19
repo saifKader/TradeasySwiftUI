@@ -227,29 +227,45 @@ struct UserAPI {
             "Content-Type": "application/json",
             "jwt": (userPreferences.getUser()?.token)!
         ]
+        
         let jsonBody = try JSONEncoder().encode(changeEmailReq)
+        
+        guard let parameters = try JSONSerialization.jsonObject(with: jsonBody, options: []) as? [String: Any] else {
+            throw NSError() // or define your own error
+        }
+
         return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
-            AF.upload(jsonBody, to: url, method: .post, headers: headers)
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
                 .validate(statusCode: 200..<202)
-                .responseDecodable(of: UserModel.self) { response in
+                .responseJSON { response in
+                    guard response.response?.statusCode != 401 else {
+                        continuation.resume(throwing: errorFromResponseData(response.data!))
+                        return
+                    }
+                    
                     switch response.result {
-                    case .success(let user):
-                        continuation.resume(returning: user)
-                    case .failure(let error):
-                        if let data = response.data {
-                            do {
-                                throw errorFromResponseData(data)
-                            } catch {
-                                continuation.resume(throwing: error)
-                            }
-                        } else {
+                    case .success(let data):
+                        print("hedhi daaata\(data)")
+                        guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
+                            continuation.resume(throwing: APIServiceError.decodingError)
+                            return
+                        }
+                        do {
+                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                            userModel.token = token
+                            continuation.resume(returning: userModel)
+                        } catch {
+                            print("hedhi dasasaata\(data)")
                             continuation.resume(throwing: error)
                         }
+                    case .failure(let error):
+                        print("hedhi dasassaata\(error)")
+                        continuation.resume(throwing: error)
                     }
                 }
         }
     }
-    
+
     
     
     func uploadProfilePicture(_ image: UIImage) async throws -> UserModel {
@@ -435,32 +451,48 @@ struct UserAPI {
             "Content-Type": "application/json",
             "jwt": (userPreferences.getUser()?.token)!
         ]
+        print("yooooyy  \(changePhoneNumberReq)" )
+
         let jsonBody = try JSONEncoder().encode(changePhoneNumberReq)
-        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<UserModel, Error>) in
-            AF.upload(jsonBody, to: url, method: .post, headers: headers)
+        
+        guard let parameters = try JSONSerialization.jsonObject(with: jsonBody, options: []) as? [String: Any] else {
+            throw NSError() // or define your own error
+        }
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
                 .validate(statusCode: 200..<202)
-                .responseDecodable(of: UserModel.self) { response in
+                .responseJSON { response in
+                    guard response.response?.statusCode != 401 else {
+                        continuation.resume(throwing: errorFromResponseData(response.data!))
+                        return
+                    }
+                    
                     switch response.result {
-                    case .success(let user):
-                        continuation.resume(returning: user)
-                    case .failure(let error):
-                        if let data = response.data {
-                            do {
-                                throw errorFromResponseData(data)
-                            } catch {
-                                continuation.resume(throwing: error)
-                            }
-                        } else {
+                    case .success(let data):
+                        print("hedhi daaata\(data)")
+                        guard let jsonData = data as? [String: Any], let userData = jsonData["data"] as? [String: Any], let token = jsonData["token"] as? String else {
+                            continuation.resume(throwing: APIServiceError.decodingError)
+                            return
+                        }
+                        do {
+                            var userModel = try JSONDecoder().decode(UserModel.self, from: JSONSerialization.data(withJSONObject: userData))
+                            userModel.token = token
+                            continuation.resume(returning: userModel)
+                        } catch {
+                            print("hedhi dasasaata\(data)")
                             continuation.resume(throwing: error)
                         }
+                    case .failure(let error):
+                        print("hedhi dasassaata\(error)")
+                        continuation.resume(throwing: error)
                     }
                 }
         }
     }
-    
-    
+
     func chatBot(_ message: ChatBotReq) async throws -> String {
-        let url = "http://192.168.1.22:9090/\(KChatBot)"
+        let url = "http://192.168.0.2:9090/\(KChatBot)"
 
         let encoder = JSONEncoder()
         let data = try encoder.encode(message)

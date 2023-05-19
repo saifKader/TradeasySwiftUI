@@ -25,7 +25,6 @@ struct AddProductView: View {
     }
     
     var body: some View {
-        NavigationView {
             VStack(spacing: 20) {
                 TradeasyTextField(placeHolder: "Product Name", textValue: $name, keyboardType: .default)
                 TradeasyTextEditor(placeHolder: "Description", textValue: $description)
@@ -52,36 +51,20 @@ struct AddProductView: View {
             }
             .padding()
             .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-            .navigationBarTitle("Edit Product", displayMode: .inline)
-           
-        }
-    }
-}
-
-
-struct CustomTextField: View {
-    let placeholder: String
-    @Binding var text: String
-    var keyboardType: UIKeyboardType = .default
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color("bid_list"))
-                .shadow(radius: 3)
-                .onTapGesture {
-                    UIApplication.shared.endEditing()
+            .navigationBarTitle("Add Product", displayMode: .inline)
+            .navigationBarItems(
+                leading: Button(action: {
+                    
+                        navigationController.popToRoot()
+                    
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color("font_color"))
                 }
-              
-            
-            TextField(placeholder, text: $text)
-                .keyboardType(keyboardType)
-                .padding(.horizontal)
-            
-        }
-        .frame(height: 50)
+            )
     }
 }
+
 
 extension UIApplication {
     func endEditing() {

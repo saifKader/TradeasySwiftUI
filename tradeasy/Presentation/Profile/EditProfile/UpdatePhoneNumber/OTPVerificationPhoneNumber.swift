@@ -13,10 +13,11 @@ struct OTPVerificationPhoneNumberView: View {
         case field
     }
     
-    @StateObject var viewModel = UpdateEmailViewModel()
+    @StateObject var viewModel = UpdatePhoneNumberViewModel()
     @State private var otpText: String = ""
     @FocusState private var isKeyBoardShowing: isKeyBoardShowing?
     let phoneNumber: String
+    let countryCode: String
     @State private var showError = false
     @State private var errorMessage = ""
     @EnvironmentObject var navigationController: NavigationController
@@ -36,12 +37,7 @@ struct OTPVerificationPhoneNumberView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             Button(action: {
-//                viewModel.resendPhoneNumber(phoneNumber: phoneNumber) { error in
-//                    if let error = error {
-//                        errorMessage = error.localizedDescription
-//                        showError = true
-//                    }
-//                }
+
             }) {
                 Text("Resend?")
                     .foregroundColor(Color.blue)
@@ -109,14 +105,18 @@ struct OTPVerificationPhoneNumberView: View {
     }
 
     private func verifyOTP() {
-        viewModel.changeEmail(otp: otpText, newEmail: phoneNumber) { result in
+        
+        let req = ChangePhoneNumberReq(otp: otpText, newPhoneNumber: phoneNumber, countryCode: countryCode)
+   
+        viewModel.changePhoneNumber(req:req){ result in
             switch result {
             case .success(let userModel):
                 print("Update phoneNumber succesfully: \(userModel)")
                 DispatchQueue.main.async {
+                    print("nik omake \(userModel)")
                     userPreferences.setUser(user: userModel)
                 }
-                print("nik omake \(userModel)")
+              
                 self.presentationMode.wrappedValue.dismiss()
                 
                 

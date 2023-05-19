@@ -27,11 +27,11 @@ struct EditProfileView: View {
     
     @ObservedObject var viewModel = UploadProfilePictureViewModel()
     func navigateToCropView(with image: UIImage) {
-           let cropView = CropView(image: $profileImage)
-          
-     
-             
-       }
+        let cropView = CropView(image: $profileImage)
+        
+        
+        
+    }
     var body: some View {
         NavigationStack {
             NavigationLink(destination: UpdateUsernameView(), isActive: $isEditUsernamePresent) {}
@@ -138,8 +138,16 @@ struct EditProfileView: View {
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
                 .padding(.bottom,10)
                 
-            }.onAppear {
-                
+            }
+            .navigationBarItems(
+                   leading: Button(action: {
+                       navigationController.popToRoot()
+                   }) {
+                       Image(systemName: "chevron.backward")
+                           .foregroundColor(Color("font_color"))
+                   }
+               )
+            .onAppear {
                 // Perform your action here
                 if userPreferences.getUser() == nil
                 {
@@ -152,7 +160,7 @@ struct EditProfileView: View {
                 if let newImage = newImage {
                     navigateToCropView(with: newImage)
                     
-             viewModel.uploadProfilePicture(newImage) { result in
+                    viewModel.uploadProfilePicture(newImage) { result in
                         switch result {
                         case .success(let userModel):
                             // Update the profile picture in the ProfileView as well
@@ -161,7 +169,7 @@ struct EditProfileView: View {
                                 if var currentUser = userPreferences.getUser() {
                                     currentUser.profilePicture = userModel.profilePicture
                                     userPreferences.setUser(user: currentUser)
-                             
+                                    
                                     
                                 }
                             }
@@ -172,9 +180,8 @@ struct EditProfileView: View {
                     }
                 }
             }
-        
+        }
     }
-}
 }
 
 

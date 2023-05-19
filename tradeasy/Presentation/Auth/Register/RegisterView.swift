@@ -78,11 +78,9 @@ struct RegisterView: View {
             .padding(.horizontal, 5)
             .padding(.top, 120)
             
-            TextField(LocalizedStringKey("Username"), text: $username)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.gray, lineWidth: 1))
-                .padding(.horizontal, 5)
-                .padding(.top, 10)
+            TradeasyTextField(placeHolder: "Username", textValue: $username, keyboardType: .default)
+                            .padding(.horizontal, 5)
+                            .padding(.top, 10)
                 .onChange(of: username) { newValue in
                     if newValue.count > 30 {
                         username = String(newValue.prefix(30))
@@ -110,33 +108,30 @@ struct RegisterView: View {
                         countryCode = country?.phoneCode ?? "+1"
                     }
                 VStack(alignment: .leading){
-                    TextField(LocalizedStringKey("Phone Number"), text: $phoneNumber)
-                        .keyboardType(.numberPad)
-                        .padding()
-                        .background(getStrokeBorder(isInvalid: isPasswordInvalid))
-                        .padding(.top, 5)
-                    if isPhoneNumberInvalid {
-                        Text("Invalid phone number")
-                            .font(.system(size: 12))
-                            .foregroundColor(.red)
-                            .padding(.horizontal, 5)
-                    } else {
-                        Text("")
-                            .opacity(0)
-                    }
-                }
+                                    TradeasyTextField(placeHolder: "Phone Number", textValue: $phoneNumber, keyboardType: .numberPad)
+                                        .padding(.top, 5)
+                                    if isPhoneNumberInvalid {
+                                        Text("Invalid phone number")
+                                            .font(.system(size: 12))
+                                            .foregroundColor(.red)
+                                            .padding(.horizontal, 5)
+                                    } else {
+                                        Text("")
+                                            .opacity(0)
+                                    }
+                                }
+                                
+                            
                 
             }
             .padding(.horizontal, 5)
             
-            TextField(LocalizedStringKey("Email"), text: $email)
-                .padding()
-                .background(getStrokeBorder(isInvalid: isEmailInvalid))
+            TradeasyTextField(placeHolder: "Email", textValue: $email, keyboardType: .emailAddress)
                 .padding(.horizontal, 5)
                 .padding(.top, 5)
-                .keyboardType(.emailAddress)
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
+
             
             
             if isEmailInvalid {
@@ -166,7 +161,8 @@ struct RegisterView: View {
                 
             }
             .padding()
-            .background(getStrokeBorder(isInvalid: isPasswordInvalid))
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(lineWidth: 1).foregroundColor(.gray))
+            //.background(getStrokeBorder(isInvalid: isPasswordInvalid))
             .padding(.horizontal, 5)
             .padding(.top, 5)
             

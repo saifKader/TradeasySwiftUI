@@ -11,91 +11,115 @@ struct Message: Identifiable {
 
 
 struct ChatBotView: View {
-    @State private var messages: [Message] = [
-     
-    ]
+    @State private var messages: [Message] = []
     @State private var newMessageText: String = ""
     @StateObject private var chatBotViewModel = ChatBotViewModel()
     @State private var userProfileImageUrl: URL?
     @State var isLoading: Bool = false
     
     init() {
-        _userProfileImageUrl = State(initialValue: URL(string:  kImageUrl+(userPreferences.getUser()?.profilePicture)!))
-    }
+          if let user = userPreferences.getUser(), let profilePicture = user.profilePicture {
+              let imageUrlString = kImageUrl + profilePicture
+              _userProfileImageUrl = State(initialValue: URL(string: imageUrlString))
+          }
+      }
 
     var body: some View {
          VStack {
              ScrollView {
-                 LazyVStack(alignment: .leading, spacing: 10) {
-                     ForEach(messages) { message in
+                 if messages.isEmpty {
+                                 VStack(spacing: 20) {
+                                     Text("Welcome to the Tradeasy Assistant!")
+                                         .font(.largeTitle)
+                                         .fontWeight(.bold)
+                                         .foregroundColor(.black)
+                                     
+                                     Text("The chat bot that will help you answer the most common questions about the app.")
+                                         .font(.headline)
+                                         .foregroundColor(.black)
+                                         .multilineTextAlignment(.center)
+                                         .padding(.horizontal, 30)
+                                     
+                                     Text("Type 'Hi' to start the conversation.")
+                                         .font(.subheadline)
+                                         .foregroundColor(.gray)
+                                         .padding()
+                                         .overlay(
+                                             RoundedRectangle(cornerRadius: 10)
+                                                 .stroke(Color.gray, lineWidth: 1)
+                                         )
+                                         .padding(.horizontal, 50)
+                                 }
+                                 .padding()
+                                 .background(
+                                     RoundedRectangle(cornerRadius: 20)
+                                         .fill(Color.white)
+                                         .shadow(color: Color.gray.opacity(0.3), radius: 10, x: 0, y: 5)
+                                 )
+                                 .padding(.horizontal)
+                             }  else {
+                     LazyVStack(alignment: .leading, spacing: 10) {
                          ForEach(messages) { message in
                              HStack {
                                  if message.isSentByCurrentUser {
-                                     Spacer()
-                                 }
+                                                   Spacer()
+                                               }
 
-                                 if !message.isSentByCurrentUser {
-                                     if let botImage = message.botImage {
-                                         botImage
-                                             .resizable()
-                                             .aspectRatio(contentMode: .fit)
-                                             .frame(width: 40, height: 40)
-                                             .clipShape(Circle())
-                                     }
-                                 }
+                                               if !message.isSentByCurrentUser {
+                                                   if let botImage = message.botImage {
+                                                       botImage
+                                                           .resizable()
+                                                           .aspectRatio(contentMode: .fit)
+                                                           .frame(width: 40, height: 40)
+                                                           .clipShape(Circle())
+                                                   }
+                                               }
 
-                                 Text(message.text)
-                                     .padding(10)
-                                     .background(message.isSentByCurrentUser ? Color("app_color") : Color.gray)
-                                     .foregroundColor(.white)
-                                     .cornerRadius(10)
-                                     .frame(maxWidth: .infinity, alignment: message.isSentByCurrentUser ? .trailing : .leading)
+                                               Text(message.text)
+                                                   .padding(10)
+                                                   .background(message.isSentByCurrentUser ? Color("app_color") : Color.gray)
+                                                   .foregroundColor(.white)
+                                                   .cornerRadius(10)
+                                                   .frame(maxWidth: .infinity, alignment: message.isSentByCurrentUser ? .trailing : .leading)
 
-                                 if message.isSentByCurrentUser {
-                                     if let userImageUrl = message.userImageUrl {
-                                         URLImage(url: userImageUrl)
-                                             .frame(width: 40, height: 40)
-                                             .clipShape(Circle())
-                                     }
-                                 }
+                                               if message.isSentByCurrentUser {
+                                                   if let userImageUrl = message.userImageUrl {
+                                                       URLImage(url: userImageUrl)
+                                                           .frame(width: 40, height: 40)
+                                                           .clipShape(Circle())
+                                                   }
+                                               }
 
-                                 if !message.isSentByCurrentUser {
-                                     Spacer()
-                                 }
+                                               if !message.isSentByCurrentUser {
+                                                   Spacer()
+                                               }
+                                           }
+                                       
                              }
-                         }
-
+                         
                      }
-
                  }
              }
              .padding()
 
-         
             HStack {
                 TextField("Type a message", text: $newMessageText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                 if chatBotViewModel.isLoading {
-                       TypingAnimationView()
-                   }
-                else{
-                    
+                    TypingAnimationView()
+                } else {
                     Button(action: sendMessage) {
-                        
-                        Image(systemName: "paperplane.fill")  // replace "paperplane.fill" with your desired icon
+                        Image(systemName: "paperplane.fill")
                             .resizable()
-                            .frame(width: 20, height: 20) // adjust the size as needed
+                            .frame(width: 20, height: 20)
                             .padding()
                             .background(Color("app_color"))
                             .foregroundColor(.white)
                             .cornerRadius(10)
-                  
-                    } .padding(.trailing)
+                    }
+                    .padding(.trailing)
                 }
-             
-
-               
             }
         }
     }

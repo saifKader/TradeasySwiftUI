@@ -43,7 +43,9 @@ struct SearchView: View {
                 } else {
                     List {
                         ForEach(productsList, id: \._id) { product in
-                            NavigationLink(destination: ProductDetailsView(product: product)) {
+                            Button(action: {
+                                navigationController.navigateAnimation(to: ProductDetailsView(product: product), type: .productDetailsView)
+                            }) {
                                 HStack {
                                     // Display the image from the URL
                                     if let imageUrl = product.image?.first,
