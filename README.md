@@ -63,11 +63,12 @@ The application follows the principles of clean architecture by dividing the cod
 * Receive notifications for new listings and bids
 * Easily search for any listing
 <p align="center">
-  <img src="https://i.imgur.com/OCSd5Ps.png" width=200>
+  <img src="https://i.imgur.com/GwuCGAj.png" width=200>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://i.imgur.com/FTCuDUY.png" width=200>
+
+    <img src="https://i.imgur.com/5iZwqPp.png" width=200>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://i.imgur.com/SNgx0lE.png" width=200>
+      <img src="https://i.imgur.com/307iGPk.png" width=200>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  
 </p>
