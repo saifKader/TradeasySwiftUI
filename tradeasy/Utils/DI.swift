@@ -21,11 +21,6 @@ class InitDepedencyInjection{
         @Provider var categoryRepository = CategoryRepositoryImpl(categoryApi: categoryDataSource) as ICategoryRepository
         @Provider var notificationDataSource = NotificationAPI() // Create an instance of NotificationAPI
         @Provider var notificationRepository = NotificationRepositoryImpl(notificationApi: notificationDataSource) as INotificationRepository
-
-
-
-        
-        
         
     }
 }

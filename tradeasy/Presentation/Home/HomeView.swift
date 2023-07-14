@@ -93,7 +93,7 @@ struct HomeView: View {
                 
                 
                 // Products Forbid - Less than 1 hour
-                SectionView(title: "TradesyFlesh", products: viewModel.products.filter { product in
+                SectionView(title: "TradeasyFlash", products: viewModel.products.filter { product in
                     if let bidEndDate = product.bidEndDate {
                         let remainingTime = TimeInterval(bidEndDate / 1000) - Date().timeIntervalSince1970
                         return product.forBid! && product.username != currentUser?.username && (searchText.isEmpty || product.name!.localizedCaseInsensitiveContains(searchText)) && remainingTime <= 3600
@@ -165,6 +165,7 @@ struct HomeView: View {
                     }
                 }
             }
+    
     }
 
 
@@ -340,7 +341,7 @@ struct SectionView: View {
                             .frame(width: 20, height: 20)
                             .foregroundColor(.green)
                         Divider()
-                    case "TradesyFlesh":
+                    case "TradeasyFlash":
                         Image(systemName: "bolt.fill")
                             .resizable()
                             .frame(width: 20, height: 20)

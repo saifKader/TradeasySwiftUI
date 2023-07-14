@@ -158,6 +158,7 @@
 		59EE253529C13401000F7D55 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253429C13401000F7D55 /* LoginViewModel.swift */; };
 		59EE253729C138C7000F7D55 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253629C138C6000F7D55 /* AuthButton.swift */; };
 		59EE253929C1505E000F7D55 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE253829C1505E000F7D55 /* Colors.swift */; };
+		59EFE7D72A242F6800B8DA26 /* TestingCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EFE7D62A242F6800B8DA26 /* TestingCodes.swift */; };
 		59FFAAEF29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FFAAEE29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -311,6 +312,7 @@
 		59EE253429C13401000F7D55 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		59EE253629C138C6000F7D55 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		59EE253829C1505E000F7D55 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		59EFE7D62A242F6800B8DA26 /* TestingCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingCodes.swift; sourceTree = "<group>"; };
 		59FFAAEE29E60E2A00D31E73 /* UploadProfilePictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadProfilePictureViewModel.swift; sourceTree = "<group>"; };
 		98F413B5EEB12079123BEFCB /* Pods-tradeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.release.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.release.xcconfig"; sourceTree = "<group>"; };
 		B606C89ED2CD4C65E0848F43 /* Pods-tradeasy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tradeasy.debug.xcconfig"; path = "Target Support Files/Pods-tradeasy/Pods-tradeasy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1088,6 +1090,7 @@
 				59CEBA1929E471090027E016 /* FirebaseRegister */,
 				59EE253229C133E9000F7D55 /* LoginView.swift */,
 				59EE253429C13401000F7D55 /* LoginViewModel.swift */,
+				59EFE7D62A242F6800B8DA26 /* TestingCodes.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1256,6 +1259,7 @@
 				599FDA2C2A067FBC00E1737B /* TimeAgo.swift in Sources */,
 				59B858B529DC7342006ED7F1 /* UpdatePhoneNumberView.swift in Sources */,
 				59CEBA1D29E478420027E016 /* FirebaseRegisterViewModel.swift in Sources */,
+				59EFE7D72A242F6800B8DA26 /* TestingCodes.swift in Sources */,
 				59D17AEF29C0E5AF00CD0703 /* Constants.swift in Sources */,
 				59CEBA1629E466E90027E016 /* +View.swift in Sources */,
 				5941E2442A058C8300A3B9E7 /* CategoryRespositoryImpl.swift in Sources */,

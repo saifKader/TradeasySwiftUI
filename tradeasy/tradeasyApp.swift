@@ -5,7 +5,6 @@
 //  Created by abdelkader seif eddine on 14/3/2023.
 //
 import SwiftUI
-
 @main
 struct TradeasySwiftUIApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate

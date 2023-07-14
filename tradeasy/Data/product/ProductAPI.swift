@@ -116,7 +116,6 @@ struct ProductAPI {
                 .responseDecodable(of: [ProductModel].self) { response in
                     switch response.result {
                     case .success(let products):
-                        print("hedha lathal")
                         print(products)
                         continuation.resume(returning: products)
                     case .failure(let error):

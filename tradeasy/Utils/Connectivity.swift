@@ -4,7 +4,7 @@ import Combine
 class ConnectivityMonitor: ObservableObject {
     @Published var isConnected: Bool = false
     let connectivityPublisher = PassthroughSubject<Bool, Never>()
-
+    
     private var monitor: NWPathMonitor?
 
     init() {
