@@ -82,7 +82,6 @@ The application follows the principles of clean architecture by dividing the cod
 
 ```{r klippy, echo=FALSE, include=TRUE}
 git clone https://github.com/saifKader/TradeasySwiftUI
-
 ```
 
 - Additionally, to set up the backend , you can obtain the necessary resources and instructions [here](https://github.com/SouhailKrs/TradeasyBackend).
